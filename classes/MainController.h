@@ -7,6 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <AddressBook/AddressBook.h>
+#import "ExportController.h"
+#import "ExporthCard.h"
 
 @interface MainController : NSObject {
 }

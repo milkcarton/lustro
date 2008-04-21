@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		607C58120DBBB0E7009BBEF8 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */; };
+		60DE9BBB0DBD356200D3EC93 /* ExporthCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DE9BBA0DBD356200D3EC93 /* ExporthCard.m */; };
+		60DE9BF00DBD373800D3EC93 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60DE9BEF0DBD373800D3EC93 /* AddressBook.framework */; };
+		60DE9C160DBD38F300D3EC93 /* hCardTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 60DE9C150DBD38F300D3EC93 /* hCardTemplate */; };
+		60DE9CB90DBD448E00D3EC93 /* ExportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DE9CB80DBD448E00D3EC93 /* ExportController.m */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -25,6 +29,12 @@
 		32CA4F630368D1EE00C91783 /* lustro_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lustro_Prefix.pch; sourceTree = "<group>"; };
 		607C58100DBBB0E7009BBEF8 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainController.h; path = classes/MainController.h; sourceTree = "<group>"; };
 		607C58110DBBB0E7009BBEF8 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainController.m; path = classes/MainController.m; sourceTree = "<group>"; };
+		60DE9B9E0DBD342000D3EC93 /* ExportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportController.h; path = classes/ExportController.h; sourceTree = "<group>"; };
+		60DE9BB90DBD356200D3EC93 /* ExporthCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExporthCard.h; path = classes/ExporthCard.h; sourceTree = "<group>"; };
+		60DE9BBA0DBD356200D3EC93 /* ExporthCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExporthCard.m; path = classes/ExporthCard.m; sourceTree = "<group>"; };
+		60DE9BEF0DBD373800D3EC93 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = ../../../../../../System/Library/Frameworks/AddressBook.framework; sourceTree = SOURCE_ROOT; };
+		60DE9C150DBD38F300D3EC93 /* hCardTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = hCardTemplate; path = templates/hCardTemplate; sourceTree = SOURCE_ROOT; };
+		60DE9CB80DBD448E00D3EC93 /* ExportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExportController.m; path = classes/ExportController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* lustro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lustro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -35,6 +45,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				60DE9BF00DBD373800D3EC93 /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +55,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				60DE9BB80DBD353800D3EC93 /* Exporters */,
 				607C58100DBBB0E7009BBEF8 /* MainController.h */,
 				607C58110DBBB0E7009BBEF8 /* MainController.m */,
 			);
@@ -53,6 +65,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				60DE9BEF0DBD373800D3EC93 /* AddressBook.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
@@ -100,6 +113,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				60DE9BF60DBD389F00D3EC93 /* Templates */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
@@ -114,6 +128,25 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		60DE9BB80DBD353800D3EC93 /* Exporters */ = {
+			isa = PBXGroup;
+			children = (
+				60DE9B9E0DBD342000D3EC93 /* ExportController.h */,
+				60DE9CB80DBD448E00D3EC93 /* ExportController.m */,
+				60DE9BB90DBD356200D3EC93 /* ExporthCard.h */,
+				60DE9BBA0DBD356200D3EC93 /* ExporthCard.m */,
+			);
+			name = Exporters;
+			sourceTree = "<group>";
+		};
+		60DE9BF60DBD389F00D3EC93 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				60DE9C150DBD38F300D3EC93 /* hCardTemplate */,
+			);
+			name = Templates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +194,7 @@
 			files = (
 				8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				60DE9C160DBD38F300D3EC93 /* hCardTemplate in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +207,8 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				607C58120DBBB0E7009BBEF8 /* MainController.m in Sources */,
+				60DE9BBB0DBD356200D3EC93 /* ExporthCard.m in Sources */,
+				60DE9CB90DBD448E00D3EC93 /* ExportController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
