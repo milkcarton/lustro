@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html>
+
+<head>
+   <title>Lusto hCards</title>
+   <style type="text/css">
+      div.vcard { background-color: #eee; border: 1px solid #999; margin: 1em; padding: 0.5em; }
+	  span.fn { font-weight: bold; }
+	  span.org { font-style: italic; display: block; }
+	  span.type { text-transform: lowercase; background-color: #ccc; }
+	  span.tel { display: block; }
+	  a { text-decoration: none; }
+   </style>
+</head>
+
+<body>
+
