@@ -12,10 +12,10 @@
 
 //
 //
-- (id)initWithContacts:(NSArray *)contacts 
+- (id)initWithAddressBook:(ABAddressBook *)addressBook
 {
-	self = [super initWithContacts:contacts];
-	contactsList = contacts;
+	self = [super initWithAddressBook:addressBook];
+	contactsList = [addressBook people];
 	return self;
 }
 
@@ -27,6 +27,7 @@
 		[self authenticateWithUsername:@"lustroapp@gmail.com" password:@"jellesimon"];
 		[self createGDataContacts];
 	}
+	[service release];
 }
 
 // Get a contact service object with the current username/password
@@ -49,7 +50,10 @@
 // Creates a GData contact with the information from Address Book
 - (void)createGDataContacts
 {
-	for (ABPerson *person in contactsList) {
+	
+	//for (ABPerson *person in contactsList) {
+	NSArray *subarray = [contactsList subarrayWithRange:NSMakeRange(0,20)];
+	for (ABPerson *person in subarray) {
 		NSString *firstName = [person valueForProperty:kABFirstNameProperty];
 		NSString *lastName = [person valueForProperty:kABLastNameProperty];
 		NSString *jobtitle = [person valueForProperty:kABJobTitleProperty];
@@ -61,16 +65,24 @@
 		// URLs seems to be missing in Google Contacts
 		ABMultiValue *phones = [person valueForProperty:kABPhoneProperty];
 		// Birthday seems to be missing in Google Contacts
-		NSString *fullName = @"";
+		NSString *title = @"";
 		
 		if (firstName) {		
-			fullName = [fullName stringByAppendingString:firstName];
+			title = [title stringByAppendingString:firstName];
 		}
 		if (lastName) {
-			fullName = [fullName stringByAppendingString:@" "];
-			fullName = [fullName stringByAppendingString:lastName];
+			title = [title stringByAppendingString:@" "];
+			title = [title stringByAppendingString:lastName];
 		}
-		GDataEntryContact *contact = [GDataEntryContact contactEntryWithTitle:fullName];
+		
+		// Set company name as title if needed
+		NSNumber *flagsValue = [person valueForProperty:kABPersonFlags];
+		int flags = [flagsValue intValue];
+		if ((flags & kABShowAsMask) == kABShowAsCompany) {
+			title = organization;
+		}
+		
+		GDataEntryContact *contact = [GDataEntryContact contactEntryWithTitle:title];
 		
 		if(organization) {
 			GDataOrganization *gOrganization = [GDataOrganization organizationWithName:organization];
@@ -120,8 +132,7 @@
 				}				
 				
 				GDataPostalAddress *gAddress = [GDataPostalAddress postalAddressWithString:address];
-				label = [self cleanLabel:label];
-				[gAddress setLabel:label];
+				[gAddress setRel:[self makeRelFromLabel:label]];
 				if (i == 0) {
 					[gAddress setIsPrimary:true];
 				}
@@ -147,8 +158,7 @@
 				NSString *phone = [phones valueAtIndex:i];
 				
 				GDataPhoneNumber *gPhone = [GDataPhoneNumber phoneNumberWithString:phone];
-				label = [self cleanLabel:label];
-				[gPhone setLabel:label];
+				[gPhone setRel:[self makeRelFromLabel:label]];
 				
 				if (i == 0) {
 					[gPhone setIsPrimary:true];
@@ -156,7 +166,7 @@
 				[contact addPhoneNumber:gPhone];
 			}
 		}
-		
+	
 		[service fetchContactEntryByInsertingEntry:contact
 										forFeedURL:[self getURL]
 										  delegate:self
@@ -165,6 +175,7 @@
 	}
 }
 
+// Callback function when the uploads service reeturns an error
 - (void)ticket:(GDataServiceTicketBase *)ticket failedWithError:(NSError *)error
 {
 	NSLog(@"Failed with %@", [error localizedDescription]);
@@ -175,6 +186,20 @@
 {
 	NSURL *url = [GDataServiceGoogleContact contactFeedURLForUserID:username];
 	return url;
+}
+
+// Translates Address Book labels to Googles rel attributes or to the 'other' attribute if nothing found
+- (NSString *)makeRelFromLabel:(NSString *)label
+{
+	label = [self cleanLabel:label];
+	if([label caseInsensitiveCompare:@"work"] == NSOrderedSame) { return kGDataPhoneNumberWork; }
+	if([label caseInsensitiveCompare:@"home"] == NSOrderedSame) { return kGDataPhoneNumberHome; }
+	if([label caseInsensitiveCompare:@"mobile"] == NSOrderedSame) { return kGDataPhoneNumberMobile; }
+	if([label caseInsensitiveCompare:@"homefax"] == NSOrderedSame) { return kGDataPhoneNumberHomeFax; }
+	if([label caseInsensitiveCompare:@"workfax"] == NSOrderedSame) { return kGDataPhoneNumberWorkFax; }
+	if([label caseInsensitiveCompare:@"pager"] == NSOrderedSame) { return kGDataPhoneNumberPager; }
+	if([label caseInsensitiveCompare:@"other"] == NSOrderedSame) { return kGDataPhoneNumberOther; }
+	return kGDataPhoneNumberOther;
 }
 
 @end

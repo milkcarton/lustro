@@ -33,6 +33,9 @@
 	
 	// If Google is checked
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"]) {
+		ExportGoogle *controller = [[ExportGoogle alloc] initWithAddressBook:book];
+		[controller export];
+		[controller release];
 	}
 }
 @end

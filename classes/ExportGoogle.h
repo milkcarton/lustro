@@ -23,6 +23,7 @@
 - (void)authenticateWithUsername:(NSString *)user password:(NSString *)pass;
 - (void)createGDataContacts;
 - (NSURL *)getURL;
+- (NSString *)makeRelFromLabel:(NSString *)label;
 
 - (void)ticket:(GDataServiceTicketBase *)ticket failedWithError:(NSError *)error;
 
