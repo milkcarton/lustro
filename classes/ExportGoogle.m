@@ -52,9 +52,10 @@
 	for (ABPerson *person in contactsList) {
 		NSString *firstName = [person valueForProperty:kABFirstNameProperty];
 		NSString *lastName = [person valueForProperty:kABLastNameProperty];
+		NSString *jobtitle = [person valueForProperty:kABJobTitleProperty];
 		NSString *organization = [person valueForProperty:kABOrganizationProperty];
 		// Nickname seems to be missing in Google Contacts
-		// Note seems to be missing in Google Contacts
+		NSString *content = [person valueForProperty:kABNoteProperty];
 		ABMultiValue *addresses = [person valueForProperty:kABAddressProperty];
 		ABMultiValue *mails = [person valueForProperty:kABEmailProperty];
 		// URLs seems to be missing in Google Contacts
@@ -73,17 +74,58 @@
 		
 		if(organization) {
 			GDataOrganization *gOrganization = [GDataOrganization organizationWithName:organization];
+			if(jobtitle) {
+				[gOrganization setOrgTitle:jobtitle];
+			}
+			[gOrganization setRel:kGDataContactWork];
 			[gOrganization setIsPrimary:true];
 			[contact addOrganization:gOrganization];
 		}
 		
+		if(content) {
+			GDataEntryContent *gContent =  [GDataEntryContent textConstructWithString:content];
+			[contact setContent:gContent];
+		}
+		
 		if(addresses) {
 			for (int i = 0; i < [addresses count]; i++) {
-				NSString *address = [addresses valueAtIndex:i];
-				[contact addPostalAddress:[GDataPostalAddress postalAddressWithString:address]];
-				if (i == 0) {
-					[contact setPrimaryPostalAddress:[GDataPostalAddress postalAddressWithString:address]];
+				NSString *label = [addresses labelAtIndex:i];
+				NSDictionary *value = [addresses valueAtIndex:i];
+				NSString *address = @"";
+				
+				if ([value objectForKey:@"Street"]) {
+					address = [address stringByAppendingString:[value objectForKey:@"Street"]];
+					address = [address stringByAppendingString:@"\n"];
 				}
+				
+				if ([value objectForKey:@"City"]) {
+					address = [address stringByAppendingString:[value objectForKey:@"City"]];
+				}
+				if ([value objectForKey:@"City"] && [value objectForKey:@"ZIP"]) {
+					address = [address stringByAppendingString:@" "];
+				}
+				if ([value objectForKey:@"ZIP"]) {
+					address = [address stringByAppendingString:[value objectForKey:@"ZIP"]];
+				}
+				address = [address stringByAppendingString:@"\n"];
+				
+				if ([value objectForKey:@"State"]) {
+					address = [address stringByAppendingString:[value objectForKey:@"State"]];
+				}
+				if ([value objectForKey:@"State"] && [value objectForKey:@"Country"]) {
+					address = [address stringByAppendingString:@", "];
+				}
+				if ([value objectForKey:@"Country"]) {
+					address = [address stringByAppendingString:[value objectForKey:@"Country"]];
+				}				
+				
+				GDataPostalAddress *gAddress = [GDataPostalAddress postalAddressWithString:address];
+				label = [self cleanLabel:label];
+				[gAddress setLabel:label];
+				if (i == 0) {
+					[gAddress setIsPrimary:true];
+				}
+				[contact addPostalAddress:gAddress];
 			}
 		}
 		
@@ -101,19 +143,19 @@
 		
 		if(phones) {
 			for (int i = 0; i < [phones count]; i++) {
+				NSString *label = [phones labelAtIndex:i];
 				NSString *phone = [phones valueAtIndex:i];
-				[contact addPhoneNumber:[GDataPhoneNumber phoneNumberWithString:phone]];
+				
+				GDataPhoneNumber *gPhone = [GDataPhoneNumber phoneNumberWithString:phone];
+				label = [self cleanLabel:label];
+				[gPhone setLabel:label];
+				
 				if (i == 0) {
-					[contact setPrimaryPhoneNumber:[GDataPhoneNumber phoneNumberWithString:phone]];
+					[gPhone setIsPrimary:true];
 				}
+				[contact addPhoneNumber:gPhone];
 			}
 		}
-		
-		NSLog(@"%@", [[contact primaryPostalAddress] stringValue]);
-		NSLog(@"%@", [[contact primaryPhoneNumber] stringValue]);
-		NSLog(@"%@", [[contact primaryEmailAddress] address]);
-		NSLog(@"%@", [[contact primaryOrganization] orgName]);
-		NSLog(@"--------------");
 		
 		[service fetchContactEntryByInsertingEntry:contact
 										forFeedURL:[self getURL]
