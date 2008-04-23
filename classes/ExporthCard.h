@@ -7,9 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "ExportController.h"
 #import <AddressBook/AddressBook.h>
 #import <AddressBook/ABPerson.h>
+#import "ExportController.h"
 
 @interface ExporthCard : ExportController {
 	NSString *hCardTemplate;
@@ -21,6 +21,5 @@
 - (NSString *)addAddress:(ABMultiValue *)addresses forIndex:(int)index;
 - (NSString *)addMails:(ABMultiValue *)mails;
 - (NSString *)addURLs:(ABMultiValue *)URLs;
-- (NSString *)cleanLabel:(NSString *)label;
 
 @end

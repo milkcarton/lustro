@@ -16,7 +16,23 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		F49E3CF80DBE6B0B0068734D /* GData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49E3CF70DBE6B0B0068734D /* GData.framework */; };
+		F49E3D170DBE6C1A0068734D /* ExportGoogle.m in Sources */ = {isa = PBXBuildFile; fileRef = F49E3D160DBE6C1A0068734D /* ExportGoogle.m */; };
+		F49E3EB70DBE83B50068734D /* GData.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F49E3CF70DBE6B0B0068734D /* GData.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F49E3EBB0DBE83C30068734D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F49E3EB70DBE83B50068734D /* GData.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -37,6 +53,9 @@
 		60DE9CB80DBD448E00D3EC93 /* ExportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExportController.m; path = classes/ExportController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* lustro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lustro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F49E3CF70DBE6B0B0068734D /* GData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GData.framework; path = "../gdata-objectivec-client-1.4.0/Source/build/Release/GData.framework"; sourceTree = SOURCE_ROOT; };
+		F49E3D150DBE6C1A0068734D /* ExportGoogle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportGoogle.h; path = classes/ExportGoogle.h; sourceTree = "<group>"; };
+		F49E3D160DBE6C1A0068734D /* ExportGoogle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExportGoogle.m; path = classes/ExportGoogle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +65,7 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				60DE9BF00DBD373800D3EC93 /* AddressBook.framework in Frameworks */,
+				F49E3CF80DBE6B0B0068734D /* GData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +85,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F49E3CF70DBE6B0B0068734D /* GData.framework */,
 				60DE9BEF0DBD373800D3EC93 /* AddressBook.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
@@ -137,6 +158,8 @@
 				60DE9CB80DBD448E00D3EC93 /* ExportController.m */,
 				60DE9BB90DBD356200D3EC93 /* ExporthCard.h */,
 				60DE9BBA0DBD356200D3EC93 /* ExporthCard.m */,
+				F49E3D150DBE6C1A0068734D /* ExportGoogle.h */,
+				F49E3D160DBE6C1A0068734D /* ExportGoogle.m */,
 			);
 			name = Exporters;
 			sourceTree = "<group>";
@@ -159,6 +182,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
+				F49E3EBB0DBE83C30068734D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -209,6 +233,7 @@
 				607C58120DBBB0E7009BBEF8 /* MainController.m in Sources */,
 				60DE9BBB0DBD356200D3EC93 /* ExporthCard.m in Sources */,
 				60DE9CB90DBD448E00D3EC93 /* ExportController.m in Sources */,
+				F49E3D170DBE6C1A0068734D /* ExportGoogle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +264,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../gdata-objectivec-client-1.4.0/Source/build/Release\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -256,6 +285,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../gdata-objectivec-client-1.4.0/Source/build/Release\"",
+				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = lustro_Prefix.pch;

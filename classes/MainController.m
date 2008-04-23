@@ -15,7 +15,8 @@
 - (IBAction)export:(id)sender
 {
 	ABAddressBook *book = [ABAddressBook sharedAddressBook];
-	ExportController *controller = [[ExporthCard alloc] initWithContacts:[book people]];
+	//ExportController *controller = [[ExporthCard alloc] initWithContacts:[book people]];
+	ExportController *controller = [[ExportGoogle alloc] initWithContacts:[book people]];
 	[controller export];
 	[controller release];
 }

@@ -10,6 +10,7 @@
 #import <AddressBook/AddressBook.h>
 #import "ExportController.h"
 #import "ExporthCard.h"
+#import "ExportGoogle.h"
 
 @interface MainController : NSObject {
 }

@@ -11,6 +11,7 @@
 #define EXTENTION ".html"
 
 @implementation ExporthCard
+
 //
 //
 //
@@ -34,7 +35,6 @@
 //
 - (void)export
 {
-	NSLog(hCardTemplate);
 	if ([contactsList count] > 0) {
 		for (ABPerson *person in contactsList) {
 			hCardTemplate = [hCardTemplate stringByAppendingString:@"<div class=\"vcard\">\n"];
@@ -173,9 +173,6 @@
 	for (int i = 0; i < [mails count]; i++) {
 		NSString *label = [mails labelAtIndex:i];
 		NSString *mail = [mails valueAtIndex:i];
-		
-		NSLog(label);
-		
 		mailAddresses = [mailAddresses stringByAppendingString:@"<a class=\"email\" href=\"mailto:"];
 		mailAddresses = [mailAddresses stringByAppendingString:mail];
 		mailAddresses = [mailAddresses stringByAppendingString:@"\">"];
@@ -203,15 +200,6 @@
 		URLsOutput = [URLsOutput stringByAppendingString:@"</a>\n"];
 	}
 	return URLsOutput;
-}
-
-- (NSString *)cleanLabel:(NSString *)label
-{
-	if ([label compare:@"_$!<" options:NSCaseInsensitiveSearch range:NSMakeRange(0, 4)] == NSOrderedSame) {
-		int end = [label length]-8;
-		return [label substringWithRange:NSMakeRange(4, end)];
-	}
-	return label;
 }
 
 @end

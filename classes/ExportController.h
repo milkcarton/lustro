@@ -14,5 +14,6 @@
 
 - (id)initWithContacts:(NSArray *)contacts;
 - (void)export;
+- (NSString *)cleanLabel:(NSString *)label;
 
 @end
