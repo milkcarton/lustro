@@ -67,7 +67,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					533,
+					549,
 					60,
 					20,
 					48,
@@ -250,7 +250,7 @@
 	};
 	60DE9C150DBD38F300D3EC93 /* hCardTemplate */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {751, 436}}";
+			sepNavIntBoundsRect = "{{0, 0}, {767, 581}}";
 			sepNavSelRange = "{447, 0}";
 			sepNavVisRange = "{0, 456}";
 			sepNavWindowFrame = "{{153, 357}, {1036, 690}}";
