@@ -7,13 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <AddressBook/AddressBook.h>
+#import "ExportProtocol.h"
 
 @interface ExportController : NSObject {
 	NSArray *contactsList;
 }
 
-- (id)initWithContacts:(NSArray *)contacts;
-- (void)export;
+- (id)initWithAddressBook:(ABAddressBook *)addressBook;
 - (NSString *)cleanLabel:(NSString *)label;
 
 @end

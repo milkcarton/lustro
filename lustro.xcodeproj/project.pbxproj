@@ -43,6 +43,7 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* lustro_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lustro_Prefix.pch; sourceTree = "<group>"; };
+		600D2FA40DBF9EA700A96491 /* ExportProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportProtocol.h; path = classes/ExportProtocol.h; sourceTree = "<group>"; };
 		607C58100DBBB0E7009BBEF8 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainController.h; path = classes/MainController.h; sourceTree = "<group>"; };
 		607C58110DBBB0E7009BBEF8 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainController.m; path = classes/MainController.m; sourceTree = "<group>"; };
 		60DE9B9E0DBD342000D3EC93 /* ExportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportController.h; path = classes/ExportController.h; sourceTree = "<group>"; };
@@ -154,6 +155,7 @@
 		60DE9BB80DBD353800D3EC93 /* Exporters */ = {
 			isa = PBXGroup;
 			children = (
+				600D2FA40DBF9EA700A96491 /* ExportProtocol.h */,
 				60DE9B9E0DBD342000D3EC93 /* ExportController.h */,
 				60DE9CB80DBD448E00D3EC93 /* ExportController.m */,
 				60DE9BB90DBD356200D3EC93 /* ExporthCard.h */,

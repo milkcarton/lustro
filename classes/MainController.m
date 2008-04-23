@@ -15,9 +15,24 @@
 - (IBAction)export:(id)sender
 {
 	ABAddressBook *book = [ABAddressBook sharedAddressBook];
-	//ExportController *controller = [[ExporthCard alloc] initWithContacts:[book people]];
-	ExportController *controller = [[ExportGoogle alloc] initWithContacts:[book people]];
-	[controller export];
-	[controller release];
+	
+	// If comma separated is checked
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"]) {
+	}
+	
+	// If tab separated is checked
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"]) {
+	}
+	
+	// If Html is checked
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"]) {
+		ExporthCard *controller = [[ExporthCard alloc] initWithAddressBook:book];
+		[controller export];
+		[controller release];
+	}
+	
+	// If Google is checked
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"]) {
+	}
 }
 @end

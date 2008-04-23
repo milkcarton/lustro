@@ -2,32 +2,24 @@
 //  ExportController.m
 //  lustro
 //
-//  Created by Jelle Vandebeeck on 21/04/08.
-//  Copyright 2008 KBC. All rights reserved.
+//  Created by Jelle Vandebeeck & Simon Schoeters on 21/04/08.
+//  Copyright 2008 eggnog. All rights reserved.
 //
 
 #import "ExportController.h"
 
 @implementation ExportController
 //
+// Initializes the controller with the contactlist.
 //
-//
-- (id)initWithContacts:(NSArray *)contacts
+- (id)initWithAddressBook:(ABAddressBook *)addressBook
 {
 	self = [super init];
-	contactsList = contacts;
+	contactsList = [addressBook people];
 	return self;
 }
 
-//
-//
-//
-- (void)export
-{
-	NSLog(@"Method not overridden");
-}
-
-// Cleans mail labels like work, private, etc. as Address Book adds strange symbols before and after the labels
+// Cleans mail labels like work, private, etc. as Address Book adds strange symbols before and after the labels.
 - (NSString *)cleanLabel:(NSString *)label
 {
 	if ([label compare:@"_$!<" options:NSCaseInsensitiveSearch range:NSMakeRange(0, 4)] == NSOrderedSame) {

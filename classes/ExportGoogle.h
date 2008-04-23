@@ -10,14 +10,16 @@
 #import <AddressBook/AddressBook.h>
 #import <AddressBook/ABPerson.h>
 #import "ExportController.h"
+#import "ExportProtocol.h"
 #import "GData/GDataContacts.h"
 
-@interface ExportGoogle : ExportController {
+@interface ExportGoogle : ExportController < ExportProtocol > {
 	GDataServiceGoogleContact* service;
 	NSString *username;
 	NSString *password;
 }
 
+- (void)export;
 - (void)authenticateWithUsername:(NSString *)user password:(NSString *)pass;
 - (void)createGDataContacts;
 - (NSURL *)getURL;
