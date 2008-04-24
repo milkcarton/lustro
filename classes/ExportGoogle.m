@@ -8,10 +8,10 @@
 
 #import "ExportGoogle.h"
 
+// FIXME adds 162 cards while I have 163 contacts
 @implementation ExportGoogle
 
-//
-//
+// (ExportController) Adds the contacts to the contactList instance variable
 - (id)initWithAddressBook:(ABAddressBook *)addressBook
 {
 	self = [super initWithAddressBook:addressBook];
@@ -19,19 +19,19 @@
 	return self;
 }
 
-//
-//
+// (ExportProtocol) Start exporting by removing all old contacts and then importing all new ones
 - (void)export
 {
 	if ([contactsList count] > 0) {
+		// TODO disable logging
+		[GDataHTTPFetcher setIsLoggingEnabled:YES];
 		[self authenticateWithUsername:@"lustroapp@gmail.com" password:@"jellesimon"];
+		[self removeAllContacts];
 		[self createGDataContacts];
 	}
 	[service release];
 }
 
-// Get a contact service object with the current username/password
-// A "service" object handles networking tasks. Service objects contain user authentication information as well as networking state information (such as cookies and the "last modified" date for fetched data.)
 - (void)authenticateWithUsername:(NSString *)user password:(NSString *)pass
 {
 	if (!service) {
@@ -47,13 +47,15 @@
 	[service setUserCredentialsWithUsername:username password:password];
 }
 
-// Creates a GData contact with the information from Address Book
 - (void)createGDataContacts
 {
+	// TODO not exporting AIM mails yet, add this feature
+	// TODO no pictures uploaded at the moment
+	// TODO Google Contacts has an 'other' field, maybe use this for birthdays or websites
 	
-	//for (ABPerson *person in contactsList) {
-	NSArray *subarray = [contactsList subarrayWithRange:NSMakeRange(0,20)];
-	for (ABPerson *person in subarray) {
+	for (ABPerson *person in contactsList) {
+	//NSArray *subarray = [contactsList subarrayWithRange:NSMakeRange(0,20)];
+	//for (ABPerson *person in subarray) {
 		NSString *firstName = [person valueForProperty:kABFirstNameProperty];
 		NSString *lastName = [person valueForProperty:kABLastNameProperty];
 		NSString *jobtitle = [person valueForProperty:kABJobTitleProperty];
@@ -75,7 +77,7 @@
 			title = [title stringByAppendingString:lastName];
 		}
 		
-		// Set company name as title if needed
+		// Set company name as title if needed (Google will show an empty entry for a company if not)
 		NSNumber *flagsValue = [person valueForProperty:kABPersonFlags];
 		int flags = [flagsValue intValue];
 		if ((flags & kABShowAsMask) == kABShowAsCompany) {
@@ -140,6 +142,7 @@
 			}
 		}
 		
+		// TODO always sets first mail in the list as main one, this could be better
 		if(mails) {
 			for (int i = 0; i < [mails count]; i++) {
 				NSString *label = [mails labelAtIndex:i];
@@ -151,15 +154,14 @@
 				}
 			}
 		}
-		
+
+		// TODO always sets first phone in the list as main one, this could be better
 		if(phones) {
 			for (int i = 0; i < [phones count]; i++) {
 				NSString *label = [phones labelAtIndex:i];
 				NSString *phone = [phones valueAtIndex:i];
-				
 				GDataPhoneNumber *gPhone = [GDataPhoneNumber phoneNumberWithString:phone];
 				[gPhone setRel:[self makeRelFromLabel:label]];
-				
 				if (i == 0) {
 					[gPhone setIsPrimary:true];
 				}
@@ -167,28 +169,15 @@
 			}
 		}
 	
+		// Add entry to the service and upload in batch (automatically)
 		[service fetchContactEntryByInsertingEntry:contact
-										forFeedURL:[self getURL]
+										forFeedURL:[GDataServiceGoogleContact contactFeedURLForUserID:username]
 										  delegate:self
 								 didFinishSelector:nil
-								   didFailSelector:@selector(ticket:failedWithError:)];
+								   didFailSelector:nil];
 	}
 }
 
-// Callback function when the uploads service reeturns an error
-- (void)ticket:(GDataServiceTicketBase *)ticket failedWithError:(NSError *)error
-{
-	NSLog(@"Failed with %@", [error localizedDescription]);
-}
-
-// Requests the URL needed to post contacts to
-- (NSURL *)getURL
-{
-	NSURL *url = [GDataServiceGoogleContact contactFeedURLForUserID:username];
-	return url;
-}
-
-// Translates Address Book labels to Googles rel attributes or to the 'other' attribute if nothing found
 - (NSString *)makeRelFromLabel:(NSString *)label
 {
 	label = [self cleanLabel:label];
@@ -199,7 +188,31 @@
 	if([label caseInsensitiveCompare:@"workfax"] == NSOrderedSame) { return kGDataPhoneNumberWorkFax; }
 	if([label caseInsensitiveCompare:@"pager"] == NSOrderedSame) { return kGDataPhoneNumberPager; }
 	if([label caseInsensitiveCompare:@"other"] == NSOrderedSame) { return kGDataPhoneNumberOther; }
+	// TODO custom Address Book fields are converted to "other", this is wrong, should be a label instead
 	return kGDataPhoneNumberOther;
+}
+
+-(void)removeAllContacts
+{
+	// FIXME seems asynchronious so it's adding contacts while removing, not good
+	[service fetchContactFeedForUsername:username 
+								delegate:self
+						didFinishSelector:@selector(ticket:finishedWithFeed:)
+						didFailSelector:nil];
+}
+
+- (void)ticket:(GDataServiceTicket *)ticket finishedWithFeed:(GDataFeedContact *)feed
+{
+	// Remove contact per contact
+	for (GDataEntryContact *contact in [feed entries]) {
+		NSArray *entryLinks = [contact links];
+		GDataLink *link = [entryLinks editLink];
+		NSURL* editURL = [link URL];
+		[service deleteContactResourceURL:editURL
+								 delegate:self 
+						didFinishSelector:nil 
+						  didFailSelector:nil];
+	 }
 }
 
 @end
