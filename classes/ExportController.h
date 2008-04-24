@@ -10,7 +10,7 @@
 #import <AddressBook/AddressBook.h>
 #import "ExportProtocol.h"
 
-@interface ExportController : NSObject {
+@interface ExportController : NSOperation {
 	NSArray *contactsList;
 }
 
