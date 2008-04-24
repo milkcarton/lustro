@@ -13,8 +13,12 @@
 #import "ExportGoogle.h"
 
 @interface MainController : NSObject {
+	NSMutableDictionary *indicators;
 }
 
+- (NSMutableDictionary *)indicators;
+
 - (IBAction)export:(id)sender;
+- (void)invocateExport;
 
 @end
