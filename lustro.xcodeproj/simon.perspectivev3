@@ -259,7 +259,7 @@
 							<key>PBXSmartGroupTreeModuleColumnWidthsKey</key>
 							<array>
 								<real>22</real>
-								<real>211</real>
+								<real>245</real>
 							</array>
 							<key>PBXSmartGroupTreeModuleColumnsKey_v4</key>
 							<array>
@@ -277,21 +277,18 @@
 								<string>29B97323FDCFA39411CA2CEA</string>
 								<string>1058C7A0FEA54F0111CA2CBB</string>
 								<string>F44B40A70DBF9D5E00623BBA</string>
-								<string>F44B40AA0DBF9D5F00623BBA</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>40</integer>
-									<integer>17</integer>
-									<integer>16</integer>
-									<integer>15</integer>
-									<integer>14</integer>
+									<integer>9</integer>
+									<integer>2</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 492}, {233, 772}}</string>
+							<string>{{0, 0}, {267, 772}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -301,21 +298,21 @@
 					<key>GeometryConfiguration</key>
 					<dict>
 						<key>Frame</key>
-						<string>{{0, 0}, {250, 790}}</string>
+						<string>{{0, 0}, {284, 790}}</string>
 						<key>GroupTreeTableConfiguration</key>
 						<array>
 							<string>SCMStatusColumn</string>
 							<real>22</real>
 							<string>MainColumn</string>
-							<real>211</real>
+							<real>245</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>60 324 1083 831 0 0 1920 1178 </string>
+						<string>44 182 1083 831 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
 					<key>Proportion</key>
-					<string>250pt</string>
+					<string>284pt</string>
 				</dict>
 				<dict>
 					<key>Dock</key>
@@ -340,7 +337,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>F44B43D20DBFE45100623BBA</string>
+										<string>F4681FE70DC1437A007D6089</string>
 										<key>history</key>
 										<array>
 											<string>F49B5E690DBB99D300E8E228</string>
@@ -351,12 +348,15 @@
 											<string>F44B41550DBF9F5500623BBA</string>
 											<string>F44B428D0DBFD0B900623BBA</string>
 											<string>F44B428E0DBFD0B900623BBA</string>
-											<string>F44B428F0DBFD0B900623BBA</string>
-											<string>F44B42900DBFD0B900623BBA</string>
-											<string>F44B42910DBFD0B900623BBA</string>
-											<string>F44B42B90DBFD16700623BBA</string>
-											<string>F44B43920DBFDDA700623BBA</string>
-											<string>F44B43CF0DBFE3FB00623BBA</string>
+											<string>F44B43DD0DBFE70300623BBA</string>
+											<string>F4681F0A0DC134FB007D6089</string>
+											<string>F4681F690DC13B5E007D6089</string>
+											<string>F4681F6A0DC13B5E007D6089</string>
+											<string>F4681F6B0DC13B5E007D6089</string>
+											<string>F4681F6C0DC13B5E007D6089</string>
+											<string>F4681F6D0DC13B5E007D6089</string>
+											<string>F4681FE30DC1437A007D6089</string>
+											<string>F4681FE40DC1437A007D6089</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -373,8 +373,11 @@
 											<string>F49E3E8D0DBE82FA0068734D</string>
 											<string>F49E3E8E0DBE82FA0068734D</string>
 											<string>F44B41590DBF9F5500623BBA</string>
-											<string>F44B43940DBFDDA700623BBA</string>
-											<string>F44B43950DBFDDA700623BBA</string>
+											<string>F44B43E20DBFE70300623BBA</string>
+											<string>F4681F0E0DC134FB007D6089</string>
+											<string>F4681F760DC13B5E007D6089</string>
+											<string>F4681FE50DC1437A007D6089</string>
+											<string>F4681FE60DC1437A007D6089</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -388,18 +391,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {828, 628}}</string>
+								<string>{{0, 0}, {794, 505}}</string>
 								<key>RubberWindowFrame</key>
-								<string>60 324 1083 831 0 0 1920 1178 </string>
+								<string>44 182 1083 831 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>628pt</string>
+							<string>505pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>157pt</string>
+							<string>280pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -413,7 +416,9 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {828, 130}}</string>
+										<string>{{10, 27}, {794, 253}}</string>
+										<key>RubberWindowFrame</key>
+										<string>44 182 1083 831 0 0 1920 1178 </string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -429,7 +434,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {812, 107}}</string>
+										<string>{{10, 27}, {794, 253}}</string>
 									</dict>
 									<key>Module</key>
 									<string>PBXProjectFindModule</string>
@@ -488,9 +493,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {828, 130}}</string>
-										<key>RubberWindowFrame</key>
-										<string>60 324 1083 831 0 0 1920 1178 </string>
+										<string>{{10, 27}, {794, 253}}</string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -499,7 +502,7 @@
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>828pt</string>
+					<string>794pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -518,11 +521,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>F44B43980DBFDDAC00623BBA</string>
+				<string>F4681FE80DC1437A007D6089</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>F44B43990DBFDDAC00623BBA</string>
+				<string>F4681FE90DC1437A007D6089</string>
 				<string>F46FEBB00DBB8F7100916A29</string>
-				<string>F44B439A0DBFDDAC00623BBA</string>
+				<string>F4681FEA0DC1437A007D6089</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -595,8 +598,8 @@
 								<string>yes</string>
 								<key>sizes</key>
 								<array>
-									<string>{{0, 0}, {529, 214}}</string>
-									<string>{{529, 0}, {554, 214}}</string>
+									<string>{{0, 0}, {150, 207}}</string>
+									<string>{{150, 0}, {933, 207}}</string>
 								</array>
 							</dict>
 							<key>VerticalSplitView</key>
@@ -611,8 +614,8 @@
 								<string>yes</string>
 								<key>sizes</key>
 								<array>
-									<string>{{0, 0}, {1083, 214}}</string>
-									<string>{{0, 214}, {1083, 229}}</string>
+									<string>{{0, 0}, {1083, 207}}</string>
+									<string>{{0, 207}, {1083, 236}}</string>
 								</array>
 							</dict>
 						</dict>
@@ -642,10 +645,10 @@
 								<string>Value</string>
 								<real>85</real>
 								<string>Summary</string>
-								<real>270</real>
+								<real>649</real>
 							</array>
 							<key>Frame</key>
-							<string>{{529, 0}, {554, 214}}</string>
+							<string>{{150, 0}, {933, 207}}</string>
 						</dict>
 					</dict>
 					<key>Module</key>
@@ -669,14 +672,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>F44B439B0DBFDDAC00623BBA</string>
+				<string>F4681FEB0DC1437A007D6089</string>
 				<string>1CCC7628064C1048000F2A68</string>
 				<string>1CCC7629064C1048000F2A68</string>
-				<string>F44B439C0DBFDDAC00623BBA</string>
-				<string>F44B439D0DBFDDAC00623BBA</string>
-				<string>F44B439E0DBFDDAC00623BBA</string>
-				<string>F44B439F0DBFDDAC00623BBA</string>
-				<string>F46FEBB00DBB8F7100916A29</string>
+				<string>F4681FEC0DC1437A007D6089</string>
+				<string>F4681FED0DC1437A007D6089</string>
+				<string>F4681FEE0DC1437A007D6089</string>
+				<string>F4681FEF0DC1437A007D6089</string>
+				<string>F4681FF00DC1437A007D6089</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -709,7 +712,7 @@
 		<string>/Users/simon/Documents/Projects/lustro/lustro.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>60 324 1083 831 0 0 1920 1178 </string>
+	<string>44 182 1083 831 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
