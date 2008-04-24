@@ -20,6 +20,19 @@
 	self = [super initWithAddressBook:addressBook];
 	contactsList = [addressBook people];
 	
+	// Create username to use in filename.
+	userName = @"";
+	ABPerson *me = [addressBook me];
+	NSString *firstName = [me valueForProperty:kABFirstNameProperty];
+	NSString *lastName = [me valueForProperty:kABLastNameProperty];
+	if (firstName) userName = [userName stringByAppendingString:firstName];
+	if (lastName) {
+		if (firstName) userName = [userName stringByAppendingString:@" "];
+		userName = [userName stringByAppendingString:lastName];
+	}
+	if (firstName || lastName) userName = [userName stringByAppendingString:@"'s "];
+	userName = [userName stringByAppendingString:@"contacts"];
+	
 	// Read template from file in the resources directory
 	NSError *error;
 	NSString *path = [[[NSBundle mainBundle] autorelease] pathForResource:@"hCardTemplate" ofType:@""];
@@ -36,7 +49,7 @@
 - (void)writeToFileWithHtml:(NSString *)html
 {
 	if ([html length] > 0) {		
-		NSString *fileName =@"addresses";
+		NSString *fileName = userName;
 		NSString *filePath = @"~/Desktop/";
 		filePath = [filePath stringByAppendingString:fileName]; 
 		filePath = [filePath stringByAppendingString:EXTENTION]; 

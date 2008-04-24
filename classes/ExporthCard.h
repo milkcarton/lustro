@@ -13,6 +13,7 @@
 
 @interface ExporthCard : ExportController < ExportProtocol > {
 	NSString *hCardTemplate;
+	NSString *userName;
 }
 
 - (void)export;
