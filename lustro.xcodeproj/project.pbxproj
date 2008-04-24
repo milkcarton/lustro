@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		600D319C0DBFDEF600A96491 /* success.tif in Resources */ = {isa = PBXBuildFile; fileRef = 600D319A0DBFDEF600A96491 /* success.tif */; };
+		600D319D0DBFDEF600A96491 /* error.tif in Resources */ = {isa = PBXBuildFile; fileRef = 600D319B0DBFDEF600A96491 /* error.tif */; };
 		607C58120DBBB0E7009BBEF8 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */; };
 		60DE9BBB0DBD356200D3EC93 /* ExporthCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DE9BBA0DBD356200D3EC93 /* ExporthCard.m */; };
 		60DE9BF00DBD373800D3EC93 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60DE9BEF0DBD373800D3EC93 /* AddressBook.framework */; };
@@ -44,6 +46,8 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* lustro_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lustro_Prefix.pch; sourceTree = "<group>"; };
 		600D2FA40DBF9EA700A96491 /* ExportProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportProtocol.h; path = classes/ExportProtocol.h; sourceTree = "<group>"; };
+		600D319A0DBFDEF600A96491 /* success.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = success.tif; path = images/success.tif; sourceTree = "<group>"; };
+		600D319B0DBFDEF600A96491 /* error.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = error.tif; path = images/error.tif; sourceTree = "<group>"; };
 		607C58100DBBB0E7009BBEF8 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainController.h; path = classes/MainController.h; sourceTree = "<group>"; };
 		607C58110DBBB0E7009BBEF8 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainController.m; path = classes/MainController.m; sourceTree = "<group>"; };
 		60DE9B9E0DBD342000D3EC93 /* ExportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportController.h; path = classes/ExportController.h; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				600D31980DBFDEED00A96491 /* Images */,
 				60DE9BF60DBD389F00D3EC93 /* Templates */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
@@ -150,6 +155,15 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		600D31980DBFDEED00A96491 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				600D319A0DBFDEF600A96491 /* success.tif */,
+				600D319B0DBFDEF600A96491 /* error.tif */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		60DE9BB80DBD353800D3EC93 /* Exporters */ = {
@@ -221,6 +235,8 @@
 				8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				60DE9C160DBD38F300D3EC93 /* hCardTemplate in Resources */,
+				600D319C0DBFDEF600A96491 /* success.tif in Resources */,
+				600D319D0DBFDEF600A96491 /* error.tif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
