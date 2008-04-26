@@ -10,7 +10,6 @@
 #import <AddressBook/AddressBook.h>
 #import "StatusValueTransformer.h"
 #import "ProgressValueTransformer.h"
-#import "AuthenticateValueTransformer.h"
 #import "ExportController.h"
 #import "ExporthCard.h"
 #import "ExportGoogle.h"

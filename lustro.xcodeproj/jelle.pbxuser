@@ -533,6 +533,17 @@
 			609F48910DC3650F00AE82AA /* PBXTextBookmark */ = 609F48910DC3650F00AE82AA /* PBXTextBookmark */;
 			609F48920DC3650F00AE82AA /* PBXTextBookmark */ = 609F48920DC3650F00AE82AA /* PBXTextBookmark */;
 			609F48930DC3650F00AE82AA /* PBXTextBookmark */ = 609F48930DC3650F00AE82AA /* PBXTextBookmark */;
+			609F48970DC365EB00AE82AA /* PBXTextBookmark */ = 609F48970DC365EB00AE82AA /* PBXTextBookmark */;
+			609F48980DC365EB00AE82AA /* PBXTextBookmark */ = 609F48980DC365EB00AE82AA /* PBXTextBookmark */;
+			609F48990DC365EB00AE82AA /* PBXTextBookmark */ = 609F48990DC365EB00AE82AA /* PBXTextBookmark */;
+			609F489A0DC365EB00AE82AA /* PBXTextBookmark */ = 609F489A0DC365EB00AE82AA /* PBXTextBookmark */;
+			609F489B0DC365EB00AE82AA /* PBXTextBookmark */ = 609F489B0DC365EB00AE82AA /* PBXTextBookmark */;
+			609F489C0DC365FF00AE82AA /* PBXTextBookmark */ = 609F489C0DC365FF00AE82AA /* PBXTextBookmark */;
+			609F489D0DC365FF00AE82AA /* PBXTextBookmark */ = 609F489D0DC365FF00AE82AA /* PBXTextBookmark */;
+			609F489E0DC365FF00AE82AA /* PBXTextBookmark */ = 609F489E0DC365FF00AE82AA /* PBXTextBookmark */;
+			609F48A20DC3662200AE82AA /* PBXTextBookmark */ = 609F48A20DC3662200AE82AA /* PBXTextBookmark */;
+			609F48A70DC3669600AE82AA /* PBXTextBookmark */ = 609F48A70DC3669600AE82AA /* PBXTextBookmark */;
+			609F48A90DC366AB00AE82AA /* PBXTextBookmark */ = 609F48A90DC366AB00AE82AA /* PBXTextBookmark */;
 			60DE9BC60DBD369900D3EC93 = 60DE9BC60DBD369900D3EC93 /* PBXTextBookmark */;
 			60DE9BC90DBD369900D3EC93 = 60DE9BC90DBD369900D3EC93 /* PBXTextBookmark */;
 			60DE9BCB0DBD369900D3EC93 = 60DE9BCB0DBD369900D3EC93 /* PBXTextBookmark */;
@@ -722,16 +733,16 @@
 	};
 	607C58100DBBB0E7009BBEF8 /* MainController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1051, 732}}";
-			sepNavSelRange = "{847, 32}";
-			sepNavVisRange = "{0, 914}";
+			sepNavIntBoundsRect = "{{0, 0}, {1051, 755}}";
+			sepNavSelRange = "{873, 0}";
+			sepNavVisRange = "{0, 873}";
 		};
 	};
 	607C58110DBBB0E7009BBEF8 /* MainController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1051, 1428}}";
-			sepNavSelRange = "{1976, 0}";
-			sepNavVisRange = "{1215, 1202}";
+			sepNavIntBoundsRect = "{{0, 0}, {1051, 1512}}";
+			sepNavSelRange = "{3152, 0}";
+			sepNavVisRange = "{1572, 1603}";
 			sepNavWindowFrame = "{{15, 343}, {1184, 680}}";
 		};
 	};
@@ -886,7 +897,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 11";
 		rLen = 0;
-		rLoc = 325;
+		rLoc = 284;
 		rType = 0;
 		vrLen = 503;
 		vrLoc = 0;
@@ -896,7 +907,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1346;
 		vrLoc = 3;
@@ -946,7 +957,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 22";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1041;
 		rType = 0;
 		vrLen = 1210;
 		vrLoc = 0;
@@ -956,7 +967,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 20";
 		rLen = 0;
-		rLoc = 403;
+		rLoc = 362;
 		rType = 0;
 		vrLen = 616;
 		vrLoc = 0;
@@ -966,7 +977,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 33";
 		rLen = 0;
-		rLoc = 1344;
+		rLoc = 1157;
 		rType = 0;
 		vrLen = 1334;
 		vrLoc = 101;
@@ -976,7 +987,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 20";
 		rLen = 0;
-		rLoc = 403;
+		rLoc = 362;
 		rType = 0;
 		vrLen = 616;
 		vrLoc = 0;
@@ -1026,7 +1037,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 13";
 		rLen = 0;
-		rLoc = 403;
+		rLoc = 362;
 		rType = 0;
 		vrLen = 466;
 		vrLoc = 0;
@@ -1116,7 +1127,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 13";
 		rLen = 0;
-		rLoc = 403;
+		rLoc = 362;
 		rType = 0;
 		vrLen = 466;
 		vrLoc = 0;
@@ -1126,7 +1137,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 22";
 		rLen = 22;
-		rLoc = 581;
+		rLoc = 606;
 		rType = 0;
 		vrLen = 1346;
 		vrLoc = 3;
@@ -1136,7 +1147,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 11";
 		rLen = 0;
-		rLoc = 325;
+		rLoc = 284;
 		rType = 0;
 		vrLen = 503;
 		vrLoc = 0;
@@ -1146,7 +1157,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 419;
+		rLoc = 436;
 		rType = 0;
 		vrLen = 1271;
 		vrLoc = 3;
@@ -1156,7 +1167,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 11";
 		rLen = 0;
-		rLoc = 325;
+		rLoc = 284;
 		rType = 0;
 		vrLen = 503;
 		vrLoc = 0;
@@ -1186,7 +1197,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 11";
 		rLen = 0;
-		rLoc = 325;
+		rLoc = 284;
 		rType = 0;
 		vrLen = 503;
 		vrLoc = 0;
@@ -1196,7 +1207,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1346;
 		vrLoc = 3;
@@ -1436,7 +1447,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 3;
@@ -1516,7 +1527,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -1526,7 +1537,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -1546,7 +1557,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 529;
 		vrLoc = 215;
@@ -1556,7 +1567,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -1576,7 +1587,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -1606,7 +1617,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 11";
 		rLen = 0;
-		rLoc = 325;
+		rLoc = 284;
 		rType = 0;
 		vrLen = 503;
 		vrLoc = 0;
@@ -1616,7 +1627,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -1636,7 +1647,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 11";
 		rLen = 0;
-		rLoc = 325;
+		rLoc = 284;
 		rType = 0;
 		vrLen = 503;
 		vrLoc = 0;
@@ -1646,7 +1657,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 448;
+		rLoc = 473;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -1656,7 +1667,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 448;
+		rLoc = 473;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -1676,7 +1687,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 448;
+		rLoc = 473;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -1736,7 +1747,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 529;
 		vrLoc = 215;
@@ -1956,7 +1967,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 11";
 		rLen = 0;
-		rLoc = 325;
+		rLoc = 284;
 		rType = 0;
 		vrLen = 503;
 		vrLoc = 0;
@@ -1966,7 +1977,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 448;
+		rLoc = 473;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -1986,7 +1997,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 11";
 		rLen = 0;
-		rLoc = 325;
+		rLoc = 284;
 		rType = 0;
 		vrLen = 503;
 		vrLoc = 0;
@@ -1996,7 +2007,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -2006,7 +2017,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -2026,7 +2037,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 529;
 		vrLoc = 215;
@@ -2036,7 +2047,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -2056,7 +2067,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -2086,7 +2097,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 529;
 		vrLoc = 215;
@@ -2536,7 +2547,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -2556,7 +2567,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -2566,7 +2577,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -2586,7 +2597,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 529;
 		vrLoc = 215;
@@ -2596,7 +2607,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -2616,7 +2627,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -2646,7 +2657,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 529;
 		vrLoc = 215;
@@ -2706,7 +2717,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -2726,7 +2737,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -2736,7 +2747,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -2746,7 +2757,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 0;
@@ -2766,7 +2777,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 459;
 		vrLoc = 1460;
@@ -2776,7 +2787,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1381;
 		vrLoc = 564;
@@ -2796,7 +2807,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1381;
 		vrLoc = 564;
@@ -2836,7 +2847,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1457;
 		vrLoc = 488;
@@ -2856,7 +2867,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 40";
 		rLen = 0;
-		rLoc = 1557;
+		rLoc = 1370;
 		rType = 0;
 		vrLen = 1471;
 		vrLoc = 215;
@@ -2866,7 +2877,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 40";
 		rLen = 0;
-		rLoc = 1557;
+		rLoc = 1370;
 		rType = 0;
 		vrLen = 1471;
 		vrLoc = 215;
@@ -2876,7 +2887,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 40";
 		rLen = 0;
-		rLoc = 1557;
+		rLoc = 1370;
 		rType = 0;
 		vrLen = 1443;
 		vrLoc = 245;
@@ -2886,7 +2897,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 40";
 		rLen = 0;
-		rLoc = 1557;
+		rLoc = 1370;
 		rType = 0;
 		vrLen = 422;
 		vrLoc = 1264;
@@ -2896,7 +2907,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 40";
 		rLen = 0;
-		rLoc = 1557;
+		rLoc = 1370;
 		rType = 0;
 		vrLen = 1498;
 		vrLoc = 215;
@@ -2906,7 +2917,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 40";
 		rLen = 0;
-		rLoc = 1557;
+		rLoc = 1370;
 		rType = 0;
 		vrLen = 1498;
 		vrLoc = 215;
@@ -2916,7 +2927,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 40";
 		rLen = 0;
-		rLoc = 1557;
+		rLoc = 1370;
 		rType = 0;
 		vrLen = 1498;
 		vrLoc = 215;
@@ -2926,7 +2937,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 40";
 		rLen = 0;
-		rLoc = 1557;
+		rLoc = 1370;
 		rType = 0;
 		vrLen = 422;
 		vrLoc = 1264;
@@ -2936,7 +2947,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 40";
 		rLen = 0;
-		rLoc = 1557;
+		rLoc = 1370;
 		rType = 0;
 		vrLen = 1498;
 		vrLoc = 215;
@@ -2946,7 +2957,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 40";
 		rLen = 0;
-		rLoc = 1557;
+		rLoc = 1370;
 		rType = 0;
 		vrLen = 1498;
 		vrLoc = 215;
@@ -2956,7 +2967,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 11";
 		rLen = 0;
-		rLoc = 325;
+		rLoc = 284;
 		rType = 0;
 		vrLen = 503;
 		vrLoc = 0;
@@ -2976,7 +2987,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 40";
 		rLen = 0;
-		rLoc = 1557;
+		rLoc = 1370;
 		rType = 0;
 		vrLen = 1498;
 		vrLoc = 215;
@@ -2986,7 +2997,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 11";
 		rLen = 0;
-		rLoc = 325;
+		rLoc = 284;
 		rType = 0;
 		vrLen = 503;
 		vrLoc = 0;
@@ -3026,7 +3037,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 11";
 		rLen = 0;
-		rLoc = 325;
+		rLoc = 284;
 		rType = 0;
 		vrLen = 503;
 		vrLoc = 0;
@@ -3036,7 +3047,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1345;
 		vrLoc = 0;
@@ -3086,7 +3097,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 11";
 		rLen = 0;
-		rLoc = 325;
+		rLoc = 284;
 		rType = 0;
 		vrLen = 503;
 		vrLoc = 0;
@@ -3096,7 +3107,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1345;
 		vrLoc = 0;
@@ -3126,7 +3137,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1345;
 		vrLoc = 0;
@@ -3146,7 +3157,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1345;
 		vrLoc = 0;
@@ -3156,7 +3167,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 314;
 		vrLoc = 1031;
@@ -3166,7 +3177,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1342;
 		vrLoc = 0;
@@ -3176,7 +3187,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 428;
+		rLoc = 445;
 		rType = 0;
 		vrLen = 1387;
 		vrLoc = 0;
@@ -3186,7 +3197,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 41";
 		rLen = 0;
-		rLoc = 1557;
+		rLoc = 1370;
 		rType = 0;
 		vrLen = 1532;
 		vrLoc = 245;
@@ -3196,7 +3207,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 41";
 		rLen = 0;
-		rLoc = 1557;
+		rLoc = 1370;
 		rType = 0;
 		vrLen = 1435;
 		vrLoc = 3;
@@ -3226,7 +3237,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 41";
 		rLen = 0;
-		rLoc = 1557;
+		rLoc = 1370;
 		rType = 0;
 		vrLen = 1435;
 		vrLoc = 3;
@@ -3286,7 +3297,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 23";
 		rLen = 0;
-		rLoc = 717;
+		rLoc = 742;
 		rType = 0;
 		vrLen = 1431;
 		vrLoc = 3;
@@ -3306,7 +3317,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 23";
 		rLen = 0;
-		rLoc = 717;
+		rLoc = 742;
 		rType = 0;
 		vrLen = 1431;
 		vrLoc = 3;
@@ -3326,7 +3337,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 22";
 		rLen = 0;
-		rLoc = 603;
+		rLoc = 628;
 		rType = 0;
 		vrLen = 1426;
 		vrLoc = 3;
@@ -3336,7 +3347,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 22";
 		rLen = 0;
-		rLoc = 603;
+		rLoc = 628;
 		rType = 0;
 		vrLen = 1429;
 		vrLoc = 3;
@@ -3366,7 +3377,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 22";
 		rLen = 0;
-		rLoc = 603;
+		rLoc = 628;
 		rType = 0;
 		vrLen = 1429;
 		vrLoc = 3;
@@ -3460,7 +3471,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 12";
 		rLen = 0;
-		rLoc = 325;
+		rLoc = 284;
 		rType = 0;
 		vrLen = 538;
 		vrLoc = 0;
@@ -3470,7 +3481,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 22";
 		rLen = 186;
-		rLoc = 534;
+		rLoc = 559;
 		rType = 0;
 		vrLen = 1429;
 		vrLoc = 3;
@@ -3530,7 +3541,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 22";
 		rLen = 186;
-		rLoc = 534;
+		rLoc = 559;
 		rType = 0;
 		vrLen = 1429;
 		vrLoc = 3;
@@ -3540,7 +3551,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 12";
 		rLen = 0;
-		rLoc = 325;
+		rLoc = 284;
 		rType = 0;
 		vrLen = 538;
 		vrLoc = 0;
@@ -3550,7 +3561,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 25";
 		rLen = 0;
-		rLoc = 878;
+		rLoc = 903;
 		rType = 0;
 		vrLen = 1566;
 		vrLoc = 3;
@@ -3560,7 +3571,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 28";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1041;
 		rType = 0;
 		vrLen = 1566;
 		vrLoc = 3;
@@ -3610,7 +3621,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 28";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1041;
 		rType = 0;
 		vrLen = 1566;
 		vrLoc = 3;
@@ -3730,7 +3741,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 28";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1041;
 		rType = 0;
 		vrLen = 1566;
 		vrLoc = 3;
@@ -3750,7 +3761,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 42";
 		rLen = 0;
-		rLoc = 1557;
+		rLoc = 1370;
 		rType = 0;
 		vrLen = 1532;
 		vrLoc = 3;
@@ -3760,7 +3771,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 422;
+		rLoc = 439;
 		rType = 0;
 		vrLen = 1566;
 		vrLoc = 3;
@@ -3818,7 +3829,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 37";
 		rLen = 0;
-		rLoc = 1296;
+		rLoc = 1109;
 		rType = 0;
 		vrLen = 1130;
 		vrLoc = 0;
@@ -3828,7 +3839,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 37";
 		rLen = 0;
-		rLoc = 1296;
+		rLoc = 1109;
 		rType = 0;
 		vrLen = 1566;
 		vrLoc = 3;
@@ -3876,7 +3887,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 37";
 		rLen = 0;
-		rLoc = 1296;
+		rLoc = 1109;
 		rType = 0;
 		vrLen = 1130;
 		vrLoc = 0;
@@ -3896,7 +3907,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 80";
 		rLen = 0;
-		rLoc = 3230;
+		rLoc = 3096;
 		rType = 0;
 		vrLen = 1434;
 		vrLoc = 1017;
@@ -3906,7 +3917,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 45";
 		rLen = 0;
-		rLoc = 1552;
+		rLoc = 1365;
 		rType = 0;
 		vrLen = 1612;
 		vrLoc = 1080;
@@ -3916,7 +3927,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 75";
 		rLen = 0;
-		rLoc = 2895;
+		rLoc = 2761;
 		rType = 0;
 		vrLen = 1613;
 		vrLoc = 1080;
@@ -3956,7 +3967,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 12";
 		rLen = 0;
-		rLoc = 325;
+		rLoc = 284;
 		rType = 0;
 		vrLen = 538;
 		vrLoc = 0;
@@ -3966,7 +3977,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 75";
 		rLen = 0;
-		rLoc = 2895;
+		rLoc = 2761;
 		rType = 0;
 		vrLen = 1619;
 		vrLoc = 1078;
@@ -3976,7 +3987,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 75";
 		rLen = 0;
-		rLoc = 2895;
+		rLoc = 2761;
 		rType = 0;
 		vrLen = 1613;
 		vrLoc = 1080;
@@ -4026,7 +4037,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 12";
 		rLen = 0;
-		rLoc = 325;
+		rLoc = 284;
 		rType = 0;
 		vrLen = 538;
 		vrLoc = 0;
@@ -4036,7 +4047,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 42";
 		rLen = 0;
-		rLoc = 1376;
+		rLoc = 1189;
 		rType = 0;
 		vrLen = 1517;
 		vrLoc = 149;
@@ -4046,7 +4057,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 44";
 		rLen = 0;
-		rLoc = 1376;
+		rLoc = 1189;
 		rType = 0;
 		vrLen = 1655;
 		vrLoc = 149;
@@ -4056,7 +4067,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 44";
 		rLen = 0;
-		rLoc = 1376;
+		rLoc = 1189;
 		rType = 0;
 		vrLen = 1654;
 		vrLoc = 149;
@@ -4066,7 +4077,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 21";
 		rLen = 0;
-		rLoc = 737;
+		rLoc = 696;
 		rType = 0;
 		vrLen = 642;
 		vrLoc = 0;
@@ -4076,7 +4087,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 29";
 		rLen = 0;
-		rLoc = 1230;
+		rLoc = 1043;
 		rType = 0;
 		vrLen = 1596;
 		vrLoc = 149;
@@ -4086,7 +4097,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 29";
 		rLen = 0;
-		rLoc = 1230;
+		rLoc = 1043;
 		rType = 0;
 		vrLen = 1654;
 		vrLoc = 149;
@@ -4096,7 +4107,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 20";
 		rLen = 0;
-		rLoc = 534;
+		rLoc = 493;
 		rType = 0;
 		vrLen = 614;
 		vrLoc = 0;
@@ -4106,7 +4117,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 29";
 		rLen = 0;
-		rLoc = 1230;
+		rLoc = 1043;
 		rType = 0;
 		vrLen = 1596;
 		vrLoc = 149;
@@ -4116,7 +4127,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 21";
 		rLen = 0;
-		rLoc = 737;
+		rLoc = 696;
 		rType = 0;
 		vrLen = 642;
 		vrLoc = 0;
@@ -4126,7 +4137,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 29";
 		rLen = 0;
-		rLoc = 1230;
+		rLoc = 1043;
 		rType = 0;
 		vrLen = 1596;
 		vrLoc = 149;
@@ -4136,7 +4147,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 42";
 		rLen = 0;
-		rLoc = 1376;
+		rLoc = 1189;
 		rType = 0;
 		vrLen = 1587;
 		vrLoc = 149;
@@ -4146,7 +4157,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 42";
 		rLen = 0;
-		rLoc = 1376;
+		rLoc = 1189;
 		rType = 0;
 		vrLen = 1589;
 		vrLoc = 149;
@@ -4156,7 +4167,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 42";
 		rLen = 0;
-		rLoc = 1376;
+		rLoc = 1189;
 		rType = 0;
 		vrLen = 702;
 		vrLoc = 215;
@@ -4166,7 +4177,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 42";
 		rLen = 0;
-		rLoc = 1376;
+		rLoc = 1189;
 		rType = 0;
 		vrLen = 1589;
 		vrLoc = 0;
@@ -4176,7 +4187,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 27";
 		rLen = 35;
-		rLoc = 810;
+		rLoc = 769;
 		rType = 0;
 		vrLen = 683;
 		vrLoc = 0;
@@ -4186,7 +4197,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 28";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1041;
 		rType = 0;
 		vrLen = 1810;
 		vrLoc = 245;
@@ -4196,7 +4207,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 28";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1041;
 		rType = 0;
 		vrLen = 1810;
 		vrLoc = 245;
@@ -4206,7 +4217,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 27";
 		rLen = 35;
-		rLoc = 810;
+		rLoc = 769;
 		rType = 0;
 		vrLen = 683;
 		vrLoc = 0;
@@ -4216,7 +4227,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 42";
 		rLen = 0;
-		rLoc = 1376;
+		rLoc = 1189;
 		rType = 0;
 		vrLen = 1735;
 		vrLoc = 261;
@@ -4226,7 +4237,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 59";
 		rLen = 9;
-		rLoc = 1779;
+		rLoc = 1592;
 		rType = 0;
 		vrLen = 1733;
 		vrLoc = 371;
@@ -4236,7 +4247,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 59";
 		rLen = 0;
-		rLoc = 1788;
+		rLoc = 1601;
 		rType = 0;
 		vrLen = 1728;
 		vrLoc = 371;
@@ -4246,7 +4257,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 42";
 		rLen = 0;
-		rLoc = 1376;
+		rLoc = 1189;
 		rType = 0;
 		vrLen = 1557;
 		vrLoc = 215;
@@ -4256,7 +4267,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 42";
 		rLen = 0;
-		rLoc = 1376;
+		rLoc = 1189;
 		rType = 0;
 		vrLen = 1557;
 		vrLoc = 215;
@@ -4266,7 +4277,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 42";
 		rLen = 0;
-		rLoc = 1376;
+		rLoc = 1189;
 		rType = 0;
 		vrLen = 1557;
 		vrLoc = 215;
@@ -4276,7 +4287,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 23";
 		rLen = 0;
-		rLoc = 706;
+		rLoc = 665;
 		rType = 0;
 		vrLen = 839;
 		vrLoc = 0;
@@ -4286,7 +4297,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 23";
 		rLen = 0;
-		rLoc = 706;
+		rLoc = 665;
 		rType = 0;
 		vrLen = 839;
 		vrLoc = 0;
@@ -4296,7 +4307,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 23";
 		rLen = 0;
-		rLoc = 706;
+		rLoc = 665;
 		rType = 0;
 		vrLen = 839;
 		vrLoc = 0;
@@ -4306,7 +4317,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 42";
 		rLen = 0;
-		rLoc = 1376;
+		rLoc = 1189;
 		rType = 0;
 		vrLen = 1596;
 		vrLoc = 215;
@@ -4316,7 +4327,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 41";
 		rLen = 0;
-		rLoc = 1376;
+		rLoc = 1189;
 		rType = 0;
 		vrLen = 1616;
 		vrLoc = 215;
@@ -4340,7 +4351,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 41";
 		rLen = 0;
-		rLoc = 1376;
+		rLoc = 1189;
 		rType = 0;
 		vrLen = 1674;
 		vrLoc = 215;
@@ -4350,7 +4361,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 41";
 		rLen = 0;
-		rLoc = 1376;
+		rLoc = 1189;
 		rType = 0;
 		vrLen = 1674;
 		vrLoc = 215;
@@ -4374,7 +4385,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 391;
+		rLoc = 408;
 		rType = 0;
 		vrLen = 1616;
 		vrLoc = 215;
@@ -4384,7 +4395,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 391;
+		rLoc = 408;
 		rType = 0;
 		vrLen = 1595;
 		vrLoc = 0;
@@ -4394,7 +4405,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 391;
+		rLoc = 408;
 		rType = 0;
 		vrLen = 354;
 		vrLoc = 2614;
@@ -4404,7 +4415,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 55";
 		rLen = 0;
-		rLoc = 1731;
+		rLoc = 1544;
 		rType = 0;
 		vrLen = 1562;
 		vrLoc = 1082;
@@ -4414,12 +4425,18 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 94";
 		rLen = 0;
-		rLoc = 3183;
+		rLoc = 3049;
 		rType = 0;
 		vrLen = 1603;
 		vrLoc = 1365;
 	};
 	609F48440DC3614200AE82AA /* AuthenticateValueTransformer.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = AuthenticateValueTransformer.h;
+		path = /Users/jelle/Desktop/Documents/Projects/Lustro/classes/AuthenticateValueTransformer.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1051, 755}}";
 			sepNavSelRange = "{101, 0}";
@@ -4427,10 +4444,16 @@
 		};
 	};
 	609F48450DC3614200AE82AA /* AuthenticateValueTransformer.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = AuthenticateValueTransformer.m;
+		path = /Users/jelle/Desktop/Documents/Projects/Lustro/classes/AuthenticateValueTransformer.m;
+		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1051, 732}}";
-			sepNavSelRange = "{587, 0}";
-			sepNavVisRange = "{0, 597}";
+			sepNavIntBoundsRect = "{{0, 0}, {1386, 420}}";
+			sepNavSelRange = "{554, 0}";
+			sepNavVisRange = "{358, 239}";
 		};
 	};
 	609F48470DC361A300AE82AA /* PBXTextBookmark */ = {
@@ -4498,7 +4521,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 13";
 		rLen = 0;
-		rLoc = 325;
+		rLoc = 284;
 		rType = 0;
 		vrLen = 880;
 		vrLoc = 0;
@@ -4508,7 +4531,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 94";
 		rLen = 0;
-		rLoc = 3183;
+		rLoc = 3049;
 		rType = 0;
 		vrLen = 1631;
 		vrLoc = 0;
@@ -4518,7 +4541,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 94";
 		rLen = 0;
-		rLoc = 3183;
+		rLoc = 3049;
 		rType = 0;
 		vrLen = 1631;
 		vrLoc = 0;
@@ -4598,7 +4621,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 23";
 		rLen = 0;
-		rLoc = 706;
+		rLoc = 665;
 		rType = 0;
 		vrLen = 839;
 		vrLoc = 0;
@@ -4608,7 +4631,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 94";
 		rLen = 0;
-		rLoc = 3183;
+		rLoc = 3049;
 		rType = 0;
 		vrLen = 1631;
 		vrLoc = 0;
@@ -4618,7 +4641,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 13";
 		rLen = 0;
-		rLoc = 325;
+		rLoc = 284;
 		rType = 0;
 		vrLen = 880;
 		vrLoc = 0;
@@ -4628,7 +4651,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 27";
 		rLen = 0;
-		rLoc = 1086;
+		rLoc = 941;
 		rType = 0;
 		vrLen = 1804;
 		vrLoc = 0;
@@ -4638,7 +4661,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 46";
 		rLen = 0;
-		rLoc = 1379;
+		rLoc = 1192;
 		rType = 0;
 		vrLen = 1490;
 		vrLoc = 1014;
@@ -4648,7 +4671,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 46";
 		rLen = 0;
-		rLoc = 1379;
+		rLoc = 1192;
 		rType = 0;
 		vrLen = 1800;
 		vrLoc = 0;
@@ -4668,7 +4691,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 46";
 		rLen = 0;
-		rLoc = 1379;
+		rLoc = 1192;
 		rType = 0;
 		vrLen = 1800;
 		vrLoc = 0;
@@ -4698,7 +4721,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 19";
 		rLen = 0;
-		rLoc = 391;
+		rLoc = 408;
 		rType = 0;
 		vrLen = 500;
 		vrLoc = 2654;
@@ -4798,7 +4821,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 31";
 		rLen = 32;
-		rLoc = 847;
+		rLoc = 806;
 		rType = 0;
 		vrLen = 914;
 		vrLoc = 0;
@@ -4818,7 +4841,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 31";
 		rLen = 32;
-		rLoc = 847;
+		rLoc = 806;
 		rType = 0;
 		vrLen = 914;
 		vrLoc = 0;
@@ -4828,7 +4851,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 65";
 		rLen = 0;
-		rLoc = 1976;
+		rLoc = 1789;
 		rType = 0;
 		vrLen = 1202;
 		vrLoc = 1215;
@@ -4838,7 +4861,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 65";
 		rLen = 0;
-		rLoc = 1976;
+		rLoc = 1789;
 		rType = 0;
 		vrLen = 1202;
 		vrLoc = 1215;
@@ -4888,7 +4911,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 65";
 		rLen = 0;
-		rLoc = 1976;
+		rLoc = 1789;
 		rType = 0;
 		vrLen = 1202;
 		vrLoc = 1215;
@@ -4952,6 +4975,116 @@
 		rType = 0;
 		vrLen = 597;
 		vrLoc = 0;
+	};
+	609F48970DC365EB00AE82AA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 609F476D0DC34A2D00AE82AA /* ProgressValueTransformer.m */;
+		name = "ProgressValueTransformer.m: 12";
+		rLen = 340;
+		rLoc = 242;
+		rType = 0;
+		vrLen = 588;
+		vrLoc = 0;
+	};
+	609F48980DC365EB00AE82AA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
+		name = "MainController.m: 25";
+		rLen = 0;
+		rLoc = 941;
+		rType = 0;
+		vrLen = 1547;
+		vrLoc = 0;
+	};
+	609F48990DC365EB00AE82AA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 609F476D0DC34A2D00AE82AA /* ProgressValueTransformer.m */;
+		name = "ProgressValueTransformer.m: 12";
+		rLen = 340;
+		rLoc = 242;
+		rType = 0;
+		vrLen = 588;
+		vrLoc = 0;
+	};
+	609F489A0DC365EB00AE82AA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
+		name = "MainController.m: 25";
+		rLen = 0;
+		rLoc = 941;
+		rType = 0;
+		vrLen = 1547;
+		vrLoc = 0;
+	};
+	609F489B0DC365EB00AE82AA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
+		name = "MainController.h: 12";
+		rLen = 0;
+		rLoc = 284;
+		rType = 0;
+		vrLen = 873;
+		vrLoc = 0;
+	};
+	609F489C0DC365FF00AE82AA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
+		name = "MainController.h: 34";
+		rLen = 0;
+		rLoc = 873;
+		rType = 0;
+		vrLen = 873;
+		vrLoc = 0;
+	};
+	609F489D0DC365FF00AE82AA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
+		name = "MainController.h: 34";
+		rLen = 0;
+		rLoc = 873;
+		rType = 0;
+		vrLen = 873;
+		vrLoc = 0;
+	};
+	609F489E0DC365FF00AE82AA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
+		name = "MainController.m: 19";
+		rLen = 0;
+		rLoc = 466;
+		rType = 0;
+		vrLen = 1570;
+		vrLoc = 0;
+	};
+	609F48A20DC3662200AE82AA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
+		name = "MainController.m: 19";
+		rLen = 0;
+		rLoc = 465;
+		rType = 0;
+		vrLen = 1545;
+		vrLoc = 0;
+	};
+	609F48A70DC3669600AE82AA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
+		name = "MainController.m: 105";
+		rLen = 0;
+		rLoc = 3129;
+		rType = 0;
+		vrLen = 1611;
+		vrLoc = 1543;
+	};
+	609F48A90DC366AB00AE82AA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
+		name = "MainController.m: 105";
+		rLen = 0;
+		rLoc = 3152;
+		rType = 0;
+		vrLen = 1603;
+		vrLoc = 1572;
 	};
 	60DE9B9E0DBD342000D3EC93 /* ExportController.h */ = {
 		uiCtxt = {
@@ -5074,7 +5207,7 @@
 		fRef = 607C58100DBBB0E7009BBEF8 /* MainController.h */;
 		name = "MainController.h: 19";
 		rLen = 36;
-		rLoc = 741;
+		rLoc = 700;
 		rType = 0;
 		vrLen = 466;
 		vrLoc = 0;
@@ -5084,7 +5217,7 @@
 		fRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */;
 		name = "MainController.m: 22";
 		rLen = 0;
-		rLoc = 1228;
+		rLoc = 1041;
 		rType = 0;
 		vrLen = 751;
 		vrLoc = 38;

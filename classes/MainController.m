@@ -15,16 +15,14 @@
 - (id)init
 {
 	self = [super init];
-	NSArray *keys   = [NSArray arrayWithObjects:@"comma",@"tab", @"html", @"google", nil];
-    NSArray *values = [NSArray arrayWithObjects:@"0" ,@"0", @"0", @"0", nil];
+	NSArray *keys   = [NSArray arrayWithObjects:@"comma",@"tab", @"html", @"google", @"authenticate", nil];
+    NSArray *values = [NSArray arrayWithObjects:@"0" ,@"0", @"0", @"0", @"YES", nil];
     
 	///Initialize the value transformers used throughout the application bindings
 	NSValueTransformer *statusValueTransformer = [[StatusValueTransformer alloc] init];
     [NSValueTransformer setValueTransformer:statusValueTransformer forName:@"StatusValueTransformer"];
 	NSValueTransformer *progressValueTransformer = [[ProgressValueTransformer alloc] init];
     [NSValueTransformer setValueTransformer:progressValueTransformer forName:@"ProgressValueTransformer"];
-	NSValueTransformer *authenticateValueTransformer = [[AuthenticateValueTransformer alloc] init];
-    [NSValueTransformer setValueTransformer:authenticateValueTransformer forName:@"AuthenticateValueTransformer"];
 	
     indicators = [[NSMutableDictionary alloc] initWithObjects:values forKeys:keys];
 	return self;
@@ -72,6 +70,7 @@
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	ABAddressBook *book = [ABAddressBook sharedAddressBook];
+	[indicators setValue:@"NO" forKey:@"authenticate"];
 	
 	// If comma separated is checked
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"]) {
@@ -102,6 +101,8 @@
 		[controller release];*/
 		[indicators setValue:@"2" forKey:@"google"];
 	}
+	
+	[indicators setValue:@"YES" forKey:@"authenticate"];
 	[pool release];
 }
 @end
