@@ -9,23 +9,27 @@
 #import "MainController.h"
 
 @implementation MainController
-//
-// Initialize the controller.
-//
 - (id)init
 {
 	self = [super init];
 	NSArray *keys   = [NSArray arrayWithObjects:@"comma",@"tab", @"html", @"google", @"authenticate", nil];
     NSArray *values = [NSArray arrayWithObjects:@"0" ,@"0", @"0", @"0", @"YES", nil];
-    
-	///Initialize the value transformers used throughout the application bindings
+	indicators = [[NSMutableDictionary alloc] initWithObjects:values forKeys:keys];
+	
+	//Initialize the value transformers used throughout the application bindings
 	NSValueTransformer *statusValueTransformer = [[StatusValueTransformer alloc] init];
     [NSValueTransformer setValueTransformer:statusValueTransformer forName:@"StatusValueTransformer"];
 	NSValueTransformer *progressValueTransformer = [[ProgressValueTransformer alloc] init];
     [NSValueTransformer setValueTransformer:progressValueTransformer forName:@"ProgressValueTransformer"];
-	
-    indicators = [[NSMutableDictionary alloc] initWithObjects:values forKeys:keys];
 	return self;
+}
+
+- (void)awakeFromNib
+{	
+	// Initialize the checkbox to 1
+	defaults = [NSUserDefaults standardUserDefaults];
+    NSString *keyChainSaveValue = [defaults stringForKey:@"KeyChainSave"];
+    if (keyChainSaveValue == nil) keyChainSaveValue = @"1";
 }
 
 - (NSMutableDictionary *)indicators
@@ -33,10 +37,6 @@
 	return indicators;
 }
 
-
-//
-// Called when the export button is pressed.
-//
 - (IBAction)export:(id)sender
 {	
 	[indicators setValue:@"0" forKey:@"comma"];
@@ -47,26 +47,45 @@
 	[self invocateExport];
 }
 
-//
-// Called when the authenticate button is pressed.
-//
 - (IBAction)authenticate:(id)sender
+{
+	if ([[defaults valueForKey:@"KeyChainSave"] boolValue]) {
+		// add or modify keychain item.
+		BOOL exists = [AGKeychain checkForExistanceOfKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:[usernameField stringValue]];
+		if (exists) {
+			BOOL modified = [AGKeychain modifyKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:[usernameField stringValue] withNewPassword:[passwordField stringValue]];
+			if (modified) {
+				[defaults setObject:[usernameField stringValue] forKey:@"UserName"];
+			}
+		} else {
+			BOOL added = [AGKeychain addKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:[usernameField stringValue] withPassword:[passwordField stringValue]];
+			if (added) {
+				[defaults setObject:[usernameField stringValue] forKey:@"UserName"];
+			}
+		}
+	}
+	
+	[authSheet orderOut:nil];
+    [NSApp endSheet:authSheet];
+}
+
+- (IBAction)closeSheet:(id)sender
 {
 	[authSheet orderOut:nil];
     [NSApp endSheet:authSheet];
 }
 
-//
-// Show the authentication sheet.
-//
 - (IBAction)callSheet:(id)sender
 {
+	NSString *userName = [defaults objectForKey:@"UserName"];
+	if (userName != nil) {
+		[usernameField setStringValue:userName];
+		[passwordField setStringValue:[AGKeychain getPasswordFromKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:userName]];
+	}
+	
 	[NSApp beginSheet:authSheet modalForWindow:window modalDelegate:self didEndSelector:NULL contextInfo:nil];
 }
 
-//
-// Method that is called in the background.
-//
 - (void)invocateExport
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
@@ -105,5 +124,11 @@
 	
 	[indicators setValue:@"YES" forKey:@"authenticate"];
 	[pool release];
+}
+
+/* DELEGATE OF NSTEXTFIELD */
+- (void)controlTextDidEndEditing:(NSNotification *)notification
+{
+	[passwordField setStringValue:[AGKeychain getPasswordFromKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:[usernameField stringValue]]];
 }
 @end
