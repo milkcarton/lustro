@@ -43,7 +43,8 @@
 	[indicators setValue:@"0" forKey:@"tab"];
 	[indicators setValue:@"0" forKey:@"html"];
 	[indicators setValue:@"0" forKey:@"google"];
-	[self performSelectorInBackground:@selector(invocateExport) withObject:nil];
+	//[self performSelectorInBackground:@selector(invocateExport) withObject:nil];
+	[self invocateExport];
 }
 
 //
@@ -96,9 +97,9 @@
 	// If Google is checked
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"]) {
 		[indicators setValue:@"1" forKey:@"google"];
-		/*ExportGoogle *controller = [[ExportGoogle alloc] initWithAddressBook:book];
+		ExportGoogle *controller = [[ExportGoogle alloc] initWithAddressBook:book];
 		[controller export];
-		[controller release];*/
+		[controller release];
 		[indicators setValue:@"2" forKey:@"google"];
 	}
 	
