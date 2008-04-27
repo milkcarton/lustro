@@ -44,7 +44,17 @@
 	[indicators setValue:@"0" forKey:@"html"];
 	[indicators setValue:@"0" forKey:@"google"];
 	//[self performSelectorInBackground:@selector(invocateExport) withObject:nil];
-	[self invocateExport];
+	
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"])
+		[self invocateExport];
+	else {
+		NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+		[alert addButtonWithTitle:@"Try Again"];
+		[alert setMessageText:@"Export failed."];
+		[alert setInformativeText:@"You must select an export format."];
+		[alert setAlertStyle:NSCriticalAlertStyle];
+		[alert beginSheetModalForWindow:window modalDelegate:nil didEndSelector:nil contextInfo:nil];
+	}
 }
 
 - (IBAction)authenticate:(id)sender
@@ -129,6 +139,9 @@
 /* DELEGATE OF NSTEXTFIELD */
 - (void)controlTextDidEndEditing:(NSNotification *)notification
 {
-	[passwordField setStringValue:[AGKeychain getPasswordFromKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:[usernameField stringValue]]];
+	if ([[usernameField stringValue] compare:@""] != NSOrderedSame)
+		[passwordField setStringValue:[AGKeychain getPasswordFromKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:[usernameField stringValue]]];
+	else
+		[passwordField setStringValue:@""];
 }
 @end
