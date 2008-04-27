@@ -26,7 +26,7 @@
 		// TODO disable logging
 		[GDataHTTPFetcher setIsLoggingEnabled:YES];
 		[self authenticateWithUsername:@"lustroapp@gmail.com" password:@"jellesimon"];
-		[self removeAllContacts];
+		//[self removeAllContacts];
 		[self createGDataContacts];
 	}
 	[service release];
@@ -36,7 +36,6 @@
 {
 	if (!service) {
 		service = [[GDataServiceGoogleContact alloc] init];
-		
 		[service setUserAgent:@"Eggnog-GoogleAPI-0.1"];
 		[service setShouldCacheDatedData:YES]; 
 		[service setServiceShouldFollowNextLinks:YES];
@@ -60,6 +59,11 @@
 		NSString *lastName = [person valueForProperty:kABLastNameProperty];
 		NSString *jobtitle = [person valueForProperty:kABJobTitleProperty];
 		NSString *organization = [person valueForProperty:kABOrganizationProperty];
+		ABMultiValue *aim = [person valueForProperty:kABAIMInstantProperty];
+		ABMultiValue *jabber = [person valueForProperty:kABJabberInstantProperty];
+		ABMultiValue *msn = [person valueForProperty:kABMSNInstantProperty];
+		ABMultiValue *icq = [person valueForProperty:kABICQInstantProperty];
+		ABMultiValue *yahoo = [person valueForProperty:kABYahooInstantProperty];
 		// Nickname seems to be missing in Google Contacts
 		NSString *content = [person valueForProperty:kABNoteProperty];
 		ABMultiValue *addresses = [person valueForProperty:kABAddressProperty];
@@ -94,6 +98,67 @@
 			[gOrganization setRel:kGDataContactWork];
 			[gOrganization setIsPrimary:true];
 			[contact addOrganization:gOrganization];
+		}
+		
+		if(aim) {
+			for (int i = 0; i < [aim count]; i++) {
+				NSString *label = [aim labelAtIndex:i];
+				NSString *value = [aim valueAtIndex:i];
+				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"aim"]
+													rel:[self makeRelFromLabel:label]
+												  label:nil
+												address:value];
+				[contact addIMAddress:gIM];
+				
+			}
+		}
+		
+		if(jabber)	{
+			for (int i = 0; i < [jabber count]; i++) {
+				NSString *label = [jabber labelAtIndex:i];
+				NSString *value = [jabber valueAtIndex:i];
+				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"jabber"]
+													rel:[self makeRelFromLabel:label]
+												  label:nil
+												address:value];
+				[contact addIMAddress:gIM];
+			}
+		}
+		
+		if(msn) {
+			for (int i = 0; i < [msn count]; i++) {
+				NSString *label = [msn labelAtIndex:i];
+				NSString *value = [msn valueAtIndex:i];
+				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"msn"]
+													rel:[self makeRelFromLabel:label]
+												  label:nil
+												address:value];
+				[contact addIMAddress:gIM];
+			}
+		}
+		
+		if(icq) {
+			for (int i = 0; i < [icq count]; i++) {
+				NSString *label = [icq labelAtIndex:i];
+				NSString *value = [icq valueAtIndex:i];
+				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"icq"]
+													rel:[self makeRelFromLabel:label]
+												  label:nil
+												address:value];
+				[contact addIMAddress:gIM];
+			}
+		}
+		
+		if(yahoo) {
+			for (int i = 0; i < [yahoo count]; i++) {
+				NSString *label = [yahoo labelAtIndex:i];
+				NSString *value = [yahoo valueAtIndex:i];
+				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"yahoo"]
+													rel:[self makeRelFromLabel:label]
+												  label:nil
+												address:value];
+				[contact addIMAddress:gIM];
+			}
 		}
 		
 		if(content) {
@@ -181,6 +246,7 @@
 - (NSString *)makeRelFromLabel:(NSString *)label
 {
 	label = [self cleanLabel:label];
+	// For phones and such
 	if([label caseInsensitiveCompare:@"work"] == NSOrderedSame) { return kGDataPhoneNumberWork; }
 	if([label caseInsensitiveCompare:@"home"] == NSOrderedSame) { return kGDataPhoneNumberHome; }
 	if([label caseInsensitiveCompare:@"mobile"] == NSOrderedSame) { return kGDataPhoneNumberMobile; }
@@ -188,6 +254,15 @@
 	if([label caseInsensitiveCompare:@"workfax"] == NSOrderedSame) { return kGDataPhoneNumberWorkFax; }
 	if([label caseInsensitiveCompare:@"pager"] == NSOrderedSame) { return kGDataPhoneNumberPager; }
 	if([label caseInsensitiveCompare:@"other"] == NSOrderedSame) { return kGDataPhoneNumberOther; }
+	// For instant messengers
+	if([label caseInsensitiveCompare:@"aim"] == NSOrderedSame) { return kGDataIMProtocolAIM; }
+	if([label caseInsensitiveCompare:@"gtalk"] == NSOrderedSame) { return kGDataIMProtocolGoogleTalk; }
+	if([label caseInsensitiveCompare:@"icq"] == NSOrderedSame) { return kGDataIMProtocolICQ; }
+	if([label caseInsensitiveCompare:@"jabber"] == NSOrderedSame) { return kGDataIMProtocolJabber; }
+	if([label caseInsensitiveCompare:@"msn"] == NSOrderedSame) { return kGDataIMProtocolMSN; }
+	if([label caseInsensitiveCompare:@"iqq"] == NSOrderedSame) { return kGDataIMProtocolQQ; }
+	if([label caseInsensitiveCompare:@"skype"] == NSOrderedSame) { return kGDataIMProtocolSkype; }
+	if([label caseInsensitiveCompare:@"yahoo"] == NSOrderedSame) { return kGDataIMProtocolYahoo; }
 	// TODO custom Address Book fields are converted to "other", this is wrong, should be a label instead
 	return kGDataPhoneNumberOther;
 }
