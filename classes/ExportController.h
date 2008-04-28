@@ -10,6 +10,12 @@
 #import <AddressBook/AddressBook.h>
 #import "ExportProtocol.h"
 
+typedef enum {
+	kExportSuccess = 0,
+	kExportWarning = 1,
+	kExportError = 2
+} kExportStatus;
+
 @interface ExportController : NSOperation {
 	NSArray *contactsList;
 }

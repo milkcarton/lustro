@@ -32,7 +32,8 @@
     if (keyChainSaveValue == nil) keyChainSaveValue = @"1";
 	
 	// Set button state.
-	[self select:nil];
+	[self setExportButton];
+	[self setSignInButton];
 }
 
 - (NSMutableDictionary *)indicators
@@ -67,6 +68,8 @@
 				[defaults setObject:[usernameField stringValue] forKey:@"UserName"];
 			}
 		}
+	} else {
+		[defaults setObject:@"" forKey:@"UserName"];
 	}
 	
 	[authSheet orderOut:nil];
@@ -82,9 +85,11 @@
 - (IBAction)callSheet:(id)sender
 {
 	NSString *userName = [defaults objectForKey:@"UserName"];
-	if (userName != nil) {
+	if (userName != nil && [userName compare:@""] != NSOrderedSame) {
 		[usernameField setStringValue:userName];
 		[passwordField setStringValue:[AGKeychain getPasswordFromKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:userName]];
+	} else {
+		[passwordField setStringValue:@""];
 	}
 	
 	[NSApp beginSheet:authSheet modalForWindow:window modalDelegate:self didEndSelector:NULL contextInfo:nil];
@@ -92,10 +97,7 @@
 
 - (IBAction)select:(id)sender
 {
-	// Check if a checkbox is selected.
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"])
-		[exportButton setEnabled:YES];
-	else [exportButton setEnabled:NO];
+	[self setExportButton];
 }
 
 - (void)invocateExport
@@ -120,9 +122,14 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"]) {
 		[indicators setValue:@"1" forKey:@"html"];
 		ExporthCard *controller = [[ExporthCard alloc] initWithAddressBook:book];
-		[controller export];
+		switch ([controller export]) {
+			case kExportSuccess: [indicators setValue:@"2" forKey:@"html"];
+								 break;
+			case kExportWarning: [indicators setValue:@"3" forKey:@"html"];
+								 break;
+			default: [indicators setValue:@"4" forKey:@"html"];
+		}
 		[controller release];
-		[indicators setValue:@"2" forKey:@"html"];
 	}
 	
 	// If Google is checked
@@ -138,12 +145,39 @@
 	[pool release];
 }
 
+- (void)setSignInButton
+{
+	if ([[usernameField stringValue] compare:@""] != NSOrderedSame && [[passwordField stringValue] compare:@""] != NSOrderedSame)
+		[signInButton setEnabled:YES];
+	else [signInButton setEnabled:NO]; 
+}
+
+- (void)setExportButton
+{
+	// Check if a checkbox is selected.
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"])
+		[exportButton setEnabled:YES];
+	else [exportButton setEnabled:NO];
+}
+
 /* DELEGATE OF NSTEXTFIELD */
+- (void)controlTextDidChange:(NSNotification *)notification
+{
+	[self setSignInButton];
+}
+
 - (void)controlTextDidEndEditing:(NSNotification *)notification
 {
-	if ([[usernameField stringValue] compare:@""] != NSOrderedSame)
-		[passwordField setStringValue:[AGKeychain getPasswordFromKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:[usernameField stringValue]]];
-	else
+	if ([[usernameField stringValue] compare:@""] != NSOrderedSame) {
+		NSString *tmpPassword = [AGKeychain getPasswordFromKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:[usernameField stringValue]];
+		if ([tmpPassword compare:@"error"] == NSOrderedSame) {
+			[passwordField setStringValue:@""];
+		} else {
+			[passwordField setStringValue:tmpPassword];
+		}
+	} else {
 		[passwordField setStringValue:@""];
+	}
+	[self setSignInButton];
 }
 @end

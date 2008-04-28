@@ -18,6 +18,7 @@
 - (id)initWithAddressBook:(ABAddressBook *)addressBook
 {
 	self = [super initWithAddressBook:addressBook];
+	writeErrorOccured = NO;
 	contactsList = [addressBook people];
 	
 	// Create username to use in filename.
@@ -39,6 +40,7 @@
 	hCardTemplate = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
 	if (hCardTemplate == nil) { 
 		NSLog(@"Error reading hCard template file at %@\n%@", path, [error localizedFailureReason]);
+		writeErrorOccured = YES;
 	}
 	return self;
 }
@@ -46,7 +48,7 @@
 //
 // Write the data to the file.
 //
-- (void)writeToFileWithHtml:(NSString *)html
+- (BOOL)writeToFileWithHtml:(NSString *)html
 {
 	if ([html length] > 0) {		
 		NSString *fileName = userName;
@@ -55,111 +57,125 @@
 		filePath = [filePath stringByAppendingString:EXTENTION]; 
 		filePath = [filePath stringByStandardizingPath];
 		
-		BOOL written = [html writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-		
-		if (!written) {
-			//error
-		}
+		return [html writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
 	}
+	return NO;
 }
 
 //
 // Export to a NSString.
 //
-- (void)export
+- (int)export
 {
 	if ([contactsList count] > 0) {
-		for (ABPerson *person in contactsList) {
-			hCardTemplate = [hCardTemplate stringByAppendingString:@"<div class=\"vcard\">\n"];
-			NSString *firstName = [person valueForProperty:kABFirstNameProperty];
-			NSString *lastName = [person valueForProperty:kABLastNameProperty];
-			NSString *suffix = [person valueForProperty:kABSuffixProperty];
-			NSString *nickname = [person valueForProperty:kABNicknameProperty];
-			NSString *middleName = [person valueForProperty:kABMiddleNameProperty];
-			NSString *company = [person valueForProperty:kABOrganizationProperty];
-			NSString *jobTitle = [person valueForProperty:kABJobTitleProperty];
-			NSString *department = [person valueForProperty:kABDepartmentProperty];
-			NSString *note = [person valueForProperty:kABNoteProperty];
-			ABMultiValue *addresses = [person valueForProperty:kABAddressProperty];
-			ABMultiValue *mails = [person valueForProperty:kABEmailProperty];
-			ABMultiValue *URLs = [person valueForProperty:kABURLsProperty];
-			ABMultiValue *phones = [person valueForProperty:kABPhoneProperty];
-			NSCalendarDate *birthday = [person valueForProperty:kABBirthdayProperty];
-			NSString *nameField = @"";
-			NSString *fullName = @"";
+		if (writeErrorOccured)
+			return kExportError;
+		@try {
+			for (ABPerson *person in contactsList) {
+				hCardTemplate = [hCardTemplate stringByAppendingString:@"<div class=\"vcard\">\n"];
+				NSString *firstName = [person valueForProperty:kABFirstNameProperty];
+				NSString *lastName = [person valueForProperty:kABLastNameProperty];
+				NSString *suffix = [person valueForProperty:kABSuffixProperty];
+				NSString *nickname = [person valueForProperty:kABNicknameProperty];
+				NSString *middleName = [person valueForProperty:kABMiddleNameProperty];
+				NSString *company = [person valueForProperty:kABOrganizationProperty];
+				NSString *jobTitle = [person valueForProperty:kABJobTitleProperty];
+				NSString *department = [person valueForProperty:kABDepartmentProperty];
+				NSString *note = [person valueForProperty:kABNoteProperty];
+				ABMultiValue *addresses = [person valueForProperty:kABAddressProperty];
+				ABMultiValue *mails = [person valueForProperty:kABEmailProperty];
+				ABMultiValue *URLs = [person valueForProperty:kABURLsProperty];
+				ABMultiValue *phones = [person valueForProperty:kABPhoneProperty];
+				NSCalendarDate *birthday = [person valueForProperty:kABBirthdayProperty];
+				NSString *nameField = @"";
+				NSString *fullName = @"";
+					
+				if (firstName) {		
+					nameField = [nameField stringByAppendingString:[self addHTMLEntity:firstName withKey:@"given-name"]];
+					fullName = [fullName stringByAppendingString:firstName];
+				}
+				if (lastName) {
+					nameField = [nameField stringByAppendingString:[self addHTMLEntity:lastName withKey:@"family-name"]];
+					if (firstName)
+						fullName = [fullName stringByAppendingString:@" "];
+					fullName = [fullName stringByAppendingString:lastName];
+				}			
+				if (firstName || lastName) {
+					hCardTemplate = [hCardTemplate stringByAppendingString: [self addHTMLEntity:nameField withKey:@"n fn"]];	
+					hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
+				} else if (company) {
+					hCardTemplate = [hCardTemplate stringByAppendingString: [self addHTMLEntity:company withKey:@"n fn"]];	
+					hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
+				} else {
+					hCardTemplate = [hCardTemplate stringByAppendingString: [self addHTMLEntity:@"No Name" withKey:@"n fn"]];	
+					hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
+				}
+				if(suffix) {
+					hCardTemplate = [hCardTemplate stringByAppendingString: [self addHTMLEntity:suffix withKey:@"honorific-suffix"]];
+				}
 			
-			if (firstName) {		
-				nameField = [nameField stringByAppendingString:[self addHTMLEntity:firstName withKey:@"given-name"]];
-				fullName = [fullName stringByAppendingString:firstName];
-			}
-			if (lastName) {
-				nameField = [nameField stringByAppendingString:[self addHTMLEntity:lastName withKey:@"family-name"]];
-				if (firstName)
-					fullName = [fullName stringByAppendingString:@" "];
-				fullName = [fullName stringByAppendingString:lastName];
-			}			
-			if (firstName || lastName) {
-				hCardTemplate = [hCardTemplate stringByAppendingString: [self addHTMLEntity:nameField withKey:@"n fn"]];	
-				hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
-			}
-			if(suffix) {
-				hCardTemplate = [hCardTemplate stringByAppendingString: [self addHTMLEntity:suffix withKey:@"honorific-suffix"]];
-			}
+				if(nickname) {
+					hCardTemplate = [hCardTemplate stringByAppendingString: [self addHTMLEntity:nickname withKey:@"nickname"]];
+				}
 			
-			if(nickname) {
-				hCardTemplate = [hCardTemplate stringByAppendingString: [self addHTMLEntity:nickname withKey:@"nickname"]];
-			}
+				if(middleName) {
+					hCardTemplate = [hCardTemplate stringByAppendingString: [self addHTMLEntity:middleName withKey:@"additional-name"]];
+				}
 			
-			if(middleName) {
-				hCardTemplate = [hCardTemplate stringByAppendingString: [self addHTMLEntity:middleName withKey:@"additional-name"]];
-			}
+				if(jobTitle) {
+					hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
+					hCardTemplate = [hCardTemplate stringByAppendingString: [self addHTMLEntity:jobTitle withKey:@"title"]];
+					hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
+				}
 			
-			if(jobTitle) {
-				hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
-				hCardTemplate = [hCardTemplate stringByAppendingString: [self addHTMLEntity:jobTitle withKey:@"title"]];
-				hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
-			}
-			
-			if(company || department) {
-				hCardTemplate = [hCardTemplate stringByAppendingString:[self addOrganizationWithName:company unit:department]];
-				hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
-			}
+				if(company || department) {
+					hCardTemplate = [hCardTemplate stringByAppendingString:[self addOrganizationWithName:company unit:department]];
+					hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
+				}
 						
-			if (mails) {
-				hCardTemplate = [hCardTemplate stringByAppendingString:[self addMails:mails]];
-				hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
-			}		
-			if(phones) {
-				for (int i = 0; i < [phones count]; i++) {
-					NSString *subEntry = [self addPhone:phones forIndex:i];
-					NSString *phoneEntry = [self addHTMLEntity:subEntry withKey:@"tel"];
-					hCardTemplate = [hCardTemplate stringByAppendingString:phoneEntry];
+				if (mails) {
+					hCardTemplate = [hCardTemplate stringByAppendingString:[self addMails:mails]];
+					hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
+				}		
+				if(phones) {
+					for (int i = 0; i < [phones count]; i++) {
+						NSString *subEntry = [self addPhone:phones forIndex:i];
+						NSString *phoneEntry = [self addHTMLEntity:subEntry withKey:@"tel"];
+						hCardTemplate = [hCardTemplate stringByAppendingString:phoneEntry];
+					}
+					hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
+				}	
+				if (addresses) {
+					for (int i = 0; i < [addresses count]; i++) {
+						hCardTemplate = [hCardTemplate stringByAppendingString:[self addHTMLEntity:[self addAddress:addresses forIndex:i] withKey:@"adr"]];
+					}
+					hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
+				}	
+				if (URLs) {
+					hCardTemplate = [hCardTemplate stringByAppendingString:[self addURLs:URLs]];
+					hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
 				}
-				hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
-			}	
-			if (addresses) {
-				for (int i = 0; i < [addresses count]; i++) {
-					hCardTemplate = [hCardTemplate stringByAppendingString:[self addHTMLEntity:[self addAddress:addresses forIndex:i] withKey:@"adr"]];
-				}
-				hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
-			}	
-			if (URLs) {
-				hCardTemplate = [hCardTemplate stringByAppendingString:[self addURLs:URLs]];
-				hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
+				if (birthday) {
+					NSString *birthdateFormatted = [birthday descriptionWithCalendarFormat:@"%Y-%m-%d"];
+					hCardTemplate = [hCardTemplate stringByAppendingString: [self addHTMLEntity:birthdateFormatted withKey:@"bday" withTitle:birthdateFormatted]];	
+					hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
+				}			
+				if (note) {
+					hCardTemplate = [hCardTemplate stringByAppendingString: [self addHTMLEntity:note withKey:@"note"]];	
+				}	
+				hCardTemplate = [hCardTemplate stringByAppendingString:@"</div>\n\n"];
 			}
-			if (birthday) {
-				NSString *birthdateFormatted = [birthday descriptionWithCalendarFormat:@"%Y-%m-%d"];
-				hCardTemplate = [hCardTemplate stringByAppendingString: [self addHTMLEntity:birthdateFormatted withKey:@"bday" withTitle:birthdateFormatted]];	
-				hCardTemplate = [hCardTemplate stringByAppendingString:@"<br />"];
-			}			
-			if (note) {
-				hCardTemplate = [hCardTemplate stringByAppendingString: [self addHTMLEntity:note withKey:@"note"]];	
-			}	
-			hCardTemplate = [hCardTemplate stringByAppendingString:@"</div>\n\n"];
+			hCardTemplate = [hCardTemplate stringByAppendingString:@"\n</body>\n</html>\n"];
 		}
-		hCardTemplate = [hCardTemplate stringByAppendingString:@"\n</body>\n</html>\n"];
-		[self writeToFileWithHtml:hCardTemplate];
+		@catch (NSException *exception) {
+			return kExportError;
+		}
+		if (![self writeToFileWithHtml:hCardTemplate])
+			return kExportError;
+	} else {
+		return kExportWarning;
 	}
+	return kExportSuccess;
 }
 
 //

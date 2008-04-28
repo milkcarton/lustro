@@ -20,7 +20,7 @@
 }
 
 // (ExportProtocol) Start exporting by removing all old contacts and then importing all new ones
-- (void)export
+- (int)export
 {
 	if ([contactsList count] > 0) {
 		// TODO disable logging
@@ -30,6 +30,7 @@
 		[self createGDataContacts];
 	}
 	[service release];
+	return kExportSuccess;
 }
 
 - (void)authenticateWithUsername:(NSString *)user password:(NSString *)pass

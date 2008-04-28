@@ -24,25 +24,15 @@
 	IBOutlet id usernameField;		// The username textfield from the auth sheet.
 	IBOutlet id passwordField;		// The password textfield from the auth sheet.
 	IBOutlet id exportButton;		// The export button.
+	IBOutlet id signInButton;		// The button to sign in to your Google account.
 }
-// Returns the indicators dictionary.
-- (NSMutableDictionary *)indicators;
-
-// Called when the export button is pressed.
-- (IBAction)export:(id)sender;
-
-// Called when the authenticate button is pressed.
-- (IBAction)authenticate:(id)sender;
-
-// Closes the sheet without any savings.
-- (IBAction)closeSheet:(id)sender;
-
-// Show the authentication sheet.
-- (IBAction)callSheet:(id)sender;
-
-// Called when any checkbox is selected.
-- (IBAction)select:(id)sender;
-
-// Method that is called in the background.
-- (void)invocateExport;
+- (NSMutableDictionary *)indicators;	// Returns the indicators dictionary.
+- (IBAction)export:(id)sender;			// Called when the export button is pressed.
+- (IBAction)authenticate:(id)sender;	// Called when the authenticate button is pressed.
+- (IBAction)closeSheet:(id)sender;		// Closes the sheet without any savings.
+- (IBAction)callSheet:(id)sender;		// Show the authentication sheet.
+- (IBAction)select:(id)sender;			// Called when any checkbox is selected.
+- (void)invocateExport;					// Method that is called in the background.
+- (void)setSignInButton;				// Enables disables the sign in button depending on the input fields.
+- (void)setExportButton;				// Enables disables the export button depending on the checkboxes.
 @end

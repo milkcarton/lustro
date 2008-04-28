@@ -14,10 +14,10 @@
 @interface ExporthCard : ExportController < ExportProtocol > {
 	NSString *hCardTemplate;
 	NSString *userName;
+	BOOL writeErrorOccured;
 }
 
-- (void)export;
-- (void)writeToFileWithHtml:(NSString *)html;
+- (BOOL)writeToFileWithHtml:(NSString *)html;
 - (NSString *)addHTMLEntity:(NSString *)value withKey:(NSString *)key;
 - (NSString *)addHTMLEntity:(NSString *)value withKey:(NSString *)key withTitle:(NSString *)title;
 - (NSString *)addPhone:(ABMultiValue *)phones forIndex:(int)index;

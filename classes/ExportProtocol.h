@@ -10,6 +10,6 @@
 
 @protocol ExportProtocol
 
-- (void)export;
+- (int)export;
 
 @end
