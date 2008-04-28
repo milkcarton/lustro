@@ -23,6 +23,7 @@
 	IBOutlet id window;				// The main Lustro window.
 	IBOutlet id usernameField;		// The username textfield from the auth sheet.
 	IBOutlet id passwordField;		// The password textfield from the auth sheet.
+	IBOutlet id exportButton;		// The export button.
 }
 // Returns the indicators dictionary.
 - (NSMutableDictionary *)indicators;
@@ -38,6 +39,9 @@
 
 // Show the authentication sheet.
 - (IBAction)callSheet:(id)sender;
+
+// Called when any checkbox is selected.
+- (IBAction)select:(id)sender;
 
 // Method that is called in the background.
 - (void)invocateExport;

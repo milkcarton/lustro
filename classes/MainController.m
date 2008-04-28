@@ -30,6 +30,9 @@
 	defaults = [NSUserDefaults standardUserDefaults];
     NSString *keyChainSaveValue = [defaults stringForKey:@"KeyChainSave"];
     if (keyChainSaveValue == nil) keyChainSaveValue = @"1";
+	
+	// Set button state.
+	[self select:nil];
 }
 
 - (NSMutableDictionary *)indicators
@@ -45,16 +48,7 @@
 	[indicators setValue:@"0" forKey:@"google"];
 	//[self performSelectorInBackground:@selector(invocateExport) withObject:nil];
 	
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"])
-		[self invocateExport];
-	else {
-		NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-		[alert addButtonWithTitle:@"Try Again"];
-		[alert setMessageText:@"Export failed."];
-		[alert setInformativeText:@"You must select an export format."];
-		[alert setAlertStyle:NSCriticalAlertStyle];
-		[alert beginSheetModalForWindow:window modalDelegate:nil didEndSelector:nil contextInfo:nil];
-	}
+	[self invocateExport];
 }
 
 - (IBAction)authenticate:(id)sender
@@ -94,6 +88,14 @@
 	}
 	
 	[NSApp beginSheet:authSheet modalForWindow:window modalDelegate:self didEndSelector:NULL contextInfo:nil];
+}
+
+- (IBAction)select:(id)sender
+{
+	// Check if a checkbox is selected.
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"])
+		[exportButton setEnabled:YES];
+	else [exportButton setEnabled:NO];
 }
 
 - (void)invocateExport
