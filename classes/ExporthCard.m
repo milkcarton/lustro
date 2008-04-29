@@ -65,7 +65,7 @@
 //
 - (int)export
 {
-	if ([contactsList count] < 0) {
+	if ([contactsList count] > 0) {
 		if (fileNameNotOk) {
 			[super setMessage:@"Filename of the export template was incorrect"];
 			return kExportError;
@@ -168,10 +168,13 @@
 			hCardTemplate = [hCardTemplate stringByAppendingString:@"\n</body>\n</html>\n"];
 		}
 		@catch (NSException *exception) {
+			[super setMessage:@"Something unexpected happend"];
 			return kExportError;
 		}
-		if (![self writeToFileWithHtml:hCardTemplate])
+		if (![self writeToFileWithHtml:hCardTemplate]) {
+			[super setMessage:@"There was a problem writing to a file"];
 			return kExportError;
+		}
 	} else {
 		[super setMessage:@"There were no contacts to export"];
 		return kExportWarning;

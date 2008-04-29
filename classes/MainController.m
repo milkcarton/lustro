@@ -34,7 +34,6 @@
 	
 	// Set button state.
 	[self setExportButton];
-	[self setSignInButton];
 }
 
 - (NSMutableDictionary *)indicators
@@ -92,7 +91,7 @@
 	} else {
 		[passwordField setStringValue:@""];
 	}
-	
+	[self setSignInButton];
 	[NSApp beginSheet:authSheet modalForWindow:window modalDelegate:self didEndSelector:NULL contextInfo:nil];
 }
 
