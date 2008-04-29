@@ -9,6 +9,7 @@
 #import "ExportGoogle.h"
 
 #define TIMEOUT 30 // timeout in seconds
+#define MAXLIMIT 9999 // max entries per feed
 
 @implementation ExportGoogle
 
@@ -20,7 +21,7 @@
 	return self;
 }
 
-// (ExportProtocol) Start exporting by removing all old contacts and then importing all new ones
+// (ExportProtocol) Start exporting by removing all old contacts and import all new ones
 - (int)export
 {
 	if ([contactsList count] > 0) {
@@ -30,21 +31,24 @@
 		
 		[self removeAllContacts];
 		[service waitForTicket:ticket timeout:TIMEOUT fetchedObject:nil error:nil];
-		NSLog(@"Done removing");
 		
 		[self createContacts];
-		[service waitForTicket:ticket timeout:TIMEOUT fetchedObject:nil error:nil];
-		NSLog(@"Done adding");
 	}
+	[ticket cancelTicket];
 	[service release];
 	return kExportSuccess;
 }
 
 - (void)authenticateWithUsername:(NSString *)user password:(NSString *)pass
 {
+	// Set version for Google user agent from plist file
+	NSString *lustroVersion = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleVersion"];
+	NSString *userAgent = @"Eggnog-GoogleAPI-";
+	userAgent = [userAgent stringByAppendingString:lustroVersion];
+
 	if (!service) {
 		service = [[GDataServiceGoogleContact alloc] init];
-		[service setUserAgent:@"Eggnog-GoogleAPI-0.1"];
+		[service setUserAgent:userAgent];
 	}
 	
 	username = user;
@@ -55,9 +59,8 @@
 - (void)createContacts
 {
 	// TODO no pictures uploaded at the moment
-	//for (ABPerson *person in contactsList) {
-	NSArray *subarray = [contactsList subarrayWithRange:NSMakeRange(0,20)];
-	for (ABPerson *person in subarray) {
+	for (int i = 0; i < [contactsList count]; i++) {
+		ABPerson *person = [contactsList objectAtIndex:i];
 		NSString *firstName = [person valueForProperty:kABFirstNameProperty];
 		NSString *lastName = [person valueForProperty:kABLastNameProperty];
 		NSString *jobtitle = [person valueForProperty:kABJobTitleProperty];
@@ -117,9 +120,9 @@
 		}
 		
 		if(aim) {
-			for (int i = 0; i < [aim count]; i++) {
-				NSString *label = [aim labelAtIndex:i];
-				NSString *value = [aim valueAtIndex:i];
+			for (int j = 0; j < [aim count]; j++) {
+				NSString *label = [aim labelAtIndex:j];
+				NSString *value = [aim valueAtIndex:j];
 				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"aim"]
 													rel:[self makeRelFromLabel:label]
 												  label:nil
@@ -129,9 +132,9 @@
 		}
 		
 		if(jabber)	{
-			for (int i = 0; i < [jabber count]; i++) {
-				NSString *label = [jabber labelAtIndex:i];
-				NSString *value = [jabber valueAtIndex:i];
+			for (int j = 0; j < [jabber count]; j++) {
+				NSString *label = [jabber labelAtIndex:j];
+				NSString *value = [jabber valueAtIndex:j];
 				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"jabber"]
 													rel:[self makeRelFromLabel:label]
 												  label:nil
@@ -141,9 +144,9 @@
 		}
 		
 		if(msn) {
-			for (int i = 0; i < [msn count]; i++) {
-				NSString *label = [msn labelAtIndex:i];
-				NSString *value = [msn valueAtIndex:i];
+			for (int j = 0; j < [msn count]; j++) {
+				NSString *label = [msn labelAtIndex:j];
+				NSString *value = [msn valueAtIndex:j];
 				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"msn"]
 													rel:[self makeRelFromLabel:label]
 												  label:nil
@@ -153,9 +156,9 @@
 		}
 		
 		if(icq) {
-			for (int i = 0; i < [icq count]; i++) {
-				NSString *label = [icq labelAtIndex:i];
-				NSString *value = [icq valueAtIndex:i];
+			for (int j = 0; j < [icq count]; j++) {
+				NSString *label = [icq labelAtIndex:j];
+				NSString *value = [icq valueAtIndex:j];
 				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"icq"]
 													rel:[self makeRelFromLabel:label]
 												  label:nil
@@ -165,9 +168,9 @@
 		}
 		
 		if(yahoo) {
-			for (int i = 0; i < [yahoo count]; i++) {
-				NSString *label = [yahoo labelAtIndex:i];
-				NSString *value = [yahoo valueAtIndex:i];
+			for (int j = 0; j < [yahoo count]; j++) {
+				NSString *label = [yahoo labelAtIndex:j];
+				NSString *value = [yahoo valueAtIndex:j];
 				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"yahoo"]
 													rel:[self makeRelFromLabel:label]
 												  label:nil
@@ -182,9 +185,9 @@
 		}
 		
 		if(addresses) {
-			for (int i = 0; i < [addresses count]; i++) {
-				NSString *label = [addresses labelAtIndex:i];
-				NSDictionary *value = [addresses valueAtIndex:i];
+			for (int j = 0; j < [addresses count]; j++) {
+				NSString *label = [addresses labelAtIndex:j];
+				NSDictionary *value = [addresses valueAtIndex:j];
 				NSString *address = @"";
 				
 				if ([value objectForKey:@"Street"]) {
@@ -215,45 +218,40 @@
 				
 				GDataPostalAddress *gAddress = [GDataPostalAddress postalAddressWithString:address];
 				[gAddress setRel:[self makeRelFromLabel:label]];
-				if (i == 0) {
-					[gAddress setIsPrimary:true];
-				}
 				[contact addPostalAddress:gAddress];
 			}
 		}
 		
 		if(mails) {
-			for (int i = 0; i < [mails count]; i++) {
-				NSString *label = [mails labelAtIndex:i];
-				NSString *mail = [mails valueAtIndex:i];
+			for (int j = 0; j < [mails count]; j++) {
+				NSString *label = [mails labelAtIndex:j];
+				NSString *mail = [mails valueAtIndex:j];
 				label = [self cleanLabel:label];
 				[contact addEmailAddress:[GDataEmail emailWithLabel:label address:mail]];
 			}
 		}
 
 		if(phones) {
-			for (int i = 0; i < [phones count]; i++) {
-				NSString *label = [phones labelAtIndex:i];
-				NSString *phone = [phones valueAtIndex:i];
+			for (int j = 0; j < [phones count]; j++) {
+				NSString *label = [phones labelAtIndex:j];
+				NSString *phone = [phones valueAtIndex:j];
 				GDataPhoneNumber *gPhone = [GDataPhoneNumber phoneNumberWithString:phone];
 				[gPhone setRel:[self makeRelFromLabel:label]];
 				[contact addPhoneNumber:gPhone];
 			}
 		}
 
+
 		ticket = [service fetchContactEntryByInsertingEntry:contact
-										forFeedURL:[GDataServiceGoogleContact contactFeedURLForUserID:username]
-										  delegate:self
-								 didFinishSelector:@selector(ticket:importFinishedWithFeed:)
-								   didFailSelector:nil];
+												 forFeedURL:[GDataServiceGoogleContact contactFeedURLForUserID:username]
+												   delegate:self
+										  didFinishSelector:nil
+											didFailSelector:@selector(ticket:failedWithError:)];
+		// TODO It waits for each contact, this is not efficient, batch would be better but is not supported by Google yet
+		[service waitForTicket:ticket timeout:TIMEOUT fetchedObject:nil error:nil];
+
 	}
 }
-
-- (void)ticket:(GDataServiceTicket *)ticket importFinishedWithFeed:(GDataFeedContact *)feed
-{
-	NSLog(@"Adding a contact to the service");
-}
-
 
 - (NSString *)makeRelFromLabel:(NSString *)label
 {
@@ -281,16 +279,16 @@
 
 -(void)removeAllContacts
 {
-	// FIXME timing not right
-	ticket = [service fetchContactFeedForUsername:username 
-								delegate:self
-						didFinishSelector:@selector(ticket:deleteFinishedWithFeed:)
+	GDataQueryContact *query = [GDataQueryContact contactQueryForUserID:username];
+	[query setMaxResults:MAXLIMIT];
+	ticket = [service fetchContactQuery:query
+							   delegate:self 
+					  didFinishSelector:@selector(ticket:deleteFinishedWithFeed:) 
 						didFailSelector:@selector(ticket:failedWithError:)];
 }
 
 - (void)ticket:(GDataServiceTicket *)ticket deleteFinishedWithFeed:(GDataFeedContact *)feed
 {
-	NSLog(@"Start removing %i contacts", [[feed entries] count]);
 	// Remove contact per contact
 	for (GDataEntryContact *contact in [feed entries]) {
 		NSArray *entryLinks = [contact links];
@@ -299,17 +297,14 @@
 		[service deleteContactResourceURL:editURL
 								 delegate:self 
 						didFinishSelector:nil 
-						  didFailSelector:nil];
+						  didFailSelector:@selector(ticket:failedWithError:)];
 	}
 }
 
-- (void)ticket:(GDataServiceTicket *)ticket failedWithError:(NSError *)error {
+- (void)ticket:(GDataServiceTicket *)aTicket failedWithError:(NSError *)error {
+	// Error 409 conflict: duplicate primary mail addresses maybe?
 	// TODO error handling
 	NSLog(@"ERROR %@", [error localizedDescription]);
-	/*
-	NSURL *captchaUnlockURL = [NSURL URLWithString:@"https://www.google.com/accounts/DisplayUnlockCaptcha"];
-	[[NSWorkspace sharedWorkspace] openURL:captchaUnlockURL];
-	*/
 }
-
+	
 @end
