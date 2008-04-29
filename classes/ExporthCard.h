@@ -14,9 +14,10 @@
 @interface ExporthCard : ExportController < ExportProtocol > {
 	NSString *hCardTemplate;
 	NSString *userName;
-	BOOL writeErrorOccured;
+	BOOL fileNameNotOk;
 }
 
+- (id)initWithAddressBook:(ABAddressBook *)addressBook;
 - (BOOL)writeToFileWithHtml:(NSString *)html;
 - (NSString *)addHTMLEntity:(NSString *)value withKey:(NSString *)key;
 - (NSString *)addHTMLEntity:(NSString *)value withKey:(NSString *)key withTitle:(NSString *)title;

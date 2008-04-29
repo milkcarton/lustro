@@ -21,6 +21,7 @@
     [NSValueTransformer setValueTransformer:statusValueTransformer forName:@"StatusValueTransformer"];
 	NSValueTransformer *progressValueTransformer = [[ProgressValueTransformer alloc] init];
     [NSValueTransformer setValueTransformer:progressValueTransformer forName:@"ProgressValueTransformer"];
+	
 	return self;
 }
 

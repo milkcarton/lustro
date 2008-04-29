@@ -18,30 +18,28 @@
 - (id)initWithAddressBook:(ABAddressBook *)addressBook
 {
 	self = [super initWithAddressBook:addressBook];
-	writeErrorOccured = NO;
-	contactsList = [addressBook people];
 	
 	// Create username to use in filename.
 	userName = @"";
 	ABPerson *me = [addressBook me];
-	NSString *firstName = [me valueForProperty:kABFirstNameProperty];
-	NSString *lastName = [me valueForProperty:kABLastNameProperty];
-	if (firstName) userName = [userName stringByAppendingString:firstName];
-	if (lastName) {
-		if (firstName) userName = [userName stringByAppendingString:@" "];
-		userName = [userName stringByAppendingString:lastName];
-	}
-	if (firstName || lastName) userName = [userName stringByAppendingString:@"'s "];
-	userName = [userName stringByAppendingString:@"contacts"];
+	if (me) {
+		NSString *firstName = [me valueForProperty:kABFirstNameProperty];
+		NSString *lastName = [me valueForProperty:kABLastNameProperty];
+		if (firstName) userName = [userName stringByAppendingString:firstName];
+		if (lastName) {
+			if (firstName) userName = [userName stringByAppendingString:@" "];
+			userName = [userName stringByAppendingString:lastName];
+		}
+		if (firstName || lastName) userName = [userName stringByAppendingString:@"'s "];
+		userName = [userName stringByAppendingString:@"contacts"];
+	} else userName = @"contacts";
 	
 	// Read template from file in the resources directory
 	NSError *error;
 	NSString *path = [[[NSBundle mainBundle] autorelease] pathForResource:@"hCardTemplate" ofType:@""];
 	hCardTemplate = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
-	if (hCardTemplate == nil) { 
-		NSLog(@"Error reading hCard template file at %@\n%@", path, [error localizedFailureReason]);
-		writeErrorOccured = YES;
-	}
+	fileNameNotOk = NO;
+	if (hCardTemplate == nil) fileNameNotOk = YES;
 	return self;
 }
 
@@ -67,9 +65,11 @@
 //
 - (int)export
 {
-	if ([contactsList count] > 0) {
-		if (writeErrorOccured)
+	if ([contactsList count] < 0) {
+		if (fileNameNotOk) {
+			[super setMessage:@"Filename of the export template was incorrect"];
 			return kExportError;
+		}
 		@try {
 			for (ABPerson *person in contactsList) {
 				hCardTemplate = [hCardTemplate stringByAppendingString:@"<div class=\"vcard\">\n"];
@@ -173,6 +173,7 @@
 		if (![self writeToFileWithHtml:hCardTemplate])
 			return kExportError;
 	} else {
+		[super setMessage:@"There were no contacts to export"];
 		return kExportWarning;
 	}
 	return kExportSuccess;

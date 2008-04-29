@@ -29,4 +29,5 @@
 	return label;
 }
 
+@synthesize message;
 @end

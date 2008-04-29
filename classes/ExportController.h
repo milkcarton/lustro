@@ -18,9 +18,11 @@ typedef enum {
 
 @interface ExportController : NSOperation {
 	NSArray *contactsList;
+	NSString *message;
 }
 
 - (id)initWithAddressBook:(ABAddressBook *)addressBook;
 - (NSString *)cleanLabel:(NSString *)label;
 
+@property (copy, readwrite) NSString *message;
 @end
