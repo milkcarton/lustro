@@ -12,11 +12,13 @@
 #import "ExportController.h"
 #import "ExportProtocol.h"
 #import "GData/GDataContacts.h"
+#import "GData/GDataFeedGoogleBase.h"
 
 @interface ExportGoogle : ExportController < ExportProtocol > {
 	GDataServiceGoogleContact* service;
 	NSString *username;
 	NSString *password;
+	GDataServiceTicket *ticket;
 }
 
 // Get a contact service object with the current username/password
@@ -24,13 +26,11 @@
 - (void)authenticateWithUsername:(NSString *)user password:(NSString *)pass;
 
 // Creates a GData contact with the information from Address Book
-- (void)createGDataContacts;
-// Translates Address Book labels to Googles rel attributes or to the 'other' attribute if nothing found
-- (NSString *)makeRelFromLabel:(NSString *)label;
-
+- (void)createContacts;
 // Fetch the feed with all the Google Contacts and call the didFinishSelector to remove each contact
 - (void)removeAllContacts;
-// Runs over the fetched contacts feed and removes each contact entry from the Google Contacts list
-- (void)ticket:(GDataServiceTicket *)ticket finishedWithFeed:(GDataFeedContact *)feed;
+
+// Translates Address Book labels to Googles rel attributes or to the 'other' attribute if nothing found
+- (NSString *)makeRelFromLabel:(NSString *)label;
 
 @end

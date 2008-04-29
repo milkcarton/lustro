@@ -8,7 +8,8 @@
 
 #import "ExportGoogle.h"
 
-// FIXME adds 162 cards while I have 163 contacts
+#define TIMEOUT 30 // timeout in seconds
+
 @implementation ExportGoogle
 
 // (ExportController) Adds the contacts to the contactList instance variable
@@ -23,11 +24,17 @@
 - (int)export
 {
 	if ([contactsList count] > 0) {
-		// TODO disable logging
-		[GDataHTTPFetcher setIsLoggingEnabled:YES];
+		// Logging, disabled for release versions
+		//[GDataHTTPFetcher setIsLoggingEnabled:YES];
 		[self authenticateWithUsername:@"lustroapp@gmail.com" password:@"jellesimon"];
-		//[self removeAllContacts];
-		[self createGDataContacts];
+		
+		[self removeAllContacts];
+		[service waitForTicket:ticket timeout:TIMEOUT fetchedObject:nil error:nil];
+		NSLog(@"Done removing");
+		
+		[self createContacts];
+		[service waitForTicket:ticket timeout:TIMEOUT fetchedObject:nil error:nil];
+		NSLog(@"Done adding");
 	}
 	[service release];
 	return kExportSuccess;
@@ -38,8 +45,6 @@
 	if (!service) {
 		service = [[GDataServiceGoogleContact alloc] init];
 		[service setUserAgent:@"Eggnog-GoogleAPI-0.1"];
-		[service setShouldCacheDatedData:YES]; 
-		[service setServiceShouldFollowNextLinks:YES];
 	}
 	
 	username = user;
@@ -47,15 +52,12 @@
 	[service setUserCredentialsWithUsername:username password:password];
 }
 
-- (void)createGDataContacts
+- (void)createContacts
 {
-	// TODO not exporting AIM mails yet, add this feature
 	// TODO no pictures uploaded at the moment
-	// TODO Google Contacts has an 'other' field, maybe use this for birthdays or websites
-	
-	for (ABPerson *person in contactsList) {
-	//NSArray *subarray = [contactsList subarrayWithRange:NSMakeRange(0,20)];
-	//for (ABPerson *person in subarray) {
+	//for (ABPerson *person in contactsList) {
+	NSArray *subarray = [contactsList subarrayWithRange:NSMakeRange(0,20)];
+	for (ABPerson *person in subarray) {
 		NSString *firstName = [person valueForProperty:kABFirstNameProperty];
 		NSString *lastName = [person valueForProperty:kABLastNameProperty];
 		NSString *jobtitle = [person valueForProperty:kABJobTitleProperty];
@@ -65,13 +67,15 @@
 		ABMultiValue *msn = [person valueForProperty:kABMSNInstantProperty];
 		ABMultiValue *icq = [person valueForProperty:kABICQInstantProperty];
 		ABMultiValue *yahoo = [person valueForProperty:kABYahooInstantProperty];
-		// Nickname seems to be missing in Google Contacts
+		// Nickname seems to be missing in Google Contacts, use it as title if no first- or lastname available
+		NSString *nickname = [person valueForProperty:kABNicknameProperty];
 		NSString *content = [person valueForProperty:kABNoteProperty];
 		ABMultiValue *addresses = [person valueForProperty:kABAddressProperty];
 		ABMultiValue *mails = [person valueForProperty:kABEmailProperty];
-		// URLs seems to be missing in Google Contacts
+		// URLs seem to be missing in Google Contacts
 		ABMultiValue *phones = [person valueForProperty:kABPhoneProperty];
-		// Birthday seems to be missing in Google Contacts
+		// Birthdays seem to be missing in Google Contacts
+		//NSImage *personImage = [[NSImage alloc] initWithData:[person imageData]]; 
 		NSString *title = @"";
 		
 		if (firstName) {		
@@ -82,6 +86,10 @@
 			title = [title stringByAppendingString:lastName];
 		}
 		
+		if (!firstName && !lastName && nickname) {
+			title = nickname;
+		}
+
 		// Set company name as title if needed (Google will show an empty entry for a company if not)
 		NSNumber *flagsValue = [person valueForProperty:kABPersonFlags];
 		int flags = [flagsValue intValue];
@@ -91,6 +99,13 @@
 		
 		GDataEntryContact *contact = [GDataEntryContact contactEntryWithTitle:title];
 		
+		/*
+		if(personImage) {
+			[contact setUserData:personImage];
+		}
+		[personImage release]; 	
+		*/
+			 
 		if(organization) {
 			GDataOrganization *gOrganization = [GDataOrganization organizationWithName:organization];
 			if(jobtitle) {
@@ -110,7 +125,6 @@
 												  label:nil
 												address:value];
 				[contact addIMAddress:gIM];
-				
 			}
 		}
 		
@@ -208,41 +222,38 @@
 			}
 		}
 		
-		// TODO always sets first mail in the list as main one, this could be better
 		if(mails) {
 			for (int i = 0; i < [mails count]; i++) {
 				NSString *label = [mails labelAtIndex:i];
 				NSString *mail = [mails valueAtIndex:i];
 				label = [self cleanLabel:label];
 				[contact addEmailAddress:[GDataEmail emailWithLabel:label address:mail]];
-				if (i == 0) {
-					[contact setPrimaryEmailAddress:[GDataEmail emailWithLabel:label address:mail]];
-				}
 			}
 		}
 
-		// TODO always sets first phone in the list as main one, this could be better
 		if(phones) {
 			for (int i = 0; i < [phones count]; i++) {
 				NSString *label = [phones labelAtIndex:i];
 				NSString *phone = [phones valueAtIndex:i];
 				GDataPhoneNumber *gPhone = [GDataPhoneNumber phoneNumberWithString:phone];
 				[gPhone setRel:[self makeRelFromLabel:label]];
-				if (i == 0) {
-					[gPhone setIsPrimary:true];
-				}
 				[contact addPhoneNumber:gPhone];
 			}
 		}
-	
-		// Add entry to the service and upload in batch (automatically)
-		[service fetchContactEntryByInsertingEntry:contact
+
+		ticket = [service fetchContactEntryByInsertingEntry:contact
 										forFeedURL:[GDataServiceGoogleContact contactFeedURLForUserID:username]
 										  delegate:self
-								 didFinishSelector:nil
+								 didFinishSelector:@selector(ticket:importFinishedWithFeed:)
 								   didFailSelector:nil];
 	}
 }
+
+- (void)ticket:(GDataServiceTicket *)ticket importFinishedWithFeed:(GDataFeedContact *)feed
+{
+	NSLog(@"Adding a contact to the service");
+}
+
 
 - (NSString *)makeRelFromLabel:(NSString *)label
 {
@@ -270,15 +281,16 @@
 
 -(void)removeAllContacts
 {
-	// FIXME seems asynchronious so it's adding contacts while removing, not good
-	[service fetchContactFeedForUsername:username 
+	// FIXME timing not right
+	ticket = [service fetchContactFeedForUsername:username 
 								delegate:self
-						didFinishSelector:@selector(ticket:finishedWithFeed:)
-						didFailSelector:nil];
+						didFinishSelector:@selector(ticket:deleteFinishedWithFeed:)
+						didFailSelector:@selector(ticket:failedWithError:)];
 }
 
-- (void)ticket:(GDataServiceTicket *)ticket finishedWithFeed:(GDataFeedContact *)feed
+- (void)ticket:(GDataServiceTicket *)ticket deleteFinishedWithFeed:(GDataFeedContact *)feed
 {
+	NSLog(@"Start removing %i contacts", [[feed entries] count]);
 	// Remove contact per contact
 	for (GDataEntryContact *contact in [feed entries]) {
 		NSArray *entryLinks = [contact links];
@@ -288,7 +300,16 @@
 								 delegate:self 
 						didFinishSelector:nil 
 						  didFailSelector:nil];
-	 }
+	}
+}
+
+- (void)ticket:(GDataServiceTicket *)ticket failedWithError:(NSError *)error {
+	// TODO error handling
+	NSLog(@"ERROR %@", [error localizedDescription]);
+	/*
+	NSURL *captchaUnlockURL = [NSURL URLWithString:@"https://www.google.com/accounts/DisplayUnlockCaptcha"];
+	[[NSWorkspace sharedWorkspace] openURL:captchaUnlockURL];
+	*/
 }
 
 @end

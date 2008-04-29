@@ -10,7 +10,6 @@
 		600D319C0DBFDEF600A96491 /* success.tif in Resources */ = {isa = PBXBuildFile; fileRef = 600D319A0DBFDEF600A96491 /* success.tif */; };
 		600D319D0DBFDEF600A96491 /* error.tif in Resources */ = {isa = PBXBuildFile; fileRef = 600D319B0DBFDEF600A96491 /* error.tif */; };
 		607C58120DBBB0E7009BBEF8 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */; };
-		60997D780DC3E33700518344 /* lock.tif in Resources */ = {isa = PBXBuildFile; fileRef = 60997D750DC3E33700518344 /* lock.tif */; };
 		60997D790DC3E33700518344 /* lockHover.tif in Resources */ = {isa = PBXBuildFile; fileRef = 60997D760DC3E33700518344 /* lockHover.tif */; };
 		60997D7A0DC3E33700518344 /* lockClick.tif in Resources */ = {isa = PBXBuildFile; fileRef = 60997D770DC3E33700518344 /* lockClick.tif */; };
 		60997D930DC3E41B00518344 /* CustomAuthButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 60997D920DC3E41B00518344 /* CustomAuthButton.m */; };
@@ -59,7 +58,6 @@
 		600D319B0DBFDEF600A96491 /* error.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = error.tif; path = images/error.tif; sourceTree = "<group>"; };
 		607C58100DBBB0E7009BBEF8 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainController.h; path = classes/MainController.h; sourceTree = "<group>"; };
 		607C58110DBBB0E7009BBEF8 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainController.m; path = classes/MainController.m; sourceTree = "<group>"; };
-		60997D750DC3E33700518344 /* lock.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lock.tif; path = images/lock.tif; sourceTree = "<group>"; };
 		60997D760DC3E33700518344 /* lockHover.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lockHover.tif; path = images/lockHover.tif; sourceTree = "<group>"; };
 		60997D770DC3E33700518344 /* lockClick.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lockClick.tif; path = images/lockClick.tif; sourceTree = "<group>"; };
 		60997D910DC3E41B00518344 /* CustomAuthButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomAuthButton.h; path = classes/CustomAuthButton.h; sourceTree = "<group>"; };
@@ -186,7 +184,6 @@
 		600D31980DBFDEED00A96491 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				60997D750DC3E33700518344 /* lock.tif */,
 				60997D760DC3E33700518344 /* lockHover.tif */,
 				60997D770DC3E33700518344 /* lockClick.tif */,
 				609F472D0DC3474400AE82AA /* warning.tif */,
@@ -290,7 +287,6 @@
 				600D319C0DBFDEF600A96491 /* success.tif in Resources */,
 				600D319D0DBFDEF600A96491 /* error.tif in Resources */,
 				609F472E0DC3474400AE82AA /* warning.tif in Resources */,
-				60997D780DC3E33700518344 /* lock.tif in Resources */,
 				60997D790DC3E33700518344 /* lockHover.tif in Resources */,
 				60997D7A0DC3E33700518344 /* lockClick.tif in Resources */,
 			);
