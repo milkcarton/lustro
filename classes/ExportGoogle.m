@@ -59,7 +59,8 @@
 - (void)createContacts
 {
 	// TODO no pictures uploaded at the moment
-	for (int i = 0; i < [contactsList count]; i++) {
+	//for (int i = 0; i < [contactsList count]; i++) {
+	for (int i = 0; i < 20; i++) {
 		ABPerson *person = [contactsList objectAtIndex:i];
 		NSString *firstName = [person valueForProperty:kABFirstNameProperty];
 		NSString *lastName = [person valueForProperty:kABLastNameProperty];
@@ -266,7 +267,8 @@
 	if([label caseInsensitiveCompare:@"other"] == NSOrderedSame) { return kGDataPhoneNumberOther; }
 	// For instant messengers
 	if([label caseInsensitiveCompare:@"aim"] == NSOrderedSame) { return kGDataIMProtocolAIM; }
-	if([label caseInsensitiveCompare:@"gtalk"] == NSOrderedSame) { return kGDataIMProtocolGoogleTalk; }
+	// kGDataIMProtocolGoogleTalk seems to be an illegal value for Google
+	//if([label caseInsensitiveCompare:@"gtalk"] == NSOrderedSame) { return kGDataIMProtocolGoogleTalk; }
 	if([label caseInsensitiveCompare:@"icq"] == NSOrderedSame) { return kGDataIMProtocolICQ; }
 	if([label caseInsensitiveCompare:@"jabber"] == NSOrderedSame) { return kGDataIMProtocolJabber; }
 	if([label caseInsensitiveCompare:@"msn"] == NSOrderedSame) { return kGDataIMProtocolMSN; }
@@ -301,10 +303,14 @@
 	}
 }
 
-- (void)ticket:(GDataServiceTicket *)aTicket failedWithError:(NSError *)error {
-	// Error 409 conflict: duplicate primary mail addresses maybe?
-	// TODO error handling
-	NSLog(@"ERROR %@", [error localizedDescription]);
+- (void)ticket:(GDataServiceTicket *)aTicket failedWithError:(NSError *)error {	
+	if([error code] == 409) {
+		NSLog(@"ERROR Naming conflict, seems like duplicate mailaddresses or something.");
+    } else if ([authError isEqual:kGDataServiceErrorCaptchaRequired]) {
+		NSLog(@"ERROR Sounds like you'll need a captcha for.");
+    } else {
+		NSLog(@"ERROR %@", [error localizedDescription]);
+	}
 }
 	
 @end
