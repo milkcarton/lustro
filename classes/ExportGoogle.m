@@ -26,11 +26,14 @@
 {
 	if ([contactsList count] > 0) {
 		// Logging, disabled for release versions
-		//[GDataHTTPFetcher setIsLoggingEnabled:YES];
+		[GDataHTTPFetcher setIsLoggingEnabled:YES];
 		[self authenticateWithUsername:@"lustroapp@gmail.com" password:@"jellesimon"];
 		
 		[self removeAllContacts];
 		[service waitForTicket:ticket timeout:TIMEOUT fetchedObject:nil error:nil];
+
+		// It seems that some 409 (duplicate mail) errors are caused by an contact that was not yet completly removed
+		sleep(1);
 		
 		[self createContacts];
 	}
@@ -242,7 +245,6 @@
 			}
 		}
 
-
 		ticket = [service fetchContactEntryByInsertingEntry:contact
 												 forFeedURL:[GDataServiceGoogleContact contactFeedURLForUserID:username]
 												   delegate:self
@@ -304,13 +306,22 @@
 }
 
 - (void)ticket:(GDataServiceTicket *)aTicket failedWithError:(NSError *)error {	
+	// Extract the contact's name for the contact that whent fubar
+	NSDictionary *userInfo =[error userInfo];
+	NSString *authError = [userInfo authenticationError];
+	NSXMLDocument *userXml = [[NSXMLDocument alloc] initWithXMLString:[userInfo valueForKey:@"error"] options:NSXMLNodeOptionsNone error:nil];
+	NSString *title = [[userXml nodesForXPath:@"/entry/title/text()" error:nil] objectAtIndex:0];
+	[userXml release];
+
+	NSString *errorMessage = @"ERROR: ";
 	if([error code] == 409) {
-		NSLog(@"ERROR Naming conflict, seems like duplicate mailaddresses or something.");
+		errorMessage = [errorMessage stringByAppendingString:@"Naming conflict, seems like duplicate mailaddresses or something"];
     } else if ([authError isEqual:kGDataServiceErrorCaptchaRequired]) {
-		NSLog(@"ERROR Sounds like you'll need a captcha for.");
+		errorMessage = [errorMessage stringByAppendingString:@"Sounds like you'll need a captcha"];
     } else {
-		NSLog(@"ERROR %@", [error localizedDescription]);
+		errorMessage = [errorMessage stringByAppendingString:@"Some other uncategorized error"];
 	}
+	NSLog(@"%@ for %@.", errorMessage, title);
 }
 	
 @end
