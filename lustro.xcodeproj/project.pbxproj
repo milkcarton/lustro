@@ -26,6 +26,8 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		F43B68B20DCC8F21008D7642 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43B68B10DCC8F21008D7642 /* Sparkle.framework */; };
+		F43B68B60DCC8F51008D7642 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F43B68B10DCC8F21008D7642 /* Sparkle.framework */; };
 		F44B40A80DBF9D5E00623BBA /* GData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44B40A70DBF9D5E00623BBA /* GData.framework */; };
 		F44B414E0DBF9D6900623BBA /* GData.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F44B40A70DBF9D5E00623BBA /* GData.framework */; };
 		F49E3D170DBE6C1A0068734D /* ExportGoogle.m in Sources */ = {isa = PBXBuildFile; fileRef = F49E3D160DBE6C1A0068734D /* ExportGoogle.m */; };
@@ -38,6 +40,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F43B68B60DCC8F51008D7642 /* Sparkle.framework in CopyFiles */,
 				F44B414E0DBF9D6900623BBA /* GData.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +81,7 @@
 		60DE9CB80DBD448E00D3EC93 /* ExportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExportController.m; path = classes/ExportController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* lustro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lustro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F43B68B10DCC8F21008D7642 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = frameworks/Sparkle.framework; sourceTree = SOURCE_ROOT; };
 		F44B40A70DBF9D5E00623BBA /* GData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GData.framework; path = frameworks/GData.framework; sourceTree = SOURCE_ROOT; };
 		F49E3D150DBE6C1A0068734D /* ExportGoogle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportGoogle.h; path = classes/ExportGoogle.h; sourceTree = "<group>"; };
 		F49E3D160DBE6C1A0068734D /* ExportGoogle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExportGoogle.m; path = classes/ExportGoogle.m; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 				60DE9BF00DBD373800D3EC93 /* AddressBook.framework in Frameworks */,
 				F44B40A80DBF9D5E00623BBA /* GData.framework in Frameworks */,
 				60997E490DC3ED2100518344 /* Security.framework in Frameworks */,
+				F43B68B20DCC8F21008D7642 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +118,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F43B68B10DCC8F21008D7642 /* Sparkle.framework */,
 				60997E480DC3ED2100518344 /* Security.framework */,
 				F44B40A70DBF9D5E00623BBA /* GData.framework */,
 				60DE9BEF0DBD373800D3EC93 /* AddressBook.framework */,

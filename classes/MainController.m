@@ -54,18 +54,23 @@
 
 - (IBAction)authenticate:(id)sender
 {
+	username = [usernameField stringValue];
+	if ([username hasSuffix:@"@gmail.com"] == FALSE) {
+		username = [username stringByAppendingFormat:@"@gmail.com"];
+	}	
+	
 	if ([[defaults valueForKey:@"KeyChainSave"] boolValue]) {
 		// add or modify keychain item.
-		BOOL exists = [AGKeychain checkForExistanceOfKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:[usernameField stringValue]];
+		BOOL exists = [AGKeychain checkForExistanceOfKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username];
 		if (exists) {
-			BOOL modified = [AGKeychain modifyKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:[usernameField stringValue] withNewPassword:[passwordField stringValue]];
+			BOOL modified = [AGKeychain modifyKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username withNewPassword:[passwordField stringValue]];
 			if (modified) {
-				[defaults setObject:[usernameField stringValue] forKey:@"UserName"];
+				[defaults setObject:username forKey:@"UserName"];
 			}
 		} else {
-			BOOL added = [AGKeychain addKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:[usernameField stringValue] withPassword:[passwordField stringValue]];
+			BOOL added = [AGKeychain addKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username withPassword:[passwordField stringValue]];
 			if (added) {
-				[defaults setObject:[usernameField stringValue] forKey:@"UserName"];
+				[defaults setObject:username forKey:@"UserName"];
 			}
 		}
 	} else {
@@ -135,7 +140,13 @@
 	// If Google is checked
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"]) {
 		[indicators setValue:@"1" forKey:@"google"];
-		ExportGoogle *controller = [[ExportGoogle alloc] initWithAddressBook:book];
+		NSString *googleUserName = username;
+		NSString *googlePassword = [passwordField stringValue];
+
+		// TODO the fields are empty when not opened first, load the username and password at startup
+		NSLog(@"U----> %@",googleUserName);
+		
+		ExportGoogle *controller = [[ExportGoogle alloc] initWithAddressBook:book username:googleUserName password:googlePassword];
 		[controller export];
 		[controller release];
 		[indicators setValue:@"2" forKey:@"google"];

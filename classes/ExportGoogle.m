@@ -8,8 +8,8 @@
 
 #import "ExportGoogle.h"
 
-#define TIMEOUT 30 // timeout in seconds
-#define MAXLIMIT 9999 // max entries per feed
+#define TIMEOUT 30		// timeout in seconds
+#define MAXLIMIT 9999	// max entries per feed
 
 @implementation ExportGoogle
 
@@ -21,13 +21,21 @@
 	return self;
 }
 
+- (id)initWithAddressBook:(ABAddressBook *)addressBook username:(NSString *)user password:(NSString *)pass
+{
+	username = user;
+	password = pass;
+	[self initWithAddressBook:addressBook];
+	return self;
+}
+
 // (ExportProtocol) Start exporting by removing all old contacts and import all new ones
 - (int)export
 {
 	if ([contactsList count] > 0) {
 		// Logging, disabled for release versions
 		[GDataHTTPFetcher setIsLoggingEnabled:YES];
-		[self authenticateWithUsername:@"lustroapp@gmail.com" password:@"jellesimon"];
+		[self authenticate];
 		
 		[self removeAllContacts];
 		[service waitForTicket:ticket timeout:TIMEOUT fetchedObject:nil error:nil];
@@ -42,7 +50,7 @@
 	return kExportSuccess;
 }
 
-- (void)authenticateWithUsername:(NSString *)user password:(NSString *)pass
+- (void)authenticate
 {
 	// Set version for Google user agent from plist file
 	NSString *lustroVersion = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleVersion"];
@@ -53,9 +61,7 @@
 		service = [[GDataServiceGoogleContact alloc] init];
 		[service setUserAgent:userAgent];
 	}
-	
-	username = user;
-	password = pass;
+
 	[service setUserCredentialsWithUsername:username password:password];
 }
 
@@ -127,10 +133,7 @@
 			for (int j = 0; j < [aim count]; j++) {
 				NSString *label = [aim labelAtIndex:j];
 				NSString *value = [aim valueAtIndex:j];
-				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"aim"]
-													rel:[self makeRelFromLabel:label]
-												  label:nil
-												address:value];
+				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"aim"] rel:[self makeRelFromLabel:label] label:nil address:value];
 				[contact addIMAddress:gIM];
 			}
 		}
@@ -139,10 +142,7 @@
 			for (int j = 0; j < [jabber count]; j++) {
 				NSString *label = [jabber labelAtIndex:j];
 				NSString *value = [jabber valueAtIndex:j];
-				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"jabber"]
-													rel:[self makeRelFromLabel:label]
-												  label:nil
-												address:value];
+				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"jabber"] rel:[self makeRelFromLabel:label] label:nil address:value];
 				[contact addIMAddress:gIM];
 			}
 		}
@@ -151,10 +151,7 @@
 			for (int j = 0; j < [msn count]; j++) {
 				NSString *label = [msn labelAtIndex:j];
 				NSString *value = [msn valueAtIndex:j];
-				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"msn"]
-													rel:[self makeRelFromLabel:label]
-												  label:nil
-												address:value];
+				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"msn"]	rel:[self makeRelFromLabel:label] label:nil address:value];
 				[contact addIMAddress:gIM];
 			}
 		}
@@ -163,10 +160,7 @@
 			for (int j = 0; j < [icq count]; j++) {
 				NSString *label = [icq labelAtIndex:j];
 				NSString *value = [icq valueAtIndex:j];
-				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"icq"]
-													rel:[self makeRelFromLabel:label]
-												  label:nil
-												address:value];
+				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"icq"] rel:[self makeRelFromLabel:label] label:nil address:value];
 				[contact addIMAddress:gIM];
 			}
 		}
@@ -175,10 +169,7 @@
 			for (int j = 0; j < [yahoo count]; j++) {
 				NSString *label = [yahoo labelAtIndex:j];
 				NSString *value = [yahoo valueAtIndex:j];
-				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"yahoo"]
-													rel:[self makeRelFromLabel:label]
-												  label:nil
-												address:value];
+				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"yahoo"] rel:[self makeRelFromLabel:label] label:nil address:value];
 				[contact addIMAddress:gIM];
 			}
 		}
@@ -313,7 +304,7 @@
 	NSString *title = [[userXml nodesForXPath:@"/entry/title/text()" error:nil] objectAtIndex:0];
 	[userXml release];
 
-	NSString *errorMessage = @"ERROR: ";
+	NSString *errorMessage = @"";
 	if([error code] == 409) {
 		errorMessage = [errorMessage stringByAppendingString:@"Naming conflict, seems like duplicate mailaddresses or something"];
     } else if ([authError isEqual:kGDataServiceErrorCaptchaRequired]) {
@@ -321,7 +312,10 @@
     } else {
 		errorMessage = [errorMessage stringByAppendingString:@"Some other uncategorized error"];
 	}
-	NSLog(@"%@ for %@.", errorMessage, title);
+	//errorMessage = [errorMessage stringByAppendingString:title];	 DOESNT WORK, WHAT THE??
+	[super setMessage:errorMessage];
+	
+		NSLog(@"%@ for %@.", errorMessage, title);
 }
 	
 @end

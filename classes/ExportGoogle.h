@@ -21,16 +21,13 @@
 	GDataServiceTicket *ticket;
 }
 
-// Get a contact service object with the current username/password
 // A "service" object handles networking tasks. Service objects contain user authentication information as well as networking state information (such as cookies and the "last modified" date for fetched data.)
-- (void)authenticateWithUsername:(NSString *)user password:(NSString *)pass;
 
-// Creates a GData contact with the information from Address Book
-- (void)createContacts;
-// Fetch the feed with all the Google Contacts and call the didFinishSelector to remove each contact
-- (void)removeAllContacts;
+- (id)initWithAddressBook:(ABAddressBook *)addressBook username:(NSString *)user password:(NSString *)pass; 
+- (void)authenticate;									// Get a contact service object with the current username/password
+- (void)createContacts;									// Creates a GData contact with the information from Address Book
+- (void)removeAllContacts;								// Fetch the feed with all the Google Contacts and call the didFinishSelector to remove each contact
 
-// Translates Address Book labels to Googles rel attributes or to the 'other' attribute if nothing found
-- (NSString *)makeRelFromLabel:(NSString *)label;
+- (NSString *)makeRelFromLabel:(NSString *)label;		// Translates Address Book labels to Googles rel attributes or to the 'other' attribute if nothing found
 
 @end
