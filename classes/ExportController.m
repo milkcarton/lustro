@@ -12,10 +12,12 @@
 //
 // Initializes the controller with the contactlist.
 //
-- (id)initWithAddressBook:(ABAddressBook *)addressBook
+- (id)initWithAddressBook:(ABAddressBook *)addressBook target:(id)errorCtrl selector:(SEL)msg
 {
 	self = [super init];
 	contactsList = [addressBook people];
+	target = errorCtrl;
+	addMessage = msg;
 	return self;
 }
 
@@ -27,6 +29,11 @@
 		return [label substringWithRange:NSMakeRange(4, end)];
 	}
 	return label;
+}
+
+- (void)addError:(NSString *)errorMsg
+{
+	[target performSelector:addMessage withObject:errorMsg withObject:[self className]];
 }
 
 @synthesize message;

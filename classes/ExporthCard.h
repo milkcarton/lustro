@@ -17,7 +17,7 @@
 	BOOL fileNameNotOk;
 }
 
-- (id)initWithAddressBook:(ABAddressBook *)addressBook;
+- (id)initWithAddressBook:(ABAddressBook *)addressBook target:(id)errorCtrl selector:(SEL)msg;
 - (BOOL)writeToFileWithHtml:(NSString *)html;
 - (NSString *)addHTMLEntity:(NSString *)value withKey:(NSString *)key;
 - (NSString *)addHTMLEntity:(NSString *)value withKey:(NSString *)key withTitle:(NSString *)title;

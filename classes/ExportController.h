@@ -19,10 +19,13 @@ typedef enum {
 @interface ExportController : NSOperation {
 	NSArray *contactsList;
 	NSString *message;
+	id target;
+	SEL addMessage;
 }
 
-- (id)initWithAddressBook:(ABAddressBook *)addressBook;
+- (id)initWithAddressBook:(ABAddressBook *)addressBook target:(id)errorCtrl selector:(SEL)msg;
 - (NSString *)cleanLabel:(NSString *)label;
+- (void)addError:(NSString *)errorMsg;
 
 @property (copy, readwrite) NSString *message;
 @end

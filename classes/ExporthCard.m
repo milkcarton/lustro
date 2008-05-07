@@ -15,9 +15,9 @@
 //
 // Initialize with contactlist. but also initializes the path for the template.
 //
-- (id)initWithAddressBook:(ABAddressBook *)addressBook
+- (id)initWithAddressBook:(ABAddressBook *)addressBook target:(id)errorCtrl selector:(SEL)msg
 {
-	self = [super initWithAddressBook:addressBook];
+	self = [super initWithAddressBook:addressBook target:errorCtrl selector:msg];
 	
 	// Create username to use in filename.
 	userName = @"";
@@ -48,6 +48,7 @@
 //
 - (BOOL)writeToFileWithHtml:(NSString *)html
 {
+	[super addError:@"okéééééé kjlfsd dsh jkgsdqh lkgjqdslk gjdqskl \n"];
 	if ([html length] > 0) {		
 		NSString *fileName = userName;
 		NSString *filePath = @"~/Desktop/";

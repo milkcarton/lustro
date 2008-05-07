@@ -10,6 +10,7 @@
 #import <AddressBook/AddressBook.h>
 #import "StatusValueTransformer.h"
 #import "ProgressValueTransformer.h"
+#import "ErrorController.h"
 #import "ExportController.h"
 #import "ExporthCard.h"
 #import "ExportGoogle.h"
@@ -18,9 +19,11 @@
 @interface MainController : NSObject {
 	NSMutableDictionary *indicators;
 	NSUserDefaults *defaults;
+	ErrorController *errorCtrl;
 
 	IBOutlet id authSheet;			// The authentication sheet.
 	IBOutlet id window;				// The main Lustro window.
+	IBOutlet id logWindow;			// The log window.
 	IBOutlet id usernameField;		// The username textfield from the auth sheet.
 	IBOutlet id passwordField;		// The password textfield from the auth sheet.
 	IBOutlet id exportButton;		// The export button.
@@ -33,6 +36,7 @@
 - (IBAction)closeSheet:(id)sender;					// Closes the sheet without any savings.
 - (IBAction)callSheet:(id)sender;					// Show the authentication sheet.
 - (IBAction)select:(id)sender;						// Called when any checkbox is selected.
+- (IBAction)showLog:(id)sender;						// Show the log screen.
 - (void)invocateExport;								// Method that is called in the background.
 - (void)setSignInButton;							// Enables disables the sign in button depending on the input fields.
 - (void)setExportButton;							// Enables disables the export button depending on the checkboxes.

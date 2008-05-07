@@ -14,18 +14,18 @@
 @implementation ExportGoogle
 
 // (ExportController) Adds the contacts to the contactList instance variable
-- (id)initWithAddressBook:(ABAddressBook *)addressBook
+- (id)initWithAddressBook:(ABAddressBook *)addressBook target:(id)errorCtrl selector:(SEL)msg
 {
-	self = [super initWithAddressBook:addressBook];
+	self = [super initWithAddressBook:addressBook target:(id)errorCtrl selector:(SEL)msg];
 	contactsList = [addressBook people];
 	return self;
 }
 
-- (id)initWithAddressBook:(ABAddressBook *)addressBook username:(NSString *)user password:(NSString *)pass
+- (id)initWithAddressBook:(ABAddressBook *)addressBook username:(NSString *)user password:(NSString *)pass target:(id)errorCtrl selector:(SEL)msg
 {
 	username = user;
 	password = pass;
-	[self initWithAddressBook:addressBook];
+	[self initWithAddressBook:addressBook target:errorCtrl selector:msg];
 	return self;
 }
 

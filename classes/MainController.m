@@ -12,9 +12,13 @@
 - (id)init
 {
 	self = [super init];
-	NSArray *keys   = [NSArray arrayWithObjects:@"comma",@"tab", @"html", @"google", @"authenticate", nil];
-    NSArray *values = [NSArray arrayWithObjects:@"0" ,@"0", @"0", @"0", @"YES", nil];
+	
+	// set the default indicators.
+	NSArray *keys   = [NSArray arrayWithObjects:@"comma",@"tab", @"html", @"google", @"authenticate", @"log", nil];
+    NSArray *values = [NSArray arrayWithObjects:@"0" ,@"0", @"0", @"0", @"YES", @"", nil];
 	indicators = [[NSMutableDictionary alloc] initWithObjects:values forKeys:keys];
+	
+	errorCtrl = [[ErrorController alloc] initWithTarget:self selector:@selector(setErrorLog:)];
 	
 	//Initialize the value transformers used throughout the application bindings
 	NSValueTransformer *statusValueTransformer = [[StatusValueTransformer alloc] init];
@@ -31,6 +35,8 @@
 	defaults = [NSUserDefaults standardUserDefaults];
     NSString *keyChainSaveValue = [defaults stringForKey:@"KeyChainSave"];
     if (keyChainSaveValue == nil) keyChainSaveValue = @"1";
+
+//	[logWindow orderOut:self];
 	
 	// Set button state.
 	[self setExportButton];
@@ -47,9 +53,9 @@
 	[indicators setValue:@"0" forKey:@"tab"];
 	[indicators setValue:@"0" forKey:@"html"];
 	[indicators setValue:@"0" forKey:@"google"];
-	//[self performSelectorInBackground:@selector(invocateExport) withObject:nil];
+	[self performSelectorInBackground:@selector(invocateExport) withObject:nil];
 	
-	[self invocateExport];
+	//[self invocateExport];
 }
 
 - (IBAction)authenticate:(id)sender
@@ -105,6 +111,12 @@
 	[self setExportButton];
 }
 
+- (IBAction)showLog:(id)sender
+{
+	[logWindow setFrame:NSMakeRect([window frame].origin.x, [window frame].origin.y - [logWindow frame].size.height - 20, [logWindow frame].size.width, [logWindow frame].size.height) display:YES];
+	[logWindow orderFront:self];
+}
+
 - (void)invocateExport
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
@@ -126,7 +138,7 @@
 	// If Html is checked
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"]) {
 		[indicators setValue:@"1" forKey:@"html"];
-		ExporthCard *controller = [[ExporthCard alloc] initWithAddressBook:book];
+		ExporthCard *controller = [[ExporthCard alloc] initWithAddressBook:book target:errorCtrl selector:@selector(addMessage:className:)];
 		switch ([controller export]) {
 			case kExportSuccess: [indicators setValue:@"2" forKey:@"html"];
 								 break;
@@ -146,7 +158,7 @@
 		// TODO the fields are empty when not opened first, load the username and password at startup
 		NSLog(@"U----> %@",googleUserName);
 		
-		ExportGoogle *controller = [[ExportGoogle alloc] initWithAddressBook:book username:googleUserName password:googlePassword];
+		ExportGoogle *controller = [[ExportGoogle alloc] initWithAddressBook:book username:googleUserName password:googlePassword target:errorCtrl selector:@selector(addMessage:className:)];
 		[controller export];
 		[controller release];
 		[indicators setValue:@"2" forKey:@"google"];
@@ -190,5 +202,10 @@
 		[passwordField setStringValue:@""];
 	}
 	[self setSignInButton];
+}
+
+- (void)setErrorLog:(NSString *)log
+{
+	[indicators setValue:log forKey:@"log"];
 }
 @end

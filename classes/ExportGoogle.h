@@ -23,7 +23,7 @@
 
 // A "service" object handles networking tasks. Service objects contain user authentication information as well as networking state information (such as cookies and the "last modified" date for fetched data.)
 
-- (id)initWithAddressBook:(ABAddressBook *)addressBook username:(NSString *)user password:(NSString *)pass; 
+- (id)initWithAddressBook:(ABAddressBook *)addressBook username:(NSString *)user password:(NSString *)pass target:(id)errorCtrl selector:(SEL)msg; 
 - (void)authenticate;									// Get a contact service object with the current username/password
 - (void)createContacts;									// Creates a GData contact with the information from Address Book
 - (void)removeAllContacts;								// Fetch the feed with all the Google Contacts and call the didFinishSelector to remove each contact
