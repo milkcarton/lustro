@@ -18,12 +18,13 @@
 
 @interface MainController : NSObject {
 	NSMutableDictionary *indicators;
+	NSMutableArray *groups;
 	NSUserDefaults *defaults;
 	ErrorController *errorCtrl;
 
 	IBOutlet id authSheet;			// The authentication sheet.
 	IBOutlet id window;				// The main Lustro window.
-	IBOutlet id logWindow;			// The log window.
+	IBOutlet id groupsTable;
 	IBOutlet id usernameField;		// The username textfield from the auth sheet.
 	IBOutlet id passwordField;		// The password textfield from the auth sheet.
 	IBOutlet id exportButton;		// The export button.

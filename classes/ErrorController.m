@@ -44,7 +44,6 @@
 
 - (void)addMessage:(NSString *)msg className:(NSString *)className
 {
-	NSLog(@"%@", [self className]);
 	logText = [logText stringByAppendingString:[[NSDate date] description]];
 	logText = [logText stringByAppendingString:@" ["];
 	logText = [logText stringByAppendingString:className];

@@ -20,6 +20,10 @@
 	
 	errorCtrl = [[ErrorController alloc] initWithTarget:self selector:@selector(setErrorLog:)];
 	
+	// Init the groups array
+	groups = [NSArray arrayWithObjects:@"comma",@"tab", @"html", @"google", @"authenticate", @"log", nil];
+	
+	
 	//Initialize the value transformers used throughout the application bindings
 	NSValueTransformer *statusValueTransformer = [[StatusValueTransformer alloc] init];
     [NSValueTransformer setValueTransformer:statusValueTransformer forName:@"StatusValueTransformer"];
@@ -53,9 +57,9 @@
 	[indicators setValue:@"0" forKey:@"tab"];
 	[indicators setValue:@"0" forKey:@"html"];
 	[indicators setValue:@"0" forKey:@"google"];
-	[self performSelectorInBackground:@selector(invocateExport) withObject:nil];
+	//[self performSelectorInBackground:@selector(invocateExport) withObject:nil];
 	
-	//[self invocateExport];
+	[self invocateExport];
 }
 
 - (IBAction)authenticate:(id)sender
@@ -113,8 +117,7 @@
 
 - (IBAction)showLog:(id)sender
 {
-	[logWindow setFrame:NSMakeRect([window frame].origin.x, [window frame].origin.y - [logWindow frame].size.height - 20, [logWindow frame].size.width, [logWindow frame].size.height) display:YES];
-	[logWindow orderFront:self];
+	
 }
 
 - (void)invocateExport
@@ -207,5 +210,13 @@
 - (void)setErrorLog:(NSString *)log
 {
 	[indicators setValue:log forKey:@"log"];
+}
+
+
+
+- (int)numberOfRowsInTableView:(NSTableView *)aTableView
+{
+	NSLog(@"prt");
+    return 0;
 }
 @end
