@@ -20,12 +20,15 @@ typedef enum {
 	NSArray *contactsList;
 	NSString *message;
 	id target;
-	SEL addMessage;
 }
 
-- (id)initWithAddressBook:(ABAddressBook *)addressBook target:(id)errorCtrl selector:(SEL)msg;
+- (id)initWithAddressBook:(ABAddressBook *)addressBook target:(id)errorCtrl;
 - (NSString *)cleanLabel:(NSString *)label;
-- (void)addError:(NSString *)errorMsg;
+- (void)addSuccessMessage:(NSString *)successMsg;
+- (void)addFailedMessage:(NSString *)failedMsg;
+- (void)addErrorMessage:(NSString *)errorMsg;
 
 @property (copy, readwrite) NSString *message;
+@property (retain) NSArray *contactsList;
+@property (retain) id target;
 @end

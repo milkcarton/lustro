@@ -10,6 +10,7 @@
 #import <AddressBook/AddressBook.h>
 #import "StatusValueTransformer.h"
 #import "ProgressValueTransformer.h"
+#import "LogImageValueTransformer.h"
 #import "ErrorController.h"
 #import "ExportController.h"
 #import "ExporthCard.h"
@@ -18,13 +19,12 @@
 
 @interface MainController : NSObject {
 	NSMutableDictionary *indicators;
-	NSMutableArray *groups;
 	NSUserDefaults *defaults;
-	ErrorController *errorCtrl;
+	IBOutlet id errorCtrl;
 
 	IBOutlet id authSheet;			// The authentication sheet.
 	IBOutlet id window;				// The main Lustro window.
-	IBOutlet id groupsTable;
+	IBOutlet id logSheet;
 	IBOutlet id usernameField;		// The username textfield from the auth sheet.
 	IBOutlet id passwordField;		// The password textfield from the auth sheet.
 	IBOutlet id exportButton;		// The export button.
@@ -38,7 +38,21 @@
 - (IBAction)callSheet:(id)sender;					// Show the authentication sheet.
 - (IBAction)select:(id)sender;						// Called when any checkbox is selected.
 - (IBAction)showLog:(id)sender;						// Show the log screen.
+- (IBAction)closeLog:(id)sender;
+- (IBAction)copyLog:(id)sender;
 - (void)invocateExport;								// Method that is called in the background.
 - (void)setSignInButton;							// Enables disables the sign in button depending on the input fields.
 - (void)setExportButton;							// Enables disables the export button depending on the checkboxes.
+
+@property (retain,getter=indicators) NSMutableDictionary *indicators;
+@property (retain) NSUserDefaults *defaults;
+@property (retain) ErrorController *errorCtrl;
+@property (retain) id authSheet;
+@property (retain) id window;
+@property (retain) id usernameField;
+@property (retain) id passwordField;
+@property (retain) id exportButton;
+@property (retain) id signInButton;
+@property (retain) NSString *username;
+@property (retain) id logSheet;
 @end

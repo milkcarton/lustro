@@ -17,7 +17,7 @@
 	BOOL fileNameNotOk;
 }
 
-- (id)initWithAddressBook:(ABAddressBook *)addressBook target:(id)errorCtrl selector:(SEL)msg;
+- (id)initWithAddressBook:(ABAddressBook *)addressBook target:(id)errorCtrl;
 - (BOOL)writeToFileWithHtml:(NSString *)html;
 - (NSString *)addHTMLEntity:(NSString *)value withKey:(NSString *)key;
 - (NSString *)addHTMLEntity:(NSString *)value withKey:(NSString *)key withTitle:(NSString *)title;
@@ -27,4 +27,7 @@
 - (NSString *)addURLs:(ABMultiValue *)URLs;
 - (NSString *)addOrganizationWithName:(NSString *)name unit:(NSString *)unit;
 
+@property (retain) NSString *hCardTemplate;
+@property (retain) NSString *userName;
+@property BOOL fileNameNotOk;
 @end

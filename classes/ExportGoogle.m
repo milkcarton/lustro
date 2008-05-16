@@ -21,11 +21,11 @@
 	return self;
 }
 
-- (id)initWithAddressBook:(ABAddressBook *)addressBook username:(NSString *)user password:(NSString *)pass target:(id)errorCtrl selector:(SEL)msg
+- (id)initWithAddressBook:(ABAddressBook *)addressBook username:(NSString *)user password:(NSString *)pass target:(id)errorCtrl
 {
 	username = user;
 	password = pass;
-	[self initWithAddressBook:addressBook target:errorCtrl selector:msg];
+	[self initWithAddressBook:addressBook target:errorCtrl];
 	return self;
 }
 
@@ -318,4 +318,8 @@
 		NSLog(@"%@ for %@.", errorMessage, title);
 }
 	
+@synthesize service;
+@synthesize username;
+@synthesize password;
+@synthesize ticket;
 @end

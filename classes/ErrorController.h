@@ -9,12 +9,19 @@
 #import <Cocoa/Cocoa.h>
 
 @interface ErrorController : NSObject {
-	NSString *logText;
-	id target;
-	SEL showError;
+	NSManagedObjectModel *managedObjectModel;
+	NSPersistentStoreCoordinator *persistentStoreCoordinator;
+	NSManagedObjectContext *managedObjectContext;
 }
 
-- (id)initWithTarget:(id)mainCtrl selector:(SEL)method;
-- (BOOL)writeToLog;											// Write the log file.
-
+- (void)addSuccessMessage:(NSString *)msg className:(NSString *)className;
+- (void)addFailedMessage:(NSString *)msg className:(NSString *)className;
+- (void)addErrorMessage:(NSString *)msg className:(NSString *)className;
+- (void)addMessage:(NSString *)msg className:(NSString *)className status:(NSString *)status;
+- (void)copyLog;
+- (NSString *)desktopFolder;
+- (NSString *)applicationSupportFolder;
+- (NSManagedObjectModel *)managedObjectModel;
+- (NSPersistentStoreCoordinator *) persistentStoreCoordinator;
+- (NSManagedObjectContext *) managedObjectContext;
 @end

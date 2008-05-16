@@ -15,9 +15,9 @@
 //
 // Initialize with contactlist. but also initializes the path for the template.
 //
-- (id)initWithAddressBook:(ABAddressBook *)addressBook target:(id)errorCtrl selector:(SEL)msg
+- (id)initWithAddressBook:(ABAddressBook *)addressBook target:(id)errorCtrl
 {
-	self = [super initWithAddressBook:addressBook target:errorCtrl selector:msg];
+	self = [super initWithAddressBook:addressBook target:errorCtrl];
 	
 	// Create username to use in filename.
 	userName = @"";
@@ -40,6 +40,7 @@
 	hCardTemplate = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
 	fileNameNotOk = NO;
 	if (hCardTemplate == nil) fileNameNotOk = YES;
+	if (error) [super addErrorMessage:[error localizedDescription]];
 	return self;
 }
 
@@ -48,16 +49,20 @@
 //
 - (BOOL)writeToFileWithHtml:(NSString *)html
 {
-	[super addError:@"okéééééé kjlfsd dsh jkgsdqh lkgjqdslk gjdqskl \n"];
 	if ([html length] > 0) {		
 		NSString *fileName = userName;
 		NSString *filePath = @"~/Desktop/";
 		filePath = [filePath stringByAppendingString:fileName]; 
 		filePath = [filePath stringByAppendingString:EXTENTION]; 
 		filePath = [filePath stringByStandardizingPath];
-		
-		return [html writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-	}
+		NSError *error;
+		BOOL written =  [html writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+		if (error) {
+			[super addErrorMessage:[error localizedDescription]];
+			return NO;
+		}
+		return written;
+	} else [super addErrorMessage:@"There was no content available to write the file."];
 	return NO;
 }
 
@@ -68,7 +73,6 @@
 {
 	if ([contactsList count] > 0) {
 		if (fileNameNotOk) {
-			[super setMessage:@"Filename of the export template was incorrect"];
 			return kExportError;
 		}
 		@try {
@@ -169,15 +173,14 @@
 			hCardTemplate = [hCardTemplate stringByAppendingString:@"\n</body>\n</html>\n"];
 		}
 		@catch (NSException *exception) {
-			[super setMessage:@"Something unexpected happend"];
+			[super addErrorMessage:[exception reason]];
 			return kExportError;
 		}
 		if (![self writeToFileWithHtml:hCardTemplate]) {
-			[super setMessage:@"There was a problem writing to a file"];
 			return kExportError;
 		}
 	} else {
-		[super setMessage:@"There were no contacts to export"];
+		[super addErrorMessage:@"There were no contacts to export."];
 		return kExportWarning;
 	}
 	return kExportSuccess;
@@ -312,4 +315,7 @@
 	return orgOutput;
 }
 
+@synthesize hCardTemplate;
+@synthesize userName;
+@synthesize fileNameNotOk;
 @end

@@ -17,7 +17,7 @@
 @implementation AGKeychain
 
 
-
+ 
 + (BOOL)checkForExistanceOfKeychainItem:(NSString *)keychainItemName withItemKind:(NSString *)keychainItemKind forUsername:(NSString *)username
 {
 	SecKeychainSearchRef search;
@@ -241,7 +241,7 @@
             strncpy (passwordBuffer, password, length);
 			
             passwordBuffer[length] = '\0';
-			//printf ("passwordBuffer = %s\n", passwordBuffer);
+			//printf ("passwordBuffer = %s\n", passwordBuffer); 
 			return [NSString stringWithCString:passwordBuffer];
         }
 		

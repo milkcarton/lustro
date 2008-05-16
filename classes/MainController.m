@@ -14,21 +14,17 @@
 	self = [super init];
 	
 	// set the default indicators.
-	NSArray *keys   = [NSArray arrayWithObjects:@"comma",@"tab", @"html", @"google", @"authenticate", @"log", nil];
-    NSArray *values = [NSArray arrayWithObjects:@"0" ,@"0", @"0", @"0", @"YES", @"", nil];
+	NSArray *keys   = [NSArray arrayWithObjects:@"comma",@"tab", @"html", @"google", @"authenticate", nil];
+    NSArray *values = [NSArray arrayWithObjects:@"0" ,@"0", @"0", @"0", @"YES", nil];
 	indicators = [[NSMutableDictionary alloc] initWithObjects:values forKeys:keys];
-	
-	errorCtrl = [[ErrorController alloc] initWithTarget:self selector:@selector(setErrorLog:)];
-	
-	// Init the groups array
-	groups = [NSArray arrayWithObjects:@"comma",@"tab", @"html", @"google", @"authenticate", @"log", nil];
-	
 	
 	//Initialize the value transformers used throughout the application bindings
 	NSValueTransformer *statusValueTransformer = [[StatusValueTransformer alloc] init];
     [NSValueTransformer setValueTransformer:statusValueTransformer forName:@"StatusValueTransformer"];
 	NSValueTransformer *progressValueTransformer = [[ProgressValueTransformer alloc] init];
     [NSValueTransformer setValueTransformer:progressValueTransformer forName:@"ProgressValueTransformer"];
+	NSValueTransformer *logImageValueTransformer = [[LogImageValueTransformer alloc] init];
+    [NSValueTransformer setValueTransformer:logImageValueTransformer forName:@"LogImageValueTransformer"];
 	
 	return self;
 }
@@ -39,8 +35,6 @@
 	defaults = [NSUserDefaults standardUserDefaults];
     NSString *keyChainSaveValue = [defaults stringForKey:@"KeyChainSave"];
     if (keyChainSaveValue == nil) keyChainSaveValue = @"1";
-
-//	[logWindow orderOut:self];
 	
 	// Set button state.
 	[self setExportButton];
@@ -117,7 +111,18 @@
 
 - (IBAction)showLog:(id)sender
 {
-	
+	[NSApp beginSheet:logSheet modalForWindow:window modalDelegate:self didEndSelector:NULL contextInfo:nil];
+}
+
+- (IBAction)closeLog:(id)sender
+{
+	[logSheet orderOut:nil];
+	[NSApp endSheet:logSheet];
+}
+
+- (IBAction)copyLog:(id)sender
+{
+	[errorCtrl copyLog];
 }
 
 - (void)invocateExport
@@ -141,7 +146,7 @@
 	// If Html is checked
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"]) {
 		[indicators setValue:@"1" forKey:@"html"];
-		ExporthCard *controller = [[ExporthCard alloc] initWithAddressBook:book target:errorCtrl selector:@selector(addMessage:className:)];
+		ExporthCard *controller = [[ExporthCard alloc] initWithAddressBook:book target:errorCtrl];
 		switch ([controller export]) {
 			case kExportSuccess: [indicators setValue:@"2" forKey:@"html"];
 								 break;
@@ -161,7 +166,7 @@
 		// TODO the fields are empty when not opened first, load the username and password at startup
 		NSLog(@"U----> %@",googleUserName);
 		
-		ExportGoogle *controller = [[ExportGoogle alloc] initWithAddressBook:book username:googleUserName password:googlePassword target:errorCtrl selector:@selector(addMessage:className:)];
+		ExportGoogle *controller = [[ExportGoogle alloc] initWithAddressBook:book username:googleUserName password:googlePassword target:errorCtrl];
 		[controller export];
 		[controller release];
 		[indicators setValue:@"2" forKey:@"google"];
@@ -207,16 +212,15 @@
 	[self setSignInButton];
 }
 
-- (void)setErrorLog:(NSString *)log
-{
-	[indicators setValue:log forKey:@"log"];
-}
-
-
-
-- (int)numberOfRowsInTableView:(NSTableView *)aTableView
-{
-	NSLog(@"prt");
-    return 0;
-}
+@synthesize indicators;
+@synthesize defaults;
+@synthesize errorCtrl;
+@synthesize authSheet;
+@synthesize window;
+@synthesize usernameField;
+@synthesize passwordField;
+@synthesize exportButton;
+@synthesize signInButton;
+@synthesize username;
+@synthesize logSheet;
 @end
