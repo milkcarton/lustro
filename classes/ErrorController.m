@@ -3,7 +3,7 @@
 //  lustro
 //
 //  Created by Jelle Vandebeeck & Simon Schoeters on 04/05/08.
-//  Copyright 2008 eggnog. All rights reserved.
+//  Copyright 2008 milkcarton. All rights reserved.
 //
 
 #import "ErrorController.h"

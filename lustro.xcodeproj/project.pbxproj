@@ -23,6 +23,7 @@
 		609F476E0DC34A2D00AE82AA /* ProgressValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 609F476D0DC34A2D00AE82AA /* ProgressValueTransformer.m */; };
 		60A58BD80DDDDB4E0081208C /* lustro.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 60A58BD70DDDDB4E0081208C /* lustro.xcdatamodel */; };
 		60A58CED0DDDED9A0081208C /* LogImageValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A58CEC0DDDED9A0081208C /* LogImageValueTransformer.m */; };
+		60A58FBC0DDE2F5B0081208C /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 60A58FBB0DDE2F5B0081208C /* icon.icns */; };
 		60DE9BBB0DBD356200D3EC93 /* ExporthCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DE9BBA0DBD356200D3EC93 /* ExporthCard.m */; };
 		60DE9BF00DBD373800D3EC93 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60DE9BEF0DBD373800D3EC93 /* AddressBook.framework */; };
 		60DE9C160DBD38F300D3EC93 /* hCardTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 60DE9C150DBD38F300D3EC93 /* hCardTemplate */; };
@@ -85,6 +86,7 @@
 		60A58BD70DDDDB4E0081208C /* lustro.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = lustro.xcdatamodel; sourceTree = "<group>"; };
 		60A58CEB0DDDED9A0081208C /* LogImageValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogImageValueTransformer.h; path = classes/LogImageValueTransformer.h; sourceTree = "<group>"; };
 		60A58CEC0DDDED9A0081208C /* LogImageValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogImageValueTransformer.m; path = classes/LogImageValueTransformer.m; sourceTree = "<group>"; };
+		60A58FBB0DDE2F5B0081208C /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		60DE9B9E0DBD342000D3EC93 /* ExportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportController.h; path = classes/ExportController.h; sourceTree = "<group>"; };
 		60DE9BB90DBD356200D3EC93 /* ExporthCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExporthCard.h; path = classes/ExporthCard.h; sourceTree = "<group>"; };
 		60DE9BBA0DBD356200D3EC93 /* ExporthCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExporthCard.m; path = classes/ExporthCard.m; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 		600D31980DBFDEED00A96491 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				60A58FBB0DDE2F5B0081208C /* icon.icns */,
 				609B852D0DCE53D000264F75 /* lockAlt.tif */,
 				609B852E0DCE53D000264F75 /* lock.tif */,
 				60997D760DC3E33700518344 /* lockHover.tif */,
@@ -332,6 +335,7 @@
 				60997D7A0DC3E33700518344 /* lockClick.tif in Resources */,
 				609B85310DCE53D000264F75 /* lockAlt.tif in Resources */,
 				609B85320DCE53D000264F75 /* lock.tif in Resources */,
+				60A58FBC0DDE2F5B0081208C /* icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

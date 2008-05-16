@@ -3,7 +3,7 @@
 //  lustro
 //
 //  Created by Jelle Vandebeeck & Simon Schoeters on 22/04/08.
-//  Copyright 2008 eggnog. All rights reserved.
+//  Copyright 2008 milkcarton. All rights reserved.
 //
 
 #import "ExportGoogle.h"
@@ -14,9 +14,9 @@
 @implementation ExportGoogle
 
 // (ExportController) Adds the contacts to the contactList instance variable
-- (id)initWithAddressBook:(ABAddressBook *)addressBook target:(id)errorCtrl selector:(SEL)msg
+- (id)initWithAddressBook:(ABAddressBook *)addressBook target:(id)errorCtrl
 {
-	self = [super initWithAddressBook:addressBook target:(id)errorCtrl selector:(SEL)msg];
+	self = [super initWithAddressBook:addressBook target:(id)errorCtrl];
 	contactsList = [addressBook people];
 	return self;
 }
@@ -54,7 +54,7 @@
 {
 	// Set version for Google user agent from plist file
 	NSString *lustroVersion = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleVersion"];
-	NSString *userAgent = @"Eggnog-GoogleAPI-";
+	NSString *userAgent = @"milkcarton-GoogleAPI-";
 	userAgent = [userAgent stringByAppendingString:lustroVersion];
 
 	if (!service) {
