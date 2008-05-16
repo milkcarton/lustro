@@ -125,6 +125,13 @@
 	[errorCtrl copyLog];
 }
 
+- (IBAction)openHelp:(id)sender
+{
+	CFBundleRef myApplicationBundle = CFBundleGetMainBundle();
+    CFStringRef myBookName = CFBundleGetValueForInfoDictionaryKey(myApplicationBundle, CFSTR("CFBundleHelpBookName"));
+    AHGotoPage (myBookName, CFSTR("index.html"), NULL);
+}
+
 - (void)invocateExport
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
@@ -134,14 +141,34 @@
 	// If comma separated is checked
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"]) {
 		[indicators setValue:@"1" forKey:@"comma"];
-		[indicators setValue:@"2" forKey:@"comma"];
+		ExportSeparatedFile *controller = [[ExportSeparatedFile alloc] initWithAddressBook:book target:errorCtrl separator:@"," extention:@"csv"];
+		switch ([controller export]) {
+			case kExportSuccess: [indicators setValue:@"2" forKey:@"comma"];
+				break;
+			case kExportWarning: [indicators setValue:@"3" forKey:@"comma"];
+				break;
+			default: [indicators setValue:@"4" forKey:@"comma"];
+		}
+		[controller release];
 	}
+	
+	sleep(1);
 	
 	// If tab separated is checked
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"]) {
 		[indicators setValue:@"1" forKey:@"tab"];
-		[indicators setValue:@"2" forKey:@"tab"];
+		ExportSeparatedFile *controller = [[ExportSeparatedFile alloc] initWithAddressBook:book target:errorCtrl separator:@"\t" extention:@"tab"];
+		switch ([controller export]) {
+			case kExportSuccess: [indicators setValue:@"2" forKey:@"tab"];
+				break;
+			case kExportWarning: [indicators setValue:@"3" forKey:@"tab"];
+				break;
+			default: [indicators setValue:@"4" forKey:@"tab"];
+		}
+		[controller release];
 	}
+	
+	sleep(1);
 	
 	// If Html is checked
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"]) {
@@ -156,6 +183,8 @@
 		}
 		[controller release];
 	}
+	
+	sleep(1);
 	
 	// If Google is checked
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"]) {

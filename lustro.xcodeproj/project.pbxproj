@@ -24,6 +24,9 @@
 		60A58BD80DDDDB4E0081208C /* lustro.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 60A58BD70DDDDB4E0081208C /* lustro.xcdatamodel */; };
 		60A58CED0DDDED9A0081208C /* LogImageValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A58CEC0DDDED9A0081208C /* LogImageValueTransformer.m */; };
 		60A58FBC0DDE2F5B0081208C /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 60A58FBB0DDE2F5B0081208C /* icon.icns */; };
+		60A58FF60DDE31480081208C /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A58FF50DDE31480081208C /* Carbon.framework */; };
+		60A590110DDE31DD0081208C /* help in Resources */ = {isa = PBXBuildFile; fileRef = 60A5900D0DDE31DD0081208C /* help */; };
+		60A5901F0DDE34470081208C /* ExportSeparatedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A5901E0DDE34470081208C /* ExportSeparatedFile.m */; };
 		60DE9BBB0DBD356200D3EC93 /* ExporthCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DE9BBA0DBD356200D3EC93 /* ExporthCard.m */; };
 		60DE9BF00DBD373800D3EC93 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60DE9BEF0DBD373800D3EC93 /* AddressBook.framework */; };
 		60DE9C160DBD38F300D3EC93 /* hCardTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 60DE9C150DBD38F300D3EC93 /* hCardTemplate */; };
@@ -87,6 +90,10 @@
 		60A58CEB0DDDED9A0081208C /* LogImageValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogImageValueTransformer.h; path = classes/LogImageValueTransformer.h; sourceTree = "<group>"; };
 		60A58CEC0DDDED9A0081208C /* LogImageValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogImageValueTransformer.m; path = classes/LogImageValueTransformer.m; sourceTree = "<group>"; };
 		60A58FBB0DDE2F5B0081208C /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		60A58FF50DDE31480081208C /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		60A5900D0DDE31DD0081208C /* help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = help; sourceTree = SOURCE_ROOT; };
+		60A5901D0DDE34470081208C /* ExportSeparatedFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportSeparatedFile.h; path = classes/ExportSeparatedFile.h; sourceTree = "<group>"; };
+		60A5901E0DDE34470081208C /* ExportSeparatedFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExportSeparatedFile.m; path = classes/ExportSeparatedFile.m; sourceTree = "<group>"; };
 		60DE9B9E0DBD342000D3EC93 /* ExportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportController.h; path = classes/ExportController.h; sourceTree = "<group>"; };
 		60DE9BB90DBD356200D3EC93 /* ExporthCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExporthCard.h; path = classes/ExporthCard.h; sourceTree = "<group>"; };
 		60DE9BBA0DBD356200D3EC93 /* ExporthCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExporthCard.m; path = classes/ExporthCard.m; sourceTree = "<group>"; };
@@ -111,6 +118,7 @@
 				F44B40A80DBF9D5E00623BBA /* GData.framework in Frameworks */,
 				60997E490DC3ED2100518344 /* Security.framework in Frameworks */,
 				F43B68B20DCC8F21008D7642 /* Sparkle.framework in Frameworks */,
+				60A58FF60DDE31480081208C /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +140,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				60A58FF50DDE31480081208C /* Carbon.framework */,
 				F43B68B10DCC8F21008D7642 /* Sparkle.framework */,
 				60997E480DC3ED2100518344 /* Security.framework */,
 				F44B40A70DBF9D5E00623BBA /* GData.framework */,
@@ -183,6 +192,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				60A5900D0DDE31DD0081208C /* help */,
 				600D31980DBFDEED00A96491 /* Images */,
 				60DE9BF60DBD389F00D3EC93 /* Templates */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -269,6 +279,8 @@
 				60DE9BBA0DBD356200D3EC93 /* ExporthCard.m */,
 				F49E3D150DBE6C1A0068734D /* ExportGoogle.h */,
 				F49E3D160DBE6C1A0068734D /* ExportGoogle.m */,
+				60A5901D0DDE34470081208C /* ExportSeparatedFile.h */,
+				60A5901E0DDE34470081208C /* ExportSeparatedFile.m */,
 			);
 			name = Exporters;
 			sourceTree = "<group>";
@@ -336,6 +348,7 @@
 				609B85310DCE53D000264F75 /* lockAlt.tif in Resources */,
 				609B85320DCE53D000264F75 /* lock.tif in Resources */,
 				60A58FBC0DDE2F5B0081208C /* icon.icns in Resources */,
+				60A590110DDE31DD0081208C /* help in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +371,7 @@
 				609B85640DCE568900264F75 /* ErrorController.m in Sources */,
 				60A58BD80DDDDB4E0081208C /* lustro.xcdatamodel in Sources */,
 				60A58CED0DDDED9A0081208C /* LogImageValueTransformer.m in Sources */,
+				60A5901F0DDE34470081208C /* ExportSeparatedFile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,8 +39,8 @@
 	NSString *path = [[[NSBundle mainBundle] autorelease] pathForResource:@"hCardTemplate" ofType:@""];
 	hCardTemplate = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
 	fileNameNotOk = NO;
-	if (hCardTemplate == nil) fileNameNotOk = YES;
-	if (error) [super addErrorMessage:[error localizedDescription]];
+	if (!hCardTemplate) fileNameNotOk = YES;
+	if (!hCardTemplate && error) [super addErrorMessage:[error localizedDescription]];
 	return self;
 }
 
@@ -57,7 +57,7 @@
 		filePath = [filePath stringByStandardizingPath];
 		NSError *error;
 		BOOL written =  [html writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error];
-		if (error) {
+		if (!written && error) {
 			[super addErrorMessage:[error localizedDescription]];
 			return NO;
 		}

@@ -7,12 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Carbon/Carbon.h>
 #import <AddressBook/AddressBook.h>
 #import "StatusValueTransformer.h"
 #import "ProgressValueTransformer.h"
 #import "LogImageValueTransformer.h"
 #import "ErrorController.h"
 #import "ExportController.h"
+#import "ExportSeparatedFile.h"
 #import "ExporthCard.h"
 #import "ExportGoogle.h"
 #import "AGKeychain.h"
@@ -40,6 +42,7 @@
 - (IBAction)showLog:(id)sender;						// Show the log screen.
 - (IBAction)closeLog:(id)sender;
 - (IBAction)copyLog:(id)sender;
+- (IBAction)openHelp:(id)sender;
 - (void)invocateExport;								// Method that is called in the background.
 - (void)setSignInButton;							// Enables disables the sign in button depending on the input fields.
 - (void)setExportButton;							// Enables disables the export button depending on the checkboxes.
