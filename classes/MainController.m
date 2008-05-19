@@ -51,9 +51,9 @@
 	[indicators setValue:@"0" forKey:@"tab"];
 	[indicators setValue:@"0" forKey:@"html"];
 	[indicators setValue:@"0" forKey:@"google"];
-	//[self performSelectorInBackground:@selector(invocateExport) withObject:nil];
+	[self performSelectorInBackground:@selector(invocateExport) withObject:nil];
 	
-	[self invocateExport];
+	//[self invocateExport];
 }
 
 - (IBAction)authenticate:(id)sender
@@ -152,8 +152,6 @@
 		[controller release];
 	}
 	
-	sleep(1);
-	
 	// If tab separated is checked
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"]) {
 		[indicators setValue:@"1" forKey:@"tab"];
@@ -168,8 +166,6 @@
 		[controller release];
 	}
 	
-	sleep(1);
-	
 	// If Html is checked
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"]) {
 		[indicators setValue:@"1" forKey:@"html"];
@@ -183,8 +179,6 @@
 		}
 		[controller release];
 	}
-	
-	sleep(1);
 	
 	// If Google is checked
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"]) {
