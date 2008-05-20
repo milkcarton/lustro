@@ -187,12 +187,16 @@
 		NSString *googlePassword = [passwordField stringValue];
 
 		// TODO the fields are empty when not opened first, load the username and password at startup
-		NSLog(@"U----> %@",googleUserName);
-		
 		ExportGoogle *controller = [[ExportGoogle alloc] initWithAddressBook:book username:googleUserName password:googlePassword target:errorCtrl];
-		[controller export];
+		switch ([controller export]) {
+			case kExportSuccess: [indicators setValue:@"2" forKey:@"google"];
+				break;
+			case kExportWarning: [indicators setValue:@"3" forKey:@"google"];
+				break;
+			default: [indicators setValue:@"4" forKey:@"google"];
+		}
+		
 		[controller release];
-		[indicators setValue:@"2" forKey:@"google"];
 	}
 	
 	[indicators setValue:@"YES" forKey:@"authenticate"];

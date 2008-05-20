@@ -19,6 +19,7 @@
 	NSString *username;
 	NSString *password;
 	GDataServiceTicket *ticket;
+	int exportStatus; // Sets the status if errors or warning are detected
 }
 
 // A "service" object handles networking tasks. Service objects contain user authentication information as well as networking state information (such as cookies and the "last modified" date for fetched data.)

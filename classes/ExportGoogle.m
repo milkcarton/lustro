@@ -8,7 +8,7 @@
 
 #import "ExportGoogle.h"
 
-#define TIMEOUT 30		// timeout in seconds
+#define TIMEOUT 15		// timeout in seconds
 #define MAXLIMIT 9999	// max entries per feed
 #define GOOGLE_CLIENT_AUTH_URL @"https://www.google.com/accounts/ClientLogin"
 
@@ -49,6 +49,7 @@
 	}
 	username = user;
 	password = pass;
+	exportStatus = kExportSuccess;
 	[self initWithAddressBook:addressBook target:errorCtrl];
 	return self;
 }
@@ -58,20 +59,28 @@
 {
 	if ([contactsList count] > 0) {
 		// Logging, disabled for release versions
-		[GDataHTTPFetcher setIsLoggingEnabled:YES];
+		//[GDataHTTPFetcher setIsLoggingEnabled:YES];
 		[self authenticate];
 		
 		[self removeAllContacts];
 		[service waitForTicket:ticket timeout:TIMEOUT fetchedObject:nil error:nil];
 
 		// It seems that some 409 (duplicate mail) errors are caused by an contact that was not yet completly removed
-		sleep(1);
+		sleep(2);
 		
 		[self createContacts];
+	} else {
+		[super addFailedMessage:@"No contacts found in Address Book."];
+		exportStatus = kExportWarning;
 	}
 	[ticket cancelTicket];
 	[service release];
-	return kExportSuccess;
+	
+	if (exportStatus == kExportSuccess) {
+		[super addSuccessMessage:[NSString stringWithFormat:@"Exported %i contacts to Google.", [contactsList count]]];
+	}
+	
+	return exportStatus;
 }
 
 - (void)authenticate
@@ -90,7 +99,7 @@
 
 - (void)createContacts
 {
-	// TODO no pictures uploaded at the moment
+	// TODO no pictures uploaded at the moment, not supported by Google yet
 	//for (int i = 0; i < [contactsList count]; i++) {
 	for (int i = 0; i < 20; i++) {
 		ABPerson *person = [contactsList objectAtIndex:i];
@@ -131,6 +140,11 @@
 		int flags = [flagsValue intValue];
 		if ((flags & kABShowAsMask) == kABShowAsCompany) {
 			title = organization;
+		}
+		
+		if ([title compare:@""] == NSOrderedSame) {
+			[super addFailedMessage:@"Contact without name, nickname or company."];
+			exportStatus = kExportWarning;
 		}
 		
 		GDataEntryContact *contact = [GDataEntryContact contactEntryWithTitle:title];
@@ -266,7 +280,6 @@
 											didFailSelector:@selector(ticket:failedWithError:)];
 		// TODO It waits for each contact, this is not efficient, batch would be better but is not supported by Google yet
 		[service waitForTicket:ticket timeout:TIMEOUT fetchedObject:nil error:nil];
-
 	}
 }
 
@@ -320,25 +333,23 @@
 }
 
 - (void)ticket:(GDataServiceTicket *)aTicket failedWithError:(NSError *)error {	
-	// Extract the contact's name for the contact that whent fubar
+	// Extract the contact's name for the contact that went fubar
 	NSDictionary *userInfo =[error userInfo];
 	NSString *authError = [userInfo authenticationError];
 	NSXMLDocument *userXml = [[NSXMLDocument alloc] initWithXMLString:[userInfo valueForKey:@"error"] options:NSXMLNodeOptionsNone error:nil];
 	NSString *title = [[userXml nodesForXPath:@"/entry/title/text()" error:nil] objectAtIndex:0];
 	[userXml release];
 
-	NSString *errorMessage = @"";
 	if([error code] == 409) {
-		errorMessage = [errorMessage stringByAppendingString:@"Naming conflict, seems like duplicate mailaddresses or something"];
+		[super addFailedMessage:(NSString *)[NSString stringWithFormat:@"Naming conflict for %@.", title]];
+		exportStatus = kExportWarning;
     } else if ([authError isEqual:kGDataServiceErrorCaptchaRequired]) {
-		errorMessage = [errorMessage stringByAppendingString:@"Sounds like you'll need a captcha"];
+		[super addErrorMessage:@"Captcha required, your account is blocked."];
+		exportStatus = kExportError;
     } else {
-		errorMessage = [errorMessage stringByAppendingString:@"Some other uncategorized error"];
+		[super addFailedMessage:(NSString *)[NSString stringWithFormat:@"Something went wrong with %@ (%i).", title, [error code]]];
+		exportStatus = kExportWarning;
 	}
-	//errorMessage = [errorMessage stringByAppendingString:title];	 DOESNT WORK, WHAT THE??
-	[super setMessage:errorMessage];
-	
-		NSLog(@"%@ for %@.", errorMessage, title);
 }
 	
 @synthesize service;
