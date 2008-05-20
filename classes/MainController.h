@@ -25,6 +25,7 @@
 	IBOutlet id errorCtrl;
 
 	IBOutlet id authSheet;			// The authentication sheet.
+	IBOutlet id errorLabel;			// The message label when using the wrong Google username or password.
 	IBOutlet id window;				// The main Lustro window.
 	IBOutlet id logSheet;
 	IBOutlet id usernameField;		// The username textfield from the auth sheet.

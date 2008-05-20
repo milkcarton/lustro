@@ -59,10 +59,6 @@
 - (IBAction)authenticate:(id)sender
 {
 	username = [usernameField stringValue];
-	if ([username hasSuffix:@"@gmail.com"] == FALSE) {
-		username = [username stringByAppendingFormat:@"@gmail.com"];
-	}	
-	
 	if ([[defaults valueForKey:@"KeyChainSave"] boolValue]) {
 		// add or modify keychain item.
 		BOOL exists = [AGKeychain checkForExistanceOfKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username];
@@ -81,8 +77,12 @@
 		[defaults setObject:@"" forKey:@"UserName"];
 	}
 	
-	[authSheet orderOut:nil];
-    [NSApp endSheet:authSheet];
+	if ( ![ExportGoogle checkCredentialsWithUsername:username password:[passwordField stringValue]] ) {
+		[errorLabel setStringValue:@"Incorrect username or password."];
+	} else {
+		[authSheet orderOut:nil];
+		[NSApp endSheet:authSheet];
+	}
 }
 
 - (IBAction)closeSheet:(id)sender
@@ -137,7 +137,7 @@
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	ABAddressBook *book = [ABAddressBook sharedAddressBook];
 	[indicators setValue:@"NO" forKey:@"authenticate"];
-	
+
 	// If comma separated is checked
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"]) {
 		[indicators setValue:@"1" forKey:@"comma"];
@@ -203,7 +203,8 @@
 {
 	if ([[usernameField stringValue] compare:@""] != NSOrderedSame && [[passwordField stringValue] compare:@""] != NSOrderedSame)
 		[signInButton setEnabled:YES];
-	else [signInButton setEnabled:NO]; 
+	else [signInButton setEnabled:NO];
+	[errorLabel setStringValue:@""];
 }
 
 - (void)setExportButton

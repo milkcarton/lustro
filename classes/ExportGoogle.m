@@ -10,8 +10,29 @@
 
 #define TIMEOUT 30		// timeout in seconds
 #define MAXLIMIT 9999	// max entries per feed
+#define GOOGLE_CLIENT_AUTH_URL @"https://www.google.com/accounts/ClientLogin"
 
 @implementation ExportGoogle
+
++ (BOOL)checkCredentialsWithUsername:(NSString *)user password:(NSString *)pass
+{
+	if ([user hasSuffix:@"@gmail.com"] == FALSE) {
+		user = [user stringByAppendingFormat:@"@gmail.com"];
+	}
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:GOOGLE_CLIENT_AUTH_URL]];
+	[request setTimeoutInterval:TIMEOUT];
+	[request setHTTPMethod:@"POST"];
+	[request addValue:@"Content-Type" forHTTPHeaderField:@"application/x-www-form-urlencoded"];
+	NSString *lustroVersion = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleVersion"];
+	NSString *requestBody = [[NSString alloc] initWithFormat:@"Email=%@&Passwd=%@&service=xapi&accountType=HOSTED_OR_GOOGLE&source=%@",	user, pass, lustroVersion];
+	NSHTTPURLResponse *response = nil;
+	[request setHTTPBody:[requestBody dataUsingEncoding:NSASCIIStringEncoding]];
+	[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+	if ([response statusCode] == 200) {
+		return true;
+	}
+	return false;
+}
 
 // (ExportController) Adds the contacts to the contactList instance variable
 - (id)initWithAddressBook:(ABAddressBook *)addressBook target:(id)errorCtrl
@@ -23,6 +44,9 @@
 
 - (id)initWithAddressBook:(ABAddressBook *)addressBook username:(NSString *)user password:(NSString *)pass target:(id)errorCtrl
 {
+	if ([user hasSuffix:@"@gmail.com"] == FALSE) {
+		user = [user stringByAppendingFormat:@"@gmail.com"];
+	}
 	username = user;
 	password = pass;
 	[self initWithAddressBook:addressBook target:errorCtrl];
@@ -52,12 +76,11 @@
 
 - (void)authenticate
 {
-	// Set version for Google user agent from plist file
-	NSString *lustroVersion = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleVersion"];
-	NSString *userAgent = @"milkcarton-GoogleAPI-";
-	userAgent = [userAgent stringByAppendingString:lustroVersion];
-
 	if (!service) {
+		// Set version for Google user agent from plist file
+		NSString *lustroVersion = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleVersion"];
+		NSString *userAgent = @"milkcarton-GoogleAPI-";
+		userAgent = [userAgent stringByAppendingString:lustroVersion];
 		service = [[GDataServiceGoogleContact alloc] init];
 		[service setUserAgent:userAgent];
 	}

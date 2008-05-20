@@ -25,7 +25,7 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>SUFeedURL</key> 
-	<string>http://www.suffix.be/lustro/appcast.rss</string>
+	<string>http://localhost:3000/feeds/appcast.xml</string>
 	<key>CFBundleHelpBookFolder</key>
 	<string>help</string>
 	<key>CFBundleHelpBookName</key>
