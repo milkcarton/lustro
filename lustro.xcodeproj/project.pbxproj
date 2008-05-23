@@ -11,6 +11,8 @@
 		600D319D0DBFDEF600A96491 /* error.tif in Resources */ = {isa = PBXBuildFile; fileRef = 600D319B0DBFDEF600A96491 /* error.tif */; };
 		602D72090DE72F470089FDAC /* FileExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 602D72080DE72F470089FDAC /* FileExport.m */; };
 		602D730B0DE74D2F0089FDAC /* DelimitedExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 602D730A0DE74D2F0089FDAC /* DelimitedExport.m */; };
+		602D756A0DE76F270089FDAC /* TabExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 602D75690DE76F270089FDAC /* TabExport.m */; };
+		602D75B00DE771F00089FDAC /* CommaExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 602D75AF0DE771F00089FDAC /* CommaExport.m */; };
 		607C58120DBBB0E7009BBEF8 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */; };
 		60997D790DC3E33700518344 /* lockHover.tif in Resources */ = {isa = PBXBuildFile; fileRef = 60997D760DC3E33700518344 /* lockHover.tif */; };
 		60997D7A0DC3E33700518344 /* lockClick.tif in Resources */ = {isa = PBXBuildFile; fileRef = 60997D770DC3E33700518344 /* lockClick.tif */; };
@@ -74,6 +76,10 @@
 		602D72080DE72F470089FDAC /* FileExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileExport.m; path = classes/FileExport.m; sourceTree = "<group>"; };
 		602D73090DE74D2F0089FDAC /* DelimitedExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DelimitedExport.h; path = classes/DelimitedExport.h; sourceTree = "<group>"; };
 		602D730A0DE74D2F0089FDAC /* DelimitedExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DelimitedExport.m; path = classes/DelimitedExport.m; sourceTree = "<group>"; };
+		602D75680DE76F270089FDAC /* TabExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabExport.h; path = classes/TabExport.h; sourceTree = "<group>"; };
+		602D75690DE76F270089FDAC /* TabExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabExport.m; path = classes/TabExport.m; sourceTree = "<group>"; };
+		602D75AE0DE771F00089FDAC /* CommaExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommaExport.h; path = classes/CommaExport.h; sourceTree = "<group>"; };
+		602D75AF0DE771F00089FDAC /* CommaExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommaExport.m; path = classes/CommaExport.m; sourceTree = "<group>"; };
 		607C58100DBBB0E7009BBEF8 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainController.h; path = classes/MainController.h; sourceTree = "<group>"; };
 		607C58110DBBB0E7009BBEF8 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainController.m; path = classes/MainController.m; sourceTree = "<group>"; };
 		60997D760DC3E33700518344 /* lockHover.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lockHover.tif; path = images/lockHover.tif; sourceTree = "<group>"; };
@@ -294,6 +300,10 @@
 				602D72080DE72F470089FDAC /* FileExport.m */,
 				602D73090DE74D2F0089FDAC /* DelimitedExport.h */,
 				602D730A0DE74D2F0089FDAC /* DelimitedExport.m */,
+				602D75680DE76F270089FDAC /* TabExport.h */,
+				602D75690DE76F270089FDAC /* TabExport.m */,
+				602D75AE0DE771F00089FDAC /* CommaExport.h */,
+				602D75AF0DE771F00089FDAC /* CommaExport.m */,
 			);
 			name = Exporters;
 			sourceTree = "<group>";
@@ -388,6 +398,8 @@
 				60F83A070DE4A09D00A2ECB8 /* AddressBookExport.m in Sources */,
 				602D72090DE72F470089FDAC /* FileExport.m in Sources */,
 				602D730B0DE74D2F0089FDAC /* DelimitedExport.m in Sources */,
+				602D756A0DE76F270089FDAC /* TabExport.m in Sources */,
+				602D75B00DE771F00089FDAC /* CommaExport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

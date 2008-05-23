@@ -13,11 +13,14 @@
 	BOOL showHeader;						// If true a header is shown in the file.
 }
 
-- (NSString *)delimiter;								// Returns the delimiter used.
 - (void)addText:(NSString *)text;						// Adds the text to the content.
 - (void)addContainer:(ABMultiValue *)container;			// Loops the container and adds the content.
 - (void)addArray:(NSArray *)array;						// Loops the array and adds the content.
 - (void)printHeader;									// Print the header.
 
 @property BOOL showHeader;
+@end
+
+@interface DelimitedExport (AbstractMethods)
+- (NSString *)delimiter;								// Returns the delimiter used.
 @end

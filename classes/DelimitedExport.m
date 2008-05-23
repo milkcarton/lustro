@@ -12,22 +12,12 @@
 
 @implementation DelimitedExport
 
-- (NSString *)extention
-{
-	return @".csv";
-}
-
-- (NSString *)delimiter
-{
-	return @",";
-}
-
-- (int)export
+- (BOOL)initialize
 {
 	content = @"";
 	if (showHeader)
 		[self printHeader];
-	return [super export];
+	return [super initialize];
 }
 
 - (void)printHeader
@@ -388,6 +378,7 @@
 - (BOOL)finalizePerson
 {
 	content = [content stringByAppendingString:@"\n"];
+	numberExported++;
 	return YES;
 }
 
