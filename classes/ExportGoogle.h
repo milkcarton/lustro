@@ -30,6 +30,7 @@
 - (void)authenticate;									// Get a contact service object with the current username/password
 - (void)createContacts;									// Creates a GData contact with the information from Address Book
 - (void)removeAllContacts;								// Fetch the feed with all the Google Contacts and call the didFinishSelector to remove each contact
+- (void)backupAllContacts;								// Dump all contacts to a backup file
 
 - (NSString *)makeRelFromLabel:(NSString *)label;		// Translates Address Book labels to Googles rel attributes or to the 'other' attribute if nothing found
 

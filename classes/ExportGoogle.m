@@ -62,6 +62,7 @@
 		//[GDataHTTPFetcher setIsLoggingEnabled:YES];
 		[self authenticate];
 		
+		[self backupAllContacts];
 		[self removeAllContacts];
 		[service waitForTicket:ticket timeout:TIMEOUT fetchedObject:nil error:nil];
 
@@ -306,6 +307,51 @@
 	if([label caseInsensitiveCompare:@"yahoo"] == NSOrderedSame) { return kGDataIMProtocolYahoo; }
 	// TODO custom Address Book fields are converted to "other", this is wrong, should be a label instead
 	return kGDataPhoneNumberOther;
+}
+
+-(void)backupAllContacts
+{
+	GDataQueryContact *query = [GDataQueryContact contactQueryForUserID:username];
+	[query setMaxResults:MAXLIMIT];
+	ticket = [service fetchContactQuery:query
+							   delegate:self 
+					  didFinishSelector:@selector(ticket:backupFinishedWithFeed:) 
+						didFailSelector:@selector(ticket:failedWithError:)];
+}
+
+- (void)ticket:(GDataServiceTicket *)ticket backupFinishedWithFeed:(GDataFeedContact *)feed
+{
+	// Create the backup directory if it doesn't exist
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	NSString *folder =[NSHomeDirectory() stringByAppendingPathComponent:@"Library/Application Support/Lustro/Backups"];
+
+	if ([fileManager fileExistsAtPath:folder] == NO)
+	{
+		[fileManager createDirectoryAtPath:folder attributes:nil];
+	}
+	
+	// Remove old (older then 31 days) backup files
+	NSString *file;
+	NSTimeInterval month = 24 * 60 * 60 * 31;
+	NSDate *refDate = [[NSDate date] addTimeInterval:-month];
+    NSDirectoryEnumerator *dirEnum = [fileManager enumeratorAtPath:folder];
+    while (file = [dirEnum nextObject])
+    {
+		NSString *filePath = [NSString stringWithFormat:@"%@/%@", folder, [file stringByStandardizingPath]];
+		NSDictionary *dict = [fileManager fileAttributesAtPath:filePath traverseLink:YES];
+		NSDate *fileCreationDate = [dict objectForKey:NSFileCreationDate];
+		if(fileCreationDate < refDate) {
+			[fileManager removeFileAtPath:filePath handler:nil];
+		}
+    }
+	
+	// Create the new backup file with a random number
+	int random = ([NSDate timeIntervalSinceReferenceDate] - (int)[NSDate timeIntervalSinceReferenceDate]) * 100000;
+	NSString *filename = [NSString stringWithFormat:@"backup_google_%i.xml", random];
+	NSString *path = [folder stringByAppendingPathComponent:filename];
+	NSXMLDocument *doc = [feed XMLDocument];
+    NSData* data = [doc XMLDataWithOptions:NSXMLNodePrettyPrint];
+	[data writeToFile:path atomically:YES];
 }
 
 -(void)removeAllContacts
