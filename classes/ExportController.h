@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import <AddressBook/AddressBook.h>
-#import "ExportProtocol.h"
 
 typedef enum {
 	kExportSuccess = 0,
@@ -27,6 +26,7 @@ typedef enum {
 - (void)addSuccessMessage:(NSString *)successMsg;
 - (void)addFailedMessage:(NSString *)failedMsg;
 - (void)addErrorMessage:(NSString *)errorMsg;
+- (int)export;
 
 @property (copy, readwrite) NSString *message;
 @property (retain) NSArray *contactsList;

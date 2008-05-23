@@ -11,7 +11,7 @@
 #import <AddressBook/ABPerson.h>
 #import "ExportController.h"
 
-@interface ExportSeparatedFile : ExportController < ExportProtocol > {
+@interface ExportSeparatedFile : ExportController {
 	NSString *userName;
 	NSString *separator;
 	NSString *extention;

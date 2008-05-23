@@ -146,6 +146,7 @@
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	ABAddressBook *book = [ABAddressBook sharedAddressBook];
+	
 	[indicators setValue:@"NO" forKey:@"authenticate"];
 
 	// If comma separated is checked
@@ -160,6 +161,7 @@
 			default: [indicators setValue:@"4" forKey:@"comma"];
 		}
 		[controller release];
+		controller = nil;
 	}
 	
 	// If tab separated is checked
@@ -211,6 +213,7 @@
 	
 	[indicators setValue:@"YES" forKey:@"authenticate"];
 	[pool release];
+	pool = nil;
 }
 
 - (void)setSignInButton

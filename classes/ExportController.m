@@ -45,6 +45,11 @@
 	[target performSelector:@selector(addErrorMessage:className:) withObject:errorMsg withObject:[self className]];
 }
 
+- (int)export
+{
+	return 1;
+}
+
 @synthesize message;
 @synthesize contactsList;
 @synthesize target;

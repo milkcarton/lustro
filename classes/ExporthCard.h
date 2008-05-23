@@ -11,7 +11,7 @@
 #import <AddressBook/ABPerson.h>
 #import "ExportController.h"
 
-@interface ExporthCard : ExportController < ExportProtocol > {
+@interface ExporthCard : ExportController {
 	NSString *hCardTemplate;
 	NSString *userName;
 	BOOL fileNameNotOk;
