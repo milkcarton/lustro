@@ -36,7 +36,10 @@
     NSString *keyChainSaveValue = [defaults stringForKey:@"KeyChainSave"];
     if (keyChainSaveValue == nil) keyChainSaveValue = @"1";
 	
-	// Set button state.
+	// Set username and password if the Google export option is selected in the defaults
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"]) {
+		[self setCredentials];
+	}
 	[self setExportButton];
 }
 
@@ -52,7 +55,6 @@
 	[indicators setValue:@"0" forKey:@"html"];
 	[indicators setValue:@"0" forKey:@"google"];
 	[self performSelectorInBackground:@selector(invocateExport) withObject:nil];
-	
 	//[self invocateExport];
 }
 
@@ -76,10 +78,15 @@
 	} else {
 		[defaults setObject:@"" forKey:@"UserName"];
 	}
-	
-	if ( ![ExportGoogle checkCredentialsWithUsername:username password:[passwordField stringValue]] ) {
+
+	password = [passwordField stringValue];
+	if ( ![ExportGoogle checkCredentialsWithUsername:username password:password] ) {
+		username = nil;
+		password = nil;
 		[errorLabel setStringValue:@"Incorrect username or password."];
+		[self setExportButton];
 	} else {
+		[self setExportButton];
 		[authSheet orderOut:nil];
 		[NSApp endSheet:authSheet];
 	}
@@ -93,19 +100,22 @@
 
 - (IBAction)callSheet:(id)sender
 {
-	NSString *userName = [defaults objectForKey:@"UserName"];
-	if (userName != nil && [userName compare:@""] != NSOrderedSame) {
-		[usernameField setStringValue:userName];
-		[passwordField setStringValue:[AGKeychain getPasswordFromKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:userName]];
-	} else {
-		[passwordField setStringValue:@""];
-	}
+	[self setCredentials];
 	[self setSignInButton];
 	[NSApp beginSheet:authSheet modalForWindow:window modalDelegate:self didEndSelector:NULL contextInfo:nil];
 }
 
 - (IBAction)select:(id)sender
 {
+	[self setExportButton];
+}
+
+// Read the credentials the first time the box is selected
+-(IBAction)selectGoogle:(id)sender
+{
+	if ([sender state] == NSOnState) {
+		[self setCredentials];
+	}
 	[self setExportButton];
 }
 
@@ -213,10 +223,18 @@
 
 - (void)setExportButton
 {
-	// Check if a checkbox is selected.
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"])
+	BOOL googleCheck = FALSE;
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"] && username && password) {
+		googleCheck = TRUE;
+	}
+
+	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"] && ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"])) {
 		[exportButton setEnabled:YES];
-	else [exportButton setEnabled:NO];
+	} else if (googleCheck) {
+		[exportButton setEnabled:YES];
+	} else {
+		[exportButton setEnabled:NO];
+	}
 }
 
 /* DELEGATE OF NSTEXTFIELD */
@@ -229,15 +247,28 @@
 {
 	if ([[usernameField stringValue] compare:@""] != NSOrderedSame) {
 		NSString *tmpPassword = [AGKeychain getPasswordFromKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:[usernameField stringValue]];
-		if ([tmpPassword compare:@"error"] == NSOrderedSame) {
-			[passwordField setStringValue:@""];
-		} else {
+		if ([tmpPassword compare:@"error"] != NSOrderedSame) {
 			[passwordField setStringValue:tmpPassword];
 		}
 	} else {
 		[passwordField setStringValue:@""];
 	}
 	[self setSignInButton];
+}
+
+- (void)setCredentials
+{
+	// Read user from defaults
+	if (username == nil) {
+		NSString *user = [defaults objectForKey:@"UserName"];
+		if (user && [user compare:@""] != NSOrderedSame) {
+			username = user;
+		}
+	}
+	// Read password from Keychain
+	if (password == nil && username) {
+		password = [AGKeychain getPasswordFromKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username];
+	}
 }
 
 @synthesize indicators;

@@ -76,7 +76,7 @@
 	[ticket cancelTicket];
 	[service release];
 	
-	if (exportStatus == kExportSuccess) {
+	if (exportStatus == kExportSuccess || exportStatus == kExportWarning) {
 		[super addSuccessMessage:[NSString stringWithFormat:@"Exported %i contacts to Google.", [contactsList count]]];
 	}
 	

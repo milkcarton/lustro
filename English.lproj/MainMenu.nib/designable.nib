@@ -8,10 +8,10 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="372"/>
 			<integer value="946"/>
-			<integer value="24"/>
 			<integer value="623"/>
-			<integer value="381"/>
+			<integer value="24"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -589,7 +589,7 @@
 							<object class="NSTextFieldCell" key="NSTitleCell">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">0</int>
-								<string key="NSContents">Export formats</string>
+								<string key="NSContents">Export contacts to</string>
 								<reference key="NSSupport" ref="26"/>
 								<object class="NSColor" key="NSBackgroundColor" id="942557168">
 									<int key="NSColorSpace">6</int>
@@ -805,13 +805,13 @@
 						<object class="NSButton" id="535148434">
 							<reference key="NSNextResponder" ref="733332365"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{85, 80}, {230, 18}}</string>
+							<string key="NSFrame">{{85, 80}, {231, 18}}</string>
 							<reference key="NSSuperview" ref="733332365"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="57841195">
 								<int key="NSCellFlags">-2080244224</int>
 								<int key="NSCellFlags2">0</int>
-								<string key="NSContents">Remember password in keychain</string>
+								<string key="NSContents">Remember password in Keychain</string>
 								<reference key="NSSupport" ref="429413175"/>
 								<reference key="NSControlView" ref="535148434"/>
 								<int key="NSButtonFlags">1211912703</int>
@@ -1909,14 +1909,6 @@
 					<int key="connectionID">788</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">select:</string>
-						<reference key="source" ref="353033928"/>
-						<reference key="destination" ref="243355372"/>
-					</object>
-					<int key="connectionID">789</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">signInButton</string>
 						<reference key="source" ref="353033928"/>
@@ -2127,6 +2119,14 @@
 						<reference key="destination" ref="871918023"/>
 					</object>
 					<int key="connectionID">1016</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">selectGoogle:</string>
+						<reference key="source" ref="353033928"/>
+						<reference key="destination" ref="243355372"/>
+					</object>
+					<int key="connectionID">1019</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3154,7 +3154,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1016</int>
+			<int key="maxID">1019</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3190,10 +3190,12 @@
 							<string>export:</string>
 							<string>openHelp:</string>
 							<string>select:</string>
+							<string>selectGoogle:</string>
 							<string>showLog:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
