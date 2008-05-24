@@ -45,6 +45,7 @@
 		F44B40A80DBF9D5E00623BBA /* GData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44B40A70DBF9D5E00623BBA /* GData.framework */; };
 		F44B414E0DBF9D6900623BBA /* GData.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F44B40A70DBF9D5E00623BBA /* GData.framework */; };
 		F49E3D170DBE6C1A0068734D /* ExportGoogle.m in Sources */ = {isa = PBXBuildFile; fileRef = F49E3D160DBE6C1A0068734D /* ExportGoogle.m */; };
+		F4BCBB7E0DE78F5100AA1BA7 /* RotatingBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BCBB7D0DE78F5100AA1BA7 /* RotatingBackup.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -120,6 +121,8 @@
 		F44B40A70DBF9D5E00623BBA /* GData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GData.framework; path = frameworks/GData.framework; sourceTree = SOURCE_ROOT; };
 		F49E3D150DBE6C1A0068734D /* ExportGoogle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportGoogle.h; path = classes/ExportGoogle.h; sourceTree = "<group>"; };
 		F49E3D160DBE6C1A0068734D /* ExportGoogle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExportGoogle.m; path = classes/ExportGoogle.m; sourceTree = "<group>"; };
+		F4BCBB7C0DE78F5100AA1BA7 /* RotatingBackup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingBackup.h; sourceTree = "<group>"; };
+		F4BCBB7D0DE78F5100AA1BA7 /* RotatingBackup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatingBackup.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +266,8 @@
 		609F46070DC33C3100AE82AA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F4BCBB7C0DE78F5100AA1BA7 /* RotatingBackup.h */,
+				F4BCBB7D0DE78F5100AA1BA7 /* RotatingBackup.m */,
 				609F46080DC33C4600AE82AA /* StatusValueTransformer.h */,
 				609F46090DC33C4600AE82AA /* StatusValueTransformer.m */,
 				609F476C0DC34A2D00AE82AA /* ProgressValueTransformer.h */,
@@ -400,6 +405,7 @@
 				602D730B0DE74D2F0089FDAC /* DelimitedExport.m in Sources */,
 				602D756A0DE76F270089FDAC /* TabExport.m in Sources */,
 				602D75B00DE771F00089FDAC /* CommaExport.m in Sources */,
+				F4BCBB7E0DE78F5100AA1BA7 /* RotatingBackup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
