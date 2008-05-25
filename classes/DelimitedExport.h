@@ -21,6 +21,8 @@
 @property BOOL showHeader;
 @end
 
+#pragma mark -
+
 @interface DelimitedExport (AbstractMethods)
 - (NSString *)delimiter;								// Returns the delimiter used.
 @end

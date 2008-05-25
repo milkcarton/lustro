@@ -10,7 +10,5 @@
 #import "DelimitedExport.h"
 
 @interface CommaExport : DelimitedExport {
-
 }
-
 @end

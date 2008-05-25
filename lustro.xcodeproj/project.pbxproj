@@ -30,11 +30,8 @@
 		60A58FBC0DDE2F5B0081208C /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 60A58FBB0DDE2F5B0081208C /* icon.icns */; };
 		60A58FF60DDE31480081208C /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A58FF50DDE31480081208C /* Carbon.framework */; };
 		60A590110DDE31DD0081208C /* help in Resources */ = {isa = PBXBuildFile; fileRef = 60A5900D0DDE31DD0081208C /* help */; };
-		60A5901F0DDE34470081208C /* ExportSeparatedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A5901E0DDE34470081208C /* ExportSeparatedFile.m */; };
-		60DE9BBB0DBD356200D3EC93 /* ExporthCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DE9BBA0DBD356200D3EC93 /* ExporthCard.m */; };
 		60DE9BF00DBD373800D3EC93 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60DE9BEF0DBD373800D3EC93 /* AddressBook.framework */; };
 		60DE9C160DBD38F300D3EC93 /* hCardTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 60DE9C150DBD38F300D3EC93 /* hCardTemplate */; };
-		60DE9CB90DBD448E00D3EC93 /* ExportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DE9CB80DBD448E00D3EC93 /* ExportController.m */; };
 		60F83A070DE4A09D00A2ECB8 /* AddressBookExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F83A060DE4A09D00A2ECB8 /* AddressBookExport.m */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -44,7 +41,6 @@
 		F43B68B60DCC8F51008D7642 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F43B68B10DCC8F21008D7642 /* Sparkle.framework */; };
 		F44B40A80DBF9D5E00623BBA /* GData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44B40A70DBF9D5E00623BBA /* GData.framework */; };
 		F44B414E0DBF9D6900623BBA /* GData.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F44B40A70DBF9D5E00623BBA /* GData.framework */; };
-		F49E3D170DBE6C1A0068734D /* ExportGoogle.m in Sources */ = {isa = PBXBuildFile; fileRef = F49E3D160DBE6C1A0068734D /* ExportGoogle.m */; };
 		F4BCBB7E0DE78F5100AA1BA7 /* RotatingBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BCBB7D0DE78F5100AA1BA7 /* RotatingBackup.m */; };
 /* End PBXBuildFile section */
 
@@ -105,22 +101,14 @@
 		60A58FBB0DDE2F5B0081208C /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		60A58FF50DDE31480081208C /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		60A5900D0DDE31DD0081208C /* help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = help; sourceTree = SOURCE_ROOT; };
-		60A5901D0DDE34470081208C /* ExportSeparatedFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportSeparatedFile.h; path = classes/ExportSeparatedFile.h; sourceTree = "<group>"; };
-		60A5901E0DDE34470081208C /* ExportSeparatedFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExportSeparatedFile.m; path = classes/ExportSeparatedFile.m; sourceTree = "<group>"; };
-		60DE9B9E0DBD342000D3EC93 /* ExportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportController.h; path = classes/ExportController.h; sourceTree = "<group>"; };
-		60DE9BB90DBD356200D3EC93 /* ExporthCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExporthCard.h; path = classes/ExporthCard.h; sourceTree = "<group>"; };
-		60DE9BBA0DBD356200D3EC93 /* ExporthCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExporthCard.m; path = classes/ExporthCard.m; sourceTree = "<group>"; };
 		60DE9BEF0DBD373800D3EC93 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = ../../../../../../System/Library/Frameworks/AddressBook.framework; sourceTree = SOURCE_ROOT; };
 		60DE9C150DBD38F300D3EC93 /* hCardTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = hCardTemplate; path = templates/hCardTemplate; sourceTree = SOURCE_ROOT; };
-		60DE9CB80DBD448E00D3EC93 /* ExportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExportController.m; path = classes/ExportController.m; sourceTree = "<group>"; };
 		60F83A050DE4A09D00A2ECB8 /* AddressBookExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddressBookExport.h; path = classes/AddressBookExport.h; sourceTree = "<group>"; };
 		60F83A060DE4A09D00A2ECB8 /* AddressBookExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddressBookExport.m; path = classes/AddressBookExport.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* lustro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lustro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43B68B10DCC8F21008D7642 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = frameworks/Sparkle.framework; sourceTree = SOURCE_ROOT; };
 		F44B40A70DBF9D5E00623BBA /* GData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GData.framework; path = frameworks/GData.framework; sourceTree = SOURCE_ROOT; };
-		F49E3D150DBE6C1A0068734D /* ExportGoogle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportGoogle.h; path = classes/ExportGoogle.h; sourceTree = "<group>"; };
-		F49E3D160DBE6C1A0068734D /* ExportGoogle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExportGoogle.m; path = classes/ExportGoogle.m; sourceTree = "<group>"; };
 		F4BCBB7C0DE78F5100AA1BA7 /* RotatingBackup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingBackup.h; sourceTree = "<group>"; };
 		F4BCBB7D0DE78F5100AA1BA7 /* RotatingBackup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatingBackup.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -291,14 +279,6 @@
 		60DE9BB80DBD353800D3EC93 /* Exporters */ = {
 			isa = PBXGroup;
 			children = (
-				60DE9B9E0DBD342000D3EC93 /* ExportController.h */,
-				60DE9CB80DBD448E00D3EC93 /* ExportController.m */,
-				60DE9BB90DBD356200D3EC93 /* ExporthCard.h */,
-				60DE9BBA0DBD356200D3EC93 /* ExporthCard.m */,
-				F49E3D150DBE6C1A0068734D /* ExportGoogle.h */,
-				F49E3D160DBE6C1A0068734D /* ExportGoogle.m */,
-				60A5901D0DDE34470081208C /* ExportSeparatedFile.h */,
-				60A5901E0DDE34470081208C /* ExportSeparatedFile.m */,
 				60F83A050DE4A09D00A2ECB8 /* AddressBookExport.h */,
 				60F83A060DE4A09D00A2ECB8 /* AddressBookExport.m */,
 				602D72070DE72F470089FDAC /* FileExport.h */,
@@ -389,9 +369,6 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				607C58120DBBB0E7009BBEF8 /* MainController.m in Sources */,
-				60DE9BBB0DBD356200D3EC93 /* ExporthCard.m in Sources */,
-				60DE9CB90DBD448E00D3EC93 /* ExportController.m in Sources */,
-				F49E3D170DBE6C1A0068734D /* ExportGoogle.m in Sources */,
 				609F460A0DC33C4600AE82AA /* StatusValueTransformer.m in Sources */,
 				609F476E0DC34A2D00AE82AA /* ProgressValueTransformer.m in Sources */,
 				60997D930DC3E41B00518344 /* CustomAuthButton.m in Sources */,
@@ -399,7 +376,6 @@
 				609B85640DCE568900264F75 /* ErrorController.m in Sources */,
 				60A58BD80DDDDB4E0081208C /* lustro.xcdatamodel in Sources */,
 				60A58CED0DDDED9A0081208C /* LogImageValueTransformer.m in Sources */,
-				60A5901F0DDE34470081208C /* ExportSeparatedFile.m in Sources */,
 				60F83A070DE4A09D00A2ECB8 /* AddressBookExport.m in Sources */,
 				602D72090DE72F470089FDAC /* FileExport.m in Sources */,
 				602D730B0DE74D2F0089FDAC /* DelimitedExport.m in Sources */,
