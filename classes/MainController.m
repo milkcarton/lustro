@@ -80,7 +80,7 @@
 	}
 
 	password = [passwordField stringValue];
-	if ( ![ExportGoogle checkCredentialsWithUsername:username password:password] ) {
+	/*if ( ![ExportGoogle checkCredentialsWithUsername:username password:password] ) {
 		username = nil;
 		password = nil;
 		[errorLabel setStringValue:@"Incorrect username or password."];
@@ -89,7 +89,7 @@
 		[self setExportButton];
 		[authSheet orderOut:nil];
 		[NSApp endSheet:authSheet];
-	}
+	}*/
 }
 
 - (IBAction)closeSheet:(id)sender
@@ -144,7 +144,7 @@
 
 - (void)invocateExport
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	/*NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	ABAddressBook *book = [ABAddressBook sharedAddressBook];
 	
 	[indicators setValue:@"NO" forKey:@"authenticate"];
@@ -213,7 +213,7 @@
 	
 	[indicators setValue:@"YES" forKey:@"authenticate"];
 	[pool release];
-	pool = nil;
+	pool = nil;*/
 }
 
 - (void)setSignInButton

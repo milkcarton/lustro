@@ -14,6 +14,7 @@
 		602D756A0DE76F270089FDAC /* TabExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 602D75690DE76F270089FDAC /* TabExport.m */; };
 		602D75B00DE771F00089FDAC /* CommaExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 602D75AF0DE771F00089FDAC /* CommaExport.m */; };
 		607C58120DBBB0E7009BBEF8 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */; };
+		608BC36A0DE9A0B40022D5E9 /* HTMLExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 608BC3690DE9A0B40022D5E9 /* HTMLExport.m */; };
 		60997D790DC3E33700518344 /* lockHover.tif in Resources */ = {isa = PBXBuildFile; fileRef = 60997D760DC3E33700518344 /* lockHover.tif */; };
 		60997D7A0DC3E33700518344 /* lockClick.tif in Resources */ = {isa = PBXBuildFile; fileRef = 60997D770DC3E33700518344 /* lockClick.tif */; };
 		60997D930DC3E41B00518344 /* CustomAuthButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 60997D920DC3E41B00518344 /* CustomAuthButton.m */; };
@@ -79,6 +80,8 @@
 		602D75AF0DE771F00089FDAC /* CommaExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommaExport.m; path = classes/CommaExport.m; sourceTree = "<group>"; };
 		607C58100DBBB0E7009BBEF8 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainController.h; path = classes/MainController.h; sourceTree = "<group>"; };
 		607C58110DBBB0E7009BBEF8 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainController.m; path = classes/MainController.m; sourceTree = "<group>"; };
+		608BC3680DE9A0B40022D5E9 /* HTMLExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLExport.h; path = classes/HTMLExport.h; sourceTree = "<group>"; };
+		608BC3690DE9A0B40022D5E9 /* HTMLExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLExport.m; path = classes/HTMLExport.m; sourceTree = "<group>"; };
 		60997D760DC3E33700518344 /* lockHover.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lockHover.tif; path = images/lockHover.tif; sourceTree = "<group>"; };
 		60997D770DC3E33700518344 /* lockClick.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lockClick.tif; path = images/lockClick.tif; sourceTree = "<group>"; };
 		60997D910DC3E41B00518344 /* CustomAuthButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomAuthButton.h; path = classes/CustomAuthButton.h; sourceTree = "<group>"; };
@@ -289,6 +292,8 @@
 				602D75690DE76F270089FDAC /* TabExport.m */,
 				602D75AE0DE771F00089FDAC /* CommaExport.h */,
 				602D75AF0DE771F00089FDAC /* CommaExport.m */,
+				608BC3680DE9A0B40022D5E9 /* HTMLExport.h */,
+				608BC3690DE9A0B40022D5E9 /* HTMLExport.m */,
 			);
 			name = Exporters;
 			sourceTree = "<group>";
@@ -382,6 +387,7 @@
 				602D756A0DE76F270089FDAC /* TabExport.m in Sources */,
 				602D75B00DE771F00089FDAC /* CommaExport.m in Sources */,
 				F4BCBB7E0DE78F5100AA1BA7 /* RotatingBackup.m in Sources */,
+				608BC36A0DE9A0B40022D5E9 /* HTMLExport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
