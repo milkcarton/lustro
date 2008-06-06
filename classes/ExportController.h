@@ -3,11 +3,12 @@
 //  lustro
 //
 //  Created by Jelle Vandebeeck & Simon Schoeters on 21/04/08.
-//  Copyright 2008 milkcarton. All rights reserved.
+//  Copyright 2008 eggnog. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
 #import <AddressBook/AddressBook.h>
+#import "ExportProtocol.h"
 
 typedef enum {
 	kExportSuccess = 0,
@@ -17,18 +18,9 @@ typedef enum {
 
 @interface ExportController : NSOperation {
 	NSArray *contactsList;
-	NSString *message;
-	id target;
 }
 
-- (id)initWithAddressBook:(ABAddressBook *)addressBook target:(id)errorCtrl;
+- (id)initWithAddressBook:(ABAddressBook *)addressBook;
 - (NSString *)cleanLabel:(NSString *)label;
-- (void)addSuccessMessage:(NSString *)successMsg;
-- (void)addFailedMessage:(NSString *)failedMsg;
-- (void)addErrorMessage:(NSString *)errorMsg;
-- (int)export;
 
-@property (copy, readwrite) NSString *message;
-@property (retain) NSArray *contactsList;
-@property (retain) id target;
 @end

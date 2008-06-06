@@ -3,7 +3,7 @@
 //  lustro
 //
 //  Created by Jelle Vandebeeck & Simon Schoeters on 21/04/08.
-//  Copyright 2008 milkcarton. All rights reserved.
+//  Copyright 2008 eggnog. All rights reserved.
 //
 
 #import "ExporthCard.h"
@@ -15,32 +15,33 @@
 //
 // Initialize with contactlist. but also initializes the path for the template.
 //
-- (id)initWithAddressBook:(ABAddressBook *)addressBook target:(id)errorCtrl
+- (id)initWithAddressBook:(ABAddressBook *)addressBook
 {
-	self = [super initWithAddressBook:addressBook target:errorCtrl];
+	self = [super initWithAddressBook:addressBook];
+	writeErrorOccured = NO;
+	contactsList = [addressBook people];
 	
 	// Create username to use in filename.
 	userName = @"";
 	ABPerson *me = [addressBook me];
-	if (me) {
-		NSString *firstName = [me valueForProperty:kABFirstNameProperty];
-		NSString *lastName = [me valueForProperty:kABLastNameProperty];
-		if (firstName) userName = [userName stringByAppendingString:firstName];
-		if (lastName) {
-			if (firstName) userName = [userName stringByAppendingString:@" "];
-			userName = [userName stringByAppendingString:lastName];
-		}
-		if (firstName || lastName) userName = [userName stringByAppendingString:@"'s "];
-		userName = [userName stringByAppendingString:@"contacts"];
-	} else userName = @"contacts";
+	NSString *firstName = [me valueForProperty:kABFirstNameProperty];
+	NSString *lastName = [me valueForProperty:kABLastNameProperty];
+	if (firstName) userName = [userName stringByAppendingString:firstName];
+	if (lastName) {
+		if (firstName) userName = [userName stringByAppendingString:@" "];
+		userName = [userName stringByAppendingString:lastName];
+	}
+	if (firstName || lastName) userName = [userName stringByAppendingString:@"'s "];
+	userName = [userName stringByAppendingString:@"contacts"];
 	
 	// Read template from file in the resources directory
 	NSError *error;
 	NSString *path = [[[NSBundle mainBundle] autorelease] pathForResource:@"hCardTemplate" ofType:@""];
 	hCardTemplate = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
-	fileNameNotOk = NO;
-	if (!hCardTemplate) fileNameNotOk = YES;
-	if (!hCardTemplate && error) [super addErrorMessage:[error localizedDescription]];
+	if (hCardTemplate == nil) { 
+		NSLog(@"Error reading hCard template file at %@\n%@", path, [error localizedFailureReason]);
+		writeErrorOccured = YES;
+	}
 	return self;
 }
 
@@ -55,14 +56,9 @@
 		filePath = [filePath stringByAppendingString:fileName]; 
 		filePath = [filePath stringByAppendingString:EXTENTION]; 
 		filePath = [filePath stringByStandardizingPath];
-		NSError *error;
-		BOOL written =  [html writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error];
-		if (!written && error) {
-			[super addErrorMessage:[error localizedDescription]];
-			return NO;
-		}
-		return written;
-	} else [super addErrorMessage:@"There was no content available to write the file."];
+		
+		return [html writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+	}
 	return NO;
 }
 
@@ -72,9 +68,8 @@
 - (int)export
 {
 	if ([contactsList count] > 0) {
-		if (fileNameNotOk) {
+		if (writeErrorOccured)
 			return kExportError;
-		}
 		@try {
 			for (ABPerson *person in contactsList) {
 				hCardTemplate = [hCardTemplate stringByAppendingString:@"<div class=\"vcard\">\n"];
@@ -173,14 +168,11 @@
 			hCardTemplate = [hCardTemplate stringByAppendingString:@"\n</body>\n</html>\n"];
 		}
 		@catch (NSException *exception) {
-			[super addErrorMessage:[exception reason]];
 			return kExportError;
 		}
-		if (![self writeToFileWithHtml:hCardTemplate]) {
+		if (![self writeToFileWithHtml:hCardTemplate])
 			return kExportError;
-		}
 	} else {
-		[super addErrorMessage:@"There were no contacts to export."];
 		return kExportWarning;
 	}
 	return kExportSuccess;
@@ -315,7 +307,4 @@
 	return orgOutput;
 }
 
-@synthesize hCardTemplate;
-@synthesize userName;
-@synthesize fileNameNotOk;
 @end
