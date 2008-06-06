@@ -3,21 +3,54 @@
 //  lustro
 //
 //  Created by Jelle Vandebeeck & Simon Schoeters on 22/04/08.
-//  Copyright 2008 eggnog. All rights reserved.
+//  Copyright 2008 milkcarton. All rights reserved.
 //
 
 #import "ExportGoogle.h"
 
-#define TIMEOUT 30 // timeout in seconds
-#define MAXLIMIT 9999 // max entries per feed
+#define TIMEOUT 15		// timeout in seconds
+#define MAXLIMIT 9999	// max entries per feed
+#define GOOGLE_CLIENT_AUTH_URL @"https://www.google.com/accounts/ClientLogin"
 
 @implementation ExportGoogle
 
-// (ExportController) Adds the contacts to the contactList instance variable
-- (id)initWithAddressBook:(ABAddressBook *)addressBook
++ (BOOL)checkCredentialsWithUsername:(NSString *)user password:(NSString *)pass
 {
-	self = [super initWithAddressBook:addressBook];
+	if ([user hasSuffix:@"@gmail.com"] == FALSE) {
+		user = [user stringByAppendingFormat:@"@gmail.com"];
+	}
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:GOOGLE_CLIENT_AUTH_URL]];
+	[request setTimeoutInterval:TIMEOUT];
+	[request setHTTPMethod:@"POST"];
+	[request addValue:@"Content-Type" forHTTPHeaderField:@"application/x-www-form-urlencoded"];
+	NSString *lustroVersion = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleVersion"];
+	NSString *requestBody = [[NSString alloc] initWithFormat:@"Email=%@&Passwd=%@&service=xapi&accountType=HOSTED_OR_GOOGLE&source=%@",	user, pass, lustroVersion];
+	NSHTTPURLResponse *response = nil;
+	[request setHTTPBody:[requestBody dataUsingEncoding:NSASCIIStringEncoding]];
+	[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+	if ([response statusCode] == 200) {
+		return true;
+	}
+	return false;
+}
+
+// (ExportController) Adds the contacts to the contactList instance variable
+- (id)initWithAddressBook:(ABAddressBook *)addressBook target:(id)errorCtrl
+{
+	self = [super initWithAddressBook:addressBook target:(id)errorCtrl];
 	contactsList = [addressBook people];
+	return self;
+}
+
+- (id)initWithAddressBook:(ABAddressBook *)addressBook username:(NSString *)user password:(NSString *)pass target:(id)errorCtrl
+{
+	if ([user hasSuffix:@"@gmail.com"] == FALSE) {
+		user = [user stringByAppendingFormat:@"@gmail.com"];
+	}
+	username = user;
+	password = pass;
+	exportStatus = kExportSuccess;
+	[self initWithAddressBook:addressBook target:errorCtrl];
 	return self;
 }
 
@@ -27,39 +60,49 @@
 	if ([contactsList count] > 0) {
 		// Logging, disabled for release versions
 		//[GDataHTTPFetcher setIsLoggingEnabled:YES];
-		[self authenticateWithUsername:@"lustroapp@gmail.com" password:@"jellesimon"];
+		[self authenticate];
 		
+		[self backupAllContacts];
 		[self removeAllContacts];
 		[service waitForTicket:ticket timeout:TIMEOUT fetchedObject:nil error:nil];
+
+		// It seems that some 409 (duplicate mail) errors are caused by an contact that was not yet completly removed
+		sleep(2);
 		
 		[self createContacts];
+	} else {
+		[super addFailedMessage:@"No contacts found in Address Book."];
+		exportStatus = kExportWarning;
 	}
 	[ticket cancelTicket];
 	[service release];
-	return kExportSuccess;
+	
+	if (exportStatus == kExportSuccess || exportStatus == kExportWarning) {
+		[super addSuccessMessage:[NSString stringWithFormat:@"Exported %i contacts to Google.", [contactsList count]]];
+	}
+	
+	return exportStatus;
 }
 
-- (void)authenticateWithUsername:(NSString *)user password:(NSString *)pass
+- (void)authenticate
 {
-	// Set version for Google user agent from plist file
-	NSString *lustroVersion = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleVersion"];
-	NSString *userAgent = @"Eggnog-GoogleAPI-";
-	userAgent = [userAgent stringByAppendingString:lustroVersion];
-
 	if (!service) {
+		// Set version for Google user agent from plist file
+		NSString *lustroVersion = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleVersion"];
+		NSString *userAgent = @"milkcarton-GoogleAPI-";
+		userAgent = [userAgent stringByAppendingString:lustroVersion];
 		service = [[GDataServiceGoogleContact alloc] init];
 		[service setUserAgent:userAgent];
 	}
-	
-	username = user;
-	password = pass;
+
 	[service setUserCredentialsWithUsername:username password:password];
 }
 
 - (void)createContacts
 {
-	// TODO no pictures uploaded at the moment
-	for (int i = 0; i < [contactsList count]; i++) {
+	// TODO no pictures uploaded at the moment, not supported by Google yet
+	//for (int i = 0; i < [contactsList count]; i++) {
+	for (int i = 0; i < 20; i++) {
 		ABPerson *person = [contactsList objectAtIndex:i];
 		NSString *firstName = [person valueForProperty:kABFirstNameProperty];
 		NSString *lastName = [person valueForProperty:kABLastNameProperty];
@@ -100,6 +143,11 @@
 			title = organization;
 		}
 		
+		if ([title compare:@""] == NSOrderedSame) {
+			[super addFailedMessage:@"Contact without name, nickname or company."];
+			exportStatus = kExportWarning;
+		}
+		
 		GDataEntryContact *contact = [GDataEntryContact contactEntryWithTitle:title];
 		
 		/*
@@ -123,10 +171,7 @@
 			for (int j = 0; j < [aim count]; j++) {
 				NSString *label = [aim labelAtIndex:j];
 				NSString *value = [aim valueAtIndex:j];
-				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"aim"]
-													rel:[self makeRelFromLabel:label]
-												  label:nil
-												address:value];
+				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"aim"] rel:[self makeRelFromLabel:label] label:nil address:value];
 				[contact addIMAddress:gIM];
 			}
 		}
@@ -135,10 +180,7 @@
 			for (int j = 0; j < [jabber count]; j++) {
 				NSString *label = [jabber labelAtIndex:j];
 				NSString *value = [jabber valueAtIndex:j];
-				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"jabber"]
-													rel:[self makeRelFromLabel:label]
-												  label:nil
-												address:value];
+				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"jabber"] rel:[self makeRelFromLabel:label] label:nil address:value];
 				[contact addIMAddress:gIM];
 			}
 		}
@@ -147,10 +189,7 @@
 			for (int j = 0; j < [msn count]; j++) {
 				NSString *label = [msn labelAtIndex:j];
 				NSString *value = [msn valueAtIndex:j];
-				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"msn"]
-													rel:[self makeRelFromLabel:label]
-												  label:nil
-												address:value];
+				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"msn"]	rel:[self makeRelFromLabel:label] label:nil address:value];
 				[contact addIMAddress:gIM];
 			}
 		}
@@ -159,10 +198,7 @@
 			for (int j = 0; j < [icq count]; j++) {
 				NSString *label = [icq labelAtIndex:j];
 				NSString *value = [icq valueAtIndex:j];
-				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"icq"]
-													rel:[self makeRelFromLabel:label]
-												  label:nil
-												address:value];
+				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"icq"] rel:[self makeRelFromLabel:label] label:nil address:value];
 				[contact addIMAddress:gIM];
 			}
 		}
@@ -171,10 +207,7 @@
 			for (int j = 0; j < [yahoo count]; j++) {
 				NSString *label = [yahoo labelAtIndex:j];
 				NSString *value = [yahoo valueAtIndex:j];
-				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"yahoo"]
-													rel:[self makeRelFromLabel:label]
-												  label:nil
-												address:value];
+				GDataIM *gIM =  [GDataIM IMWithProtocol:[self makeRelFromLabel:@"yahoo"] rel:[self makeRelFromLabel:label] label:nil address:value];
 				[contact addIMAddress:gIM];
 			}
 		}
@@ -241,7 +274,6 @@
 			}
 		}
 
-
 		ticket = [service fetchContactEntryByInsertingEntry:contact
 												 forFeedURL:[GDataServiceGoogleContact contactFeedURLForUserID:username]
 												   delegate:self
@@ -249,7 +281,6 @@
 											didFailSelector:@selector(ticket:failedWithError:)];
 		// TODO It waits for each contact, this is not efficient, batch would be better but is not supported by Google yet
 		[service waitForTicket:ticket timeout:TIMEOUT fetchedObject:nil error:nil];
-
 	}
 }
 
@@ -266,7 +297,8 @@
 	if([label caseInsensitiveCompare:@"other"] == NSOrderedSame) { return kGDataPhoneNumberOther; }
 	// For instant messengers
 	if([label caseInsensitiveCompare:@"aim"] == NSOrderedSame) { return kGDataIMProtocolAIM; }
-	if([label caseInsensitiveCompare:@"gtalk"] == NSOrderedSame) { return kGDataIMProtocolGoogleTalk; }
+	// kGDataIMProtocolGoogleTalk seems to be an illegal value for Google
+	//if([label caseInsensitiveCompare:@"gtalk"] == NSOrderedSame) { return kGDataIMProtocolGoogleTalk; }
 	if([label caseInsensitiveCompare:@"icq"] == NSOrderedSame) { return kGDataIMProtocolICQ; }
 	if([label caseInsensitiveCompare:@"jabber"] == NSOrderedSame) { return kGDataIMProtocolJabber; }
 	if([label caseInsensitiveCompare:@"msn"] == NSOrderedSame) { return kGDataIMProtocolMSN; }
@@ -275,6 +307,51 @@
 	if([label caseInsensitiveCompare:@"yahoo"] == NSOrderedSame) { return kGDataIMProtocolYahoo; }
 	// TODO custom Address Book fields are converted to "other", this is wrong, should be a label instead
 	return kGDataPhoneNumberOther;
+}
+
+-(void)backupAllContacts
+{
+	GDataQueryContact *query = [GDataQueryContact contactQueryForUserID:username];
+	[query setMaxResults:MAXLIMIT];
+	ticket = [service fetchContactQuery:query
+							   delegate:self 
+					  didFinishSelector:@selector(ticket:backupFinishedWithFeed:) 
+						didFailSelector:@selector(ticket:failedWithError:)];
+}
+
+- (void)ticket:(GDataServiceTicket *)ticket backupFinishedWithFeed:(GDataFeedContact *)feed
+{
+	// Create the backup directory if it doesn't exist
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	NSString *folder =[NSHomeDirectory() stringByAppendingPathComponent:@"Library/Application Support/Lustro/Backups"];
+
+	if ([fileManager fileExistsAtPath:folder] == NO)
+	{
+		[fileManager createDirectoryAtPath:folder attributes:nil];
+	}
+	
+	// Remove old (older then 31 days) backup files
+	NSString *file;
+	NSTimeInterval month = 24 * 60 * 60 * 31;
+	NSDate *refDate = [[NSDate date] addTimeInterval:-month];
+    NSDirectoryEnumerator *dirEnum = [fileManager enumeratorAtPath:folder];
+    while (file = [dirEnum nextObject])
+    {
+		NSString *filePath = [NSString stringWithFormat:@"%@/%@", folder, [file stringByStandardizingPath]];
+		NSDictionary *dict = [fileManager fileAttributesAtPath:filePath traverseLink:YES];
+		NSDate *fileCreationDate = [dict objectForKey:NSFileCreationDate];
+		if(fileCreationDate < refDate) {
+			[fileManager removeFileAtPath:filePath handler:nil];
+		}
+    }
+	
+	// Create the new backup file with a random number
+	int random = ([NSDate timeIntervalSinceReferenceDate] - (int)[NSDate timeIntervalSinceReferenceDate]) * 100000;
+	NSString *filename = [NSString stringWithFormat:@"backup_google_%i.xml", random];
+	NSString *path = [folder stringByAppendingPathComponent:filename];
+	NSXMLDocument *doc = [feed XMLDocument];
+    NSData* data = [doc XMLDataWithOptions:NSXMLNodePrettyPrint];
+	[data writeToFile:path atomically:YES];
 }
 
 -(void)removeAllContacts
@@ -301,10 +378,28 @@
 	}
 }
 
-- (void)ticket:(GDataServiceTicket *)aTicket failedWithError:(NSError *)error {
-	// Error 409 conflict: duplicate primary mail addresses maybe?
-	// TODO error handling
-	NSLog(@"ERROR %@", [error localizedDescription]);
+- (void)ticket:(GDataServiceTicket *)aTicket failedWithError:(NSError *)error {	
+	// Extract the contact's name for the contact that went fubar
+	NSDictionary *userInfo =[error userInfo];
+	NSString *authError = [userInfo authenticationError];
+	NSXMLDocument *userXml = [[NSXMLDocument alloc] initWithXMLString:[userInfo valueForKey:@"error"] options:NSXMLNodeOptionsNone error:nil];
+	NSString *title = [[userXml nodesForXPath:@"/entry/title/text()" error:nil] objectAtIndex:0];
+	[userXml release];
+
+	if([error code] == 409) {
+		[super addFailedMessage:(NSString *)[NSString stringWithFormat:@"Naming conflict for %@.", title]];
+		exportStatus = kExportWarning;
+    } else if ([authError isEqual:kGDataServiceErrorCaptchaRequired]) {
+		[super addErrorMessage:@"Captcha required, your account is blocked."];
+		exportStatus = kExportError;
+    } else {
+		[super addFailedMessage:(NSString *)[NSString stringWithFormat:@"Something went wrong with %@ (%i).", title, [error code]]];
+		exportStatus = kExportWarning;
+	}
 }
 	
+@synthesize service;
+@synthesize username;
+@synthesize password;
+@synthesize ticket;
 @end

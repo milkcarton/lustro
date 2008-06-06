@@ -17,7 +17,7 @@
 @implementation AGKeychain
 
 
-
+ 
 + (BOOL)checkForExistanceOfKeychainItem:(NSString *)keychainItemName withItemKind:(NSString *)keychainItemKind forUsername:(NSString *)username
 {
 	SecKeychainSearchRef search;
@@ -28,19 +28,19 @@
     int numberOfItemsFound = 0;
 	
 	attributes[0].tag = kSecAccountItemAttr;
-    attributes[0].data = [username cString];
+    attributes[0].data = (void *)[username UTF8String];
     attributes[0].length = [username length];
     
     attributes[1].tag = kSecDescriptionItemAttr;
-    attributes[1].data = [keychainItemName cString];
+    attributes[1].data = (void *)[keychainItemName UTF8String];
     attributes[1].length = [keychainItemName length];
 	
 	attributes[2].tag = kSecLabelItemAttr;
-    attributes[2].data = [keychainItemKind cString];
+    attributes[2].data = (void *)[keychainItemKind UTF8String];
     attributes[2].length = [keychainItemKind length];
 	
     list.count = 3;
-    list.attr = &attributes;
+    list.attr = attributes;
 	
     result = SecKeychainSearchCreateFromAttributes(NULL, kSecGenericPasswordItemClass, &list, &search);
 	
@@ -69,15 +69,15 @@
 	int numberOfItemsFound = 0;
 	
     attributes[0].tag = kSecAccountItemAttr;
-    attributes[0].data = [username cString];
+    attributes[0].data = (void *)[username UTF8String];
     attributes[0].length = [username length];
     
     attributes[1].tag = kSecDescriptionItemAttr;
-    attributes[1].data = [keychainItemName cString];
+    attributes[1].data = (void *)[keychainItemName UTF8String];
     attributes[1].length = [keychainItemName length];
 	
 	attributes[2].tag = kSecLabelItemAttr;
-    attributes[2].data = [keychainItemKind cString];
+    attributes[2].data = (void *)[keychainItemKind UTF8String];
     attributes[2].length = [keychainItemKind length];
 	
     list.count = 3;
@@ -109,15 +109,15 @@
 	OSErr result;
 	
     attributes[0].tag = kSecAccountItemAttr;
-    attributes[0].data = [username cString];
+    attributes[0].data = (void *)[username UTF8String];
     attributes[0].length = [username length];
     
     attributes[1].tag = kSecDescriptionItemAttr;
-    attributes[1].data = [keychainItemName cString];
+    attributes[1].data = (void *)[keychainItemName UTF8String];
     attributes[1].length = [keychainItemName length];
 	
 	attributes[2].tag = kSecLabelItemAttr;
-    attributes[2].data = [keychainItemKind cString];
+    attributes[2].data = (void *)[keychainItemKind UTF8String];
     attributes[2].length = [keychainItemKind length];
 	
     list.count = 3;
@@ -125,7 +125,7 @@
 	
 	result = SecKeychainSearchCreateFromAttributes(NULL, kSecGenericPasswordItemClass, &list, &search);
 	SecKeychainSearchCopyNext (search, &item);
-    status = SecKeychainItemModifyContent(item, &list, [newPassword length], [newPassword cString]);
+    status = SecKeychainItemModifyContent(item, &list, [newPassword length], [newPassword UTF8String]);
 	
     if (status != 0) {
         NSLog(@"Error modifying item: %d", (int)status);
@@ -143,21 +143,21 @@
     OSStatus status;
 	
     attributes[0].tag = kSecAccountItemAttr;
-    attributes[0].data = [username cString];
+    attributes[0].data = (void *)[username UTF8String];
     attributes[0].length = [username length];
     
     attributes[1].tag = kSecDescriptionItemAttr;
-    attributes[1].data = [keychainItemName cString];
+    attributes[1].data = (void *)[keychainItemName UTF8String];
     attributes[1].length = [keychainItemName length];
 	
 	attributes[2].tag = kSecLabelItemAttr;
-    attributes[2].data = [keychainItemKind cString];
+    attributes[2].data = (void *)[keychainItemKind UTF8String];
     attributes[2].length = [keychainItemKind length];
 	
     list.count = 3;
     list.attr = attributes;
 	
-    status = SecKeychainItemCreateFromContent(kSecGenericPasswordItemClass, &list, [password length], [password cString], NULL,NULL,&item);
+    status = SecKeychainItemCreateFromContent(kSecGenericPasswordItemClass, &list, [password length], [password UTF8String], NULL,NULL,&item);
     if (status != 0) {
         NSLog(@"Error creating new item: %d\n", (int)status);
     }
@@ -171,22 +171,21 @@
     SecKeychainAttributeList list;
     SecKeychainAttribute attributes[3];
     OSErr result;
-    int i = 0;
 	
 	attributes[0].tag = kSecAccountItemAttr;
-    attributes[0].data = [username cString];
+    attributes[0].data = (void *)[username UTF8String];
     attributes[0].length = [username length];
     
     attributes[1].tag = kSecDescriptionItemAttr;
-    attributes[1].data = [keychainItemName cString];
+    attributes[1].data = (void *)[keychainItemName UTF8String];
     attributes[1].length = [keychainItemName length];
 	
 	attributes[2].tag = kSecLabelItemAttr;
-    attributes[2].data = [keychainItemKind cString];
+    attributes[2].data = (void *)[keychainItemKind UTF8String];
     attributes[2].length = [keychainItemKind length];
 	
     list.count = 3;
-    list.attr = &attributes;
+    list.attr = attributes;
 	
     result = SecKeychainSearchCreateFromAttributes(NULL, kSecGenericPasswordItemClass, &list, &search);
 	
@@ -242,7 +241,7 @@
             strncpy (passwordBuffer, password, length);
 			
             passwordBuffer[length] = '\0';
-			//printf ("passwordBuffer = %s\n", passwordBuffer);
+			//printf ("passwordBuffer = %s\n", passwordBuffer); 
 			return [NSString stringWithCString:passwordBuffer];
         }
 		
@@ -250,8 +249,8 @@
 		
     } else {
         printf("Error = %d\n", (int)status);
-		return;
     }
+	return NO;
 }
 
 
