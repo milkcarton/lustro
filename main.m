@@ -11,23 +11,26 @@
 #import "AddressBookExport.h"
 #import "HTMLExport.h"
 #import "RotatingBackup.h"
+#import "GoogleExport.h"
 
 int main(int argc, char *argv[])
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
-	HTMLExport *abExport = [[HTMLExport alloc] init];
-	[abExport export];
-	[abExport release];
-	
-	/* Test: Create rotating backups */
-	/*NSData *dataIn = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.google.be"]];
+	/* Test: Create rotating backups
+	NSData *dataIn = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.google.be"]];
 	RotatingBackup *backup = [[RotatingBackup alloc] initWithFilename:@"metest.xml" data:dataIn];
 	[backup createBackupFolder];
 	[backup removeOldFilesInFolder];
 	[backup save];
-	[backup release];*/
+	[backup release];
+	*/
 	
+	/* Test: Export Google Contacts with backup */
+	GoogleExport *gExport = [[GoogleExport alloc] initWithUsername:@"lustroapp" password:@"jellesimon"];
+	[gExport export];
+	[gExport release];
+		
 	[pool release];
 	return 1;
 	//return NSApplicationMain(argc,  (const char **) argv);

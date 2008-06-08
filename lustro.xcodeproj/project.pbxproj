@@ -38,11 +38,12 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		F42D5F8F0DFC723800B0E805 /* RotatingBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = F42D5F8E0DFC723800B0E805 /* RotatingBackup.m */; };
 		F43B68B20DCC8F21008D7642 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43B68B10DCC8F21008D7642 /* Sparkle.framework */; };
 		F43B68B60DCC8F51008D7642 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F43B68B10DCC8F21008D7642 /* Sparkle.framework */; };
 		F44B40A80DBF9D5E00623BBA /* GData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44B40A70DBF9D5E00623BBA /* GData.framework */; };
 		F44B414E0DBF9D6900623BBA /* GData.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F44B40A70DBF9D5E00623BBA /* GData.framework */; };
-		F4BCBB7E0DE78F5100AA1BA7 /* RotatingBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BCBB7D0DE78F5100AA1BA7 /* RotatingBackup.m */; };
+		F4AE8B970DFC7011001EAC61 /* GoogleExport.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AE8B960DFC7011001EAC61 /* GoogleExport.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -110,10 +111,12 @@
 		60F83A060DE4A09D00A2ECB8 /* AddressBookExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddressBookExport.m; path = classes/AddressBookExport.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* lustro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lustro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F42D5F8D0DFC723800B0E805 /* RotatingBackup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RotatingBackup.h; path = classes/RotatingBackup.h; sourceTree = "<group>"; };
+		F42D5F8E0DFC723800B0E805 /* RotatingBackup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RotatingBackup.m; path = classes/RotatingBackup.m; sourceTree = "<group>"; };
 		F43B68B10DCC8F21008D7642 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = frameworks/Sparkle.framework; sourceTree = SOURCE_ROOT; };
 		F44B40A70DBF9D5E00623BBA /* GData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GData.framework; path = frameworks/GData.framework; sourceTree = SOURCE_ROOT; };
-		F4BCBB7C0DE78F5100AA1BA7 /* RotatingBackup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingBackup.h; sourceTree = "<group>"; };
-		F4BCBB7D0DE78F5100AA1BA7 /* RotatingBackup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatingBackup.m; sourceTree = "<group>"; };
+		F4AE8B950DFC7011001EAC61 /* GoogleExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoogleExport.h; path = classes/GoogleExport.h; sourceTree = "<group>"; };
+		F4AE8B960DFC7011001EAC61 /* GoogleExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoogleExport.m; path = classes/GoogleExport.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,8 +260,8 @@
 		609F46070DC33C3100AE82AA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				F4BCBB7C0DE78F5100AA1BA7 /* RotatingBackup.h */,
-				F4BCBB7D0DE78F5100AA1BA7 /* RotatingBackup.m */,
+				F42D5F8D0DFC723800B0E805 /* RotatingBackup.h */,
+				F42D5F8E0DFC723800B0E805 /* RotatingBackup.m */,
 				609F46080DC33C4600AE82AA /* StatusValueTransformer.h */,
 				609F46090DC33C4600AE82AA /* StatusValueTransformer.m */,
 				609F476C0DC34A2D00AE82AA /* ProgressValueTransformer.h */,
@@ -282,6 +285,8 @@
 		60DE9BB80DBD353800D3EC93 /* Exporters */ = {
 			isa = PBXGroup;
 			children = (
+				F4AE8B950DFC7011001EAC61 /* GoogleExport.h */,
+				F4AE8B960DFC7011001EAC61 /* GoogleExport.m */,
 				60F83A050DE4A09D00A2ECB8 /* AddressBookExport.h */,
 				60F83A060DE4A09D00A2ECB8 /* AddressBookExport.m */,
 				602D72070DE72F470089FDAC /* FileExport.h */,
@@ -386,8 +391,9 @@
 				602D730B0DE74D2F0089FDAC /* DelimitedExport.m in Sources */,
 				602D756A0DE76F270089FDAC /* TabExport.m in Sources */,
 				602D75B00DE771F00089FDAC /* CommaExport.m in Sources */,
-				F4BCBB7E0DE78F5100AA1BA7 /* RotatingBackup.m in Sources */,
 				608BC36A0DE9A0B40022D5E9 /* HTMLExport.m in Sources */,
+				F4AE8B970DFC7011001EAC61 /* GoogleExport.m in Sources */,
+				F42D5F8F0DFC723800B0E805 /* RotatingBackup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

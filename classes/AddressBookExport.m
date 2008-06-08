@@ -28,7 +28,7 @@
 
 - (int)export
 {	
-	BOOL ok = [self initialize];
+	BOOL ok = [self initialize]; 
 	NSArray *contacts = [addressBook people];
 	numberExported = 0;
 	
@@ -45,7 +45,7 @@
 			if (![self exportFirstNamePhonetic:firstNamePhonetic]) status = kExportWarning;
 			NSString *lastNamePhonetic = [person valueForProperty:kABLastNamePhoneticProperty];			// last name phonetic.
 			if (![self exportLastNamePhonetic:lastNamePhonetic]) status = kExportWarning;
-			NSCalendarDate *birthDay = [person valueForProperty:kABBirthdayProperty];							// birthday.
+			NSCalendarDate *birthDay = [person valueForProperty:kABBirthdayProperty];					// birthday.
 			if (![self exportBirthDay:birthDay]) status = kExportWarning;
 			NSString *organization = [person valueForProperty:kABOrganizationProperty];					// organization.
 			if (![self exportOrganization:organization]) status = kExportWarning;
@@ -91,6 +91,14 @@
 			if (![self exportOtherDates:otherDates]) status = kExportWarning;
 			ABMultiValue *relatedNames = [person valueForProperty:kABRelatedNamesProperty];				// related names.
 			if (![self exportRelatedNames:relatedNames]) status = kExportWarning;
+			
+			// Set company name as title if needed (Google will show an empty entry for a company if not)
+			company = NO;
+			NSNumber *flagsValue = [person valueForProperty:kABPersonFlags];
+			int flags = [flagsValue intValue];
+			if ((flags & kABShowAsMask) == kABShowAsCompany) {
+				company = YES;
+			}
 			
 			[self finalizePerson];
 		}

@@ -20,7 +20,8 @@ typedef enum {
 	id delegate;					// The delegate object.
 	
 	@protected ABAddressBook *addressBook;		// The addressbook that contains the contacts to export.
-	@protected int numberExported;					// The number of contacts exported.
+	@protected int numberExported;				// The number of contacts exported.
+	@protected BOOL company;					// Is the exported contact a company?
 }
 
 + (NSString *)cleanLabel:(NSString *)label;						// Cleans mail labels like work, private, etc. as Address Book adds strange symbols before and after the labels.
