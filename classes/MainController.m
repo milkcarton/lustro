@@ -1,3 +1,5 @@
+// DEPRECIATED
+
 //
 //  MainController.m
 //  lustro
@@ -117,17 +119,6 @@
 		[self setCredentials];
 	}
 	[self setExportButton];
-}
-
-- (IBAction)showLog:(id)sender
-{
-	[NSApp beginSheet:logSheet modalForWindow:window modalDelegate:self didEndSelector:NULL contextInfo:nil];
-}
-
-- (IBAction)closeLog:(id)sender
-{
-	[logSheet orderOut:nil];
-	[NSApp endSheet:logSheet];
 }
 
 - (IBAction)copyLog:(id)sender

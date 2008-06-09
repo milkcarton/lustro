@@ -6,6 +6,10 @@
 	<string>English</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>help</string>
+	<key>CFBundleHelpBookName</key>
+	<string>Lustro Help</string>
 	<key>CFBundleIconFile</key>
 	<string>icon</string>
 	<key>CFBundleIdentifier</key>
@@ -24,11 +28,7 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>SUFeedURL</key> 
+	<key>SUFeedURL</key>
 	<string>http://localhost:3000/feeds/appcast.xml</string>
-	<key>CFBundleHelpBookFolder</key>
-	<string>help</string>
-	<key>CFBundleHelpBookName</key>
-	<string>Lustro Help</string>
 </dict>
 </plist>

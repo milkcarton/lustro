@@ -1,3 +1,5 @@
+// DEPRECIATED
+
 //
 //  MainController.h
 //  lustro
