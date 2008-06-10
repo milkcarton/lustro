@@ -11,6 +11,11 @@
 
 @implementation ExportController
 
+- (void)awakeFromNib
+{
+	[mainWindow setDelegate:authentiacateController];
+}
+
 - (IBAction)showLogPanel:(id)sender
 {
 	[NSApp beginSheet:logController.panel modalForWindow:mainWindow modalDelegate:self didEndSelector:nil contextInfo:nil];
