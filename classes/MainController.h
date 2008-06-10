@@ -14,7 +14,7 @@
 #import "StatusValueTransformer.h"
 #import "ProgressValueTransformer.h"
 #import "LogImageValueTransformer.h"
-#import "ErrorController.h"
+//#import "ErrorController.h"
 #import "AGKeychain.h"
 
 @interface MainController : NSObject {
@@ -32,7 +32,7 @@
 	IBOutlet id signInButton;		// The button to sign in to your Google account.
 	NSString *username;
 	NSString *password;
-}
+}/*
 - (NSMutableDictionary *)indicators;				// Returns the indicators dictionary.
 - (IBAction)export:(id)sender;						// Called when the export button is pressed.
 - (IBAction)authenticate:(id)sender;				// Called when the authenticate button is pressed.
@@ -59,5 +59,5 @@
 @property (retain) id exportButton;
 @property (retain) id signInButton;
 @property (retain) NSString *username;
-@property (retain) id logSheet;
+@property (retain) id logSheet;*/
 @end

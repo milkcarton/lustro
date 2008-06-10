@@ -22,7 +22,6 @@
 		60997E490DC3ED2100518344 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60997E480DC3ED2100518344 /* Security.framework */; };
 		609B85310DCE53D000264F75 /* lockAlt.tif in Resources */ = {isa = PBXBuildFile; fileRef = 609B852D0DCE53D000264F75 /* lockAlt.tif */; };
 		609B85320DCE53D000264F75 /* lock.tif in Resources */ = {isa = PBXBuildFile; fileRef = 609B852E0DCE53D000264F75 /* lock.tif */; };
-		609B85640DCE568900264F75 /* ErrorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 609B85630DCE568900264F75 /* ErrorController.m */; };
 		609F460A0DC33C4600AE82AA /* StatusValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 609F46090DC33C4600AE82AA /* StatusValueTransformer.m */; };
 		609F472E0DC3474400AE82AA /* warning.tif in Resources */ = {isa = PBXBuildFile; fileRef = 609F472D0DC3474400AE82AA /* warning.tif */; };
 		609F476E0DC34A2D00AE82AA /* ProgressValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 609F476D0DC34A2D00AE82AA /* ProgressValueTransformer.m */; };
@@ -95,8 +94,6 @@
 		60997E480DC3ED2100518344 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = ../../../../../../System/Library/Frameworks/Security.framework; sourceTree = SOURCE_ROOT; };
 		609B852D0DCE53D000264F75 /* lockAlt.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lockAlt.tif; path = images/lockAlt.tif; sourceTree = "<group>"; };
 		609B852E0DCE53D000264F75 /* lock.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lock.tif; path = images/lock.tif; sourceTree = "<group>"; };
-		609B85620DCE568900264F75 /* ErrorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ErrorController.h; path = classes/ErrorController.h; sourceTree = "<group>"; };
-		609B85630DCE568900264F75 /* ErrorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ErrorController.m; path = classes/ErrorController.m; sourceTree = "<group>"; };
 		609F46080DC33C4600AE82AA /* StatusValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusValueTransformer.h; path = classes/StatusValueTransformer.h; sourceTree = "<group>"; };
 		609F46090DC33C4600AE82AA /* StatusValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusValueTransformer.m; path = classes/StatusValueTransformer.m; sourceTree = "<group>"; };
 		609F472D0DC3474400AE82AA /* warning.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = warning.tif; path = images/warning.tif; sourceTree = "<group>"; };
@@ -264,8 +261,6 @@
 				F4E3D5490DFDA948007460F4 /* ExportController.m */,
 				607C58100DBBB0E7009BBEF8 /* MainController.h */,
 				607C58110DBBB0E7009BBEF8 /* MainController.m */,
-				609B85620DCE568900264F75 /* ErrorController.h */,
-				609B85630DCE568900264F75 /* ErrorController.m */,
 				F4E3D5430DFDA901007460F4 /* LogController.h */,
 				F4E3D5440DFDA901007460F4 /* LogController.m */,
 			);
@@ -398,7 +393,6 @@
 				609F476E0DC34A2D00AE82AA /* ProgressValueTransformer.m in Sources */,
 				60997D930DC3E41B00518344 /* CustomAuthButton.m in Sources */,
 				60997E050DC3ECA100518344 /* AGKeychain.m in Sources */,
-				609B85640DCE568900264F75 /* ErrorController.m in Sources */,
 				60A58BD80DDDDB4E0081208C /* lustro.xcdatamodel in Sources */,
 				60A58CED0DDDED9A0081208C /* LogImageValueTransformer.m in Sources */,
 				60F83A070DE4A09D00A2ECB8 /* AddressBookExport.m in Sources */,

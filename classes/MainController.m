@@ -11,7 +11,7 @@
 #import "MainController.h"
 
 @implementation MainController
-- (id)init
+/*- (id)init
 {
 	self = [super init];
 	
@@ -92,7 +92,7 @@
 		[authSheet orderOut:nil];
 		[NSApp endSheet:authSheet];
 	}*/
-}
+/*}
 
 - (IBAction)closeSheet:(id)sender
 {
@@ -205,7 +205,7 @@
 	[indicators setValue:@"YES" forKey:@"authenticate"];
 	[pool release];
 	pool = nil;*/
-}
+/*}
 
 - (void)setSignInButton
 {
@@ -232,7 +232,7 @@
 }
 
 /* DELEGATE OF NSTEXTFIELD */
-- (void)controlTextDidChange:(NSNotification *)notification
+/*- (void)controlTextDidChange:(NSNotification *)notification
 {
 	[self setSignInButton];
 }
@@ -275,5 +275,5 @@
 @synthesize exportButton;
 @synthesize signInButton;
 @synthesize username;
-@synthesize logSheet;
+@synthesize logSheet;*/
 @end
