@@ -13,28 +13,22 @@
 
 - (void)windowWillBeginSheet:(NSNotification *)notification
 {
-	defaults = [NSUserDefaults standardUserDefaults];
+	[errorLabel setStringValue:@""];	
+	if (password == nil && username) {
+		password = [AGKeychain getPasswordFromKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username];
+		[passwordField setStringValue:password];
+	}
+	
 	if ([[usernameField stringValue] compare:@""] != NSOrderedSame && [[passwordField stringValue] compare:@""] != NSOrderedSame)
 		[signInButton setEnabled:YES];
 	else [signInButton setEnabled:NO];
-	[errorLabel setStringValue:@""];
-	
-	// Read user from defaults
-	if (username == nil) {
-		NSString *user = [defaults objectForKey:@"UserName"];
-		if (user && [user compare:@""] != NSOrderedSame) {
-			username = user;
-		}
-	}
-	// Read password from Keychain
-	if (password == nil && username) {
-		password = [AGKeychain getPasswordFromKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username];
-	}
 }
 
 - (void)controlTextDidChange:(NSNotification *)notification
 {
-	[self windowWillBeginSheet:notification];
+	if ([[usernameField stringValue] compare:@""] != NSOrderedSame && [[passwordField stringValue] compare:@""] != NSOrderedSame)
+		[signInButton setEnabled:YES];
+	else [signInButton setEnabled:NO];		
 }
 
 - (IBAction)closeLogPanel:(id)sender
@@ -46,25 +40,23 @@
 - (IBAction)signIn:(id)sender
 {
 	username = [usernameField stringValue];
+	password = [passwordField stringValue];
+	defaults = [NSUserDefaults standardUserDefaults];
+	
 	if ([[defaults valueForKey:@"KeyChainSave"] boolValue]) {
-		// Add or modify a Keychain item
 		BOOL exists = [AGKeychain checkForExistanceOfKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username];
-		if (exists) {
-			BOOL modified = [AGKeychain modifyKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username withNewPassword:[passwordField stringValue]];
+		if (exists) { // Modify the Keychain item
+			BOOL modified = [AGKeychain modifyKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username withNewPassword:password];
 			if (modified) {
 				[defaults setObject:username forKey:@"UserName"];
 			}
-		} else {
-			BOOL added = [AGKeychain addKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username withPassword:[passwordField stringValue]];
+		} else { // Add the Keychain item
+			BOOL added = [AGKeychain addKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username withPassword:password];
 			if (added) {
 				[defaults setObject:username forKey:@"UserName"];
 			}
 		}
-	} else {
-		[defaults setObject:@"" forKey:@"UserName"];
 	}
-	
-	password = [passwordField stringValue];
 	
 	if (![GoogleExport autenticateWithUsername:username password:password]) {
 		username = nil;

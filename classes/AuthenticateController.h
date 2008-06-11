@@ -11,12 +11,12 @@
 #import "AGKeychain.h"
 
 @interface AuthenticateController : NSObject {
-	IBOutlet id panel;
-	IBOutlet id errorLabel;
-	IBOutlet id usernameField;
-	IBOutlet id passwordField;
-	IBOutlet id signInButton;
-	@private NSUserDefaults *defaults;
+	NSUserDefaults *defaults;
+	IBOutlet NSWindow *panel;
+	IBOutlet NSTextField *errorLabel;
+	IBOutlet NSTextField *usernameField;
+	IBOutlet NSTextField *passwordField;
+	IBOutlet NSButton *signInButton;
 	@private NSString *username;
 	@private NSString *password;
 }
@@ -24,7 +24,7 @@
 - (IBAction)closeLogPanel:(id)sender;
 - (IBAction)signIn:(id)sender;
 
-@property (retain, readonly) id panel;
+@property (retain, readonly) NSWindow *panel;
 @property (retain, readonly) NSString *username;
 @property (retain, readonly) NSString *password;
 @end
