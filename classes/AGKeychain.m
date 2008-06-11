@@ -193,12 +193,16 @@
         NSLog (@"status %d from SecKeychainSearchCreateFromAttributes\n", result);
     }
 	
-	NSString *password = @"error";
+	NSString *password = @"";
     if (SecKeychainSearchCopyNext (search, &item) == noErr) {
 		password = [self getPasswordFromSecKeychainItemRef:item];
+		if(!password) {
+			password = @"";
+		}
 		CFRelease(item);
 		CFRelease (search);
 	}
+	
 	return password;
 }
 

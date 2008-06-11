@@ -13,8 +13,18 @@
 
 - (void)windowWillBeginSheet:(NSNotification *)notification
 {
-	[errorLabel setStringValue:@""];	
-	if (password == nil && username) {
+	defaults = [NSUserDefaults standardUserDefaults];
+	
+	[errorLabel setStringValue:@""];
+	if (username == nil && [[usernameField stringValue] compare:@""] == NSOrderedSame) { // Read user from defaults
+		NSString *user = [defaults objectForKey:@"UserName"];
+		if (user && [user compare:@""] != NSOrderedSame) {
+			username = user;
+			[usernameField setStringValue:username];
+		}
+	}
+	   
+	if (password == nil && username) { // Read password from Keychain
 		password = [AGKeychain getPasswordFromKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username];
 		[passwordField setStringValue:password];
 	}
@@ -41,7 +51,6 @@
 {
 	username = [usernameField stringValue];
 	password = [passwordField stringValue];
-	defaults = [NSUserDefaults standardUserDefaults];
 	
 	if ([[defaults valueForKey:@"KeyChainSave"] boolValue]) {
 		BOOL exists = [AGKeychain checkForExistanceOfKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username];

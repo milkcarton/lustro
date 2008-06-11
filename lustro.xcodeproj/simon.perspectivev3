@@ -233,8 +233,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -290,7 +288,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 53}, {287, 848}}</string>
+							<string>{{0, 0}, {287, 848}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -320,6 +318,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -337,7 +337,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>F40D922B0E0069B60039009D</string>
+										<string>F4755EC90E00799E00893545</string>
 										<key>history</key>
 										<array>
 											<string>F49B5E690DBB99D300E8E228</string>
@@ -397,7 +397,7 @@
 											<string>F438F5650E0068DF00110DEB</string>
 											<string>F438F5670E0068DF00110DEB</string>
 											<string>F40D92270E0069B60039009D</string>
-											<string>F40D92280E0069B60039009D</string>
+											<string>F4D370E20E0075C30043EC67</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -487,8 +487,6 @@
 											<string>F4ED56270DFDD11900FB1059</string>
 											<string>F4ED562E0DFDD11900FB1059</string>
 											<string>F438F56F0E0068DF00110DEB</string>
-											<string>F40D92290E0069B60039009D</string>
-											<string>F40D922A0E0069B60039009D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -545,7 +543,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1057, 215}}</string>
+										<string>{{10, 27}, {912, 118}}</string>
 									</dict>
 									<key>Module</key>
 									<string>PBXProjectFindModule</string>
@@ -611,11 +609,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>F40D922C0E0069B60039009D</string>
+				<string>F4755EBC0E00760100893545</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>F40D922D0E0069B60039009D</string>
+				<string>F4755EBD0E00760100893545</string>
 				<string>F46FEBB00DBB8F7100916A29</string>
-				<string>F40D922E0E0069B60039009D</string>
+				<string>F4755EBE0E00760100893545</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -688,8 +686,8 @@
 								<string>yes</string>
 								<key>sizes</key>
 								<array>
-									<string>{{0, 0}, {179, 190}}</string>
-									<string>{{179, 0}, {1042, 190}}</string>
+									<string>{{0, 0}, {150, 191}}</string>
+									<string>{{150, 0}, {1071, 191}}</string>
 								</array>
 							</dict>
 							<key>VerticalSplitView</key>
@@ -704,8 +702,8 @@
 								<string>yes</string>
 								<key>sizes</key>
 								<array>
-									<string>{{0, 0}, {1221, 190}}</string>
-									<string>{{0, 190}, {1221, 217}}</string>
+									<string>{{0, 0}, {1221, 191}}</string>
+									<string>{{0, 191}, {1221, 216}}</string>
 								</array>
 							</dict>
 						</dict>
@@ -735,10 +733,10 @@
 								<string>Value</string>
 								<real>85</real>
 								<string>Summary</string>
-								<real>758</real>
+								<real>787</real>
 							</array>
 							<key>Frame</key>
-							<string>{{179, 0}, {1042, 190}}</string>
+							<string>{{150, 0}, {1071, 191}}</string>
 						</dict>
 					</dict>
 					<key>Module</key>
@@ -762,14 +760,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>F40D922F0E0069B60039009D</string>
+				<string>F4755EC20E00763C00893545</string>
 				<string>1CCC7628064C1048000F2A68</string>
 				<string>1CCC7629064C1048000F2A68</string>
-				<string>F40D92300E0069B60039009D</string>
-				<string>F40D92310E0069B60039009D</string>
-				<string>F40D92320E0069B60039009D</string>
-				<string>F40D92330E0069B60039009D</string>
-				<string>F40D92340E0069B60039009D</string>
+				<string>F4755EC30E00763C00893545</string>
+				<string>F4755EC40E00763C00893545</string>
+				<string>F4755EC50E00763C00893545</string>
+				<string>F4755EC60E00763C00893545</string>
+				<string>F4755EC70E00763C00893545</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
