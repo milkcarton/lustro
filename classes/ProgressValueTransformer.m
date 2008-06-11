@@ -19,11 +19,10 @@
 //		- 3: warning	==> OFF
 //		- 4: failed		==> OFF
 //
-- (id)transformedValue:(NSString *)indicator
+- (id)transformedValue:(NSNumber *)indicator
 {
-	if ([indicator compare:@"1"] == NSOrderedSame) {
+	if ([indicator compare:[NSNumber numberWithInt:1]] == NSOrderedSame)
 		return @"YES";
-	}
 	return @"NO";
 }
 @end

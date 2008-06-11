@@ -11,7 +11,7 @@
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
 #import <AddressBook/AddressBook.h>
-#import "StatusValueTransformer.h"
+//#import "StatusValueTransformer.h"
 #import "ProgressValueTransformer.h"
 #import "LogImageValueTransformer.h"
 //#import "ErrorController.h"

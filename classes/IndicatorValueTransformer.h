@@ -1,5 +1,5 @@
 //
-//  StatusValueTransformer.h
+//  IndicatorValueTransformer.h
 //  lustro
 //
 //  Created by Jelle Vandebeeck & Simon Schoeters on 26/04/08.
@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface StatusValueTransformer : NSValueTransformer {
+@interface IndicatorValueTransformer : NSValueTransformer {
 }
 
 @end

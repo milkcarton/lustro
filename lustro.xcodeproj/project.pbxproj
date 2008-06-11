@@ -17,12 +17,11 @@
 		608BC36A0DE9A0B40022D5E9 /* HTMLExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 608BC3690DE9A0B40022D5E9 /* HTMLExport.m */; };
 		60997D790DC3E33700518344 /* lockHover.tif in Resources */ = {isa = PBXBuildFile; fileRef = 60997D760DC3E33700518344 /* lockHover.tif */; };
 		60997D7A0DC3E33700518344 /* lockClick.tif in Resources */ = {isa = PBXBuildFile; fileRef = 60997D770DC3E33700518344 /* lockClick.tif */; };
-		60997D930DC3E41B00518344 /* CustomAuthButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 60997D920DC3E41B00518344 /* CustomAuthButton.m */; };
 		60997E050DC3ECA100518344 /* AGKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 60997E040DC3ECA100518344 /* AGKeychain.m */; };
 		60997E490DC3ED2100518344 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60997E480DC3ED2100518344 /* Security.framework */; };
 		609B85310DCE53D000264F75 /* lockAlt.tif in Resources */ = {isa = PBXBuildFile; fileRef = 609B852D0DCE53D000264F75 /* lockAlt.tif */; };
 		609B85320DCE53D000264F75 /* lock.tif in Resources */ = {isa = PBXBuildFile; fileRef = 609B852E0DCE53D000264F75 /* lock.tif */; };
-		609F460A0DC33C4600AE82AA /* StatusValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 609F46090DC33C4600AE82AA /* StatusValueTransformer.m */; };
+		609F460A0DC33C4600AE82AA /* IndicatorValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 609F46090DC33C4600AE82AA /* IndicatorValueTransformer.m */; };
 		609F472E0DC3474400AE82AA /* warning.tif in Resources */ = {isa = PBXBuildFile; fileRef = 609F472D0DC3474400AE82AA /* warning.tif */; };
 		609F476E0DC34A2D00AE82AA /* ProgressValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 609F476D0DC34A2D00AE82AA /* ProgressValueTransformer.m */; };
 		60A58BD80DDDDB4E0081208C /* lustro.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 60A58BD70DDDDB4E0081208C /* lustro.xcdatamodel */; };
@@ -87,15 +86,13 @@
 		608BC3690DE9A0B40022D5E9 /* HTMLExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLExport.m; path = classes/HTMLExport.m; sourceTree = "<group>"; };
 		60997D760DC3E33700518344 /* lockHover.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lockHover.tif; path = images/lockHover.tif; sourceTree = "<group>"; };
 		60997D770DC3E33700518344 /* lockClick.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lockClick.tif; path = images/lockClick.tif; sourceTree = "<group>"; };
-		60997D910DC3E41B00518344 /* CustomAuthButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomAuthButton.h; path = classes/CustomAuthButton.h; sourceTree = "<group>"; };
-		60997D920DC3E41B00518344 /* CustomAuthButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomAuthButton.m; path = classes/CustomAuthButton.m; sourceTree = "<group>"; };
 		60997E030DC3ECA100518344 /* AGKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGKeychain.h; path = classes/AGKeychain.h; sourceTree = "<group>"; };
 		60997E040DC3ECA100518344 /* AGKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGKeychain.m; path = classes/AGKeychain.m; sourceTree = "<group>"; };
 		60997E480DC3ED2100518344 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = ../../../../../../System/Library/Frameworks/Security.framework; sourceTree = SOURCE_ROOT; };
 		609B852D0DCE53D000264F75 /* lockAlt.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lockAlt.tif; path = images/lockAlt.tif; sourceTree = "<group>"; };
 		609B852E0DCE53D000264F75 /* lock.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lock.tif; path = images/lock.tif; sourceTree = "<group>"; };
-		609F46080DC33C4600AE82AA /* StatusValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusValueTransformer.h; path = classes/StatusValueTransformer.h; sourceTree = "<group>"; };
-		609F46090DC33C4600AE82AA /* StatusValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusValueTransformer.m; path = classes/StatusValueTransformer.m; sourceTree = "<group>"; };
+		609F46080DC33C4600AE82AA /* IndicatorValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndicatorValueTransformer.h; path = classes/IndicatorValueTransformer.h; sourceTree = "<group>"; };
+		609F46090DC33C4600AE82AA /* IndicatorValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndicatorValueTransformer.m; path = classes/IndicatorValueTransformer.m; sourceTree = "<group>"; };
 		609F472D0DC3474400AE82AA /* warning.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = warning.tif; path = images/warning.tif; sourceTree = "<group>"; };
 		609F476C0DC34A2D00AE82AA /* ProgressValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressValueTransformer.h; path = classes/ProgressValueTransformer.h; sourceTree = "<group>"; };
 		609F476D0DC34A2D00AE82AA /* ProgressValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressValueTransformer.m; path = classes/ProgressValueTransformer.m; sourceTree = "<group>"; };
@@ -272,12 +269,10 @@
 			children = (
 				F42D5F8D0DFC723800B0E805 /* RotatingBackup.h */,
 				F42D5F8E0DFC723800B0E805 /* RotatingBackup.m */,
-				609F46080DC33C4600AE82AA /* StatusValueTransformer.h */,
-				609F46090DC33C4600AE82AA /* StatusValueTransformer.m */,
+				609F46080DC33C4600AE82AA /* IndicatorValueTransformer.h */,
+				609F46090DC33C4600AE82AA /* IndicatorValueTransformer.m */,
 				609F476C0DC34A2D00AE82AA /* ProgressValueTransformer.h */,
 				609F476D0DC34A2D00AE82AA /* ProgressValueTransformer.m */,
-				60997D910DC3E41B00518344 /* CustomAuthButton.h */,
-				60997D920DC3E41B00518344 /* CustomAuthButton.m */,
 				60A58CEB0DDDED9A0081208C /* LogImageValueTransformer.h */,
 				60A58CEC0DDDED9A0081208C /* LogImageValueTransformer.m */,
 			);
@@ -389,9 +384,8 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				607C58120DBBB0E7009BBEF8 /* MainController.m in Sources */,
-				609F460A0DC33C4600AE82AA /* StatusValueTransformer.m in Sources */,
+				609F460A0DC33C4600AE82AA /* IndicatorValueTransformer.m in Sources */,
 				609F476E0DC34A2D00AE82AA /* ProgressValueTransformer.m in Sources */,
-				60997D930DC3E41B00518344 /* CustomAuthButton.m in Sources */,
 				60997E050DC3ECA100518344 /* AGKeychain.m in Sources */,
 				60A58BD80DDDDB4E0081208C /* lustro.xcdatamodel in Sources */,
 				60A58CED0DDDED9A0081208C /* LogImageValueTransformer.m in Sources */,
