@@ -15,12 +15,9 @@
 		602D75B00DE771F00089FDAC /* CommaExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 602D75AF0DE771F00089FDAC /* CommaExport.m */; };
 		607C58120DBBB0E7009BBEF8 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */; };
 		608BC36A0DE9A0B40022D5E9 /* HTMLExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 608BC3690DE9A0B40022D5E9 /* HTMLExport.m */; };
-		60997D790DC3E33700518344 /* lockHover.tif in Resources */ = {isa = PBXBuildFile; fileRef = 60997D760DC3E33700518344 /* lockHover.tif */; };
 		60997D7A0DC3E33700518344 /* lockClick.tif in Resources */ = {isa = PBXBuildFile; fileRef = 60997D770DC3E33700518344 /* lockClick.tif */; };
 		60997E050DC3ECA100518344 /* AGKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 60997E040DC3ECA100518344 /* AGKeychain.m */; };
 		60997E490DC3ED2100518344 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60997E480DC3ED2100518344 /* Security.framework */; };
-		609B85310DCE53D000264F75 /* lockAlt.tif in Resources */ = {isa = PBXBuildFile; fileRef = 609B852D0DCE53D000264F75 /* lockAlt.tif */; };
-		609B85320DCE53D000264F75 /* lock.tif in Resources */ = {isa = PBXBuildFile; fileRef = 609B852E0DCE53D000264F75 /* lock.tif */; };
 		609F460A0DC33C4600AE82AA /* IndicatorValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 609F46090DC33C4600AE82AA /* IndicatorValueTransformer.m */; };
 		609F472E0DC3474400AE82AA /* warning.tif in Resources */ = {isa = PBXBuildFile; fileRef = 609F472D0DC3474400AE82AA /* warning.tif */; };
 		609F476E0DC34A2D00AE82AA /* ProgressValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 609F476D0DC34A2D00AE82AA /* ProgressValueTransformer.m */; };
@@ -36,6 +33,11 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		E6CA9B720E0310C3004756A2 /* unlockClick.tif in Resources */ = {isa = PBXBuildFile; fileRef = E6CA9B700E0310C3004756A2 /* unlockClick.tif */; };
+		E6CA9B760E0311C7004756A2 /* LockImageValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = E6CA9B750E0311C7004756A2 /* LockImageValueTransformer.m */; };
+		E6CA9BD60E0314B9004756A2 /* CustomAuthButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E6CA9BD50E0314B9004756A2 /* CustomAuthButton.m */; };
+		E6CA9BEE0E031699004756A2 /* lock.tif in Resources */ = {isa = PBXBuildFile; fileRef = E6CA9BEC0E031699004756A2 /* lock.tif */; };
+		E6CA9BEF0E031699004756A2 /* unlock.tif in Resources */ = {isa = PBXBuildFile; fileRef = E6CA9BED0E031699004756A2 /* unlock.tif */; };
 		F42D5F8F0DFC723800B0E805 /* RotatingBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = F42D5F8E0DFC723800B0E805 /* RotatingBackup.m */; };
 		F43B68B20DCC8F21008D7642 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43B68B10DCC8F21008D7642 /* Sparkle.framework */; };
 		F43B68B60DCC8F51008D7642 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F43B68B10DCC8F21008D7642 /* Sparkle.framework */; };
@@ -84,13 +86,10 @@
 		607C58110DBBB0E7009BBEF8 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainController.m; path = classes/MainController.m; sourceTree = "<group>"; };
 		608BC3680DE9A0B40022D5E9 /* HTMLExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLExport.h; path = classes/HTMLExport.h; sourceTree = "<group>"; };
 		608BC3690DE9A0B40022D5E9 /* HTMLExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLExport.m; path = classes/HTMLExport.m; sourceTree = "<group>"; };
-		60997D760DC3E33700518344 /* lockHover.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lockHover.tif; path = images/lockHover.tif; sourceTree = "<group>"; };
 		60997D770DC3E33700518344 /* lockClick.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lockClick.tif; path = images/lockClick.tif; sourceTree = "<group>"; };
 		60997E030DC3ECA100518344 /* AGKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGKeychain.h; path = classes/AGKeychain.h; sourceTree = "<group>"; };
 		60997E040DC3ECA100518344 /* AGKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGKeychain.m; path = classes/AGKeychain.m; sourceTree = "<group>"; };
 		60997E480DC3ED2100518344 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = ../../../../../../System/Library/Frameworks/Security.framework; sourceTree = SOURCE_ROOT; };
-		609B852D0DCE53D000264F75 /* lockAlt.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lockAlt.tif; path = images/lockAlt.tif; sourceTree = "<group>"; };
-		609B852E0DCE53D000264F75 /* lock.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lock.tif; path = images/lock.tif; sourceTree = "<group>"; };
 		609F46080DC33C4600AE82AA /* IndicatorValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndicatorValueTransformer.h; path = classes/IndicatorValueTransformer.h; sourceTree = "<group>"; };
 		609F46090DC33C4600AE82AA /* IndicatorValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndicatorValueTransformer.m; path = classes/IndicatorValueTransformer.m; sourceTree = "<group>"; };
 		609F472D0DC3474400AE82AA /* warning.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = warning.tif; path = images/warning.tif; sourceTree = "<group>"; };
@@ -108,6 +107,13 @@
 		60F83A060DE4A09D00A2ECB8 /* AddressBookExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddressBookExport.m; path = classes/AddressBookExport.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* lustro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lustro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6CA9B700E0310C3004756A2 /* unlockClick.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = unlockClick.tif; path = images/unlockClick.tif; sourceTree = "<group>"; };
+		E6CA9B740E0311C7004756A2 /* LockImageValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LockImageValueTransformer.h; path = classes/LockImageValueTransformer.h; sourceTree = "<group>"; };
+		E6CA9B750E0311C7004756A2 /* LockImageValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LockImageValueTransformer.m; path = classes/LockImageValueTransformer.m; sourceTree = "<group>"; };
+		E6CA9BD40E0314B9004756A2 /* CustomAuthButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomAuthButton.h; path = classes/CustomAuthButton.h; sourceTree = "<group>"; };
+		E6CA9BD50E0314B9004756A2 /* CustomAuthButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomAuthButton.m; path = classes/CustomAuthButton.m; sourceTree = "<group>"; };
+		E6CA9BEC0E031699004756A2 /* lock.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lock.tif; path = images/lock.tif; sourceTree = "<group>"; };
+		E6CA9BED0E031699004756A2 /* unlock.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = unlock.tif; path = images/unlock.tif; sourceTree = "<group>"; };
 		F42D5F8D0DFC723800B0E805 /* RotatingBackup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RotatingBackup.h; path = classes/RotatingBackup.h; sourceTree = "<group>"; };
 		F42D5F8E0DFC723800B0E805 /* RotatingBackup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RotatingBackup.m; path = classes/RotatingBackup.m; sourceTree = "<group>"; };
 		F43B68B10DCC8F21008D7642 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = frameworks/Sparkle.framework; sourceTree = SOURCE_ROOT; };
@@ -228,10 +234,10 @@
 		600D31980DBFDEED00A96491 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E6CA9BEC0E031699004756A2 /* lock.tif */,
+				E6CA9BED0E031699004756A2 /* unlock.tif */,
+				E6CA9B700E0310C3004756A2 /* unlockClick.tif */,
 				60A58FBB0DDE2F5B0081208C /* icon.icns */,
-				609B852D0DCE53D000264F75 /* lockAlt.tif */,
-				609B852E0DCE53D000264F75 /* lock.tif */,
-				60997D760DC3E33700518344 /* lockHover.tif */,
 				60997D770DC3E33700518344 /* lockClick.tif */,
 				609F472D0DC3474400AE82AA /* warning.tif */,
 				600D319A0DBFDEF600A96491 /* success.tif */,
@@ -267,6 +273,8 @@
 		609F46070DC33C3100AE82AA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E6CA9BD40E0314B9004756A2 /* CustomAuthButton.h */,
+				E6CA9BD50E0314B9004756A2 /* CustomAuthButton.m */,
 				F42D5F8D0DFC723800B0E805 /* RotatingBackup.h */,
 				F42D5F8E0DFC723800B0E805 /* RotatingBackup.m */,
 				609F46080DC33C4600AE82AA /* IndicatorValueTransformer.h */,
@@ -275,6 +283,8 @@
 				609F476D0DC34A2D00AE82AA /* ProgressValueTransformer.m */,
 				60A58CEB0DDDED9A0081208C /* LogImageValueTransformer.h */,
 				60A58CEC0DDDED9A0081208C /* LogImageValueTransformer.m */,
+				E6CA9B740E0311C7004756A2 /* LockImageValueTransformer.h */,
+				E6CA9B750E0311C7004756A2 /* LockImageValueTransformer.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -366,12 +376,12 @@
 				600D319C0DBFDEF600A96491 /* success.tif in Resources */,
 				600D319D0DBFDEF600A96491 /* error.tif in Resources */,
 				609F472E0DC3474400AE82AA /* warning.tif in Resources */,
-				60997D790DC3E33700518344 /* lockHover.tif in Resources */,
 				60997D7A0DC3E33700518344 /* lockClick.tif in Resources */,
-				609B85310DCE53D000264F75 /* lockAlt.tif in Resources */,
-				609B85320DCE53D000264F75 /* lock.tif in Resources */,
 				60A58FBC0DDE2F5B0081208C /* icon.icns in Resources */,
 				60A590110DDE31DD0081208C /* help in Resources */,
+				E6CA9B720E0310C3004756A2 /* unlockClick.tif in Resources */,
+				E6CA9BEE0E031699004756A2 /* lock.tif in Resources */,
+				E6CA9BEF0E031699004756A2 /* unlock.tif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +410,8 @@
 				F4E3D5450DFDA901007460F4 /* LogController.m in Sources */,
 				F4E3D54A0DFDA948007460F4 /* AuthenticateController.m in Sources */,
 				F4E3D54B0DFDA948007460F4 /* ExportController.m in Sources */,
+				E6CA9B760E0311C7004756A2 /* LockImageValueTransformer.m in Sources */,
+				E6CA9BD60E0314B9004756A2 /* CustomAuthButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,7 +16,7 @@
 	@private int tabCheckBox;					// Used for binding the tab checkbox's indicator.
 	@private int HTMLCheckBox;					// Used for binding the HTML checkbox's indicator.
 	@private int googleCheckBox;				// Used for binding the Google checkbox's indicator.
-	@private int authenticatedButton;			// Used for binding the Google authentication button's indicator.
+	@private BOOL authenticatedButton;			// Used for binding the Google authentication button's indicator.
 	
 	IBOutlet LogController *logController;
 	IBOutlet AuthenticateController *authentiacateController;

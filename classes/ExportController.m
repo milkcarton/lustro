@@ -16,9 +16,9 @@
 	
 	// Set startup binding values for the indicators.
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"commaCheckBox"];
-	[self setValue:[NSNumber numberWithInt:1] forKey:@"tabCheckBox"];
-	[self setValue:[NSNumber numberWithInt:3] forKey:@"HTMLCheckBox"];
-	[self setValue:[NSNumber numberWithInt:4] forKey:@"googleCheckBox"];
+	[self setValue:[NSNumber numberWithInt:0] forKey:@"tabCheckBox"];
+	[self setValue:[NSNumber numberWithInt:0] forKey:@"HTMLCheckBox"];
+	[self setValue:[NSNumber numberWithInt:0] forKey:@"googleCheckBox"];
 	// Set startup binding values for the authentication button.
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"authenticatedButton"];
 }
