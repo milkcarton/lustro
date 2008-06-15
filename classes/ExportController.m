@@ -12,15 +12,13 @@
 
 - (void)awakeFromNib
 {
-	[mainWindow setDelegate:authentiacateController];
+	[mainWindow setDelegate:authenticateController];
 	
 	// Set startup binding values for the indicators.
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"commaCheckBox"];
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"tabCheckBox"];
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"HTMLCheckBox"];
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"googleCheckBox"];
-	// Set startup binding values for the authentication button.
-	[self setValue:[NSNumber numberWithInt:0] forKey:@"authenticatedButton"];
 }
 
 - (IBAction)showLogPanel:(id)sender
@@ -30,14 +28,10 @@
 
 - (IBAction)showAutenticationPanel:(id)sender
 {
-	[NSApp beginSheet:authentiacateController.panel modalForWindow:mainWindow modalDelegate:self didEndSelector:nil contextInfo:nil];
+	[NSApp beginSheet:authenticateController.panel modalForWindow:mainWindow modalDelegate:self didEndSelector:nil contextInfo:nil];
 }
 
 - (IBAction)selectExport:(id)sender
-{
-}
-
-- (IBAction)selectGoogle:(id)sender
 {
 }
 

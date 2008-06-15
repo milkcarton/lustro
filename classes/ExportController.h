@@ -19,15 +19,15 @@
 	@private BOOL authenticatedButton;			// Used for binding the Google authentication button's indicator.
 	
 	IBOutlet LogController *logController;
-	IBOutlet AuthenticateController *authentiacateController;
+	IBOutlet AuthenticateController *authenticateController;
 	IBOutlet id mainWindow;
+	IBOutlet id authenticationButtonCell;
 }
 
-- (IBAction)showLogPanel:(id)sender;			// Opens the log panel
-- (IBAction)showAutenticationPanel:(id)sender;	// Opens the Google authentication panel
-- (IBAction)selectExport:(id)sender;			// Check if the export button needs to be enabled
-- (IBAction)selectGoogle:(id)sender;			// Google is authenticated and selected
-- (IBAction)export:(id)sender;					// Start exporting the Address Book contacts
-- (IBAction)openHelp:(id)sender;				// Open the help files from the menu
+- (IBAction)showLogPanel:(id)sender;				// Opens the log panel
+- (IBAction)showAutenticationPanel:(id)sender;		// Opens the Google authentication panel
+- (IBAction)selectExport:(id)sender;				// Check if the export button needs to be enabled
+- (IBAction)export:(id)sender;						// Start exporting the Address Book contacts
+- (IBAction)openHelp:(id)sender;					// Open the help files from the menu
 
 @end
