@@ -131,14 +131,14 @@
 - (void)addWarningMessage:(NSString *)message
 {
 	// Check if method is available in the delegate.
-	if ([delegate respondsToSelector:@selector(addSuccessMessage:className:)])
+	if ([delegate respondsToSelector:@selector(addWarningMessage:className:)])
         [delegate addWarningMessage:message className:[self className]];
 }
 
 - (void)addErrorMessage:(NSString *)message
 {
 	// Check if method is available in the delegate.
-	if ([delegate respondsToSelector:@selector(addSuccessMessage:className:)])
+	if ([delegate respondsToSelector:@selector(addErrorMessage:className:)])
         [delegate addErrorMessage:message className:[self className]];
 }
 

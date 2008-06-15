@@ -33,7 +33,7 @@ typedef enum {
 - (void)addWarningMessage:(NSString *)message;					// Notifies the delegate that a warning message was received.
 - (void)addErrorMessage:(NSString *)message;					// Notifies the delegate that an error message was received.
 
-@property (copy, readwrite) id delegate;
+@property (retain) id delegate;
 @property (retain) ABAddressBook *addressBook;
 @property int numberExported;
 @end

@@ -11,6 +11,11 @@
 #import "LogController.h"
 #import "AuthenticateController.h"
 #import "IndicatorValueTransformer.h"
+#import "AddressBookExport.h"
+#import "HTMLExport.h"
+#import "TabExport.h"
+#import "CommaExport.h"
+#import "GoogleExport.h"
 
 @interface ExportController : NSObject {
 	@private int commaCheckBox;					// Used for binding the comma checkbox's indicator.
@@ -27,6 +32,7 @@
 }
 
 - (void)setExportButton;							// Enables or disables the exportbutton.
+- (void)invocateExport;								// Needed to run the export in a Thread.
 
 - (IBAction)showLogPanel:(id)sender;				// Opens the log panel.
 - (IBAction)showAutenticationPanel:(id)sender;		// Opens the Google authentication panel.
