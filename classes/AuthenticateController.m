@@ -8,12 +8,12 @@
 
 #import "AuthenticateController.h"
 
-
 @implementation AuthenticateController
 
 - (void)awakeFromNib
 {
 	myKeyChain = [Keychain defaultKeychain];
+	[exportController notifyAuthenticate];
 }
 
 - (void)controlTextDidChange:(NSNotification *)notification

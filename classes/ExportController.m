@@ -32,6 +32,11 @@
 	}
 }
 
+- (void)notifyAuthenticate
+{
+	NSLog(@"piepke");
+}
+
 - (void)invocateExport
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];

@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "ExportController.h"
 #import "GoogleExport.h"
 #import <Keychain/Keychain.h>
 
@@ -18,7 +17,7 @@
 	IBOutlet NSTextField *usernameField;
 	IBOutlet NSTextField *passwordField;
 	IBOutlet NSButton *signInButton;
-	IBOutlet ExportController *exportController;
+	IBOutlet id exportController;
 	@private NSString *username;
 	@private NSString *password;
 	@private Keychain *myKeyChain;

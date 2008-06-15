@@ -32,6 +32,7 @@
 }
 
 - (void)setExportButton;							// Enables or disables the exportbutton.
+- (void)notifyAuthenticate;							// Called when sign in or cancel is clicked.
 - (void)invocateExport;								// Needed to run the export in a Thread.
 
 - (IBAction)showLogPanel:(id)sender;				// Opens the log panel.
