@@ -339,7 +339,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>606324600E05A969005D78EA</string>
+										<string>606324890E05AC1E005D78EA</string>
 										<key>history</key>
 										<array>
 											<string>60986EAC0DFDB39E00A0B05E</string>
@@ -369,11 +369,11 @@
 											<string>606F0A050E059482002FA939</string>
 											<string>606323D70E05A18A005D78EA</string>
 											<string>606324000E05A59C005D78EA</string>
-											<string>606324280E05A680005D78EA</string>
 											<string>606324500E05A837005D78EA</string>
 											<string>606324510E05A837005D78EA</string>
 											<string>606324520E05A837005D78EA</string>
-											<string>6063245B0E05A8B7005D78EA</string>
+											<string>6063246E0E05AB98005D78EA</string>
+											<string>606324880E05AC1D005D78EA</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -468,6 +468,14 @@
 											<string>606324550E05A837005D78EA</string>
 											<string>606324560E05A837005D78EA</string>
 											<string>606324570E05A837005D78EA</string>
+											<string>606324700E05AB98005D78EA</string>
+											<string>606324710E05AB98005D78EA</string>
+											<string>606324720E05AB98005D78EA</string>
+											<string>606324730E05AB98005D78EA</string>
+											<string>606324740E05AB98005D78EA</string>
+											<string>606324750E05AB98005D78EA</string>
+											<string>606324760E05AB98005D78EA</string>
+											<string>606324770E05AB98005D78EA</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -778,6 +786,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>606324830E05ABBD005D78EA</string>
+		<string>606324800E05ABAD005D78EA</string>
 		<string>606323F70E05A330005D78EA</string>
 		<string>606323F80E05A330005D78EA</string>
 		<string>/Users/jelle/Documents/Projects/Lustro/lustro.xcodeproj</string>

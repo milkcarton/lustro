@@ -22,7 +22,7 @@
 	@private int tabCheckBox;					// Used for binding the tab checkbox's indicator.
 	@private int HTMLCheckBox;					// Used for binding the HTML checkbox's indicator.
 	@private int googleCheckBox;				// Used for binding the Google checkbox's indicator.
-	@private BOOL authenticatedButton;			// Used for binding the Google authentication button's indicator.
+	@private BOOL authenticated;				// Used forto check if authentication is successful.
 	
 	IBOutlet LogController *logController;
 	IBOutlet AuthenticateController *authenticateController;
@@ -32,6 +32,7 @@
 }
 
 - (void)setExportButton;							// Enables or disables the exportbutton.
+- (void)setExportButtonWithGoogle;					// Enables or disables the exportbutton when google selected.
 - (void)notifyAuthenticate;							// Called when sign in or cancel is clicked.
 - (void)invocateExport;								// Needed to run the export in a Thread.
 

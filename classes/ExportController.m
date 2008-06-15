@@ -20,13 +20,11 @@
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"HTMLCheckBox"];
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"googleCheckBox"];
 	
-	[self setExportButton];
+	[self setExportButtonWithGoogle];
 }
 
 - (void)setExportButton
 {
-	BOOL authenticated = [GoogleExport autenticateWithUsername:[authenticateController username] password:[authenticateController password]];
-	
 	if (([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"] && authenticated) 
 		|| (![[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"] && ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"] 
 			|| [[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"] 
@@ -37,9 +35,15 @@
 	}
 }
 
+- (void)setExportButtonWithGoogle
+{
+	authenticated = [GoogleExport autenticateWithUsername:[authenticateController username] password:[authenticateController password]];
+	[self setExportButton];
+}
+
 - (void)notifyAuthenticate
 {
-	[self setExportButton];
+	[self setExportButtonWithGoogle];
 }
 
 - (void)invocateExport
@@ -107,7 +111,8 @@
 
 - (IBAction)selectGoogleExport:(id)sender
 {
-	[self setExportButton];
+	if ([sender state] == NSOnState) [self setExportButtonWithGoogle];
+	else [self setExportButton];
 }
 
 - (IBAction)export:(id)sender
