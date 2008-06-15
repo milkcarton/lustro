@@ -29,12 +29,15 @@
 	IBOutlet id mainWindow;
 	IBOutlet id authenticationButtonCell;
 	IBOutlet id exportButton;
+	IBOutlet NSWindow *warningPanel;
 }
 
 - (void)setExportButton;							// Enables or disables the exportbutton.
 - (void)setExportButtonWithGoogle;					// Enables or disables the exportbutton when google selected.
 - (void)notifyAuthenticate;							// Called when sign in or cancel is clicked.
 - (void)invocateExport;								// Needed to run the export in a Thread.
+- (void)showWarningPanel;							// Opens the Google warning panel.
+- (void)exportGoogle;								// Run the Google exporter.
 
 - (IBAction)showLogPanel:(id)sender;				// Opens the log panel.
 - (IBAction)showAutenticationPanel:(id)sender;		// Opens the Google authentication panel.
@@ -42,5 +45,6 @@
 - (IBAction)selectGoogleExport:(id)sender;			// Check if the export button needs to be enabled when selecting Google export.
 - (IBAction)export:(id)sender;						// Start exporting the Address Book contacts.
 - (IBAction)openHelp:(id)sender;					// Open the help files from the menu.
+- (IBAction)pressButton:(id)sender;					// Press a button from the warning panel.
 
 @end

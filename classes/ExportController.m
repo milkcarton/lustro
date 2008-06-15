@@ -80,19 +80,34 @@
 		exporter = nil;
 	}
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"]) {
-		[self setValue:[NSNumber numberWithInt:1] forKey:@"googleCheckBox"];
-		AddressBookExport *exporter = [[GoogleExport alloc] initWithUsername:[authenticateController username] password:[authenticateController password]];
-		exporter.delegate = logController;
-		if ([exporter export] == kExportSuccess) [self setValue:[NSNumber numberWithInt:2] forKey:@"googleCheckBox"];
-		else if ([exporter export] == kExportWarning) [self setValue:[NSNumber numberWithInt:3] forKey:@"googleCheckBox"];
-		else [self setValue:[NSNumber numberWithInt:4] forKey:@"googleCheckBox"];
-		[exporter release];
-		exporter = nil;
+		// Check if warning for google export needs to be shown.
+		if (([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarning"] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarningIndicator"]) || ![[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarning"])
+			[self showWarningPanel];
+		else {
+			if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarningIndicator"])
+				[self exportGoogle];
+		}
 	}
 	[pool release];
 	pool = nil;
 }
 
+- (void)showWarningPanel
+{
+	[NSApp beginSheet:warningPanel modalForWindow:mainWindow modalDelegate:self didEndSelector:nil contextInfo:nil];
+}
+
+- (void)exportGoogle
+{
+	[self setValue:[NSNumber numberWithInt:1] forKey:@"googleCheckBox"];
+	AddressBookExport *exporter = [[GoogleExport alloc] initWithUsername:[authenticateController username] password:[authenticateController password]];
+	exporter.delegate = logController;
+	if ([exporter export] == kExportSuccess) [self setValue:[NSNumber numberWithInt:2] forKey:@"googleCheckBox"];
+	else if ([exporter export] == kExportWarning) [self setValue:[NSNumber numberWithInt:3] forKey:@"googleCheckBox"];
+	else [self setValue:[NSNumber numberWithInt:4] forKey:@"googleCheckBox"];
+	[exporter release];
+	exporter = nil;
+}
 
 - (IBAction)showLogPanel:(id)sender
 {
@@ -129,6 +144,19 @@
 	CFBundleRef myApplicationBundle = CFBundleGetMainBundle();
     CFStringRef myBookName = CFBundleGetValueForInfoDictionaryKey(myApplicationBundle, CFSTR("CFBundleHelpBookName"));
     AHGotoPage(myBookName, CFSTR("index.html"), NULL);
+}
+
+- (IBAction)pressButton:(id)sender
+{
+	[warningPanel orderOut:nil];
+	[NSApp endSheet:warningPanel];
+	if ([[sender title] compare:@"OK"] == NSOrderedSame) {
+		[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:YES] forKey:@"GoogleExportWarningIndicator"];
+		[self exportGoogle];
+	} else {
+		[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:NO] forKey:@"GoogleExportWarningIndicator"];
+		[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:NO] forKey:@"GoogleChecked"];
+	}
 }
 
 @end

@@ -27,6 +27,7 @@
 		60A58FF60DDE31480081208C /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A58FF50DDE31480081208C /* Carbon.framework */; };
 		60A590110DDE31DD0081208C /* help in Resources */ = {isa = PBXBuildFile; fileRef = 60A5900D0DDE31DD0081208C /* help */; };
 		60A8D62A0E0576C1007C989E /* CustomMainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A8D6290E0576C1007C989E /* CustomMainWindow.m */; };
+		60B42C240E05B3750046CCC7 /* warningIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 60B42C230E05B3750046CCC7 /* warningIcon.icns */; };
 		60DE9BF00DBD373800D3EC93 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60DE9BEF0DBD373800D3EC93 /* AddressBook.framework */; };
 		60DE9C160DBD38F300D3EC93 /* hCardTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 60DE9C150DBD38F300D3EC93 /* hCardTemplate */; };
 		60F83A070DE4A09D00A2ECB8 /* AddressBookExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F83A060DE4A09D00A2ECB8 /* AddressBookExport.m */; };
@@ -100,6 +101,7 @@
 		60A5900D0DDE31DD0081208C /* help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = help; sourceTree = SOURCE_ROOT; };
 		60A8D6280E0576C1007C989E /* CustomMainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomMainWindow.h; path = classes/CustomMainWindow.h; sourceTree = "<group>"; };
 		60A8D6290E0576C1007C989E /* CustomMainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomMainWindow.m; path = classes/CustomMainWindow.m; sourceTree = "<group>"; };
+		60B42C230E05B3750046CCC7 /* warningIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = warningIcon.icns; path = images/warningIcon.icns; sourceTree = "<group>"; };
 		60DE9BEF0DBD373800D3EC93 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = ../../../../../../System/Library/Frameworks/AddressBook.framework; sourceTree = SOURCE_ROOT; };
 		60DE9C150DBD38F300D3EC93 /* hCardTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = hCardTemplate; path = templates/hCardTemplate; sourceTree = SOURCE_ROOT; };
 		60F83A050DE4A09D00A2ECB8 /* AddressBookExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddressBookExport.h; path = classes/AddressBookExport.h; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 		600D31980DBFDEED00A96491 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				60B42C230E05B3750046CCC7 /* warningIcon.icns */,
 				E62673BF0E0547FF00DF9CF6 /* lock.tif */,
 				E62673630E04542C00DF9CF6 /* lockHover.tif */,
 				60A58FBB0DDE2F5B0081208C /* icon.icns */,
@@ -366,6 +369,7 @@
 				60A590110DDE31DD0081208C /* help in Resources */,
 				E62673640E04542C00DF9CF6 /* lockHover.tif in Resources */,
 				E62673C00E0547FF00DF9CF6 /* lock.tif in Resources */,
+				60B42C240E05B3750046CCC7 /* warningIcon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
