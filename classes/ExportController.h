@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Carbon/Carbon.h>
 #import "LogController.h"
 #import "AuthenticateController.h"
 #import "IndicatorValueTransformer.h"
@@ -22,12 +23,16 @@
 	IBOutlet AuthenticateController *authenticateController;
 	IBOutlet id mainWindow;
 	IBOutlet id authenticationButtonCell;
+	IBOutlet id exportButton;
 }
 
-- (IBAction)showLogPanel:(id)sender;				// Opens the log panel
-- (IBAction)showAutenticationPanel:(id)sender;		// Opens the Google authentication panel
-- (IBAction)selectExport:(id)sender;				// Check if the export button needs to be enabled
-- (IBAction)export:(id)sender;						// Start exporting the Address Book contacts
-- (IBAction)openHelp:(id)sender;					// Open the help files from the menu
+- (void)setExportButton;							// Enables or disables the exportbutton.
+
+- (IBAction)showLogPanel:(id)sender;				// Opens the log panel.
+- (IBAction)showAutenticationPanel:(id)sender;		// Opens the Google authentication panel.
+- (IBAction)selectExport:(id)sender;				// Check if the export button needs to be enabled.
+- (IBAction)selectGoogleExport:(id)sender;			// Check if the export button needs to be enabled when selecting Google export.
+- (IBAction)export:(id)sender;						// Start exporting the Address Book contacts.
+- (IBAction)openHelp:(id)sender;					// Open the help files from the menu.
 
 @end

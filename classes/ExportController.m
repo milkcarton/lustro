@@ -19,7 +19,19 @@
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"tabCheckBox"];
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"HTMLCheckBox"];
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"googleCheckBox"];
+	
+	[self setExportButton];
 }
+
+- (void)setExportButton
+{
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"] || ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"])) {
+		[exportButton setEnabled:YES];
+	} else {
+		[exportButton setEnabled:NO];
+	}
+}
+
 
 - (IBAction)showLogPanel:(id)sender
 {
@@ -33,6 +45,12 @@
 
 - (IBAction)selectExport:(id)sender
 {
+	[self setExportButton];
+}
+
+- (IBAction)selectGoogleExport:(id)sender
+{
+	[self setExportButton];
 }
 
 - (IBAction)export:(id)sender
@@ -41,6 +59,9 @@
 
 - (IBAction)openHelp:(id)sender
 {
+	CFBundleRef myApplicationBundle = CFBundleGetMainBundle();
+    CFStringRef myBookName = CFBundleGetValueForInfoDictionaryKey(myApplicationBundle, CFSTR("CFBundleHelpBookName"));
+    AHGotoPage(myBookName, CFSTR("index.html"), NULL);
 }
 
 @end
