@@ -406,6 +406,7 @@
 										didFailSelector:@selector(ticket:uploadFailedWithError:)];
 	// TODO It waits for each contact, this is not efficient, batch would be better but is not supported by Google yet
 	[service waitForTicket:ticket timeout:TIMEOUT fetchedObject:nil error:nil];
+	numberExported++;
 	
 	first = nil;
 	last = nil;
