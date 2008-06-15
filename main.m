@@ -7,13 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <AddressBook/AddressBook.h>
-#import "AddressBookExport.h"
-#import "HTMLExport.h"
-#import "RotatingBackup.h"
-#import "GoogleExport.h"
 
 int main(int argc, char *argv[])
 {
-	return NSApplicationMain(argc,  (const char **) argv);
+    return NSApplicationMain(argc,  (const char **) argv);
 }
