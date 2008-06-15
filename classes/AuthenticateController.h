@@ -21,6 +21,7 @@
 	@private NSString *username;
 	@private NSString *password;
 	@private Keychain *myKeyChain;
+	@private BOOL getDefaultPassword;
 }
 
 - (IBAction)closeLogPanel:(id)sender;
@@ -29,4 +30,5 @@
 @property (retain, readonly) NSWindow *panel;
 @property (retain, readonly) NSString *username;
 @property (retain, readonly) NSString *password;
+@property BOOL getDefaultPassword;
 @end

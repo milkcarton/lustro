@@ -10,7 +10,7 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="623"/>
 			<integer value="371"/>
-			<integer value="946"/>
+			<integer value="968"/>
 			<integer value="1133"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -1265,7 +1265,7 @@
 														<reference key="NSTextColor" ref="322826595"/>
 													</object>
 													<object class="NSTextFieldCell" key="NSDataCell" id="43072158">
-														<int key="NSCellFlags">337772096</int>
+														<int key="NSCellFlags">67239488</int>
 														<int key="NSCellFlags2">2048</int>
 														<string key="NSContents">Text Cell</string>
 														<reference key="NSSupport" ref="429413175"/>
@@ -1280,7 +1280,6 @@
 													</object>
 													<int key="NSResizingMask">3</int>
 													<bool key="NSIsResizeable">YES</bool>
-													<bool key="NSIsEditable">YES</bool>
 													<reference key="NSTableView" ref="908876479"/>
 												</object>
 												<object class="NSTableColumn" id="470877875">
@@ -1296,7 +1295,7 @@
 														<reference key="NSTextColor" ref="322826595"/>
 													</object>
 													<object class="NSTextFieldCell" key="NSDataCell" id="87047047">
-														<int key="NSCellFlags">337772096</int>
+														<int key="NSCellFlags">67239488</int>
 														<int key="NSCellFlags2">2048</int>
 														<string key="NSContents">Text Cell</string>
 														<reference key="NSSupport" ref="429413175"/>
@@ -1306,7 +1305,6 @@
 													</object>
 													<int key="NSResizingMask">3</int>
 													<bool key="NSIsResizeable">YES</bool>
-													<bool key="NSIsEditable">YES</bool>
 													<reference key="NSTableView" ref="908876479"/>
 												</object>
 												<object class="NSTableColumn" id="462708077">
@@ -1322,7 +1320,7 @@
 														<reference key="NSTextColor" ref="322826595"/>
 													</object>
 													<object class="NSTextFieldCell" key="NSDataCell" id="719842541">
-														<int key="NSCellFlags">337772096</int>
+														<int key="NSCellFlags">67239488</int>
 														<int key="NSCellFlags2">2048</int>
 														<string key="NSContents">Text Cell</string>
 														<reference key="NSSupport" ref="429413175"/>
@@ -1332,7 +1330,6 @@
 													</object>
 													<int key="NSResizingMask">3</int>
 													<bool key="NSIsResizeable">YES</bool>
-													<bool key="NSIsEditable">YES</bool>
 													<reference key="NSTableView" ref="908876479"/>
 													<object class="NSSortDescriptor" key="NSSortDescriptorPrototype">
 														<string key="NSKey">date</string>

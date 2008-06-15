@@ -236,8 +236,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -287,7 +285,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>4</integer>
+									<integer>7</integer>
 									<integer>3</integer>
 									<integer>1</integer>
 									<integer>0</integer>
@@ -322,12 +320,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>60D1EDFD0DF9AB7000790A73</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AuthenticateController.h</string>
+								<string>ExportController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -335,11 +335,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>60D1EDFE0DF9AB7000790A73</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AuthenticateController.h</string>
+										<string>ExportController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>606323B80E05A004005D78EA</string>
+										<string>606324600E05A969005D78EA</string>
 										<key>history</key>
 										<array>
 											<string>60986EAC0DFDB39E00A0B05E</string>
@@ -360,19 +360,20 @@
 											<string>60A8D5DA0E056D0F007C989E</string>
 											<string>60A8D61D0E057625007C989E</string>
 											<string>60A8D61E0E057625007C989E</string>
-											<string>60A8D61F0E057625007C989E</string>
 											<string>60A8D64D0E05781A007C989E</string>
 											<string>606F09940E059063002FA939</string>
 											<string>606F09970E059063002FA939</string>
 											<string>606F09AB0E0590B0002FA939</string>
-											<string>606F09AC0E0590B0002FA939</string>
 											<string>606F09E20E059333002FA939</string>
 											<string>606F09F30E0593EE002FA939</string>
 											<string>606F0A050E059482002FA939</string>
-											<string>606323A40E059FE4005D78EA</string>
-											<string>606323A50E059FE4005D78EA</string>
-											<string>606323B10E059FFF005D78EA</string>
-											<string>606323B70E05A004005D78EA</string>
+											<string>606323D70E05A18A005D78EA</string>
+											<string>606324000E05A59C005D78EA</string>
+											<string>606324280E05A680005D78EA</string>
+											<string>606324500E05A837005D78EA</string>
+											<string>606324510E05A837005D78EA</string>
+											<string>606324520E05A837005D78EA</string>
+											<string>6063245B0E05A8B7005D78EA</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -438,6 +439,35 @@
 											<string>606323AD0E059FE4005D78EA</string>
 											<string>606323B30E059FFF005D78EA</string>
 											<string>606323B40E059FFF005D78EA</string>
+											<string>606323C00E05A060005D78EA</string>
+											<string>606323C10E05A060005D78EA</string>
+											<string>606323C20E05A060005D78EA</string>
+											<string>606323CE0E05A0EB005D78EA</string>
+											<string>606323CF0E05A0EB005D78EA</string>
+											<string>606323D00E05A0EB005D78EA</string>
+											<string>606323D10E05A0EB005D78EA</string>
+											<string>606323D90E05A18A005D78EA</string>
+											<string>606323DA0E05A18A005D78EA</string>
+											<string>606323DB0E05A18A005D78EA</string>
+											<string>606323ED0E05A295005D78EA</string>
+											<string>606323EE0E05A295005D78EA</string>
+											<string>606323EF0E05A295005D78EA</string>
+											<string>606323F00E05A295005D78EA</string>
+											<string>606323FC0E05A50C005D78EA</string>
+											<string>606324020E05A59C005D78EA</string>
+											<string>606324030E05A59C005D78EA</string>
+											<string>606324040E05A59C005D78EA</string>
+											<string>606324050E05A59C005D78EA</string>
+											<string>606324060E05A59C005D78EA</string>
+											<string>606324190E05A626005D78EA</string>
+											<string>6063241A0E05A626005D78EA</string>
+											<string>6063241B0E05A626005D78EA</string>
+											<string>6063242A0E05A680005D78EA</string>
+											<string>6063242B0E05A680005D78EA</string>
+											<string>606324540E05A837005D78EA</string>
+											<string>606324550E05A837005D78EA</string>
+											<string>606324560E05A837005D78EA</string>
+											<string>606324570E05A837005D78EA</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -492,7 +522,9 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1402, -27}}</string>
+										<string>{{10, 27}, {936, -27}}</string>
+										<key>RubberWindowFrame</key>
+										<string>360 115 1214 860 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXProjectFindModule</string>
@@ -531,8 +563,6 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {936, -27}}</string>
-										<key>RubberWindowFrame</key>
-										<string>360 115 1214 860 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -748,6 +778,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>606323F70E05A330005D78EA</string>
+		<string>606323F80E05A330005D78EA</string>
 		<string>/Users/jelle/Documents/Projects/Lustro/lustro.xcodeproj</string>
 	</array>
 	<key>WindowString</key>

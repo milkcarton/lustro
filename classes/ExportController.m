@@ -25,7 +25,12 @@
 
 - (void)setExportButton
 {
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"] || ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"])) {
+	BOOL authenticated = [GoogleExport autenticateWithUsername:[authenticateController username] password:[authenticateController password]];
+	
+	if (([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"] && authenticated) 
+		|| (![[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"] && ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"] 
+			|| [[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"] 
+			|| [[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"]))) {
 		[exportButton setEnabled:YES];
 	} else {
 		[exportButton setEnabled:NO];
@@ -34,7 +39,7 @@
 
 - (void)notifyAuthenticate
 {
-	NSLog(@"piepke");
+	[self setExportButton];
 }
 
 - (void)invocateExport

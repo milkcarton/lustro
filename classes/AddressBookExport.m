@@ -109,7 +109,7 @@
 			return kExportError;
 		}
 	} else {
-		[self addWarningMessage:@"No contacts found."];
+		[self addWarningMessage:@"No contacts exported."];
 		return kExportWarning;
 	}
 }
