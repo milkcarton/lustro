@@ -11,6 +11,7 @@
 #define TIMEOUT 15		// timeout in seconds
 #define MAXLIMIT 9999	// max entries per feed
 #define GOOGLE_CLIENT_AUTH_URL @"https://www.google.com/accounts/ClientLogin"
+#define GOOGLE_CAPTCHA_URL @"https://www.google.com/accounts/ErrorMsg"
 
 @implementation GoogleExport
 
@@ -27,14 +28,36 @@
 	[request addValue:@"Content-Type" forHTTPHeaderField:@"application/x-www-form-urlencoded"];
 	NSString *lustroVersion = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleVersion"]; // Set version for Google user agent from plist file
 	NSString *requestBody = [[NSString alloc] initWithFormat:@"Email=%@&Passwd=%@&service=xapi&accountType=HOSTED_OR_GOOGLE&source=%@",	user, pass, lustroVersion];
-	NSHTTPURLResponse *response = nil;
+	NSHTTPURLResponse *response;
 	[request setHTTPBody:[requestBody dataUsingEncoding:NSASCIIStringEncoding]];
 	[requestBody release];
-	[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+	NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];	
 	[request release];
+	
 	if ([response statusCode] == 200) { // Check if the username and password are correct
 		return YES;
+	} else {
+		// Check if Google denies login due to captcha request
+		NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+		BOOL captcha = ([responseBody rangeOfString:@"CaptchaUrl" options:NSCaseInsensitiveSearch].location != NSNotFound);
+		if (captcha) { // Google asks for token
+			NSString *captchaURL = GOOGLE_CAPTCHA_URL;
+			captchaURL = [captchaURL stringByAppendingString:[[responseBody componentsSeparatedByString:GOOGLE_CAPTCHA_URL] lastObject]];
+			captchaURL = [captchaURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+			// Show alert window to inform user why browser opens
+			NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+			[alert addButtonWithTitle:@"OK"];
+			[alert setMessageText:@"Google account locked"];
+			[alert setInformativeText:@"Your Google is locked after too many failed login attempts. Fill in the Google captcha form and try once more."];
+			[alert setAlertStyle:NSWarningAlertStyle];
+			[alert runModal];
+			
+			[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:captchaURL]];
+		}
+		[responseBody release];
 	}
+	
 	return NO; // Username or password are wrong
 }
 
