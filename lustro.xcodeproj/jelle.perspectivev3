@@ -279,13 +279,14 @@
 								<string>60DE9BB80DBD353800D3EC93</string>
 								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
+								<string>29B97323FDCFA39411CA2CEA</string>
 								<string>1CC0EA4004350EF90041110B</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>25</integer>
-									<integer>13</integer>
+									<integer>4</integer>
+									<integer>3</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -308,7 +309,7 @@
 							<real>256</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>269 138 1214 860 0 0 1680 1028 </string>
+						<string>360 115 1214 860 0 0 1680 1028 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -326,7 +327,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>60D1EDFD0DF9AB7000790A73</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>CustomMainWindow.m</string>
+								<string>AuthenticateController.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -334,11 +335,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>60D1EDFE0DF9AB7000790A73</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>CustomMainWindow.m</string>
+										<string>AuthenticateController.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>606F09560E0578D5002FA939</string>
+										<string>606F0A400E059B1A002FA939</string>
 										<key>history</key>
 										<array>
 											<string>60986EAC0DFDB39E00A0B05E</string>
@@ -352,10 +353,8 @@
 											<string>6023219B0E00801900CD5A18</string>
 											<string>60BAC0370E05681C0012EBD0</string>
 											<string>60BAC0380E05681C0012EBD0</string>
-											<string>60BAC03A0E05681C0012EBD0</string>
 											<string>60A8D5790E056ABA007C989E</string>
 											<string>60A8D59D0E056B57007C989E</string>
-											<string>60A8D5D70E056D0F007C989E</string>
 											<string>60A8D5D80E056D0F007C989E</string>
 											<string>60A8D5D90E056D0F007C989E</string>
 											<string>60A8D5DA0E056D0F007C989E</string>
@@ -364,15 +363,22 @@
 											<string>60A8D61E0E057625007C989E</string>
 											<string>60A8D61F0E057625007C989E</string>
 											<string>60A8D62D0E0576EF007C989E</string>
-											<string>60A8D62E0E0576EF007C989E</string>
-											<string>60A8D62F0E0576EF007C989E</string>
 											<string>60A8D64D0E05781A007C989E</string>
-											<string>60A8D6510E05781A007C989E</string>
+											<string>606F09940E059063002FA939</string>
+											<string>606F09970E059063002FA939</string>
+											<string>606F09980E059063002FA939</string>
+											<string>606F09AB0E0590B0002FA939</string>
+											<string>606F09AC0E0590B0002FA939</string>
+											<string>606F09E20E059333002FA939</string>
+											<string>606F09F30E0593EE002FA939</string>
+											<string>606F0A050E059482002FA939</string>
+											<string>606F0A340E059B09002FA939</string>
+											<string>606F0A350E059B09002FA939</string>
+											<string>606F0A360E059B09002FA939</string>
 										</array>
 										<key>prevStack</key>
 										<array>
 											<string>60986EBB0DFDB39E00A0B05E</string>
-											<string>60986EBC0DFDB39E00A0B05E</string>
 											<string>60986EBD0DFDB39E00A0B05E</string>
 											<string>60986EBF0DFDB39E00A0B05E</string>
 											<string>60986EC10DFDB39E00A0B05E</string>
@@ -398,6 +404,38 @@
 											<string>60A8D5860E056ABA007C989E</string>
 											<string>60A8D6390E0576EF007C989E</string>
 											<string>60A8D63A0E0576EF007C989E</string>
+											<string>606F099B0E059063002FA939</string>
+											<string>606F099D0E059063002FA939</string>
+											<string>606F099E0E059063002FA939</string>
+											<string>606F09A00E059063002FA939</string>
+											<string>606F09A10E059063002FA939</string>
+											<string>606F09B00E0590B0002FA939</string>
+											<string>606F09B10E0590B0002FA939</string>
+											<string>606F09B20E0590B0002FA939</string>
+											<string>606F09B30E0590B0002FA939</string>
+											<string>606F09BA0E059129002FA939</string>
+											<string>606F09BB0E059129002FA939</string>
+											<string>606F09BC0E059129002FA939</string>
+											<string>606F09BD0E059129002FA939</string>
+											<string>606F09C40E059157002FA939</string>
+											<string>606F09C50E059157002FA939</string>
+											<string>606F09C60E059157002FA939</string>
+											<string>606F09E50E059333002FA939</string>
+											<string>606F09E60E059333002FA939</string>
+											<string>606F09EC0E059379002FA939</string>
+											<string>606F09ED0E059379002FA939</string>
+											<string>606F09F50E0593EE002FA939</string>
+											<string>606F09F60E0593EE002FA939</string>
+											<string>606F09FE0E059428002FA939</string>
+											<string>606F0A070E059482002FA939</string>
+											<string>606F0A370E059B09002FA939</string>
+											<string>606F0A380E059B09002FA939</string>
+											<string>606F0A390E059B09002FA939</string>
+											<string>606F0A3A0E059B09002FA939</string>
+											<string>606F0A3B0E059B09002FA939</string>
+											<string>606F0A3C0E059B09002FA939</string>
+											<string>606F0A3D0E059B09002FA939</string>
+											<string>606F0A3E0E059B09002FA939</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -413,7 +451,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {936, 814}}</string>
 								<key>RubberWindowFrame</key>
-								<string>269 138 1214 860 0 0 1680 1028 </string>
+								<string>360 115 1214 860 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -438,7 +476,7 @@
 										<key>Frame</key>
 										<string>{{10, 27}, {936, -27}}</string>
 										<key>RubberWindowFrame</key>
-										<string>269 138 1214 860 0 0 1680 1028 </string>
+										<string>360 115 1214 860 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -708,10 +746,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>606F0A160E0594D5002FA939</string>
+		<string>606F0A170E0594D5002FA939</string>
 		<string>/Users/jelle/Documents/Projects/Lustro/lustro.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>269 138 1214 860 0 0 1680 1028 </string>
+	<string>360 115 1214 860 0 0 1680 1028 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

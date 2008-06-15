@@ -13,10 +13,10 @@
 		602D730B0DE74D2F0089FDAC /* DelimitedExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 602D730A0DE74D2F0089FDAC /* DelimitedExport.m */; };
 		602D756A0DE76F270089FDAC /* TabExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 602D75690DE76F270089FDAC /* TabExport.m */; };
 		602D75B00DE771F00089FDAC /* CommaExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 602D75AF0DE771F00089FDAC /* CommaExport.m */; };
-		607C58120DBBB0E7009BBEF8 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 607C58110DBBB0E7009BBEF8 /* MainController.m */; };
+		606F09630E05904C002FA939 /* Keychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606F09620E05904C002FA939 /* Keychain.framework */; };
+		606F09930E05905B002FA939 /* Keychain.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 606F09620E05904C002FA939 /* Keychain.framework */; };
 		608BC36A0DE9A0B40022D5E9 /* HTMLExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 608BC3690DE9A0B40022D5E9 /* HTMLExport.m */; };
 		60997D7A0DC3E33700518344 /* lockClick.tif in Resources */ = {isa = PBXBuildFile; fileRef = 60997D770DC3E33700518344 /* lockClick.tif */; };
-		60997E050DC3ECA100518344 /* AGKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 60997E040DC3ECA100518344 /* AGKeychain.m */; };
 		60997E490DC3ED2100518344 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60997E480DC3ED2100518344 /* Security.framework */; };
 		609F460A0DC33C4600AE82AA /* IndicatorValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 609F46090DC33C4600AE82AA /* IndicatorValueTransformer.m */; };
 		609F472E0DC3474400AE82AA /* warning.tif in Resources */ = {isa = PBXBuildFile; fileRef = 609F472D0DC3474400AE82AA /* warning.tif */; };
@@ -55,6 +55,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				606F09930E05905B002FA939 /* Keychain.framework in CopyFiles */,
 				F43B68B60DCC8F51008D7642 /* Sparkle.framework in CopyFiles */,
 				F44B414E0DBF9D6900623BBA /* GData.framework in CopyFiles */,
 			);
@@ -81,13 +82,10 @@
 		602D75690DE76F270089FDAC /* TabExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabExport.m; path = classes/TabExport.m; sourceTree = "<group>"; };
 		602D75AE0DE771F00089FDAC /* CommaExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommaExport.h; path = classes/CommaExport.h; sourceTree = "<group>"; };
 		602D75AF0DE771F00089FDAC /* CommaExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommaExport.m; path = classes/CommaExport.m; sourceTree = "<group>"; };
-		607C58100DBBB0E7009BBEF8 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainController.h; path = classes/MainController.h; sourceTree = "<group>"; };
-		607C58110DBBB0E7009BBEF8 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainController.m; path = classes/MainController.m; sourceTree = "<group>"; };
+		606F09620E05904C002FA939 /* Keychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Keychain.framework; path = frameworks/Keychain.framework; sourceTree = "<group>"; };
 		608BC3680DE9A0B40022D5E9 /* HTMLExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLExport.h; path = classes/HTMLExport.h; sourceTree = "<group>"; };
 		608BC3690DE9A0B40022D5E9 /* HTMLExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLExport.m; path = classes/HTMLExport.m; sourceTree = "<group>"; };
 		60997D770DC3E33700518344 /* lockClick.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lockClick.tif; path = images/lockClick.tif; sourceTree = "<group>"; };
-		60997E030DC3ECA100518344 /* AGKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGKeychain.h; path = classes/AGKeychain.h; sourceTree = "<group>"; };
-		60997E040DC3ECA100518344 /* AGKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGKeychain.m; path = classes/AGKeychain.m; sourceTree = "<group>"; };
 		60997E480DC3ED2100518344 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = ../../../../../../System/Library/Frameworks/Security.framework; sourceTree = SOURCE_ROOT; };
 		609F46080DC33C4600AE82AA /* IndicatorValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndicatorValueTransformer.h; path = classes/IndicatorValueTransformer.h; sourceTree = "<group>"; };
 		609F46090DC33C4600AE82AA /* IndicatorValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndicatorValueTransformer.m; path = classes/IndicatorValueTransformer.m; sourceTree = "<group>"; };
@@ -137,6 +135,7 @@
 				60997E490DC3ED2100518344 /* Security.framework in Frameworks */,
 				F43B68B20DCC8F21008D7642 /* Sparkle.framework in Frameworks */,
 				60A58FF60DDE31480081208C /* Carbon.framework in Frameworks */,
+				606F09630E05904C002FA939 /* Keychain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +147,6 @@
 			children = (
 				60A58BC20DDDD9C40081208C /* Models */,
 				609B85650DCE568E00264F75 /* Controllers */,
-				60997E020DC3EC8700518344 /* External */,
 				609F46070DC33C3100AE82AA /* Helpers */,
 				60DE9BB80DBD353800D3EC93 /* Exporters */,
 			);
@@ -158,6 +156,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				606F09620E05904C002FA939 /* Keychain.framework */,
 				60A58FF50DDE31480081208C /* Carbon.framework */,
 				F43B68B10DCC8F21008D7642 /* Sparkle.framework */,
 				60997E480DC3ED2100518344 /* Security.framework */,
@@ -243,15 +242,6 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		60997E020DC3EC8700518344 /* External */ = {
-			isa = PBXGroup;
-			children = (
-				60997E030DC3ECA100518344 /* AGKeychain.h */,
-				60997E040DC3ECA100518344 /* AGKeychain.m */,
-			);
-			name = External;
-			sourceTree = "<group>";
-		};
 		609B85650DCE568E00264F75 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,8 +249,6 @@
 				F4E3D5470DFDA948007460F4 /* AuthenticateController.m */,
 				F4E3D5480DFDA948007460F4 /* ExportController.h */,
 				F4E3D5490DFDA948007460F4 /* ExportController.m */,
-				607C58100DBBB0E7009BBEF8 /* MainController.h */,
-				607C58110DBBB0E7009BBEF8 /* MainController.m */,
 				F4E3D5430DFDA901007460F4 /* LogController.h */,
 				F4E3D5440DFDA901007460F4 /* LogController.m */,
 			);
@@ -389,10 +377,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				607C58120DBBB0E7009BBEF8 /* MainController.m in Sources */,
 				609F460A0DC33C4600AE82AA /* IndicatorValueTransformer.m in Sources */,
 				609F476E0DC34A2D00AE82AA /* ProgressValueTransformer.m in Sources */,
-				60997E050DC3ECA100518344 /* AGKeychain.m in Sources */,
 				60A58BD80DDDDB4E0081208C /* lustro.xcdatamodel in Sources */,
 				60A58CED0DDDED9A0081208C /* LogImageValueTransformer.m in Sources */,
 				60F83A070DE4A09D00A2ECB8 /* AddressBookExport.m in Sources */,

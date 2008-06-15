@@ -11,6 +11,11 @@
 
 @implementation AuthenticateController
 
+- (void)awakeFromNib
+{
+	myKeyChain = [Keychain defaultKeychain];
+}
+
 - (void)controlTextDidChange:(NSNotification *)notification
 {
 	if ([[usernameField stringValue] compare:@""] != NSOrderedSame && [[passwordField stringValue] compare:@""] != NSOrderedSame)
@@ -30,18 +35,9 @@
 	password = [passwordField stringValue];
 	
 	if ([[defaults valueForKey:@"KeyChainSave"] boolValue]) {
-		BOOL exists = [AGKeychain checkForExistanceOfKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username];
-		if (exists) { // Modify the Keychain item
-			BOOL modified = [AGKeychain modifyKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username withNewPassword:password];
-			if (modified) {
-				[defaults setObject:username forKey:@"UserName"];
-			}
-		} else { // Add the Keychain item
-			BOOL added = [AGKeychain addKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username withPassword:password];
-			if (added) {
-				[defaults setObject:username forKey:@"UserName"];
-			}
-		}
+		[myKeyChain addGenericPassword:password onService:@"Lustro" forAccount:username replaceExisting:YES];
+		if ([myKeyChain lastError] == 0)
+			[defaults setObject:username forKey:@"UserName"];
 	}
 	
 	if (![GoogleExport autenticateWithUsername:username password:password]) {
@@ -70,7 +66,8 @@
 	}
 	
 	if (password == nil && username) { // Read password from Keychain
-		password = [AGKeychain getPasswordFromKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username];
+		password = [myKeyChain passwordForGenericService:@"Lustro" forAccount:username];
+		if (!password) password = @"";
 		[passwordField setStringValue:password];
 	}
 	
