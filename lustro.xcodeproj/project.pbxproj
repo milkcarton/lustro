@@ -105,7 +105,7 @@
 		60F83A050DE4A09D00A2ECB8 /* AddressBookExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddressBookExport.h; path = classes/AddressBookExport.h; sourceTree = "<group>"; };
 		60F83A060DE4A09D00A2ECB8 /* AddressBookExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddressBookExport.m; path = classes/AddressBookExport.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* lustro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lustro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* Lustro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lustro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E62673630E04542C00DF9CF6 /* lockHover.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lockHover.tif; path = images/lockHover.tif; sourceTree = "<group>"; };
 		E62673BF0E0547FF00DF9CF6 /* lock.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lock.tif; path = images/lock.tif; sourceTree = "<group>"; };
 		E6CA9BD40E0314B9004756A2 /* CustomAuthButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomAuthButton.h; path = classes/CustomAuthButton.h; sourceTree = "<group>"; };
@@ -180,7 +180,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* lustro.app */,
+				8D1107320486CEB800E47090 /* Lustro.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -330,7 +330,7 @@
 			name = Lustro;
 			productInstallPath = "$(HOME)/Applications";
 			productName = lustro;
-			productReference = 8D1107320486CEB800E47090 /* lustro.app */;
+			productReference = 8D1107320486CEB800E47090 /* Lustro.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -437,7 +437,7 @@
 				GCC_PREFIX_HEADER = lustro_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = lustro;
+				PRODUCT_NAME = Lustro;
 			};
 			name = Debug;
 		};
@@ -456,7 +456,7 @@
 				GCC_PREFIX_HEADER = lustro_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = lustro;
+				PRODUCT_NAME = Lustro;
 			};
 			name = Release;
 		};
