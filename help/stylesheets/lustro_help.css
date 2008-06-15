@@ -35,6 +35,11 @@ h2 {
 	font-weight: bold;	
 }
 
+h3 {
+	font-size: .8em;
+	font-weight: bold;	
+}
+
 em {
 	font-family: Courier, sans-serif;
 	font-style: normal;
