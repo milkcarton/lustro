@@ -11,29 +11,6 @@
 
 @implementation AuthenticateController
 
-- (void)windowWillBeginSheet:(NSNotification *)notification
-{
-	defaults = [NSUserDefaults standardUserDefaults];
-	
-	[errorLabel setStringValue:@""];
-	if (username == nil && [[usernameField stringValue] compare:@""] == NSOrderedSame) { // Read user from defaults
-		NSString *user = [defaults objectForKey:@"UserName"];
-		if (user && [user compare:@""] != NSOrderedSame) {
-			username = user;
-			[usernameField setStringValue:username];
-		}
-	}
-	   
-	if (password == nil && username) { // Read password from Keychain
-		password = [AGKeychain getPasswordFromKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username];
-		[passwordField setStringValue:password];
-	}
-	
-	if ([[usernameField stringValue] compare:@""] != NSOrderedSame && [[passwordField stringValue] compare:@""] != NSOrderedSame)
-		[signInButton setEnabled:YES];
-	else [signInButton setEnabled:NO];
-}
-
 - (void)controlTextDidChange:(NSNotification *)notification
 {
 	if ([[usernameField stringValue] compare:@""] != NSOrderedSame && [[passwordField stringValue] compare:@""] != NSOrderedSame)
@@ -75,6 +52,31 @@
 		[panel orderOut:nil];
 		[NSApp endSheet:panel];
 	 }
+}
+
+#pragma mark Delegates of NSWindow
+
+- (void)windowWillBeginSheet:(NSNotification *)notification
+{
+	defaults = [NSUserDefaults standardUserDefaults];
+	
+	[errorLabel setStringValue:@""];
+	if (username == nil && [[usernameField stringValue] compare:@""] == NSOrderedSame) { // Read user from defaults
+		NSString *user = [defaults objectForKey:@"UserName"];
+		if (user && [user compare:@""] != NSOrderedSame) {
+			username = user;
+			[usernameField setStringValue:username];
+		}
+	}
+	
+	if (password == nil && username) { // Read password from Keychain
+		password = [AGKeychain getPasswordFromKeychainItem:@"Internet Password" withItemKind:@"Lustro" forUsername:username];
+		[passwordField setStringValue:password];
+	}
+	
+	if ([[usernameField stringValue] compare:@""] != NSOrderedSame && [[passwordField stringValue] compare:@""] != NSOrderedSame)
+		[signInButton setEnabled:YES];
+	else [signInButton setEnabled:NO];
 }
 
 @synthesize panel;

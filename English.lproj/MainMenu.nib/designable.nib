@@ -8,10 +8,10 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="372"/>
-			<integer value="106"/>
-			<integer value="623"/>
+			<integer value="371"/>
 			<integer value="946"/>
+			<integer value="1133"/>
+			<integer value="623"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -192,10 +192,20 @@
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="837028771"/>
 								</object>
+								<object class="NSMenuItem" id="84367034">
+									<reference key="NSMenu" ref="791199939"/>
+									<string key="NSTitle">Export</string>
+									<string key="NSKeyEquiv">e</string>
+									<int key="NSKeyEquivModMask">1048576</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="837028771"/>
+								</object>
 								<object class="NSMenuItem" id="525384751">
 									<reference key="NSMenu" ref="791199939"/>
-									<string key="NSTitle">Save Log to Desktop</string>
-									<string key="NSKeyEquiv"/>
+									<string key="NSTitle">Save Log</string>
+									<string key="NSKeyEquiv">s</string>
+									<int key="NSKeyEquivModMask">1048576</int>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="837028771"/>
@@ -311,7 +321,7 @@
 				<string key="NSWindowRect">{{300, 500}, {295, 190}}</string>
 				<int key="NSWTFlags">875037696</int>
 				<string key="NSWindowTitle">Lustro</string>
-				<string key="NSWindowClass">NSWindow</string>
+				<string key="NSWindowClass">CustomMainWindow</string>
 				<nil key="NSViewClass"/>
 				<string key="NSWindowContentMaxSize">{3.40282e+38, 3.40282e+38}</string>
 				<object class="NSView" key="NSWindowView" id="439893737">
@@ -2081,6 +2091,14 @@
 					</object>
 					<int key="connectionID">1147</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">export:</string>
+						<reference key="source" ref="877412903"/>
+						<reference key="destination" ref="84367034"/>
+					</object>
+					<int key="connectionID">1149</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -2803,6 +2821,7 @@
 							<reference ref="460902585"/>
 							<reference ref="525384751"/>
 							<reference ref="581985370"/>
+							<reference ref="84367034"/>
 						</object>
 						<reference key="parent" ref="375692186"/>
 					</object>
@@ -2819,6 +2838,11 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">1139</int>
 						<reference key="object" ref="581985370"/>
+						<reference key="parent" ref="791199939"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1148</int>
+						<reference key="object" ref="84367034"/>
 						<reference key="parent" ref="791199939"/>
 					</object>
 				</object>
@@ -2853,6 +2877,7 @@
 					<string>1134.IBPluginDependency</string>
 					<string>1137.IBPluginDependency</string>
 					<string>1139.IBPluginDependency</string>
+					<string>1148.IBPluginDependency</string>
 					<string>129.IBPluginDependency</string>
 					<string>129.ImportedFromIB2</string>
 					<string>134.IBPluginDependency</string>
@@ -2989,14 +3014,15 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{227, 714}, {153, 23}}</string>
+					<string>{{325, 837}, {153, 23}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>{{596, 852}, {216, 23}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{114, 684}, {219, 53}}</string>
+					<string>{{212, 787}, {140, 73}}</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3027,7 +3053,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>{{525, 802}, {197, 73}}</string>
-					<string>{{37, 737}, {251, 20}}</string>
+					<string>{{135, 860}, {251, 20}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>{74, 862}</string>
@@ -3142,7 +3168,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1147</int>
+			<int key="maxID">1149</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3193,6 +3219,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">classes/CustomAuthButton.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">CustomMainWindow</string>
+					<string key="superclassName">NSWindow</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">classes/CustomMainWindow.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

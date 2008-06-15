@@ -222,7 +222,7 @@
     list.count = 4;
     list.attr = attributes;
 	
-    status = SecKeychainItemCopyContent (item, NULL, &list, &length, 
+    status = SecKeychainItemCopyContent(item, NULL, &list, &length, 
                                          (void **)&password);
 	
     // use this version if you don't really want the password,
