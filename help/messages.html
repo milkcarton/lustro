@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta name="AppleTitle" content="Lustro Help" />
+	<meta name="AppleIcon" content ="Yojimbo%20Help/yojimbo_16x16.png" /><!-- TODO -->
+	<meta name="robots" content="noindex" />
+	<meta http-equiv="content-type" content="application/xhtml+xml" />
+	<title>Lustro Help</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/lustro_help.css" />
+</head>
+
+<body>
+
+<div id="header">
+	<a href="index.html">Home</a>
+</div>
+
+<div id="content">
+
+	<h1>
+		<img src="images/icon.png" alt="Lustro icon" width="32px" height="32px" /> 
+		Warnings &amp; errors
+	</h1>
+	
+	<p>Below a complete list of all the warning or error messages you may see when exporting your contacts with Lustro. Warnings are only indications, some minor attention points but nothing serious. Errors are more serious and may stop Lustro from executing.</p>
+	
+	<h2>Warnings</h2>
+
+	<ul>
+	<li><span><strong>No contacts found.</strong><br />
+		Lustro can&apos;t export nothing so check if you have at least one contact in you Address Book.</span>
+	</li>
+	<li><span><strong>Removed <em>contact name</em> as Google can't handle duplicate addresses.</strong><br />
+		You entered the same e-mail address for two (or more) different contacts, this is fine for Address Book but Google can&apos;t handle this so Lustro didn&apos;t upload the e-mail address for the second contact if found.</span></li>
+	<li><span><strong>Contact without name, nickname or company.</strong><br />
+		Exported a contact without a first- or lastname, a nickname or a company name. The contact is exported successfully but it will show up as an empty line in your Google Contacts.</span></li>
+	<li><span><strong>No backup created as you didn't have any Google Contacts yet.</strong><br />
+		Lustro creates a backup file with all your Google Contacts before overwriting but in this case it didn&apos;t as you didn&apos;t have any Google Contacts yet.</span></li>
+	<li><span><strong>Google backup failed.</strong><br />
+		Lustro tried to create a local backup of your Google Contacts before exporting but it failed.</span></li>
+	<li><span><strong>Couldn&apos;t retrieve previous Google Contacts.</strong><br />
+		Lustro tried to build a list with your previous Google Contacts to remove them but something went wrong, the list was empty or incomplete.</span></li>
+	<li><span><strong>Couldn&apos;t remove all previous Google Contacts.</strong><br />
+		Lustro tried to remove all your previous Google Contacts to start with an empty sheet but not all contacts could be removed.</span></li>
+	<li><span><strong>Something went wrong with <em>contact name</em> (<em>error code</em>).</strong><br />
+		Something went wrong while uploading <em>contact name</em> to Google, Google returned the included error code. You can check the error message in the <a href="http://code.google.com/apis/gdata/reference.html#http-status-codes" title="Google error codes" class="ext">Google documentation</a>.</span></li>
+	</ul>
+	
+	<h2>Errors</h2>
+	
+	<ul>
+	<li><span><strong>Wrong username or password.</strong><br />
+		Your Google username and password don&apos;t match. Check your credentials and try again. You can always try to sign in on the <a href="https://www.google.com/accounts/" class="ext">Google Accounts</a> website to check your credentials.</span></li>
+	<li><span><strong>Duplicate e-mail address for <em>contact name</em>.</strong><br />
+		This is the same problem as the &ldquo;Removed <em>contact name</em> as Google can't handle duplicate addresses&rdquo; warning above but later in the upload so a more serious one.</span></li>
+	<li><span><strong>Captcha required, your account is blocked.</strong><br />
+		You tried too many times to sign in with the wrong Google username and password and Google blocked your account. You can unlock your account by entering the unlock captcha on the <a href="https://www.google.com/accounts/DisplayUnlockCaptcha" title="Google Accounts unlock captcha" class="ext">Google Accounts</a> page.</span></li>
+	<li><span><strong>There was no content available to write the file.</strong><br />
+		The export didn&apos;t return any results and there is not data to write so the export file was not created.</span></li>
+	</ul>
+
+	<h2>Related websites</h2>
+
+	<ul>
+	<li><a href="http://code.google.com/apis/gdata/reference.html#http-status-codes" title="Google error codes" class="ext">Google error codes</a></li></li>
+	<li><a href="https://www.google.com/accounts/" class="ext">Google Accounts</a></li>
+	<li><a href="https://www.google.com/accounts/DisplayUnlockCaptcha" title="Google Accounts unlock captcha" class="ext">Google Accounts unlock captcha</a></li>
+	</ul>
+
+</div>
+
+</body>
+</html>
