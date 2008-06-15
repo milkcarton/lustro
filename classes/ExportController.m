@@ -84,6 +84,7 @@
 		if (([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarning"] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarningIndicator"]) || ![[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarning"])
 			[self showWarningPanel];
 		else {
+			// Check if default value is OK or cancel.
 			if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarningIndicator"])
 				[self exportGoogle];
 		}
@@ -150,6 +151,7 @@
 {
 	[warningPanel orderOut:nil];
 	[NSApp endSheet:warningPanel];
+	// If OK is pressed.
 	if ([[sender title] compare:@"OK"] == NSOrderedSame) {
 		[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:YES] forKey:@"GoogleExportWarningIndicator"];
 		[self exportGoogle];

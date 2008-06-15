@@ -3,7 +3,7 @@
 //  lustro
 //
 //  Created by Simon Schoeters on 25/05/08.
-//  Copyright 2008 IMEC. All rights reserved.
+//  Copyright 2008 milkcarton. All rights reserved.
 //
 
 #import "GoogleExport.h"
