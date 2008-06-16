@@ -424,49 +424,41 @@
 		[contact addEmailAddress:[gMails objectAtIndex:i]];
 	}
 	[gMails release];
-	gMails = nil;
 	
 	for (int i = 0; i < [gAddresses count]; i++) {
 		[contact addPostalAddress:[gAddresses objectAtIndex:i]];
 	}
 	[gAddresses release];
-	gAddresses = nil;
 	
 	for (int i = 0; i < [gPhones count]; i++) {
 		[contact addPhoneNumber:[gPhones objectAtIndex:i]];
 	}
 	[gPhones release];
-	gPhones = nil;
 	
 	for (int i = 0; i < [gAIMs count]; i++) {
 		[contact addIMAddress:[gAIMs objectAtIndex:i]];
 	}
 	[gAIMs release];
-	gAIMs = nil;
 	
 	for (int i = 0; i < [gJabbers count]; i++) {
 		[contact addIMAddress:[gJabbers objectAtIndex:i]];
 	}
 	[gJabbers release];
-	gJabbers = nil;
 	
 	for (int i = 0; i < [gMSNs count]; i++) {
 		[contact addIMAddress:[gMSNs objectAtIndex:i]];
 	}
 	[gMSNs release];
-	gMSNs = nil;
 	
 	for (int i = 0; i < [gYahoos count]; i++) {
 		[contact addIMAddress:[gYahoos objectAtIndex:i]];
 	}
 	[gYahoos release];
-	gYahoos = nil;
 	
 	for (int i = 0; i < [gICQs count]; i++) {
 		[contact addIMAddress:[gICQs objectAtIndex:i]];
 	}
 	[gICQs release];
-	gICQs = nil;
 	
 	[contact setContent:gContent];
 
@@ -502,7 +494,7 @@
 {
 	[collectedMails release];
 	collectedMails = nil;
-	return YES;
+	return alert;
 }
 
 #pragma mark -
