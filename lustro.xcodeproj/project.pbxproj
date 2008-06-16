@@ -41,6 +41,8 @@
 		F42D5F8F0DFC723800B0E805 /* RotatingBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = F42D5F8E0DFC723800B0E805 /* RotatingBackup.m */; };
 		F43B68B20DCC8F21008D7642 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43B68B10DCC8F21008D7642 /* Sparkle.framework */; };
 		F43B68B60DCC8F51008D7642 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F43B68B10DCC8F21008D7642 /* Sparkle.framework */; };
+		F445B4610E06E367003736ED /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F445B45F0E06E367003736ED /* LICENSE */; };
+		F445B4620E06E367003736ED /* NOTICE in Resources */ = {isa = PBXBuildFile; fileRef = F445B4600E06E367003736ED /* NOTICE */; };
 		F44B40A80DBF9D5E00623BBA /* GData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44B40A70DBF9D5E00623BBA /* GData.framework */; };
 		F44B414E0DBF9D6900623BBA /* GData.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F44B40A70DBF9D5E00623BBA /* GData.framework */; };
 		F4AE8B970DFC7011001EAC61 /* GoogleExport.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AE8B960DFC7011001EAC61 /* GoogleExport.m */; };
@@ -115,6 +117,8 @@
 		F42D5F8D0DFC723800B0E805 /* RotatingBackup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RotatingBackup.h; path = classes/RotatingBackup.h; sourceTree = "<group>"; };
 		F42D5F8E0DFC723800B0E805 /* RotatingBackup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RotatingBackup.m; path = classes/RotatingBackup.m; sourceTree = "<group>"; };
 		F43B68B10DCC8F21008D7642 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = frameworks/Sparkle.framework; sourceTree = SOURCE_ROOT; };
+		F445B45F0E06E367003736ED /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		F445B4600E06E367003736ED /* NOTICE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NOTICE; sourceTree = "<group>"; };
 		F44B40A70DBF9D5E00623BBA /* GData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GData.framework; path = frameworks/GData.framework; sourceTree = SOURCE_ROOT; };
 		F4AE8B950DFC7011001EAC61 /* GoogleExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoogleExport.h; path = classes/GoogleExport.h; sourceTree = "<group>"; };
 		F4AE8B960DFC7011001EAC61 /* GoogleExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoogleExport.m; path = classes/GoogleExport.m; sourceTree = "<group>"; };
@@ -211,6 +215,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F445B45F0E06E367003736ED /* LICENSE */,
+				F445B4600E06E367003736ED /* NOTICE */,
 				60A5900D0DDE31DD0081208C /* help */,
 				600D31980DBFDEED00A96491 /* Images */,
 				60DE9BF60DBD389F00D3EC93 /* Templates */,
@@ -370,6 +376,8 @@
 				E62673640E04542C00DF9CF6 /* lockHover.tif in Resources */,
 				E62673C00E0547FF00DF9CF6 /* lock.tif in Resources */,
 				60B42C240E05B3750046CCC7 /* warningIcon.icns in Resources */,
+				F445B4610E06E367003736ED /* LICENSE in Resources */,
+				F445B4620E06E367003736ED /* NOTICE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
