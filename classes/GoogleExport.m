@@ -38,44 +38,49 @@
 
 + (BOOL)autenticateWithUsername:(NSString *)user password:(NSString *)pass
 {
-	if ([user hasSuffix:@"@gmail.com"] == NO) { // Add @gmail.com if missing
-		user = [user stringByAppendingFormat:@"@gmail.com"];
-	}
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:GOOGLE_CLIENT_AUTH_URL]];
-	[request setTimeoutInterval:TIMEOUT];
-	[request setHTTPMethod:@"POST"];
-	[request addValue:@"Content-Type" forHTTPHeaderField:@"application/x-www-form-urlencoded"];
-	NSString *lustroVersion = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleVersion"]; // Set version for Google user agent from plist file
-	NSString *requestBody = [[NSString alloc] initWithFormat:@"Email=%@&Passwd=%@&service=xapi&accountType=HOSTED_OR_GOOGLE&source=%@",	user, pass, lustroVersion];
-	NSHTTPURLResponse *response;
-	[request setHTTPBody:[requestBody dataUsingEncoding:NSASCIIStringEncoding]];
-	[requestBody release];
-	NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];	
-	[request release];
-	
-	if ([response statusCode] == 200) { // Check if the username and password are correct
-		return YES;
-	} else {
-		// Check if Google denies login due to captcha request
-		NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-		BOOL captcha = ([responseBody rangeOfString:@"CaptchaUrl" options:NSCaseInsensitiveSearch].location != NSNotFound);
-		if (captcha) { // Google asks for token
-			NSString *captchaURL = GOOGLE_CAPTCHA_URL;
-			captchaURL = [captchaURL stringByAppendingString:[[responseBody componentsSeparatedByString:GOOGLE_CAPTCHA_URL] lastObject]];
-			captchaURL = [captchaURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-
-			// Show alert window to inform user why browser opens
-			NSAlert *alertWindow = [[[NSAlert alloc] init] autorelease];
-			[alertWindow addButtonWithTitle:@"OK"];
-			[alertWindow setMessageText:@"Google account locked"];
-			[alertWindow setInformativeText:@"Your Google is locked after too many failed login attempts. Fill in the Google captcha form and try once more."];
-			[alertWindow setAlertStyle:NSWarningAlertStyle];
-			[alertWindow runModal];
-			[alertWindow release];
-			
-			[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:captchaURL]];
+	if ([user length] > 0 && [pass length] > 0) { 
+		if ([user hasSuffix:@"@gmail.com"] == NO) { // Add @gmail.com if missing
+			user = [user stringByAppendingFormat:@"@gmail.com"];
 		}
-		[responseBody release];
+		NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:GOOGLE_CLIENT_AUTH_URL]];
+		[request setTimeoutInterval:TIMEOUT];
+		[request setHTTPMethod:@"POST"];
+		[request addValue:@"Content-Type" forHTTPHeaderField:@"application/x-www-form-urlencoded"];
+		NSString *lustroVersion = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleVersion"]; // Set version for Google user agent from plist file
+		NSString *requestBody = [[NSString alloc] initWithFormat:@"Email=%@&Passwd=%@&service=xapi&accountType=HOSTED_OR_GOOGLE&source=%@",	user, pass, lustroVersion];
+		NSHTTPURLResponse *response;
+		[request setHTTPBody:[requestBody dataUsingEncoding:NSASCIIStringEncoding]];
+		[requestBody release];
+		requestBody = nil;
+		NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];	
+		[request release];
+		request = nil;
+	
+		if ([response statusCode] == 200) { // Check if the username and password are correct
+			return YES;
+		} else {
+			// Check if Google denies login due to captcha request
+			NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+			BOOL captcha = ([responseBody rangeOfString:@"CaptchaUrl" options:NSCaseInsensitiveSearch].location != NSNotFound);
+			if (captcha) { // Google asks for token
+				NSString *captchaURL = GOOGLE_CAPTCHA_URL;
+				captchaURL = [captchaURL stringByAppendingString:[[responseBody componentsSeparatedByString:GOOGLE_CAPTCHA_URL] lastObject]];
+				captchaURL = [captchaURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+				
+				// Show alert window to inform user why browser opens
+				NSAlert *alertWindow = [[NSAlert alloc] init];
+				[alertWindow addButtonWithTitle:@"OK"];
+				[alertWindow setMessageText:@"Google account locked"];
+				[alertWindow setInformativeText:@"Your Google is locked after too many failed login attempts. Fill in the Google captcha form and try once more."];
+				[alertWindow setAlertStyle:NSWarningAlertStyle];
+				[alertWindow runModal];
+				[alertWindow release];
+				alertWindow = nil;
+				[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:captchaURL]];
+			}
+			[responseBody release];
+			responseBody = nil;
+		}
 	}
 	
 	return NO; // Username or password are wrong
@@ -127,7 +132,7 @@
 		NSString *lustroVersion = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleVersion"]; // Set version for Google user agent from plist file
 		NSString *userAgent = @"milkcarton-GoogleAPI-";
 		userAgent = [userAgent stringByAppendingString:lustroVersion];
-		service = [[GDataServiceGoogleContact alloc] init];
+		service = [[[GDataServiceGoogleContact alloc] init] autorelease];
 		[service setUserAgent:userAgent];
 		[service setUserCredentialsWithUsername:username password:password];
 		
@@ -419,41 +424,49 @@
 		[contact addEmailAddress:[gMails objectAtIndex:i]];
 	}
 	[gMails release];
+	gMails = nil;
 	
 	for (int i = 0; i < [gAddresses count]; i++) {
 		[contact addPostalAddress:[gAddresses objectAtIndex:i]];
 	}
 	[gAddresses release];
+	gAddresses = nil;
 	
 	for (int i = 0; i < [gPhones count]; i++) {
 		[contact addPhoneNumber:[gPhones objectAtIndex:i]];
 	}
 	[gPhones release];
-
+	gPhones = nil;
+	
 	for (int i = 0; i < [gAIMs count]; i++) {
 		[contact addIMAddress:[gAIMs objectAtIndex:i]];
 	}
 	[gAIMs release];
+	gAIMs = nil;
 	
 	for (int i = 0; i < [gJabbers count]; i++) {
 		[contact addIMAddress:[gJabbers objectAtIndex:i]];
 	}
 	[gJabbers release];
+	gJabbers = nil;
 	
 	for (int i = 0; i < [gMSNs count]; i++) {
 		[contact addIMAddress:[gMSNs objectAtIndex:i]];
 	}
 	[gMSNs release];
+	gMSNs = nil;
 	
 	for (int i = 0; i < [gYahoos count]; i++) {
 		[contact addIMAddress:[gYahoos objectAtIndex:i]];
 	}
 	[gYahoos release];
+	gYahoos = nil;
 	
 	for (int i = 0; i < [gICQs count]; i++) {
 		[contact addIMAddress:[gICQs objectAtIndex:i]];
 	}
 	[gICQs release];
+	gICQs = nil;
 	
 	[contact setContent:gContent];
 
@@ -488,13 +501,8 @@
 - (BOOL)finalize 
 {
 	[collectedMails release];
+	collectedMails = nil;
 	return YES;
-}
-
-- (void)dealloc 
-{
-	[service dealloc];
-	[super dealloc];
 }
 
 #pragma mark -
@@ -513,6 +521,7 @@
 	[backup removeOldFilesInFolder];
 	[backup save];
 	[backup release];
+	backup = nil;
 }
 
 - (void)ticket:(GDataServiceTicket *)thisTicket backupFailedWithError:(NSError *)error
@@ -556,6 +565,7 @@
 	NSXMLDocument *userXml = [[NSXMLDocument alloc] initWithXMLString:[userInfo valueForKey:@"error"] options:NSXMLNodeOptionsNone error:nil];
 	NSString *title = [[userXml nodesForXPath:@"/entry/title/text()" error:nil] objectAtIndex:0];
 	[userXml release];
+	userXml = nil;
 	
 	if([error code] == 409) {
 		[super addErrorMessage:(NSString *)[NSString stringWithFormat:@"Duplicate e-mail address for %@.", title]];
@@ -567,4 +577,30 @@
 	alert = YES;	
 }
 
+- (void)dealloc
+{
+	service = nil;
+	[super dealloc];
+}
+
+@synthesize service;
+@synthesize filename;
+@synthesize username;
+@synthesize password;
+@synthesize first;
+@synthesize last;
+@synthesize nick;
+@synthesize gOrganization;
+@synthesize gMails;
+@synthesize gAddresses;
+@synthesize gPhones;
+@synthesize gAIMs;
+@synthesize gJabbers;
+@synthesize gMSNs;
+@synthesize gYahoos;
+@synthesize gICQs;
+@synthesize gContent;
+@synthesize ticket;
+@synthesize collectedMails;
+@synthesize alert;
 @end

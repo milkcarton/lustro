@@ -41,4 +41,7 @@
 - (void)removeOldFilesInFolder;											// Remove backup files older then the ROTATE_DAYS variable
 - (void)save;															// Saves the file to disk
 
+@property (retain) NSString *filename;
+@property (retain) NSString *path;
+@property (retain) NSData *data;
 @end

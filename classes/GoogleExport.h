@@ -67,4 +67,24 @@
 - (BOOL)removeAllContacts;													// Remove all current Google Contacts to begin with a blank sheet
 - (BOOL)isEmailUnique:(NSString *)refMail;									// Returns true if this e-mail address is unique for all uploads so far
 
+@property (retain) GDataServiceGoogleContact* service;
+@property (retain) NSString *filename;
+@property (retain) NSString *username;
+@property (retain) NSString *password;
+@property (retain) NSString* first;
+@property (retain) NSString* last;
+@property (retain) NSString* nick;
+@property (retain) GDataOrganization *gOrganization;
+@property (retain) NSMutableArray *gMails;
+@property (retain) NSMutableArray *gAddresses;
+@property (retain) NSMutableArray *gPhones;
+@property (retain) NSMutableArray *gAIMs;
+@property (retain) NSMutableArray *gJabbers;
+@property (retain) NSMutableArray *gMSNs;
+@property (retain) NSMutableArray *gYahoos;
+@property (retain) NSMutableArray *gICQs;
+@property (retain) GDataEntryContent *gContent;
+@property (retain) GDataServiceTicket *ticket;
+@property (retain) NSMutableArray *collectedMails;
+@property BOOL alert;
 @end

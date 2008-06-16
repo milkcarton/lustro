@@ -66,4 +66,15 @@
 - (IBAction)openHelp:(id)sender;					// Open the help files from the menu.
 - (IBAction)pressButton:(id)sender;					// Press a button from the warning panel.
 
+@property int commaCheckBox;
+@property int tabCheckBox;
+@property int HTMLCheckBox;
+@property int googleCheckBox;
+@property BOOL authenticated;
+@property (retain) LogController *logController;
+@property (retain) AuthenticateController *authenticateController;
+@property (retain) id mainWindow;
+@property (retain) id authenticationButtonCell;
+@property (retain) id exportButton;
+@property (retain) NSWindow *warningPanel;
 @end

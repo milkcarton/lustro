@@ -55,6 +55,7 @@ typedef enum {
 @property (retain) id delegate;
 @property (retain) ABAddressBook *addressBook;
 @property int numberExported;
+@property BOOL company;
 @end
 
 #pragma mark -

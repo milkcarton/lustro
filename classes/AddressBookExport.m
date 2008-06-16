@@ -136,7 +136,9 @@
 - (void)dealloc
 {
 	[addressBook release];
+	addressBook = nil;
 	[delegate release];
+	delegate = nil;
 	[super dealloc];
 }
 
@@ -164,4 +166,5 @@
 @synthesize delegate;
 @synthesize addressBook;
 @synthesize numberExported;
+@synthesize company;
 @end

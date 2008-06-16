@@ -93,4 +93,7 @@
 	[super dealloc];
 }
 
+@synthesize filename;
+@synthesize path;
+@synthesize data;
 @end

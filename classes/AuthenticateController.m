@@ -89,7 +89,10 @@
 	
 	if (password == nil && username && getDefaultPassword) { // Read password from Keychain
 		password = [myKeyChain passwordForGenericService:@"Lustro" forAccount:username];
-		if (!password) password = @"";
+		if (!password) {
+			password = @"";
+			[defaults setBool:NO forKey:@"KeyChainSave"];
+		}
 		[passwordField setStringValue:password];
 		getDefaultPassword = YES;
 	}
@@ -103,4 +106,11 @@
 @synthesize username;
 @synthesize password;
 @synthesize getDefaultPassword;
+@synthesize defaults;
+@synthesize errorLabel;
+@synthesize usernameField;
+@synthesize passwordField;
+@synthesize signInButton;
+@synthesize exportController;
+@synthesize myKeyChain;
 @end

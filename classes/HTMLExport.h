@@ -41,4 +41,6 @@
 - (NSString *)addURLs:(ABMultiValue *)URLs;															// Adds the URL's to the string.
 - (NSString *)addAddresses:(ABMultiValue *)addresses;												// Adds the addresses to the string.
 
+@property (retain) NSString *fnName;
+@property (retain) NSString *org;
 @end

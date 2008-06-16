@@ -70,7 +70,7 @@
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"]) {
 		[self setValue:[NSNumber numberWithInt:1] forKey:@"commaCheckBox"];
-		AddressBookExport *exporter = [[CommaExport alloc] init];
+		CommaExport *exporter = [[CommaExport alloc] init];
 		exporter.delegate = logController;
 		if ([exporter export] == kExportSuccess) [self setValue:[NSNumber numberWithInt:2] forKey:@"commaCheckBox"];
 		else if ([exporter export] == kExportWarning) [self setValue:[NSNumber numberWithInt:3] forKey:@"commaCheckBox"];
@@ -80,7 +80,7 @@
 	}
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"]) {
 		[self setValue:[NSNumber numberWithInt:1] forKey:@"tabCheckBox"];
-		AddressBookExport *exporter = [[TabExport alloc] init];
+		TabExport *exporter = [[TabExport alloc] init];
 		exporter.delegate = logController;
 		if ([exporter export] == kExportSuccess) [self setValue:[NSNumber numberWithInt:2] forKey:@"tabCheckBox"];
 		else if ([exporter export] == kExportWarning) [self setValue:[NSNumber numberWithInt:3] forKey:@"tabCheckBox"];
@@ -90,7 +90,7 @@
 	}
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"]) {
 		[self setValue:[NSNumber numberWithInt:1] forKey:@"HTMLCheckBox"];
-		AddressBookExport *exporter = [[HTMLExport alloc] init];
+		HTMLExport *exporter = [[HTMLExport alloc] init];
 		exporter.delegate = logController;
 		if ([exporter export] == kExportSuccess) [self setValue:[NSNumber numberWithInt:2] forKey:@"HTMLCheckBox"];
 		else if ([exporter export] == kExportWarning) [self setValue:[NSNumber numberWithInt:3] forKey:@"HTMLCheckBox"];
@@ -120,7 +120,7 @@
 - (void)exportGoogle
 {
 	[self setValue:[NSNumber numberWithInt:1] forKey:@"googleCheckBox"];
-	AddressBookExport *exporter = [[GoogleExport alloc] initWithUsername:[authenticateController username] password:[authenticateController password]];
+	GoogleExport *exporter = [[GoogleExport alloc] initWithUsername:[authenticateController username] password:[authenticateController password]];
 	exporter.delegate = logController;
 	if ([exporter export] == kExportSuccess) [self setValue:[NSNumber numberWithInt:2] forKey:@"googleCheckBox"];
 	else if ([exporter export] == kExportWarning) [self setValue:[NSNumber numberWithInt:3] forKey:@"googleCheckBox"];
@@ -180,4 +180,15 @@
 	}
 }
 
+@synthesize commaCheckBox;
+@synthesize tabCheckBox;
+@synthesize HTMLCheckBox;
+@synthesize googleCheckBox;
+@synthesize authenticated;
+@synthesize logController;
+@synthesize authenticateController;
+@synthesize mainWindow;
+@synthesize authenticationButtonCell;
+@synthesize exportButton;
+@synthesize warningPanel;
 @end

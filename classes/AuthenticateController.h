@@ -50,4 +50,11 @@
 @property (retain, readonly) NSString *username;
 @property (retain, readonly) NSString *password;
 @property BOOL getDefaultPassword;
+@property (retain) NSUserDefaults *defaults;
+@property (retain) NSTextField *errorLabel;
+@property (retain) NSTextField *usernameField;
+@property (retain) NSTextField *passwordField;
+@property (retain) NSButton *signInButton;
+@property (retain) id exportController;
+@property (retain) Keychain *myKeyChain;
 @end

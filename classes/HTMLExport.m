@@ -352,4 +352,6 @@
 	return [super finalize];
 }
 
+@synthesize fnName;
+@synthesize org;
 @end
