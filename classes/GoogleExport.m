@@ -245,9 +245,10 @@
 			[gMails addObject:gMail];
 		} else {
 			[super addWarningMessage:(NSString *)[NSString stringWithFormat:@"Removed %@ as Google can't handle duplicate addresses.", email]];
+			alert = YES;
 		}
 	}
-	return YES;
+	return !alert;
 }
 
 - (BOOL)exportAddresses:(ABMultiValue *)addresses 
@@ -567,12 +568,6 @@
 		[super addWarningMessage:(NSString *)[NSString stringWithFormat:@"Something went wrong with %@ (%i).", title, [error code]]];
 	}
 	alert = YES;	
-}
-
-- (void)dealloc
-{
-	service = nil;
-	[super dealloc];
 }
 
 @synthesize service;

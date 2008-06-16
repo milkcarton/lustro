@@ -100,13 +100,14 @@
 	}
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"]) {
 		// Check if warning for google export needs to be shown.
-		if (([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarning"] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarningIndicator"]) || ![[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarning"])
-			[self showWarningPanel];
-		else {
+// TODO: Warning sheet triggers error
+//		if (([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarning"] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarningIndicator"]) || ![[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarning"])
+//			[self showWarningPanel];
+//		else {
 			// Check if default value is OK or cancel.
-			if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarningIndicator"])
+//			if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarningIndicator"])
 				[self exportGoogle];
-		}
+//		}
 	}
 	[pool release];
 	pool = nil;
