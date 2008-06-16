@@ -1,10 +1,29 @@
-//
-//  GoogleExport.m
-//  lustro
-//
-//  Created by Simon Schoeters on 25/05/08.
-//  Copyright 2008 milkcarton. All rights reserved.
-//
+/*
+ Copyright (c) 2008 Jelle Vandebeeck, Simon Schoeters
+ 
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+ 
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+ 
+ Created by Simon Schoeters on 2008.05.08.
+*/
 
 #import "GoogleExport.h"
 
@@ -46,12 +65,13 @@
 			captchaURL = [captchaURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
 			// Show alert window to inform user why browser opens
-			NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-			[alert addButtonWithTitle:@"OK"];
-			[alert setMessageText:@"Google account locked"];
-			[alert setInformativeText:@"Your Google is locked after too many failed login attempts. Fill in the Google captcha form and try once more."];
-			[alert setAlertStyle:NSWarningAlertStyle];
-			[alert runModal];
+			NSAlert *alertWindow = [[[NSAlert alloc] init] autorelease];
+			[alertWindow addButtonWithTitle:@"OK"];
+			[alertWindow setMessageText:@"Google account locked"];
+			[alertWindow setInformativeText:@"Your Google is locked after too many failed login attempts. Fill in the Google captcha form and try once more."];
+			[alertWindow setAlertStyle:NSWarningAlertStyle];
+			[alertWindow runModal];
+			[alertWindow release];
 			
 			[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:captchaURL]];
 		}
@@ -162,14 +182,16 @@
 	return YES;
 }
 
-- (BOOL)exportFirstName:(NSString *)firstName {
+- (BOOL)exportFirstName:(NSString *)firstName 
+{
 	if (firstName) {
 		first = firstName;
 	}
 	return YES;
 }
 
-- (BOOL)exportLastName:(NSString *)lastName {
+- (BOOL)exportLastName:(NSString *)lastName 
+{
 	if (lastName) {
 		last = lastName;
 	}
@@ -182,7 +204,8 @@
 
 - (BOOL)exportBirthDay:(NSCalendarDate *)birthDay {	return YES; }
 
-- (BOOL)exportOrganization:(NSString *)organization {
+- (BOOL)exportOrganization:(NSString *)organization 
+{
 	if(organization) {
 		gOrganization = [GDataOrganization organizationWithName:organization];
 		[gOrganization setRel:kGDataContactWork];
@@ -193,7 +216,8 @@
 
 - (BOOL)exportDepartment:(NSString *)department	{ return YES; }
 
-- (BOOL)exportJobTitle:(NSString *)jobTitle	{
+- (BOOL)exportJobTitle:(NSString *)jobTitle	
+{
 	if(jobTitle) {
 		[gOrganization setOrgTitle:jobTitle];
 	}
@@ -204,7 +228,8 @@
 
 - (BOOL)exportCalendarURLs:(ABMultiValue *)calendarURLs { return YES; }
 
-- (BOOL)exportEmails:(ABMultiValue *)emails	{
+- (BOOL)exportEmails:(ABMultiValue *)emails	
+{
 	gMails = [[NSMutableArray alloc] init];
 	for (int j = 0; j < [emails count]; j++) {
 		NSString *email = [emails valueAtIndex:j];
@@ -220,7 +245,8 @@
 	return YES;
 }
 
-- (BOOL)exportAddresses:(ABMultiValue *)addresses {
+- (BOOL)exportAddresses:(ABMultiValue *)addresses 
+{
 	gAddresses = [[NSMutableArray alloc] init];
 	for (int j = 0; j < [addresses count]; j++) {
 		NSString *label = [addresses labelAtIndex:j];
@@ -260,7 +286,8 @@
 	return YES;
 }
  
-- (BOOL)exportPhones:(ABMultiValue *)phones	{
+- (BOOL)exportPhones:(ABMultiValue *)phones	
+{
 	gPhones = [[NSMutableArray alloc] init];
 	for (int j = 0; j < [phones count]; j++) {
 		NSString *label = [phones labelAtIndex:j];
@@ -272,7 +299,8 @@
 	return YES;
 }
 
-- (BOOL)exportAIMAddresses:(ABMultiValue *)AIMAddresses {
+- (BOOL)exportAIMAddresses:(ABMultiValue *)AIMAddresses 
+{
 	gAIMs = [[NSMutableArray alloc] init];
 	for (int j = 0; j < [AIMAddresses count]; j++) {
 		NSString *label = [AIMAddresses labelAtIndex:j];
@@ -283,7 +311,8 @@
 	return YES;
 }
 
-- (BOOL)exportJabberAddresses:(ABMultiValue *)jabberAddresses {
+- (BOOL)exportJabberAddresses:(ABMultiValue *)jabberAddresses
+{
 	gJabbers = [[NSMutableArray alloc] init];
 	for (int j = 0; j < [jabberAddresses count]; j++) {
 		NSString *label = [jabberAddresses labelAtIndex:j];
@@ -294,7 +323,8 @@
 	return YES;
 }
 
-- (BOOL)exportMSNAddresses:(ABMultiValue *)MSNAddresses {
+- (BOOL)exportMSNAddresses:(ABMultiValue *)MSNAddresses 
+{
 	gMSNs = [[NSMutableArray alloc] init];
 	for (int j = 0; j < [MSNAddresses count]; j++) {
 		NSString *label = [MSNAddresses labelAtIndex:j];
@@ -305,7 +335,8 @@
 	return YES;
 }
 
-- (BOOL)exportYahooAddresses:(ABMultiValue *)yahooAddresses {
+- (BOOL)exportYahooAddresses:(ABMultiValue *)yahooAddresses 
+{
 	gYahoos = [[NSMutableArray alloc] init];
 	for (int j = 0; j < [yahooAddresses count]; j++) {
 		NSString *label = [yahooAddresses labelAtIndex:j];
@@ -316,7 +347,8 @@
 	return YES;
 }
 
-- (BOOL)exportICQAddresses:(ABMultiValue *)ICQAddresses {
+- (BOOL)exportICQAddresses:(ABMultiValue *)ICQAddresses 
+{
 	gICQs = [[NSMutableArray alloc] init];
 	for (int j = 0; j < [ICQAddresses count]; j++) {
 		NSString *label = [ICQAddresses labelAtIndex:j];
@@ -327,7 +359,8 @@
 	return YES;
 }
 
-- (BOOL)exportNote:(NSString *)note	{
+- (BOOL)exportNote:(NSString *)note	
+{
 	gContent =  [GDataEntryContent textConstructWithString:note];
 	return YES;
 }
@@ -340,7 +373,8 @@
 
 - (BOOL)exportSuffix:(NSString *)suffix { return YES; }
 
-- (BOOL)exportNickName:(NSString *)nickName {
+- (BOOL)exportNickName:(NSString *)nickName 
+{
 	nick = nickName;
 	return YES;
 }
@@ -351,7 +385,8 @@
 
 - (BOOL)exportRelatedNames:(ABMultiValue *)relatedNames { return YES; }
 
-- (BOOL)finalizePerson {
+- (BOOL)finalizePerson 
+{
 	
 	NSString *title = @"";
 
@@ -450,9 +485,16 @@
 	return alert;
 }
 
-- (BOOL)finalize {
+- (BOOL)finalize 
+{
 	[collectedMails release];
 	return YES;
+}
+
+- (void)dealloc 
+{
+	[service dealloc];
+	[super dealloc];
 }
 
 #pragma mark -
