@@ -144,11 +144,12 @@
 			return NO;
 		}
 
-		return YES; // All parameters set and ready for exporting
-	} else { // Wrong username or password
+	} else if (![GoogleExport autenticateWithUsername:username password:password]) { // Wrong username or password
 		[super addErrorMessage:@"Wrong username or password."];
 		return NO;
 	}
+	
+	return YES; // All parameters set and ready for exporting
 }
 
 - (BOOL)backupAllContacts
@@ -235,6 +236,7 @@
 
 - (BOOL)exportEmails:(ABMultiValue *)emails	
 {
+	BOOL mailSuccess = YES;
 	gMails = [[NSMutableArray alloc] init];
 	for (int j = 0; j < [emails count]; j++) {
 		NSString *email = [emails valueAtIndex:j];
@@ -245,10 +247,10 @@
 			[gMails addObject:gMail];
 		} else {
 			[super addWarningMessage:(NSString *)[NSString stringWithFormat:@"Removed %@ as Google can't handle duplicate addresses.", email]];
-			alert = YES;
+			mailSuccess = NO;
 		}
 	}
-	return !alert;
+	return mailSuccess;
 }
 
 - (BOOL)exportAddresses:(ABMultiValue *)addresses 
@@ -393,7 +395,6 @@
 
 - (BOOL)finalizePerson 
 {
-	
 	NSString *title = @"";
 
 	if (first) {		
@@ -488,14 +489,14 @@
 	gICQs = nil;
 	gContent = nil;
 	
-	return alert;
+	return !alert;
 }
 
 - (BOOL)finalize 
 {
 	[collectedMails release];
 	collectedMails = nil;
-	return alert;
+	return !alert;
 }
 
 #pragma mark -

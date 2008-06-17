@@ -123,8 +123,9 @@
 	[self setValue:[NSNumber numberWithInt:1] forKey:@"googleCheckBox"];
 	GoogleExport *exporter = [[GoogleExport alloc] initWithUsername:[authenticateController username] password:[authenticateController password]];
 	exporter.delegate = logController;
-	if ([exporter export] == kExportSuccess) [self setValue:[NSNumber numberWithInt:2] forKey:@"googleCheckBox"];
-	else if ([exporter export] == kExportWarning) [self setValue:[NSNumber numberWithInt:3] forKey:@"googleCheckBox"];
+	BOOL exportStatus = [exporter export];
+	if (exportStatus == kExportSuccess) [self setValue:[NSNumber numberWithInt:2] forKey:@"googleCheckBox"];
+	else if (exportStatus == kExportWarning) [self setValue:[NSNumber numberWithInt:3] forKey:@"googleCheckBox"];
 	else [self setValue:[NSNumber numberWithInt:4] forKey:@"googleCheckBox"];
 	[exporter release];
 	exporter = nil;
