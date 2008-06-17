@@ -127,10 +127,11 @@
 		} else {
 			return kExportError;
 		}
-	} else {
+	} else if ([contacts count] > 0) {
 		[self addWarningMessage:@"No contacts exported."];
 		return kExportWarning;
-	}
+	} 
+	return kExportError;
 }
 
 - (void)dealloc
