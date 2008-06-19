@@ -29,6 +29,6 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>SUFeedURL</key>
-	<string>http://localhost:3000/feeds/appcast.xml</string>
+	<string>http://feeds.feedburner.com/milkcarton/lustro</string>
 </dict>
 </plist>
