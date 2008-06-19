@@ -505,7 +505,8 @@
 {
 	if ([[feed entries] count] == 0) {
 		[super addWarningMessage:@"No backup created as you didn't have any Google Contacts yet."];
-		alert = YES;
+		// This is not serious as it may be possible that the user has no Google Contacts yet, export should continue
+		// The icon will indicate success, which is wrong because this is a warning but if I set the alert to YES here the export will not start
 	}
 	
 	NSXMLDocument *doc = [feed XMLDocument];
