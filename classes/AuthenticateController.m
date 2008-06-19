@@ -56,7 +56,7 @@
 	password = [passwordField stringValue];
 	
 	if ([[defaults valueForKey:@"KeyChainSave"] boolValue]) {
-		[myKeyChain addGenericPassword:password onService:@"Lustro" forAccount:username replaceExisting:YES];
+		[myKeyChain addGenericPassword:password onService:@"Lustro" forAccount:username replaceExisting:NO];
 		if ([myKeyChain lastError] == 0)
 			[defaults setObject:username forKey:@"UserName"];
 	}
