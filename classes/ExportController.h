@@ -48,6 +48,7 @@
 	IBOutlet id mainWindow;
 	IBOutlet id authenticationButtonCell;
 	IBOutlet id exportButton;
+	IBOutlet NSMenuItem *exportMenuItem;
 	IBOutlet NSWindow *warningPanel;
 }
 

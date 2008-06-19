@@ -9,10 +9,10 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="372"/>
-			<integer value="29"/>
+			<integer value="623"/>
+			<integer value="1133"/>
 			<integer value="946"/>
 			<integer value="1153"/>
-			<integer value="623"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -162,6 +162,7 @@
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="837028771"/>
+									<int key="NSTag">1</int>
 								</object>
 								<object class="NSMenuItem" id="525384751">
 									<reference key="NSMenu" ref="791199939"/>
@@ -2227,6 +2228,14 @@
 					</object>
 					<int key="connectionID">1205</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">exportMenuItem</string>
+						<reference key="source" ref="877412903"/>
+						<reference key="destination" ref="84367034"/>
+					</object>
+					<int key="connectionID">1206</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -3379,7 +3388,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1205</int>
+			<int key="maxID">1206</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3475,6 +3484,7 @@
 							<string>authenticateController</string>
 							<string>authenticationButtonCell</string>
 							<string>exportButton</string>
+							<string>exportMenuItem</string>
 							<string>logController</string>
 							<string>mainWindow</string>
 							<string>warningPanel</string>
@@ -3484,6 +3494,7 @@
 							<string>AuthenticateController</string>
 							<string>id</string>
 							<string>id</string>
+							<string>NSMenuItem</string>
 							<string>LogController</string>
 							<string>id</string>
 							<string>NSWindow</string>

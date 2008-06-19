@@ -182,6 +182,17 @@
 	}
 }
 
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
+{
+	if ([menuItem tag] == 1 && [exportButton isEnabled]) { // Tag 1 is the Export menu item
+		return YES;
+	} else if ([menuItem tag] == 1 && ![exportButton isEnabled]) {
+		return NO;
+	}
+	
+ 	return YES; // Return YES here so all other menu items are displayed
+}
+
 @synthesize commaCheckBox;
 @synthesize tabCheckBox;
 @synthesize HTMLCheckBox;
