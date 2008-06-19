@@ -36,6 +36,7 @@
 	NSFileManager *fileManager = [NSFileManager defaultManager];
 	NSString *path = [[self applicationSupportFolder] stringByAppendingPathComponent:@"log.xml"];
 	NSError *error;
+	hasContents = NO;
 	[fileManager removeItemAtPath:path error:&error];
 	return self;
 }
@@ -122,6 +123,7 @@
 	[message setValue:[NSDate date] forKey:@"date"];
 	[[self managedObjectContext] insertObject:message];
 	[[self managedObjectContext] save:nil];
+	hasContents = YES;
 }
 
 - (IBAction)closeLogPanel:(id)sender
@@ -132,7 +134,6 @@
 
 - (IBAction)copyLogToDesktop:(id)sender
 {
-	NSLog(@"prt");
 	NSFileManager *fileManager = [NSFileManager defaultManager];
 	NSString *path = [[self applicationSupportFolder] stringByAppendingPathComponent:@"log.xml"];
 	NSString *desktopPath = [[self desktopFolder] stringByAppendingPathComponent:@"lustro-log.xml"];
@@ -140,6 +141,14 @@
 	[fileManager copyItemAtPath:path toPath:desktopPath error:&error];
 	if (!error)
 		[[NSApplication sharedApplication] presentError:error];
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
+{
+	if ([menuItem tag] == 2 && !hasContents) {  // Tag 2 is the Save log menu item
+		return NO;
+	}
+ 	return YES; // Return YES here so all other menu items are displayed
 }
 
 - (void) dealloc

@@ -8,11 +8,11 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="372"/>
-			<integer value="623"/>
-			<integer value="1133"/>
 			<integer value="946"/>
+			<integer value="623"/>
 			<integer value="1153"/>
+			<integer value="372"/>
+			<integer value="1133"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -172,6 +172,7 @@
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="837028771"/>
+									<int key="NSTag">2</int>
 								</object>
 							</object>
 						</object>
