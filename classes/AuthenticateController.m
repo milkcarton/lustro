@@ -31,6 +31,10 @@
 
 - (void)awakeFromNib
 {
+}
+
+- (void)startKeychainSession
+{
 	myKeyChain = [Keychain defaultKeychain];
 	getDefaultPassword = [[[NSUserDefaults standardUserDefaults] valueForKey:@"KeyChainSave"] boolValue];
 	[self windowWillBeginSheet:nil];
@@ -47,7 +51,7 @@
 {
 	[panel orderOut:nil];
 	[NSApp endSheet:panel];
-	[exportController notifyAuthenticate];
+	[exportController notifyAuthenticate:NO];
 }
 
 - (IBAction)signIn:(id)sender
@@ -56,7 +60,7 @@
 	password = [passwordField stringValue];
 	
 	if ([[defaults valueForKey:@"KeyChainSave"] boolValue]) {
-		[myKeyChain addGenericPassword:password onService:@"Lustro" forAccount:username replaceExisting:NO];
+		[myKeyChain addGenericPassword:password onService:@"Lustro" forAccount:username replaceExisting:YES];
 		if ([myKeyChain lastError] == 0)
 			[defaults setObject:username forKey:@"UserName"];
 	}
@@ -68,7 +72,7 @@
 	} else {
 		[panel orderOut:nil];
 		[NSApp endSheet:panel];
-		[exportController notifyAuthenticate];
+		[exportController notifyAuthenticate:YES];
 	 }
 }
 

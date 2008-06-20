@@ -32,9 +32,14 @@
 @interface FileExport : AddressBookExport {
 	@protected NSString *name;			// The dir + name of the file.
 	@protected NSString *content;		// The content that needs to be written to the file.
+	id mainController;					// Used when ou want to display a save dialog.
 }
-@property (retain) NSString *name;
+
+- (NSString *)title;
+
+@property (retain, readwrite) NSString *name;
 @property (retain, readwrite) NSString *content;
+@property (retain, readwrite) id mainController;
 @end
 
 #pragma mark -

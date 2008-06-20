@@ -31,7 +31,12 @@
 
 - (NSString *)extention
 {
-	return @".tab";
+	return @"tab";
+}
+
+- (NSString *)title
+{
+	return @"Save File with tab separated values";
 }
 
 - (NSString *)delimiter

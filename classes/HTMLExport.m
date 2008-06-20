@@ -33,7 +33,12 @@
 
 - (NSString *)extention
 {
-	return @".html";
+	return @"html";
+}
+
+- (NSString *)title
+{
+	return @"Save File with hCards";
 }
 
 - (NSString *)addSpanWithValue:(NSString *)value class:(NSString *)class

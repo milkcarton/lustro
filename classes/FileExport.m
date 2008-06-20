@@ -44,12 +44,8 @@
 		}
 		if (firstName || lastName) name = [name stringByAppendingString:@"'s "];
 		name = [name stringByAppendingString:@"contacts"];
-		name = [@"~/Desktop/" stringByAppendingString:name];
-		name = [name stringByAppendingString:[self extention]];
-		name = [name stringByStandardizingPath];
 	} else {
-		name = [@"~/Desktop/contacts" stringByAppendingString:[self extention]];
-		name = [name stringByStandardizingPath];
+		name = @"contacts";
 	}
 	
 	return YES;
@@ -60,7 +56,16 @@
 	// Check if content is filled.
 	if ([content length] > 0) {
 		NSError *error;
-		BOOL written =  [content writeToFile:name atomically:YES encoding:NSUTF8StringEncoding error:&error];
+		NSString *filename = name;
+		if ([mainController respondsToSelector:@selector(showSaveSheet:extention:title:)]) {
+			filename = [mainController showSaveSheet:name extention:[self extention] title:[self title]];
+			if (!filename) {
+				[super addErrorMessage:@"File export cancelled."];
+				return NO;
+			}
+		} else 
+			filename = [[[[@"~/Documents/" stringByAppendingString:name] stringByAppendingString:@"."] stringByAppendingString:[self extention]] stringByStandardizingPath];
+		BOOL written =  [content writeToFile:filename atomically:YES encoding:NSUTF8StringEncoding error:&error];
 		if (!written && error) {
 			[super addErrorMessage:[error localizedDescription]];
 			return NO;
@@ -70,6 +75,12 @@
 	return NO;
 }
 
+- (NSString *)title
+{
+	return @"Save";
+}
+
 @synthesize name;
 @synthesize content;
+@synthesize mainController;
 @end

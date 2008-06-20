@@ -54,9 +54,10 @@
 
 - (void)setExportButton;							// Enables or disables the exportbutton.
 - (void)setExportButtonWithGoogle;					// Enables or disables the exportbutton when google selected.
-- (void)notifyAuthenticate;							// Called when sign in or cancel is clicked.
+- (void)notifyAuthenticate:(BOOL)indicator;			// Called when sign in or cancel is clicked.
 - (void)invocateExport;								// Needed to run the export in a Thread.
 - (void)showWarningPanel;							// Opens the Google warning panel.
+- (NSString *)showSaveSheet:(NSString *)name extention:(NSString *)extention title:(NSString *)title;		// Opens the file save sheet and returns the filename + dir.
 - (void)exportGoogle;								// Run the Google exporter.
 
 - (IBAction)showLogPanel:(id)sender;				// Opens the log panel.

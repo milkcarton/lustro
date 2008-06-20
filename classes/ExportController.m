@@ -39,6 +39,7 @@
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"HTMLCheckBox"];
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"googleCheckBox"];
 	
+	[authenticateController startKeychainSession];
 	[self setExportButtonWithGoogle];
 }
 
@@ -60,9 +61,11 @@
 	[self setExportButton];
 }
 
-- (void)notifyAuthenticate
+- (void)notifyAuthenticate:(BOOL)indicator
 {
 	[self setExportButtonWithGoogle];
+	if (indicator)
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"GoogleChecked"];
 }
 
 - (void)invocateExport
@@ -71,29 +74,39 @@
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"]) {
 		[self setValue:[NSNumber numberWithInt:1] forKey:@"commaCheckBox"];
 		CommaExport *exporter = [[CommaExport alloc] init];
+		exporter.showHeader = YES;
 		exporter.delegate = logController;
-		if ([exporter export] == kExportSuccess) [self setValue:[NSNumber numberWithInt:2] forKey:@"commaCheckBox"];
-		else if ([exporter export] == kExportWarning) [self setValue:[NSNumber numberWithInt:3] forKey:@"commaCheckBox"];
+		exporter.mainController = self;
+		BOOL exportStatus = [exporter export];
+		if (exportStatus == kExportSuccess) [self setValue:[NSNumber numberWithInt:2] forKey:@"commaCheckBox"];
+		else if (exportStatus == kExportWarning) [self setValue:[NSNumber numberWithInt:3] forKey:@"commaCheckBox"];
 		else [self setValue:[NSNumber numberWithInt:4] forKey:@"commaCheckBox"];
 		[exporter release];
 		exporter = nil;
 	}
+	
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"]) {
 		[self setValue:[NSNumber numberWithInt:1] forKey:@"tabCheckBox"];
 		TabExport *exporter = [[TabExport alloc] init];
 		exporter.delegate = logController;
-		if ([exporter export] == kExportSuccess) [self setValue:[NSNumber numberWithInt:2] forKey:@"tabCheckBox"];
-		else if ([exporter export] == kExportWarning) [self setValue:[NSNumber numberWithInt:3] forKey:@"tabCheckBox"];
+		exporter.showHeader = YES;
+		exporter.mainController = self;
+		BOOL exportStatus = [exporter export];
+		if (exportStatus == kExportSuccess) [self setValue:[NSNumber numberWithInt:2] forKey:@"tabCheckBox"];
+		else if (exportStatus == kExportWarning) [self setValue:[NSNumber numberWithInt:3] forKey:@"tabCheckBox"];
 		else [self setValue:[NSNumber numberWithInt:4] forKey:@"tabCheckBox"];
 		[exporter release];
 		exporter = nil;
 	}
+	
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"]) {
 		[self setValue:[NSNumber numberWithInt:1] forKey:@"HTMLCheckBox"];
 		HTMLExport *exporter = [[HTMLExport alloc] init];
 		exporter.delegate = logController;
-		if ([exporter export] == kExportSuccess) [self setValue:[NSNumber numberWithInt:2] forKey:@"HTMLCheckBox"];
-		else if ([exporter export] == kExportWarning) [self setValue:[NSNumber numberWithInt:3] forKey:@"HTMLCheckBox"];
+		exporter.mainController = self;
+		BOOL exportStatus = [exporter export];
+		if (exportStatus == kExportSuccess) [self setValue:[NSNumber numberWithInt:2] forKey:@"HTMLCheckBox"];
+		else if (exportStatus == kExportWarning) [self setValue:[NSNumber numberWithInt:3] forKey:@"HTMLCheckBox"];
 		else [self setValue:[NSNumber numberWithInt:4] forKey:@"HTMLCheckBox"];
 		[exporter release];
 		exporter = nil;
@@ -116,6 +129,17 @@
 - (void)showWarningPanel
 {
 	[NSApp beginSheet:warningPanel modalForWindow:mainWindow modalDelegate:self didEndSelector:nil contextInfo:nil];
+}
+
+- (NSString *)showSaveSheet:(NSString *)name extention:(NSString *)extention title:(NSString *)title
+{
+	NSSavePanel *savePanel = [NSSavePanel savePanel];
+	[savePanel setRequiredFileType:extention];
+	[savePanel setMessage:title];
+	[savePanel setExtensionHidden:YES];
+	if ([savePanel runModalForDirectory:NSHomeDirectory() file:name] == NSOKButton)
+		return [savePanel filename];
+	return nil;
 }
 
 - (void)exportGoogle

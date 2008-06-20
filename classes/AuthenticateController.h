@@ -43,6 +43,8 @@
 	@private BOOL getDefaultPassword;
 }
 
+- (void)startKeychainSession;
+
 - (IBAction)closeLogPanel:(id)sender;
 - (IBAction)signIn:(id)sender;
 

@@ -31,7 +31,12 @@
 
 - (NSString *)extention
 {
-	return @".csv";
+	return @"csv";
+}
+
+- (NSString *)title
+{
+	return @"Save File with comma separated values";
 }
 
 - (NSString *)delimiter
