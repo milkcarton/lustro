@@ -47,24 +47,35 @@
 	} else {
 		name = @"contacts";
 	}
+	if ([mainController respondsToSelector:@selector(showSaveSheet:extention:title:)]) {
+		filename = [mainController showSaveSheet:name extention:[self extention] title:[self title]];
+		if (!filename) {
+			return NO;
+		}
+	} else 
+		filename = [[[[@"~/Documents/" stringByAppendingString:name] stringByAppendingString:@"."] stringByAppendingString:[self extention]] stringByStandardizingPath];
 	
+	arrayContent = [NSMutableArray array];
 	return YES;
 }
 
 - (BOOL)finalize
 {
+	// Sorting the array
+	NSSortDescriptor *lastDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"LAST" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
+	NSSortDescriptor *firstDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"FIRST" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
+	NSSortDescriptor *orgDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"ORG" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
+	NSArray *descriptors = [NSArray arrayWithObjects:lastDescriptor, firstDescriptor, orgDescriptor, nil];
+	NSArray *sortedArray = [arrayContent sortedArrayUsingDescriptors:descriptors];
+	
+	for (NSDictionary *dictionary in sortedArray) {
+		content = [content stringByAppendingString:[dictionary objectForKey:@"CONTENT"]];
+	}
+	
+	
 	// Check if content is filled.
 	if ([content length] > 0) {
 		NSError *error;
-		NSString *filename = name;
-		if ([mainController respondsToSelector:@selector(showSaveSheet:extention:title:)]) {
-			filename = [mainController showSaveSheet:name extention:[self extention] title:[self title]];
-			if (!filename) {
-				[super addErrorMessage:@"File export cancelled."];
-				return NO;
-			}
-		} else 
-			filename = [[[[@"~/Documents/" stringByAppendingString:name] stringByAppendingString:@"."] stringByAppendingString:[self extention]] stringByStandardizingPath];
 		BOOL written =  [content writeToFile:filename atomically:YES encoding:NSUTF8StringEncoding error:&error];
 		if (!written && error) {
 			[super addErrorMessage:[error localizedDescription]];
@@ -82,5 +93,6 @@
 
 @synthesize name;
 @synthesize content;
+@synthesize arrayContent;
 @synthesize mainController;
 @end

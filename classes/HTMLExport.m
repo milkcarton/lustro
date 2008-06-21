@@ -165,11 +165,14 @@
 
 - (BOOL)exportFirstName:(NSString *)firstName
 {
-	content = [content stringByAppendingString:@"<div class=\"vcard\">\n"];
+	lineTemp = @"<div class=\"vcard\">\n";
 	fnName = @"";
 	if (firstName) {
-		content = [content stringByAppendingString:[self addSpanWithValue:firstName class:@"given-name"]];
+		lineTemp = [lineTemp stringByAppendingString:[self addSpanWithValue:firstName class:@"given-name"]];
 		fnName = firstName;
+		firstNameTemp = firstName;
+	} else {
+		firstNameTemp = @"";
 	}
 	return YES;
 }
@@ -177,12 +180,13 @@
 - (BOOL)exportLastName:(NSString *)lastName
 {
 	if (lastName) {
-		content = [content stringByAppendingString:[self addSpanWithValue:lastName class:@"family-name"]];
+		lastNameTemp = lastName;
+		lineTemp = [lineTemp stringByAppendingString:[self addSpanWithValue:lastName class:@"family-name"]];
 		if ([fnName length] > 0) {
 			fnName = [fnName stringByAppendingString:@" "];
 			fnName = [fnName stringByAppendingString:lastName];
 		}
-	}	
+	} else lastNameTemp = @"";	
 	return YES;
 }
 
@@ -200,7 +204,7 @@
 {
 	if (birthDay) {
 		NSString *birthdateFormatted = [birthDay descriptionWithCalendarFormat:@"%Y-%m-%d"];
-		content = [content stringByAppendingString:[self addAbbrWithValue:birthdateFormatted class:@"bday" title:birthdateFormatted]];
+		lineTemp = [lineTemp stringByAppendingString:[self addAbbrWithValue:birthdateFormatted class:@"bday" title:birthdateFormatted]];
 	}
 	return YES;
 }
@@ -209,34 +213,35 @@
 {
 	org = @"";
 	if (organization) {
+		organisationTemp = organization;
 		org = organization;
 		if ([fnName length] <= 0)
 			fnName = organization;
 	}
 	if ([fnName length] <= 0)
 		fnName = @"No Name";
-	content = [content stringByAppendingString:[self addSpanWithValue:fnName class:@"n fn"]];
+	lineTemp = [lineTemp stringByAppendingString:[self addSpanWithValue:fnName class:@"n fn"]];
 	return YES;
 }
 
 - (BOOL)exportDepartment:(NSString *)department
 {
 	if ([org length] > 0 || department)
-		content = [content stringByAppendingString:[self addSpanWithOrganization:org department:department]];
+		lineTemp = [lineTemp stringByAppendingString:[self addSpanWithOrganization:org department:department]];
 	return YES;
 }
 
 - (BOOL)exportJobTitle:(NSString *)jobTitle
 {
 	if (jobTitle)
-		content = [content stringByAppendingString:[self addSpanWithValue:jobTitle class:@"title"]];
+		lineTemp = [lineTemp stringByAppendingString:[self addSpanWithValue:jobTitle class:@"title"]];
 	return YES;
 }
 
 - (BOOL)exportURLs:(ABMultiValue *)URLs
 {
 	if (URLs)
-		content = [content stringByAppendingString:[self addURLs:URLs]];
+		lineTemp = [lineTemp stringByAppendingString:[self addURLs:URLs]];
 	return YES;
 }
 
@@ -248,21 +253,21 @@
 - (BOOL)exportEmails:(ABMultiValue *)emails
 {
 	if (emails)
-		content = [content stringByAppendingString:[self addEmails:emails]];
+		lineTemp = [lineTemp stringByAppendingString:[self addEmails:emails]];
 	return YES;
 }
 
 - (BOOL)exportAddresses:(ABMultiValue *)addresses
 {
 	if (addresses)
-		content = [content stringByAppendingString:[self addAddresses:addresses]];
+		lineTemp = [lineTemp stringByAppendingString:[self addAddresses:addresses]];
 	return YES;
 }
 
 - (BOOL)exportPhones:(ABMultiValue *)phones
 {
 	if (phones)
-		content = [content stringByAppendingString:[self addPhones:phones]];
+		lineTemp = [lineTemp stringByAppendingString:[self addPhones:phones]];
 	return YES;
 }
 
@@ -294,14 +299,14 @@
 - (BOOL)exportNote:(NSString *)note
 {
 	if (note)
-		content = [content stringByAppendingString:[self addSpanWithValue:note class:@"note"]];
+		lineTemp = [lineTemp stringByAppendingString:[self addSpanWithValue:note class:@"note"]];
 	return YES;
 }
 
 - (BOOL)exportMiddleName:(NSString *)middleName
 {
 	if (middleName)
-		content = [content stringByAppendingString:[self addSpanWithValue:middleName class:@"additional-name"]];
+		lineTemp = [lineTemp stringByAppendingString:[self addSpanWithValue:middleName class:@"additional-name"]];
 	return YES;
 }
 
@@ -318,14 +323,14 @@
 - (BOOL)exportSuffix:(NSString *)suffix
 {
 	if (suffix)
-		content = [content stringByAppendingString:[self addSpanWithValue:suffix class:@"honorific-suffix"]];
+		lineTemp = [lineTemp stringByAppendingString:[self addSpanWithValue:suffix class:@"honorific-suffix"]];
 	return YES;
 }
 
 - (BOOL)exportNickName:(NSString *)nickName
 {
 	if (nickName)
-		content = [content stringByAppendingString:[self addSpanWithValue:nickName class:@"nickname"]];
+		lineTemp = [lineTemp stringByAppendingString:[self addSpanWithValue:nickName class:@"nickname"]];
 	return YES;
 }
 
@@ -346,7 +351,8 @@
 
 - (BOOL)finalizePerson
 {
-	content = [content stringByAppendingString:@"</div>\n"];
+	lineTemp = [lineTemp stringByAppendingString:@"</div>\n"];
+	[arrayContent addObject:[NSDictionary dictionaryWithObjectsAndKeys:firstNameTemp, @"FIRST", lastNameTemp, @"LAST", organisationTemp, @"ORG", lineTemp, @"CONTENT", nil]];
 	numberExported++;
 	return YES;
 }

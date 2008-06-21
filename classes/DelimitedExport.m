@@ -126,9 +126,9 @@
 
 - (void)addText:(NSString *)text
 {
-	if ([content length] > 0)
-		content = [content stringByAppendingString:[self delimiter]];
-	content = [content stringByAppendingString:text];
+	if ([lineTemp length] > 0)
+		lineTemp = [lineTemp stringByAppendingString:[self delimiter]];
+	lineTemp = [lineTemp stringByAppendingString:text];
 }
 
 - (void)addContainer:(ABMultiValue *)container
@@ -138,23 +138,23 @@
 		// Loop all the elements in the container.
 		for (int i = 0; i < [container count] && i < max; i++) {
 			NSString *text = [container valueAtIndex:i];
-			if ([content length] > 0)
-				content = [content stringByAppendingString:[self delimiter]];
-			content = [content stringByAppendingString:text];
+			if ([lineTemp length] > 0)
+				lineTemp = [lineTemp stringByAppendingString:[self delimiter]];
+			lineTemp = [lineTemp stringByAppendingString:text];
 		}
-		// Add spaces to the content to reach the MAX_ELEMENTS
+		// Add spaces to the lineTemp to reach the MAX_ELEMENTS
 		for (int e = 0; [container count] < max && e < (max - [container count]); e++) {
-			if ([content length] > 0)
-				content = [content stringByAppendingString:[self delimiter]];
-			content = [content stringByAppendingString:@""];
+			if ([lineTemp length] > 0)
+				lineTemp = [lineTemp stringByAppendingString:[self delimiter]];
+			lineTemp = [lineTemp stringByAppendingString:@""];
 		}
 	} else {
 		
 		// Set all MAX places to spaces.
 		for (int e = 0; e < max; e++) {
-			if ([content length] > 0)
-				content = [content stringByAppendingString:[self delimiter]];
-			content = [content stringByAppendingString:@""];
+			if ([lineTemp length] > 0)
+				lineTemp = [lineTemp stringByAppendingString:[self delimiter]];
+			lineTemp = [lineTemp stringByAppendingString:@""];
 		}
 	}
 }
@@ -165,40 +165,51 @@
 		int i = MAX_ELEMENTS;
 		// Loop all the elements in the container.
 		for (NSString *text in array) {
-			if ([content length] > 0)
-				content = [content stringByAppendingString:[self delimiter]];
-			content = [content stringByAppendingString:text];
+			if ([lineTemp length] > 0)
+				lineTemp = [lineTemp stringByAppendingString:[self delimiter]];
+			lineTemp = [lineTemp stringByAppendingString:text];
 			i--;
 			if (i == 0) break;
 		}
-		// Add spaces to the content to reach the MAX_ELEMENTS
+		// Add spaces to the lineTemp to reach the MAX_ELEMENTS
 		for (int e = 0; e < i; e++) {
-			if ([content length] > 0)
-				content = [content stringByAppendingString:[self delimiter]];
-			content = [content stringByAppendingString:@""];
+			if ([lineTemp length] > 0)
+				lineTemp = [lineTemp stringByAppendingString:[self delimiter]];
+			lineTemp = [lineTemp stringByAppendingString:@""];
 		}
 	} else {
 		int max = MAX_ELEMENTS;
 		// Set all MAX places to spaces.
 		for (int e = 0; e < max; e++) {
-			if ([content length] > 0)
-				[content stringByAppendingString:[self delimiter]];
-			content = [content stringByAppendingString:@""];
+			if ([lineTemp length] > 0)
+				[lineTemp stringByAppendingString:[self delimiter]];
+			lineTemp = [lineTemp stringByAppendingString:@""];
 		}
 	}
 }
 
 - (BOOL)exportFirstName:(NSString *)firstName
 {
-	if (firstName) content = [content stringByAppendingString:firstName];
-	else content = [content stringByAppendingString:@""];
+	lineTemp = @"";
+	if (firstName) {
+		lineTemp = [lineTemp stringByAppendingString:firstName];
+		firstNameTemp = firstName;
+	} else {
+		lineTemp = [lineTemp stringByAppendingString:@""];
+		firstNameTemp = @"";
+	}
 	return YES;
 }
 
 - (BOOL)exportLastName:(NSString *)lastName
 {
-	if (lastName) [self addText:lastName];
-	else [self addText:@""];
+	if (lastName) {
+		[self addText:lastName];
+		lastNameTemp = lastName;
+	} else {
+		[self addText:@""];
+		lastNameTemp = @"";
+	}
 	return YES;
 }
 
@@ -226,8 +237,13 @@
 
 - (BOOL)exportOrganization:(NSString *)organization
 {
-	if (organization) [self addText:organization];
-	else [self addText:@""];
+	if (organization) {
+		[self addText:organization];
+		organisationTemp = organization;
+	} else {
+		[self addText:@""];
+		organisationTemp = @"";
+	}
 	return YES;
 }
 
@@ -396,7 +412,8 @@
 
 - (BOOL)finalizePerson
 {
-	content = [content stringByAppendingString:@"\n"];
+	lineTemp = [lineTemp stringByAppendingString:@"\n"];
+	[arrayContent addObject:[NSDictionary dictionaryWithObjectsAndKeys:firstNameTemp, @"FIRST", lastNameTemp, @"LAST", organisationTemp, @"ORG", lineTemp, @"CONTENT", nil]];
 	numberExported++;
 	return YES;
 }
