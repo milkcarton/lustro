@@ -63,9 +63,9 @@
 
 - (void)notifyAuthenticate:(BOOL)indicator
 {
-	[self setExportButtonWithGoogle];
 	if (indicator)
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"GoogleChecked"];
+	[self setExportButtonWithGoogle];
 }
 
 - (void)invocateExport
@@ -112,15 +112,9 @@
 		exporter = nil;
 	}
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"]) {
-		// Check if warning for google export needs to be shown.
-// TODO: Warning sheet triggers error
-//		if (([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarning"] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarningIndicator"]) || ![[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarning"])
-//			[self showWarningPanel];
-//		else {
-			// Check if default value is OK or cancel.
-//			if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleExportWarningIndicator"])
-				[self exportGoogle];
-//		}
+		if ([warningController showPanel]) [self showWarningPanel];
+		else [self continueGoogleExport];
+		
 	}
 	[pool release];
 	pool = nil;
@@ -128,7 +122,7 @@
 
 - (void)showWarningPanel
 {
-	[NSApp beginSheet:warningPanel modalForWindow:mainWindow modalDelegate:self didEndSelector:nil contextInfo:nil];
+	[NSApp beginSheet:warningController.panel modalForWindow:mainWindow modalDelegate:self didEndSelector:nil contextInfo:nil];
 }
 
 - (NSString *)showSaveSheet:(NSString *)name extention:(NSString *)extention title:(NSString *)title
@@ -142,7 +136,7 @@
 	return nil;
 }
 
-- (void)exportGoogle
+- (void)continueGoogleExport
 {
 	[self setValue:[NSNumber numberWithInt:1] forKey:@"googleCheckBox"];
 	GoogleExport *exporter = [[GoogleExport alloc] initWithUsername:[authenticateController username] password:[authenticateController password]];
@@ -192,20 +186,6 @@
     AHGotoPage(myBookName, CFSTR("index.html"), NULL);
 }
 
-- (IBAction)pressButton:(id)sender
-{
-	[warningPanel orderOut:nil];
-	[NSApp endSheet:warningPanel];
-	// If OK is pressed.
-	if ([[sender title] compare:@"OK"] == NSOrderedSame) {
-		[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:YES] forKey:@"GoogleExportWarningIndicator"];
-		[self exportGoogle];
-	} else {
-		[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:NO] forKey:@"GoogleExportWarningIndicator"];
-		[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:NO] forKey:@"GoogleChecked"];
-	}
-}
-
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
 	if ([menuItem tag] == 1 && ![exportButton isEnabled]) { // Tag 1 is the Export menu item
@@ -224,5 +204,6 @@
 @synthesize mainWindow;
 @synthesize authenticationButtonCell;
 @synthesize exportButton;
-@synthesize warningPanel;
+@synthesize warningController;
+@synthesize exportMenuItem;
 @end

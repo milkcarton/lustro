@@ -15,6 +15,7 @@
 		602D75B00DE771F00089FDAC /* CommaExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 602D75AF0DE771F00089FDAC /* CommaExport.m */; };
 		606F09630E05904C002FA939 /* Keychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606F09620E05904C002FA939 /* Keychain.framework */; };
 		606F09930E05905B002FA939 /* Keychain.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 606F09620E05904C002FA939 /* Keychain.framework */; };
+		6083ED1D0E0D292C006EA007 /* WarningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6083ED1C0E0D292C006EA007 /* WarningController.m */; };
 		608BC36A0DE9A0B40022D5E9 /* HTMLExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 608BC3690DE9A0B40022D5E9 /* HTMLExport.m */; };
 		60997D7A0DC3E33700518344 /* lockClick.tif in Resources */ = {isa = PBXBuildFile; fileRef = 60997D770DC3E33700518344 /* lockClick.tif */; };
 		60997E490DC3ED2100518344 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60997E480DC3ED2100518344 /* Security.framework */; };
@@ -86,6 +87,8 @@
 		602D75AE0DE771F00089FDAC /* CommaExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommaExport.h; path = classes/CommaExport.h; sourceTree = "<group>"; };
 		602D75AF0DE771F00089FDAC /* CommaExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommaExport.m; path = classes/CommaExport.m; sourceTree = "<group>"; };
 		606F09620E05904C002FA939 /* Keychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Keychain.framework; path = frameworks/Keychain.framework; sourceTree = "<group>"; };
+		6083ED1B0E0D292C006EA007 /* WarningController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WarningController.h; path = classes/WarningController.h; sourceTree = "<group>"; };
+		6083ED1C0E0D292C006EA007 /* WarningController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WarningController.m; path = classes/WarningController.m; sourceTree = "<group>"; };
 		608BC3680DE9A0B40022D5E9 /* HTMLExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLExport.h; path = classes/HTMLExport.h; sourceTree = "<group>"; };
 		608BC3690DE9A0B40022D5E9 /* HTMLExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLExport.m; path = classes/HTMLExport.m; sourceTree = "<group>"; };
 		60997D770DC3E33700518344 /* lockClick.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lockClick.tif; path = images/lockClick.tif; sourceTree = "<group>"; };
@@ -260,6 +263,8 @@
 				F4E3D5490DFDA948007460F4 /* ExportController.m */,
 				F4E3D5430DFDA901007460F4 /* LogController.h */,
 				F4E3D5440DFDA901007460F4 /* LogController.m */,
+				6083ED1B0E0D292C006EA007 /* WarningController.h */,
+				6083ED1C0E0D292C006EA007 /* WarningController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -406,6 +411,7 @@
 				F4E3D54B0DFDA948007460F4 /* ExportController.m in Sources */,
 				E6CA9BD60E0314B9004756A2 /* CustomAuthButton.m in Sources */,
 				60A8D62A0E0576C1007C989E /* CustomMainWindow.m in Sources */,
+				6083ED1D0E0D292C006EA007 /* WarningController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

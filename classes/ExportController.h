@@ -29,6 +29,7 @@
 #import <Carbon/Carbon.h>
 #import "LogController.h"
 #import "AuthenticateController.h"
+#import "WarningController.h"
 #import "IndicatorValueTransformer.h"
 #import "AddressBookExport.h"
 #import "HTMLExport.h"
@@ -45,11 +46,11 @@
 	
 	IBOutlet LogController *logController;
 	IBOutlet AuthenticateController *authenticateController;
+	IBOutlet WarningController *warningController;
 	IBOutlet id mainWindow;
 	IBOutlet id authenticationButtonCell;
 	IBOutlet id exportButton;
 	IBOutlet NSMenuItem *exportMenuItem;
-	IBOutlet NSWindow *warningPanel;
 }
 
 - (void)setExportButton;							// Enables or disables the exportbutton.
@@ -58,7 +59,7 @@
 - (void)invocateExport;								// Needed to run the export in a Thread.
 - (void)showWarningPanel;							// Opens the Google warning panel.
 - (NSString *)showSaveSheet:(NSString *)name extention:(NSString *)extention title:(NSString *)title;		// Opens the file save sheet and returns the filename + dir.
-- (void)exportGoogle;								// Run the Google exporter.
+- (void)continueGoogleExport;						// Run the Google exporter.
 
 - (IBAction)showLogPanel:(id)sender;				// Opens the log panel.
 - (IBAction)showAutenticationPanel:(id)sender;		// Opens the Google authentication panel.
@@ -66,7 +67,6 @@
 - (IBAction)selectGoogleExport:(id)sender;			// Check if the export button needs to be enabled when selecting Google export.
 - (IBAction)export:(id)sender;						// Start exporting the Address Book contacts.
 - (IBAction)openHelp:(id)sender;					// Open the help files from the menu.
-- (IBAction)pressButton:(id)sender;					// Press a button from the warning panel.
 
 @property int commaCheckBox;
 @property int tabCheckBox;
@@ -75,8 +75,9 @@
 @property BOOL authenticated;
 @property (retain) LogController *logController;
 @property (retain) AuthenticateController *authenticateController;
+@property (retain) WarningController *warningController;
 @property (retain) id mainWindow;
 @property (retain) id authenticationButtonCell;
 @property (retain) id exportButton;
-@property (retain) NSWindow *warningPanel;
+@property (retain) NSMenuItem *exportMenuItem;
 @end

@@ -50,4 +50,5 @@
 - (IBAction)copyLogToDesktop:(id)sender;														// Copies the log to a file on the desktop.
 
 @property (retain, readonly) id panel;
+@property BOOL hasContents;
 @end

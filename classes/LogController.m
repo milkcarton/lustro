@@ -160,4 +160,5 @@
 }
 
 @synthesize panel;
+@synthesize hasContents;
 @end
