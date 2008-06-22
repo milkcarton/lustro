@@ -36,7 +36,7 @@ typedef enum {
 } kExportStatus;
 
 @interface AddressBookExport : NSObject {
-	id delegate;					// The delegate object.
+	id delegate;								// The delegate object.
 	
 	@protected ABAddressBook *addressBook;		// The addressbook that contains the contacts to export.
 	@protected int numberExported;				// The number of contacts exported.

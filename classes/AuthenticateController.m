@@ -29,10 +29,6 @@
 
 @implementation AuthenticateController
 
-- (void)awakeFromNib
-{
-}
-
 - (void)startKeychainSession
 {
 	myKeyChain = [Keychain defaultKeychain];
