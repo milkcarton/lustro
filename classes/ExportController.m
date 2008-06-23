@@ -123,6 +123,8 @@
 - (void)showWarningPanel
 {
 	[NSApp beginSheet:warningController.panel modalForWindow:mainWindow modalDelegate:self didEndSelector:nil contextInfo:nil];
+	[warningController.panel makeKeyWindow];
+
 }
 
 - (NSString *)showSaveSheet:(NSString *)name extention:(NSString *)extention title:(NSString *)title
@@ -157,6 +159,7 @@
 - (IBAction)showAutenticationPanel:(id)sender
 {
 	[NSApp beginSheet:authenticateController.panel modalForWindow:mainWindow modalDelegate:self didEndSelector:nil contextInfo:nil];
+	[authenticateController.panel makeKeyWindow];
 }
 
 - (IBAction)selectExport:(id)sender
