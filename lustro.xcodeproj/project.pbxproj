@@ -29,10 +29,10 @@
 		60A590110DDE31DD0081208C /* help in Resources */ = {isa = PBXBuildFile; fileRef = 60A5900D0DDE31DD0081208C /* help */; };
 		60A8D62A0E0576C1007C989E /* CustomMainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A8D6290E0576C1007C989E /* CustomMainWindow.m */; };
 		60B42C240E05B3750046CCC7 /* warningIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 60B42C230E05B3750046CCC7 /* warningIcon.icns */; };
+		60D5CF150E116E1900CFAF7A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60D5CF130E116E1900CFAF7A /* MainMenu.xib */; };
 		60DE9BF00DBD373800D3EC93 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60DE9BEF0DBD373800D3EC93 /* AddressBook.framework */; };
 		60DE9C160DBD38F300D3EC93 /* hCardTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 60DE9C150DBD38F300D3EC93 /* hCardTemplate */; };
 		60F83A070DE4A09D00A2ECB8 /* AddressBookExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F83A060DE4A09D00A2ECB8 /* AddressBookExport.m */; };
-		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -72,7 +72,6 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* lustro_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lustro_Prefix.pch; sourceTree = "<group>"; };
@@ -107,6 +106,7 @@
 		60A8D6280E0576C1007C989E /* CustomMainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomMainWindow.h; path = classes/CustomMainWindow.h; sourceTree = "<group>"; };
 		60A8D6290E0576C1007C989E /* CustomMainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomMainWindow.m; path = classes/CustomMainWindow.m; sourceTree = "<group>"; };
 		60B42C230E05B3750046CCC7 /* warningIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = warningIcon.icns; path = images/warningIcon.icns; sourceTree = "<group>"; };
+		60D5CF140E116E1900CFAF7A /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		60DE9BEF0DBD373800D3EC93 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = ../../../../../../System/Library/Frameworks/AddressBook.framework; sourceTree = SOURCE_ROOT; };
 		60DE9C150DBD38F300D3EC93 /* hCardTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = hCardTemplate; path = templates/hCardTemplate; sourceTree = SOURCE_ROOT; };
 		60F83A050DE4A09D00A2ECB8 /* AddressBookExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddressBookExport.h; path = classes/AddressBookExport.h; sourceTree = "<group>"; };
@@ -218,6 +218,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				60D5CF130E116E1900CFAF7A /* MainMenu.xib */,
 				F445B45F0E06E367003736ED /* LICENSE */,
 				F445B4600E06E367003736ED /* NOTICE */,
 				60A5900D0DDE31DD0081208C /* help */,
@@ -225,7 +226,6 @@
 				60DE9BF60DBD389F00D3EC93 /* Templates */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
-				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -376,7 +376,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				60DE9C160DBD38F300D3EC93 /* hCardTemplate in Resources */,
 				600D319C0DBFDEF600A96491 /* success.tif in Resources */,
@@ -390,6 +389,7 @@
 				60B42C240E05B3750046CCC7 /* warningIcon.icns in Resources */,
 				F445B4610E06E367003736ED /* LICENSE in Resources */,
 				F445B4620E06E367003736ED /* NOTICE in Resources */,
+				60D5CF150E116E1900CFAF7A /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,12 +433,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		29B97318FDCFA39411CA2CEA /* MainMenu.nib */ = {
+		60D5CF130E116E1900CFAF7A /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				29B97319FDCFA39411CA2CEA /* English */,
+				60D5CF140E116E1900CFAF7A /* English */,
 			);
-			name = MainMenu.nib;
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
