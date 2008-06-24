@@ -26,13 +26,13 @@
 		60A58CED0DDDED9A0081208C /* LogImageValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A58CEC0DDDED9A0081208C /* LogImageValueTransformer.m */; };
 		60A58FBC0DDE2F5B0081208C /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 60A58FBB0DDE2F5B0081208C /* icon.icns */; };
 		60A58FF60DDE31480081208C /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A58FF50DDE31480081208C /* Carbon.framework */; };
-		60A590110DDE31DD0081208C /* help in Resources */ = {isa = PBXBuildFile; fileRef = 60A5900D0DDE31DD0081208C /* help */; };
 		60A8D62A0E0576C1007C989E /* CustomMainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A8D6290E0576C1007C989E /* CustomMainWindow.m */; };
 		60B42C240E05B3750046CCC7 /* warningIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 60B42C230E05B3750046CCC7 /* warningIcon.icns */; };
 		60D5CF150E116E1900CFAF7A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60D5CF130E116E1900CFAF7A /* MainMenu.xib */; };
 		60D5CF590E11705600CFAF7A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60D5CF570E11705600CFAF7A /* Localizable.strings */; };
 		60DE9BF00DBD373800D3EC93 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60DE9BEF0DBD373800D3EC93 /* AddressBook.framework */; };
 		60DE9C160DBD38F300D3EC93 /* hCardTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 60DE9C150DBD38F300D3EC93 /* hCardTemplate */; };
+		60F6FD460E11AC2400B90A0E /* help in Resources */ = {isa = PBXBuildFile; fileRef = 60A5900D0DDE31DD0081208C /* help */; };
 		60F83A070DE4A09D00A2ECB8 /* AddressBookExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F83A060DE4A09D00A2ECB8 /* AddressBookExport.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -105,7 +105,7 @@
 		60A58CEC0DDDED9A0081208C /* LogImageValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogImageValueTransformer.m; path = classes/LogImageValueTransformer.m; sourceTree = "<group>"; };
 		60A58FBB0DDE2F5B0081208C /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		60A58FF50DDE31480081208C /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
-		60A5900D0DDE31DD0081208C /* help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = help; sourceTree = SOURCE_ROOT; };
+		60A5900D0DDE31DD0081208C /* help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = help; sourceTree = "<group>"; };
 		60A8D6280E0576C1007C989E /* CustomMainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomMainWindow.h; path = classes/CustomMainWindow.h; sourceTree = "<group>"; };
 		60A8D6290E0576C1007C989E /* CustomMainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomMainWindow.m; path = classes/CustomMainWindow.m; sourceTree = "<group>"; };
 		60B42C230E05B3750046CCC7 /* warningIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = warningIcon.icns; path = images/warningIcon.icns; sourceTree = "<group>"; };
@@ -388,7 +388,7 @@
 				609F472E0DC3474400AE82AA /* warning.tif in Resources */,
 				60997D7A0DC3E33700518344 /* lockClick.tif in Resources */,
 				60A58FBC0DDE2F5B0081208C /* icon.icns in Resources */,
-				60A590110DDE31DD0081208C /* help in Resources */,
+				60F6FD460E11AC2400B90A0E /* help in Resources */,
 				E62673640E04542C00DF9CF6 /* lockHover.tif in Resources */,
 				E62673C00E0547FF00DF9CF6 /* lock.tif in Resources */,
 				60B42C240E05B3750046CCC7 /* warningIcon.icns in Resources */,

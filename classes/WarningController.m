@@ -40,6 +40,7 @@
 		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"GoogleExportWarning"];
 		[panel orderOut:nil];
 		[NSApp endSheet:panel];
+		[exportController stopGoogleExport];
 	} else {
 		[panel orderOut:nil];
 		[NSApp endSheet:panel];

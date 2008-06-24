@@ -43,9 +43,9 @@
 			name = [name stringByAppendingString:lastName];
 		}
 		if (firstName || lastName) name = [name stringByAppendingString:@"'s "];
-		name = [name stringByAppendingString:NSLocalizedString(@"NO_CONTENT", nil)];
+		name = [name stringByAppendingString:NSLocalizedString(@"CONTACTS", nil)];
 	} else {
-		name = NSLocalizedString(@"NO_CONTENT", nil);
+		name = NSLocalizedString(@"CONTACTS", nil);
 	}
 	if ([mainController respondsToSelector:@selector(showSaveSheet:extention:title:)]) {
 		filename = [mainController showSaveSheet:name extention:[self extention] title:[self title]];

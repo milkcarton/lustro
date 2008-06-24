@@ -42,7 +42,9 @@
 	@private int tabCheckBox;					// Used for binding the tab checkbox's indicator.
 	@private int HTMLCheckBox;					// Used for binding the HTML checkbox's indicator.
 	@private int googleCheckBox;				// Used for binding the Google checkbox's indicator.
-	@private BOOL authenticated;				// Used forto check if authentication is successful.
+	@private BOOL authenticated;				// Used to check if authentication is successful.
+	@private int disableControls;				// Used to disable controls when exporting.
+	@private NSNotificationCenter *center;
 	
 	IBOutlet LogController *logController;
 	IBOutlet AuthenticateController *authenticateController;
@@ -56,10 +58,14 @@
 - (void)setExportButton;							// Enables or disables the exportbutton.
 - (void)setExportButtonWithGoogle;					// Enables or disables the exportbutton when google selected.
 - (void)notifyAuthenticate:(BOOL)indicator;			// Called when sign in or cancel is clicked.
-- (void)invocateExport;								// Needed to run the export in a Thread.
+- (void)invocateFileExport;							// Needed to run the file export in a Thread.
+- (void)invocateGoogleExport;						// Needed to run the google export in a Thread.
 - (void)showWarningPanel;							// Opens the Google warning panel.
 - (NSString *)showSaveSheet:(NSString *)name extention:(NSString *)extention title:(NSString *)title;		// Opens the file save sheet and returns the filename + dir.
 - (void)continueGoogleExport;						// Run the Google exporter.
+- (void)stopGoogleExport;							// Stop the Google exporter.
+- (void)toggleControlsEnabled:(BOOL)myBool;			// Toggle the controls on and off.
+- (void)fileExportThreadEnded:(NSNotification *)notification;	// Handle the exit fileexport thread.
 
 - (IBAction)showLogPanel:(id)sender;				// Opens the log panel.
 - (IBAction)showAutenticationPanel:(id)sender;		// Opens the Google authentication panel.
@@ -73,6 +79,7 @@
 @property int HTMLCheckBox;
 @property int googleCheckBox;
 @property BOOL authenticated;
+@property int disableControls;
 @property (retain) LogController *logController;
 @property (retain) AuthenticateController *authenticateController;
 @property (retain) WarningController *warningController;

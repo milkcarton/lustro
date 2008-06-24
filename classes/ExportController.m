@@ -39,6 +39,11 @@
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"HTMLCheckBox"];
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"googleCheckBox"];
 	
+	// Don't disable.
+	[self setValue:[NSNumber numberWithInt:0] forKey:@"disableControls"];
+	
+	center = [NSNotificationCenter defaultCenter];
+	
 	[authenticateController startKeychainSession];
 	[self setExportButtonWithGoogle];
 }
@@ -68,7 +73,7 @@
 	[self setExportButtonWithGoogle];
 }
 
-- (void)invocateExport
+- (void)invocateFileExport
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"]) {
@@ -111,11 +116,23 @@
 		[exporter release];
 		exporter = nil;
 	}
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"]) {
-		if ([warningController showPanel]) [self showWarningPanel];
-		else [self continueGoogleExport];
-		
-	}
+	[pool release];
+	pool = nil;
+}
+
+- (void)invocateGoogleExport
+{
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	[self setValue:[NSNumber numberWithInt:1] forKey:@"googleCheckBox"];
+	GoogleExport *exporter = [[GoogleExport alloc] initWithUsername:[authenticateController username] password:[authenticateController password]];
+	exporter.delegate = logController;
+	BOOL exportStatus = [exporter export];
+	if (exportStatus == kExportSuccess) [self setValue:[NSNumber numberWithInt:2] forKey:@"googleCheckBox"];
+	else if (exportStatus == kExportWarning) [self setValue:[NSNumber numberWithInt:3] forKey:@"googleCheckBox"];
+	else [self setValue:[NSNumber numberWithInt:4] forKey:@"googleCheckBox"];
+	[exporter release];
+	exporter = nil;
+	[self toggleControlsEnabled:YES];
 	[pool release];
 	pool = nil;
 }
@@ -140,15 +157,28 @@
 
 - (void)continueGoogleExport
 {
-	[self setValue:[NSNumber numberWithInt:1] forKey:@"googleCheckBox"];
-	GoogleExport *exporter = [[GoogleExport alloc] initWithUsername:[authenticateController username] password:[authenticateController password]];
-	exporter.delegate = logController;
-	BOOL exportStatus = [exporter export];
-	if (exportStatus == kExportSuccess) [self setValue:[NSNumber numberWithInt:2] forKey:@"googleCheckBox"];
-	else if (exportStatus == kExportWarning) [self setValue:[NSNumber numberWithInt:3] forKey:@"googleCheckBox"];
-	else [self setValue:[NSNumber numberWithInt:4] forKey:@"googleCheckBox"];
-	[exporter release];
-	exporter = nil;
+	[NSThread detachNewThreadSelector:@selector(invocateGoogleExport) toTarget:self withObject:nil];
+}
+
+- (void)stopGoogleExport
+{
+	[self toggleControlsEnabled:YES];
+}
+
+- (void)toggleControlsEnabled:(BOOL)myBool
+{
+	[exportButton setEnabled:myBool];
+}
+
+- (void)fileExportThreadEnded:(NSNotification *)notification
+{
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"]) {
+		[center removeObserver:self];
+		if ([warningController showPanel]) [self showWarningPanel];
+		else [self continueGoogleExport];
+	} else {
+		[self toggleControlsEnabled:YES];
+	}
 }
 
 - (IBAction)showLogPanel:(id)sender
@@ -175,11 +205,21 @@
 
 - (IBAction)export:(id)sender
 {
+	[self toggleControlsEnabled:NO];
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"commaCheckBox"];
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"tabCheckBox"];
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"HTMLCheckBox"];
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"googleCheckBox"];
-	[self performSelectorInBackground:@selector(invocateExport) withObject:nil];
+	
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"]) {
+		[center addObserver:self selector:@selector(fileExportThreadEnded:) name:NSThreadWillExitNotification object:nil];
+		[NSThread detachNewThreadSelector:@selector(invocateFileExport) toTarget:self withObject:nil];
+	} else {
+		if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"]) {
+			if ([warningController showPanel]) [self showWarningPanel];
+			else [self continueGoogleExport];
+		}
+	}
 }
 
 - (IBAction)openHelp:(id)sender
@@ -198,6 +238,7 @@
 }
 
 @synthesize commaCheckBox;
+@synthesize disableControls;
 @synthesize tabCheckBox;
 @synthesize HTMLCheckBox;
 @synthesize googleCheckBox;
