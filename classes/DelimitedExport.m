@@ -41,84 +41,84 @@
 
 - (void)printHeader
 {			
-	content = [content stringByAppendingString:@"first name"];					// first name.
+	content = [content stringByAppendingString:NSLocalizedString(@"FIRST_NAME", nil)];					// first name.
 	content = [content stringByAppendingString:[self delimiter]];				// last name.
-	content = [content stringByAppendingString:@"last name"];
+	content = [content stringByAppendingString:NSLocalizedString(@"LAST_NAME", nil)];
 	content = [content stringByAppendingString:[self delimiter]];				// first name phonetic.
-	content = [content stringByAppendingString:@"first name phonetic"];
+	content = [content stringByAppendingString:NSLocalizedString(@"FIRST_PHON", nil)];
 	content = [content stringByAppendingString:[self delimiter]];				// last name phonetic.
-	content = [content stringByAppendingString:@"last name phonetic"];
+	content = [content stringByAppendingString:NSLocalizedString(@"LAST_PHON", nil)];
 	content = [content stringByAppendingString:[self delimiter]];				// birthday.
-	content = [content stringByAppendingString:@"birthday"];
+	content = [content stringByAppendingString:NSLocalizedString(@"BIRTH", nil)];
 	content = [content stringByAppendingString:[self delimiter]];				// organization.
-	content = [content stringByAppendingString:@"organization"];	
+	content = [content stringByAppendingString:NSLocalizedString(@"ORG", nil)];	
 	content = [content stringByAppendingString:[self delimiter]];				// department.
-	content = [content stringByAppendingString:@"department"];
+	content = [content stringByAppendingString:NSLocalizedString(@"DEP", nil)];
 	content = [content stringByAppendingString:[self delimiter]];				// jobtilte.
-	content = [content stringByAppendingString:@"jobtitle"];
+	content = [content stringByAppendingString:NSLocalizedString(@"JOB", nil)];
 	
 	int max = MAX_ELEMENTS;
 	for (int i = 0; i < max; i++) {												// URL's.
 		content = [content stringByAppendingString:[self delimiter]];
-		content = [content stringByAppendingString:[NSString stringWithFormat:@"URL %i", i+1]];
+		content = [content stringByAppendingString:[NSString stringWithFormat:NSLocalizedString(@"URL", nil), i+1]];
 	}
 	for (int i = 0; i < max; i++) {												// calendar URL's.
 		content = [content stringByAppendingString:[self delimiter]];
-		content = [content stringByAppendingString:[NSString stringWithFormat:@"calendar URL %i", i+1]];
+		content = [content stringByAppendingString:[NSString stringWithFormat:NSLocalizedString(@"CAL_URL", nil), i+1]];
 	}
 	for (int i = 0; i < max; i++) {												// emails.
 		content = [content stringByAppendingString:[self delimiter]];
-		content = [content stringByAppendingString:[NSString stringWithFormat:@"email %i", i+1]];
+		content = [content stringByAppendingString:[NSString stringWithFormat:NSLocalizedString(@"EMAIL", nil), i+1]];
 	}		
 	for (int i = 0; i < max; i++) {												// addresses.
 		content = [content stringByAppendingString:[self delimiter]];
-		content = [content stringByAppendingString:[NSString stringWithFormat:@"address %i", i+1]];
+		content = [content stringByAppendingString:[NSString stringWithFormat:NSLocalizedString(@"ADDRESS", nil), i+1]];
 	}
 	for (int i = 0; i < max; i++) {												// phones.
 		content = [content stringByAppendingString:[self delimiter]];
-		content = [content stringByAppendingString:[NSString stringWithFormat:@"phone %i", i+1]];
+		content = [content stringByAppendingString:[NSString stringWithFormat:NSLocalizedString(@"PHONE", nil), i+1]];
 	}
 	for (int i = 0; i < max; i++) {												// AIM addresses.
 		content = [content stringByAppendingString:[self delimiter]];
-		content = [content stringByAppendingString:[NSString stringWithFormat:@"AIM address %i", i+1]];
+		content = [content stringByAppendingString:[NSString stringWithFormat:NSLocalizedString(@"AIM", nil), i+1]];
 	}
 	for (int i = 0; i < max; i++) {												// Jabber addresses.
 		content = [content stringByAppendingString:[self delimiter]];
-		content = [content stringByAppendingString:[NSString stringWithFormat:@"Jabber address %i", i+1]];
+		content = [content stringByAppendingString:[NSString stringWithFormat:NSLocalizedString(@"JABBER", nil), i+1]];
 	}
 	for (int i = 0; i < max; i++) {												// MSN addresses.
 		content = [content stringByAppendingString:[self delimiter]];
-		content = [content stringByAppendingString:[NSString stringWithFormat:@"MSN address %i", i+1]];
+		content = [content stringByAppendingString:[NSString stringWithFormat:NSLocalizedString(@"MSN", nil), i+1]];
 	}
 	for (int i = 0; i < max; i++) {												// Yahoo addresses.
 		content = [content stringByAppendingString:[self delimiter]];
-		content = [content stringByAppendingString:[NSString stringWithFormat:@"Yahoo address %i", i+1]];
+		content = [content stringByAppendingString:[NSString stringWithFormat:NSLocalizedString(@"YAHOO", nil), i+1]];
 	}
 	for (int i = 0; i < max; i++) {												// ICQ addresses.
 		content = [content stringByAppendingString:[self delimiter]];
-		content = [content stringByAppendingString:[NSString stringWithFormat:@"ICQ address %i", i+1]];
+		content = [content stringByAppendingString:[NSString stringWithFormat:NSLocalizedString(@"ICQ", nil), i+1]];
 	}
 	content = [content stringByAppendingString:[self delimiter]];				// note.
-	content = [content stringByAppendingString:@"note"];
+	content = [content stringByAppendingString:NSLocalizedString(@"NOTE", nil)];
 	content = [content stringByAppendingString:[self delimiter]];				// middle name.
-	content = [content stringByAppendingString:@"middle name"];
+	content = [content stringByAppendingString:NSLocalizedString(@"MIDDLE_NAME", nil)];
 	content = [content stringByAppendingString:[self delimiter]];				// middle name phonetic.
-	content = [content stringByAppendingString:@"middle name phonetic"];
+	content = [content stringByAppendingString:NSLocalizedString(@"MIDDLE_PHON", nil)];
 	content = [content stringByAppendingString:[self delimiter]];				// title.
-	content = [content stringByAppendingString:@"title"];
+	content = [content stringByAppendingString:NSLocalizedString(@"TIT", nil)];
 	content = [content stringByAppendingString:[self delimiter]];				// suffix.
-	content = [content stringByAppendingString:@"suffix"];
+	content = [content stringByAppendingString:NSLocalizedString(@"SUFFIX", nil)];
 	content = [content stringByAppendingString:[self delimiter]];				// nick name.
-	content = [content stringByAppendingString:@"nick name"];
+	content = [content stringByAppendingString:NSLocalizedString(@"NICK", nil)];
 	content = [content stringByAppendingString:[self delimiter]];				// maiden name.
-	content = [content stringByAppendingString:@"maiden name"];
+	content = [content stringByAppendingString:NSLocalizedString(@"MAIDEN", nil)];
 	for (int i = 0; i < max; i++) {												// other dates.
 		content = [content stringByAppendingString:[self delimiter]];
-		content = [content stringByAppendingString:[NSString stringWithFormat:@"other dates %i", i+1]];
+		content = [content stringByAppendingString:[NSString stringWithFormat:NSLocalizedString(@"OTHER_DATES", nil), i+1]];
 	}
 	for (int i = 0; i < max; i++) {												// related names.
 		content = [content stringByAppendingString:[self delimiter]];
-		content = [content stringByAppendingString:[NSString stringWithFormat:@"related names %i", i+1]];
+		content = [content stringByAppendingString:[NSString stringWithFormat:NSLocalizedString(@"RELATED", nil), i+1]];
 	}		
 
 	[self finalizePerson];

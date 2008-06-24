@@ -36,7 +36,7 @@
 
 - (NSString *)title
 {
-	return @"Save File with tab separated values";
+	return NSLocalizedString(@"SAVE_TAB_FILE", nil);
 }
 
 - (NSString *)delimiter

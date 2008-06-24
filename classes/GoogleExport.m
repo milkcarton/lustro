@@ -70,8 +70,8 @@
 				// Show alert window to inform user why browser opens
 				NSAlert *alertWindow = [[NSAlert alloc] init];
 				[alertWindow addButtonWithTitle:@"OK"];
-				[alertWindow setMessageText:@"Google account locked"];
-				[alertWindow setInformativeText:@"Your Google is locked after too many failed login attempts. Fill in the Google captcha form and try once more."];
+				[alertWindow setMessageText:NSLocalizedString(@"GOOGLE_LOCKED", nil)];
+				[alertWindow setInformativeText:NSLocalizedString(@"GOOGLE_LOCKED_TEXT", nil)];
 				[alertWindow setAlertStyle:NSWarningAlertStyle];
 				[alertWindow runModal];
 				[alertWindow release];
@@ -145,7 +145,7 @@
 		}
 
 	} else if (![GoogleExport autenticateWithUsername:username password:password]) { // Wrong username or password
-		[super addErrorMessage:@"Wrong username or password."];
+		[super addErrorMessage:NSLocalizedString(@"INCORRECT_USER_PASSWORD", nil)];
 		return NO;
 	}
 	
@@ -246,7 +246,7 @@
 			GDataEmail *gMail = [GDataEmail emailWithLabel:label address:email];
 			[gMails addObject:gMail];
 		} else {
-			[super addWarningMessage:(NSString *)[NSString stringWithFormat:@"Removed %@ as Google can't handle duplicate addresses.", email]];
+			[super addWarningMessage:(NSString *)[NSString stringWithFormat:NSLocalizedString(@"GOOGLE_DEL_DUPLICATE", nil), email]];
 			mailSuccess = NO;
 		}
 	}
@@ -413,7 +413,7 @@
 	}
 	
 	if ([title compare:@""] == NSOrderedSame) {
-		[super addWarningMessage:@"Contact without name, nickname or company."];
+		[super addWarningMessage:NSLocalizedString(@"CONTACT_NO_DATA", nil)];
 		alert = YES;
 	}
 
@@ -504,7 +504,7 @@
 - (void)ticket:(GDataServiceTicket *)thisTicket backupFinishedWithFeed:(GDataFeedContact *)feed
 {
 	if ([[feed entries] count] == 0) {
-		[super addWarningMessage:@"No backup created as you didn't have any Google Contacts yet."];
+		[super addWarningMessage:NSLocalizedString(@"NO_BACKUP_NO_DATA", nil)];
 		// This is not serious as it may be possible that the user has no Google Contacts yet, export should continue
 		// The icon will indicate success, which is wrong because this is a warning but if I set the alert to YES here the export will not start
 	}
@@ -521,7 +521,7 @@
 
 - (void)ticket:(GDataServiceTicket *)thisTicket backupFailedWithError:(NSError *)error
 {
-	[super addWarningMessage:@"Google backup failed."];
+	[super addWarningMessage:NSLocalizedString(@"GOOGLE_FAILED_BCK", nil)];
 	alert = YES;
 }
 
@@ -542,13 +542,13 @@
 
 - (void)ticket:(GDataServiceTicket *)thisTicket fetchFailedWithError:(NSError *)error
 {
-	[super addWarningMessage:@"Couldn't retrieve previous Google Contacts."];
+	[super addWarningMessage:NSLocalizedString(@"GOOGLE_PREVIOUS_CONTACT", nil)];
 	alert = YES;
 }
 
 - (void)ticket:(GDataServiceTicket *)thisTicket removeFailedWithError:(NSError *)error
 {
-	[super addWarningMessage:@"Couldn't remove all previous Google Contacts."];
+	[super addWarningMessage:NSLocalizedString(@"GOOGLE_REMOVE_FAILED", nil)];
 	alert = YES;
 }
 
@@ -563,11 +563,11 @@
 	userXml = nil;
 	
 	if([error code] == 409) {
-		[super addErrorMessage:(NSString *)[NSString stringWithFormat:@"Duplicate e-mail address for %@.", title]];
+		[super addErrorMessage:(NSString *)[NSString stringWithFormat:NSLocalizedString(@"GOOGLE_DUPL_MAIL", nil), title]];
     } else if ([authError isEqual:kGDataServiceErrorCaptchaRequired]) {
-		[super addErrorMessage:@"Captcha required, your account is blocked."];
+		[super addErrorMessage:NSLocalizedString(@"GOOGLE_CAPTCHA", nil)];
     } else {
-		[super addWarningMessage:(NSString *)[NSString stringWithFormat:@"Something went wrong with %@ (%i).", title, [error code]]];
+		[super addWarningMessage:(NSString *)[NSString stringWithFormat:NSLocalizedString(@"GOOGLE_WRONG", nil), title, [error code]]];
 	}
 	alert = YES;	
 }

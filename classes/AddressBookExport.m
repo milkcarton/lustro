@@ -122,13 +122,13 @@
 			[self finalizePerson];
 		}
 		if ([self finalize]) {
-			[self addSuccessMessage:[NSString stringWithFormat:@"Successfully exported %i contacts.", numberExported]];
+			[self addSuccessMessage:[NSString stringWithFormat:NSLocalizedString(@"SUCCESS", nil), numberExported]];
 			return status;
 		} else {
 			return kExportError;
 		}
 	} else if ([contacts count] > 0) {
-		[self addWarningMessage:@"No contacts exported."];
+		[self addWarningMessage:NSLocalizedString(@"NO_CONTACTS", nil)];
 		return kExportWarning;
 	} 
 	return kExportError;

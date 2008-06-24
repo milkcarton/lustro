@@ -36,7 +36,7 @@
 
 - (NSString *)title
 {
-	return @"Save File with comma separated values";
+	return NSLocalizedString(@"SAVE_CSV_FILE", nil);
 }
 
 - (NSString *)delimiter

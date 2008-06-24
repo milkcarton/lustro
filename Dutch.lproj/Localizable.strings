@@ -1,0 +1,74 @@
+﻿/*
+ Copyright (c) 2008 Jelle Vandebeeck, Simon Schoeters
+ 
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+ 
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+ 
+ Created by Jelle Vandebeeck on 2008.06.24.
+*/
+
+"INCORRECT_USER_PASSWORD" = "Onjuiste gebruikersnaam of wachtwoord.";
+"GOOGLE_LOCKED" = "Google-account geblokkeerd";
+"GOOGLE_LOCKED_TEXT" = "Uw Google-account is geblokkeerd na te veel mislukte pogingen. Vul het formulier Google captcha in en probeer het opnieuw.";
+"GOOGLE_DEL_DUPLICATE" = "%@ verwijderd omdat Google niet overweg kan met dubbele adressen.";
+"CONTACT_NO_DATA" = "Contact zonder naam, bijnaam of bedrijf.";
+"NO_BACKUP_NO_DATA" = "Geen backup gemaakt omdat u geen Google Contactenpersonen hebt.";
+"GOOGLE_FAILED_BCK" = "Google backup mislukt.";
+"GOOGLE_PREVIOUS_CONTACT" = "Niet alle oude Google Contactpersonen opgehaald.";
+"GOOGLE_REMOVE_FAILED" = "Niet alle oude Google Contactperson verwijderd.";
+"GOOGLE_DUPL_MAIL" = "Dubbel e-mailadres voor %@.";
+"GOOGLE_CAPTCHA" = "Captcha vereist, uw Google-account is geblokkeerd.";
+"GOOGLE_WRONG" = "Er ging iets fout met %@ (%i).";
+"SUCCESS" = "%i contactpersonen met succes geëxporteerd.";
+"NO_CONTACTS" = "Geen contactpertsonen geëxporteerd.";
+"NO_CONTENT" = "Er was geen inhoud beschikbaar om naar het bestand te schrijven.";
+"TITLE" = "Bewaren";
+"SAVE_TAB_FILE" = "Bestand opslaan met tab gescheiden waarden";
+"SAVE_CSV_FILE" = "Bestand opslaan met komma gescheiden waarden";
+"FIRST_NAME" = "voornaam";
+"LAST_NAME" = "achternaam";
+"FIRST_PHON" = "voornaam fonetisch";
+"LAST_PHON" = "achternaam fonetisch";
+"BIRTH" = "geboortedag";
+"ORG" = "organizatie";
+"DEP" = "departement";
+"JOB" = "beroep";
+"URL" = "URL %i";
+"CAL_URL" = "calender URL %i";
+"EMAIL" = "e-mail %i";
+"ADDRESS" = "adres %i";
+"PHONE" = "telefoon %i";
+"AIM" = "AIM adres %i";
+"JABBER" = "Jabber adres %i";
+"MSN" = "MSN adres %i";
+"YAHOO" = "Yahoo adres %i";
+"ICQ" = "ICQ adres %i";
+"NOTE" = "notitie";
+"MIDDLE_NAME" = "middelste naam";
+"MIDDLE_PHON" = "middelste naam fonetisch";
+"TIT" = "titel";
+"SUFFIX" = "suffix";
+"NICK" = "bijnaam";
+"MAIDEN" = "meisjesnaam";
+"OTHER_DATES" = "andere data %i";
+"RELATED" = "gerelateerde namen %i";
+"CONTACTS" = "contactpersonen";
+"DIR" = "~/Documenten/";

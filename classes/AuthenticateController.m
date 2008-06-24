@@ -64,7 +64,7 @@
 	if (![GoogleExport autenticateWithUsername:username password:password]) {
 		username = nil;
 		password = nil;
-		[errorLabel setStringValue:@"Incorrect username or password."];
+		[errorLabel setStringValue:NSLocalizedString(@"INCORRECT_USER_PASSWORD", nil)];
 	} else {
 		[panel orderOut:nil];
 		[NSApp endSheet:panel];

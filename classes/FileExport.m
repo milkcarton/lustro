@@ -43,9 +43,9 @@
 			name = [name stringByAppendingString:lastName];
 		}
 		if (firstName || lastName) name = [name stringByAppendingString:@"'s "];
-		name = [name stringByAppendingString:@"contacts"];
+		name = [name stringByAppendingString:NSLocalizedString(@"NO_CONTENT", nil)];
 	} else {
-		name = @"contacts";
+		name = NSLocalizedString(@"NO_CONTENT", nil);
 	}
 	if ([mainController respondsToSelector:@selector(showSaveSheet:extention:title:)]) {
 		filename = [mainController showSaveSheet:name extention:[self extention] title:[self title]];
@@ -53,7 +53,7 @@
 			return NO;
 		}
 	} else 
-		filename = [[[[@"~/Documents/" stringByAppendingString:name] stringByAppendingString:@"."] stringByAppendingString:[self extention]] stringByStandardizingPath];
+		filename = [[[[NSLocalizedString(@"DIR", nil) stringByAppendingString:name] stringByAppendingString:@"."] stringByAppendingString:[self extention]] stringByStandardizingPath];
 	
 	arrayContent = [NSMutableArray array];
 	return YES;
@@ -82,13 +82,13 @@
 			return NO;
 		}
 		return written;
-	} else [super addErrorMessage:@"There was no content available to write the file."];
+	} else [super addErrorMessage:NSLocalizedString(@"NO_CONTENT", nil)];
 	return NO;
 }
 
 - (NSString *)title
 {
-	return @"Save";
+	return NSLocalizedString(@"TITLE", nil);
 }
 
 @synthesize name;
