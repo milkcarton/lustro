@@ -46,6 +46,12 @@
 	@private int disableControls;				// Used to disable controls when exporting.
 	@private NSNotificationCenter *center;
 	
+	// Temporary export variables.
+	@private BOOL commaTmp;
+	@private BOOL tabTmp;
+	@private BOOL htmlTmp;
+	@private BOOL googleTmp;
+	
 	IBOutlet LogController *logController;
 	IBOutlet AuthenticateController *authenticateController;
 	IBOutlet WarningController *warningController;

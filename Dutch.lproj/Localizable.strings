@@ -26,16 +26,16 @@
 */
 
 "INCORRECT_USER_PASSWORD" = "Onjuiste gebruikersnaam of wachtwoord.";
-"GOOGLE_LOCKED" = "Google-account geblokkeerd";
-"GOOGLE_LOCKED_TEXT" = "Uw Google-account is geblokkeerd na te veel mislukte pogingen. Vul het formulier Google captcha in en probeer het opnieuw.";
+"GOOGLE_LOCKED" = "Google account geblokkeerd";
+"GOOGLE_LOCKED_TEXT" = "Uw Google account is geblokkeerd na te veel mislukte pogingen. Vul het formulier Google captcha in en probeer het opnieuw.";
 "GOOGLE_DEL_DUPLICATE" = "%@ verwijderd omdat Google niet overweg kan met dubbele adressen.";
 "CONTACT_NO_DATA" = "Contact zonder naam, bijnaam of bedrijf.";
-"NO_BACKUP_NO_DATA" = "Geen backup gemaakt omdat u geen Google Contactenpersonen hebt.";
+"NO_BACKUP_NO_DATA" = "Geen backup gemaakt omdat je geen Google Contactenpersonen hebt.";
 "GOOGLE_FAILED_BCK" = "Google backup mislukt.";
 "GOOGLE_PREVIOUS_CONTACT" = "Niet alle oude Google Contactpersonen opgehaald.";
 "GOOGLE_REMOVE_FAILED" = "Niet alle oude Google Contactperson verwijderd.";
 "GOOGLE_DUPL_MAIL" = "Dubbel e-mailadres voor %@.";
-"GOOGLE_CAPTCHA" = "Captcha vereist, uw Google-account is geblokkeerd.";
+"GOOGLE_CAPTCHA" = "Captcha vereist, je Google account is geblokkeerd.";
 "GOOGLE_WRONG" = "Er ging iets fout met %@ (%i).";
 "SUCCESS" = "%i contactpersonen met succes geëxporteerd.";
 "NO_CONTACTS" = "Geen contactpertsonen geëxporteerd.";

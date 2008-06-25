@@ -76,7 +76,7 @@
 - (void)invocateFileExport
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"]) {
+	if (commaTmp) {
 		[self setValue:[NSNumber numberWithInt:1] forKey:@"commaCheckBox"];
 		CommaExport *exporter = [[CommaExport alloc] init];
 		exporter.showHeader = YES;
@@ -90,7 +90,7 @@
 		exporter = nil;
 	}
 	
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"]) {
+	if (tabTmp) {
 		[self setValue:[NSNumber numberWithInt:1] forKey:@"tabCheckBox"];
 		TabExport *exporter = [[TabExport alloc] init];
 		exporter.delegate = logController;
@@ -104,7 +104,7 @@
 		exporter = nil;
 	}
 	
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"]) {
+	if (htmlTmp) {
 		[self setValue:[NSNumber numberWithInt:1] forKey:@"HTMLCheckBox"];
 		HTMLExport *exporter = [[HTMLExport alloc] init];
 		exporter.delegate = logController;
@@ -172,7 +172,7 @@
 
 - (void)fileExportThreadEnded:(NSNotification *)notification
 {
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"]) {
+	if (googleTmp) {
 		[center removeObserver:self];
 		if ([warningController showPanel]) [self showWarningPanel];
 		else [self continueGoogleExport];
@@ -211,11 +211,16 @@
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"HTMLCheckBox"];
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"googleCheckBox"];
 	
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"]) {
+	commaTmp = [[NSUserDefaults standardUserDefaults] boolForKey:@"CommaChecked"];
+	tabTmp = [[NSUserDefaults standardUserDefaults] boolForKey:@"TabChecked"];
+	htmlTmp = [[NSUserDefaults standardUserDefaults] boolForKey:@"HtmlChecked"];
+	googleTmp = [[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"];
+	
+	if (htmlTmp || tabTmp || commaTmp) {
 		[center addObserver:self selector:@selector(fileExportThreadEnded:) name:NSThreadWillExitNotification object:nil];
 		[NSThread detachNewThreadSelector:@selector(invocateFileExport) toTarget:self withObject:nil];
 	} else {
-		if ([[NSUserDefaults standardUserDefaults] boolForKey:@"GoogleChecked"]) {
+		if (googleTmp) {
 			if ([warningController showPanel]) [self showWarningPanel];
 			else [self continueGoogleExport];
 		}
