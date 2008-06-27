@@ -55,6 +55,12 @@
 	username = [usernameField stringValue];
 	password = [passwordField stringValue];
 	
+	
+	if ([myKeyChain access])
+		NSLog(@"good");
+	else
+		NSLog(@"error: %i", [myKeyChain lastError]);
+	
 	if ([[defaults valueForKey:@"KeyChainSave"] boolValue]) {
 		[myKeyChain addGenericPassword:password onService:@"Lustro" forAccount:username replaceExisting:YES];
 		if ([myKeyChain lastError] == 0)

@@ -232,6 +232,7 @@
 	CFBundleRef myApplicationBundle = CFBundleGetMainBundle();
     CFStringRef myBookName = CFBundleGetValueForInfoDictionaryKey(myApplicationBundle, CFSTR("CFBundleHelpBookName"));
     AHGotoPage(myBookName, CFSTR("index.html"), NULL);
+	NSLog(@"prt");
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
