@@ -150,7 +150,8 @@
 	[savePanel setRequiredFileType:extention];
 	[savePanel setMessage:title];
 	[savePanel setExtensionHidden:YES];
-	if ([savePanel runModalForDirectory:NSHomeDirectory() file:name] == NSOKButton)
+	NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+	if ([savePanel runModalForDirectory:path file:name] == NSOKButton)
 		return [savePanel filename];
 	return nil;
 }
@@ -225,14 +226,6 @@
 			else [self continueGoogleExport];
 		}
 	}
-}
-
-- (IBAction)openHelp:(id)sender
-{
-	CFBundleRef myApplicationBundle = CFBundleGetMainBundle();
-    CFStringRef myBookName = CFBundleGetValueForInfoDictionaryKey(myApplicationBundle, CFSTR("CFBundleHelpBookName"));
-    AHGotoPage(myBookName, CFSTR("index.html"), NULL);
-	NSLog(@"prt");
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem

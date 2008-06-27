@@ -53,6 +53,14 @@
 	
 	// When the initialize went ok AND there are contacts available then loop the list
 	if(ok && [contacts count] > 0) {
+		
+		// Sorting the array
+		NSSortDescriptor *lastDescriptor = [[[NSSortDescriptor alloc] initWithKey:kABLastNameProperty ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
+		NSSortDescriptor *firstDescriptor = [[[NSSortDescriptor alloc] initWithKey:kABFirstNameProperty ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
+		NSSortDescriptor *orgDescriptor = [[[NSSortDescriptor alloc] initWithKey:kABOrganizationProperty ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
+		NSArray *descriptors = [NSArray arrayWithObjects:lastDescriptor, firstDescriptor, orgDescriptor, nil];
+		contacts = [contacts sortedArrayUsingDescriptors:descriptors];
+		
 		kExportStatus status = kExportSuccess;
 		// Loop the contacts.
 		for (ABPerson *person in contacts) {

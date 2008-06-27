@@ -33,6 +33,7 @@
 
 - (BOOL)initialize
 {
+	lineTemp = @"";
 	content = @"";
 	if (showHeader)
 		[self printHeader];
@@ -190,7 +191,6 @@
 
 - (BOOL)exportFirstName:(NSString *)firstName
 {
-	lineTemp = @"";
 	if (firstName) {
 		lineTemp = [lineTemp stringByAppendingString:firstName];
 		firstNameTemp = firstName;
@@ -413,7 +413,8 @@
 - (BOOL)finalizePerson
 {
 	lineTemp = [lineTemp stringByAppendingString:@"\n"];
-	[arrayContent addObject:[NSDictionary dictionaryWithObjectsAndKeys:firstNameTemp, @"FIRST", lastNameTemp, @"LAST", organisationTemp, @"ORG", lineTemp, @"CONTENT", nil]];
+	content = [content stringByAppendingString:lineTemp];
+	lineTemp = @"";
 	numberExported++;
 	return YES;
 }

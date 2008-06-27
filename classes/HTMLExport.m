@@ -352,7 +352,8 @@
 - (BOOL)finalizePerson
 {
 	lineTemp = [lineTemp stringByAppendingString:@"</div>\n"];
-	[arrayContent addObject:[NSDictionary dictionaryWithObjectsAndKeys:firstNameTemp, @"FIRST", lastNameTemp, @"LAST", organisationTemp, @"ORG", lineTemp, @"CONTENT", nil]];
+	content = [content stringByAppendingString:lineTemp];
+	lineTemp = @"";
 	numberExported++;
 	return YES;
 }

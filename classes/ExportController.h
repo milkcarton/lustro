@@ -78,7 +78,6 @@
 - (IBAction)selectExport:(id)sender;				// Check if the export button needs to be enabled.
 - (IBAction)selectGoogleExport:(id)sender;			// Check if the export button needs to be enabled when selecting Google export.
 - (IBAction)export:(id)sender;						// Start exporting the Address Book contacts.
-- (IBAction)openHelp:(id)sender;					// Open the help files from the menu.
 
 @property int commaCheckBox;
 @property int tabCheckBox;

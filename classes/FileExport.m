@@ -61,18 +61,6 @@
 
 - (BOOL)finalize
 {
-	// Sorting the array
-	NSSortDescriptor *lastDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"LAST" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
-	NSSortDescriptor *firstDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"FIRST" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
-	NSSortDescriptor *orgDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"ORG" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
-	NSArray *descriptors = [NSArray arrayWithObjects:lastDescriptor, firstDescriptor, orgDescriptor, nil];
-	NSArray *sortedArray = [arrayContent sortedArrayUsingDescriptors:descriptors];
-	
-	for (NSDictionary *dictionary in sortedArray) {
-		content = [content stringByAppendingString:[dictionary objectForKey:@"CONTENT"]];
-	}
-	
-	
 	// Check if content is filled.
 	if ([content length] > 0) {
 		NSError *error;
