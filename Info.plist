@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleHelpBookFolder</key>
-	<string>help</string>
+	<string>Lustro Help</string>
 	<key>CFBundleHelpBookName</key>
 	<string>Lustro Help</string>
 	<key>CFBundleIconFile</key>
