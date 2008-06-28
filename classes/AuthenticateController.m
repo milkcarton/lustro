@@ -33,54 +33,10 @@
 {
 	myKeyChain = [Keychain defaultKeychain];
 	getDefaultPassword = [[[NSUserDefaults standardUserDefaults] valueForKey:@"KeyChainSave"] boolValue];
-	[self windowWillBeginSheet:nil];
+	[self fillAuthenticationFields];
 }
 
-- (void)controlTextDidChange:(NSNotification *)notification
-{
-	if ([[usernameField stringValue] compare:@""] != NSOrderedSame && [[passwordField stringValue] compare:@""] != NSOrderedSame)
-		[signInButton setEnabled:YES];
-	else [signInButton setEnabled:NO];		
-}
-
-- (IBAction)closeLogPanel:(id)sender
-{
-	[panel orderOut:nil];
-	[NSApp endSheet:panel];
-	[exportController notifyAuthenticate:NO];
-}
-
-- (IBAction)signIn:(id)sender
-{
-	username = [usernameField stringValue];
-	password = [passwordField stringValue];
-	
-	
-	if ([myKeyChain access])
-		NSLog(@"good");
-	else
-		NSLog(@"error: %i", [myKeyChain lastError]);
-	
-	if ([[defaults valueForKey:@"KeyChainSave"] boolValue]) {
-		[myKeyChain addGenericPassword:password onService:@"Lustro" forAccount:username replaceExisting:YES];
-		if ([myKeyChain lastError] == 0)
-			[defaults setObject:username forKey:@"UserName"];
-	}
-	
-	if (![GoogleExport autenticateWithUsername:username password:password]) {
-		username = nil;
-		password = nil;
-		[errorLabel setStringValue:NSLocalizedString(@"INCORRECT_USER_PASSWORD", nil)];
-	} else {
-		[panel orderOut:nil];
-		[NSApp endSheet:panel];
-		[exportController notifyAuthenticate:YES];
-	 }
-}
-
-#pragma mark Delegates of NSWindow
-
-- (void)windowWillBeginSheet:(NSNotification *)notification
+- (void)fillAuthenticationFields
 {
 	defaults = [NSUserDefaults standardUserDefaults];
 	
@@ -106,6 +62,48 @@
 	if ([[usernameField stringValue] compare:@""] != NSOrderedSame && [[passwordField stringValue] compare:@""] != NSOrderedSame)
 		[signInButton setEnabled:YES];
 	else [signInButton setEnabled:NO];
+}
+
+- (void)controlTextDidChange:(NSNotification *)notification
+{
+	if ([[usernameField stringValue] compare:@""] != NSOrderedSame && [[passwordField stringValue] compare:@""] != NSOrderedSame)
+		[signInButton setEnabled:YES];
+	else [signInButton setEnabled:NO];		
+}
+
+- (IBAction)closeLogPanel:(id)sender
+{
+	[panel orderOut:nil];
+	[NSApp endSheet:panel];
+	[exportController notifyAuthenticate:NO];
+}
+
+- (IBAction)signIn:(id)sender
+{
+	username = [usernameField stringValue];
+	password = [passwordField stringValue];
+	
+	
+	/*if ([myKeyChain access])
+		NSLog(@"good");
+	else
+		NSLog(@"error: %i", [myKeyChain lastError]);*/
+	
+	if ([[defaults valueForKey:@"KeyChainSave"] boolValue]) {
+		[myKeyChain addGenericPassword:password onService:@"Lustro" forAccount:username replaceExisting:YES];
+		if ([myKeyChain lastError] == 0)
+			[defaults setObject:username forKey:@"UserName"];
+	}
+	
+	if (![GoogleExport autenticateWithUsername:username password:password]) {
+		username = nil;
+		password = nil;
+		[errorLabel setStringValue:NSLocalizedString(@"INCORRECT_USER_PASSWORD", nil)];
+	} else {
+		[panel orderOut:nil];
+		[NSApp endSheet:panel];
+		[exportController notifyAuthenticate:YES];
+	 }
 }
 
 @synthesize panel;

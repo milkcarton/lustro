@@ -44,6 +44,7 @@
 }
 
 - (void)startKeychainSession;
+- (void)fillAuthenticationFields;
 
 - (IBAction)closeLogPanel:(id)sender;
 - (IBAction)signIn:(id)sender;

@@ -30,9 +30,7 @@
 @implementation ExportController
 
 - (void)awakeFromNib
-{
-	[mainWindow setDelegate:authenticateController];
-	
+{	
 	// Set startup binding values for the indicators.
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"commaCheckBox"];
 	[self setValue:[NSNumber numberWithInt:0] forKey:@"tabCheckBox"];
@@ -141,7 +139,6 @@
 {
 	[NSApp beginSheet:warningController.panel modalForWindow:mainWindow modalDelegate:self didEndSelector:nil contextInfo:nil];
 	[warningController.panel makeKeyWindow];
-
 }
 
 - (NSString *)showSaveSheet:(NSString *)name extention:(NSString *)extention title:(NSString *)title
@@ -189,6 +186,7 @@
 
 - (IBAction)showAutenticationPanel:(id)sender
 {
+	[authenticateController fillAuthenticationFields];
 	[NSApp beginSheet:authenticateController.panel modalForWindow:mainWindow modalDelegate:self didEndSelector:nil contextInfo:nil];
 	[authenticateController.panel makeKeyWindow];
 }
