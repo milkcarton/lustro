@@ -31,15 +31,21 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>Lusto hCards</title>
+	<title>Address Book hCards by Lustro</title>
+	<meta name="generator" content="Lustro 1.O"/>
+	<meta name="description" content="My Address Book contacts formated as hCards.">
 	<style type="text/css">
-		div.vcard { background-color: #eee; border: 1px solid #999; margin: 1em; padding: 0.5em; }
-		span.fn { font-weight: bold; }
-		span.org { font-style: italic; display: block; }
-		span.type { text-transform: lowercase; background-color: #ccc; }
-		span.tel { display: block; }
-		a	{ text-decoration: none; }
+		body { font-family: "Gill Sans"; color: #222; background-color: #fdfdfd; }
+		a { text-decoration: none; color: #ee3923; }
+		.ornament { font-family: "Marker Felt"; font-size: 6em; float: left; margin-left: .2em; color: #ee3923; }
+		.card { margin-left: 8em; margin-right: 1em; }
+		p, .mails, .urls, .adr { margin: .5em 0 .5em 0; display: block; }
+		.vcard { background-color: white; border: 1px solid #999; padding: 0.5em; margin: .5em; float: left; -webkit-box-shadow: 2px 2px 4px #aaa; -webkit-border-top-left-radius: .5em; -webkit-border-bottom-right-radius: .5em; -moz-border-radius-topleft: .5em; -moz-border-radius-bottomright: .5em; }
+		.fn { font-weight: bold; }
+		.org { font-style: italic; display: block; margin-bottom: .5em; }
+		.type { text-transform: lowercase; font-size: smaller; color: gray; }
+		.tel { display: block; }
+		.note { background-color: #FFF0C2; padding: 2px; font-size: smaller; margin-top: .5em; }
 	</style>
 </head>
 <body>
-

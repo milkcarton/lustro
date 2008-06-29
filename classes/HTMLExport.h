@@ -31,6 +31,16 @@
 @interface HTMLExport : FileExport {
 	NSString *fnName;
 	NSString *org;
+	NSMutableDictionary *details;
+	/*	First add all details to the array to sort them in the finalizePerson method.
+		index O: initialize div and firstName			index 7: addresses
+		index 1: lastName								index 8: phones
+		index 2: birthday								index 9: note
+		index 3: organization							index 10: middleName
+		index 4: jobTitle								index 11: suffix
+		index 5: URLs									index 12: nickname
+		index 6: e-mails								index 13: finalize div
+	 */
 }
 
 - (NSString *)addSpanWithValue:(NSString *)value class:(NSString *)class;							// Add <span class="[class]">[value]</span>
