@@ -147,15 +147,14 @@
 		for (int e = 0; [container count] < max && e < (max - [container count]); e++) {
 			if ([lineTemp length] > 0)
 				lineTemp = [lineTemp stringByAppendingString:[self delimiter]];
-			lineTemp = [lineTemp stringByAppendingString:@""];
+			lineTemp = [lineTemp stringByAppendingString:@" "];
 		}
 	} else {
-		
 		// Set all MAX places to spaces.
 		for (int e = 0; e < max; e++) {
 			if ([lineTemp length] > 0)
 				lineTemp = [lineTemp stringByAppendingString:[self delimiter]];
-			lineTemp = [lineTemp stringByAppendingString:@""];
+			lineTemp = [lineTemp stringByAppendingString:@" "];
 		}
 	}
 }
@@ -176,7 +175,7 @@
 		for (int e = 0; e < i; e++) {
 			if ([lineTemp length] > 0)
 				lineTemp = [lineTemp stringByAppendingString:[self delimiter]];
-			lineTemp = [lineTemp stringByAppendingString:@""];
+			lineTemp = [lineTemp stringByAppendingString:@" "];
 		}
 	} else {
 		int max = MAX_ELEMENTS;
@@ -184,7 +183,7 @@
 		for (int e = 0; e < max; e++) {
 			if ([lineTemp length] > 0)
 				[lineTemp stringByAppendingString:[self delimiter]];
-			lineTemp = [lineTemp stringByAppendingString:@""];
+			lineTemp = [lineTemp stringByAppendingString:@" "];
 		}
 	}
 }
@@ -195,7 +194,7 @@
 		lineTemp = [lineTemp stringByAppendingString:firstName];
 		firstNameTemp = firstName;
 	} else {
-		lineTemp = [lineTemp stringByAppendingString:@""];
+		lineTemp = [lineTemp stringByAppendingString:@" "];
 		firstNameTemp = @"";
 	}
 	return YES;
