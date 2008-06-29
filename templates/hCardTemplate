@@ -33,7 +33,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>Address Book hCards by Lustro</title>
 	<meta name="generator" content="Lustro 1.O"/>
-	<meta name="description" content="My Address Book contacts formated as hCards.">
+	<meta name="description" content="My Address Book contacts formated as hCards."/>
 	<style type="text/css">
 		body { font-family: "Gill Sans"; color: #222; background-color: #fdfdfd; }
 		a { text-decoration: none; color: #ee3923; }

@@ -357,7 +357,7 @@
 - (BOOL)exportNickName:(NSString *)nickName
 {
 	if (nickName) {
-		nickName = [NSString stringWithFormat:@"&ldquo;%@&rdquo;", nickName];
+		nickName = [NSString stringWithFormat:@"-leftquote-%@-rightquote-", nickName];
 		[details setObject:[self addDivWithValue:nickName class:@"nickname"] forKey:@"12"];
 	}
 	return YES;
@@ -397,6 +397,9 @@
 	if ([details objectForKey:@"9"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"9"]];
 	if ([details objectForKey:@"0"]) lineTemp = [lineTemp stringByAppendingString:@"</div>"]; // Close the card div if first name given
 	lineTemp = [lineTemp stringByAppendingString:@"</div>\n\n"];
+	lineTemp = [lineTemp stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"];
+	lineTemp = [lineTemp stringByReplacingOccurrencesOfString:@"-leftquote-" withString:@"&ldquo;"]; // Replace the placeholders with valid XHTML
+	lineTemp = [lineTemp stringByReplacingOccurrencesOfString:@"-rightquote-" withString:@"&rdquo;"];
 	content = [content stringByAppendingString:lineTemp];
 	[details release];
 	details = [[NSMutableDictionary alloc] init];
