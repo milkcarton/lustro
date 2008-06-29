@@ -1,0 +1,22 @@
+Lustro uses some frameworks developed by other people from around the globe. Listed below are all the frameworks Lustro uses with their license and developers. A huge thank you to all people in this list, Lustro wouldn't be possible without all of you!
+
+Keychain Framework
+==================
+
+License: 	Apple Public Source License, BSD License
+URL: 		http://sourceforge.net/projects/keychain/
+Developers:	Wade Tregaskis, Etienne Samson 
+
+Sparkle
+=======
+
+License: 	MIT License
+URL: 		http://sourceforge.net/projects/keychain/
+Developers:	Andy Matuschak
+
+gdata-objectivec-client
+=======================
+
+License: 	Apache License 2.0
+URL: 		http://code.google.com/p/gdata-objectivec-client/
+Developers:	regrobbins, fmantek, markstahl, api.vli, DavidPhillipOster, rose.yao, Paul.McDonald, singh, devjgm, motownavi, inaddrany, thomas.j.bennett
