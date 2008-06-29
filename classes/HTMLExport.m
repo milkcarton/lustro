@@ -90,7 +90,7 @@
 
 - (NSString *)addEmails:(ABMultiValue *)emails
 {
-	NSString *mailAddresses = @"";
+	NSString *mailAddresses = @"<div>";
 	for (int i = 0; i < [emails count]; i++) {
 		NSString *label = [emails labelAtIndex:i];
 		NSString *mail = [emails valueAtIndex:i];
@@ -101,8 +101,9 @@
 		label = [AddressBookExport cleanLabel:label];
 		mailAddresses = [mailAddresses stringByAppendingString:@" "];
 		mailAddresses = [mailAddresses stringByAppendingString:[self addSpanWithValue:label class:@"type"]];
-		mailAddresses = [mailAddresses stringByAppendingString:@"</a>\n"];
+		mailAddresses = [mailAddresses stringByAppendingString:@"</a><br />\n"];
 	}
+	mailAddresses = [mailAddresses stringByAppendingString:@"</div>\n"];
 	return mailAddresses;
 }
 
@@ -187,12 +188,7 @@
 {
 	fnName = @"";
 	if (firstName) {
-		NSString *tmp = [tmp stringByAppendingString:@"<div class=\"fn n\">\n"];
-		NSString *firstLetter = [firstName substringWithRange:NSMakeRange(0,1)];
-		if (!firstLetter) firstLetter = @"";
-		tmp = [NSString stringWithFormat:@"<span class=\"ornament\">%@</span>\n<div class=\"card\">\n", firstLetter];
-		tmp = [tmp stringByAppendingString:[self addSpanWithValue:firstName class:@"given-name"]];
-		[details setObject:tmp forKey:@"0"];
+		[details setObject:[self addSpanWithValue:firstName class:@"given-name"] forKey:@"firstName"];
 		fnName = firstName;
 		firstNameTemp = firstName;
 	} else {
@@ -206,14 +202,18 @@
 	NSString *tmp = @"";
 	if (lastName) {
 		lastNameTemp = lastName;
+		
+		NSString *firstLetter = [lastName substringWithRange:NSMakeRange(0,1)];
+		if (!firstLetter) firstLetter = @"";
+		[details setObject:firstLetter forKey:@"ornamentLetter"];
+		
 		tmp = [tmp stringByAppendingString:[self addSpanWithValue:lastName class:@"family-name"]];
 		if ([fnName length] > 0) {
 			fnName = [fnName stringByAppendingString:@" "];
 			fnName = [fnName stringByAppendingString:lastName];
 		}
 	} else lastNameTemp = @"";
-	//tmp = [tmp stringByAppendingString:@"</div>\n"]; // Closing div for "fn n" part in exportFirstName
-	[details setObject:tmp forKey:@"1"];
+	[details setObject:tmp forKey:@"lastName"];
 	return YES;
 }
 
@@ -236,7 +236,7 @@
 		tmp = [tmp stringByAppendingString:[self addAbbrWithValue:birthdateFormatted class:@"bday" title:birthdateFormatted]];
 		tmp = [tmp stringByAppendingString:[self addSpanWithValue:@"bday" class:@"type"]]; // Not needed for microformats but looks nice
 		tmp = [tmp stringByAppendingString:@"</div>\n"];
-		[details setObject:tmp forKey:@"2"];
+		[details setObject:tmp forKey:@"bday"];
 	}
 	return YES;
 }
@@ -254,21 +254,21 @@
 - (BOOL)exportDepartment:(NSString *)department
 {
 	if ([org length] > 0 || department)
-		[details setObject:[self addSpanWithOrganization:org department:department] forKey:@"3"];
+		[details setObject:[self addSpanWithOrganization:org department:department] forKey:@"org"];
 	return YES;
 }
 
 - (BOOL)exportJobTitle:(NSString *)jobTitle
 {
 	if (jobTitle)
-		[details setObject:[self addSpanWithValue:jobTitle class:@"title"] forKey:@"4"];
+		[details setObject:[self addSpanWithValue:jobTitle class:@"title"] forKey:@"jobTitle"];
 	return YES;
 }
 
 - (BOOL)exportURLs:(ABMultiValue *)URLs
 {
 	if (URLs)
-		[details setObject:[self addURLs:URLs] forKey:@"5"];
+		[details setObject:[self addURLs:URLs] forKey:@"URLs"];
 	return YES;
 }
 
@@ -280,21 +280,21 @@
 - (BOOL)exportEmails:(ABMultiValue *)emails
 {
 	if (emails)
-		[details setObject:[self addEmails:emails] forKey:@"6"];
+		[details setObject:[self addEmails:emails] forKey:@"mails"];
 	return YES;
 }
 
 - (BOOL)exportAddresses:(ABMultiValue *)addresses
 {
 	if (addresses)
-		[details setObject:[self addAddresses:addresses] forKey:@"7"];
+		[details setObject:[self addAddresses:addresses] forKey:@"addresses"];
 	return YES;
 }
 
 - (BOOL)exportPhones:(ABMultiValue *)phones
 {
 	if (phones)
-		[details setObject:[self addPhones:phones] forKey:@"8"];
+		[details setObject:[self addPhones:phones] forKey:@"phones"];
 	return YES;
 }
 
@@ -326,14 +326,14 @@
 - (BOOL)exportNote:(NSString *)note
 {
 	if (note)
-		[details setObject:[self addDivWithValue:note class:@"note"] forKey:@"9"];
+		[details setObject:[self addDivWithValue:note class:@"note"] forKey:@"note"];
 	return YES;
 }
 
 - (BOOL)exportMiddleName:(NSString *)middleName
 {
 	if (middleName)
-		[details setObject:[self addSpanWithValue:middleName class:@"additional-name"] forKey:@"10"];
+		[details setObject:[self addSpanWithValue:middleName class:@"additional-name"] forKey:@"middleName"];
 	return YES;
 }
 
@@ -350,7 +350,7 @@
 - (BOOL)exportSuffix:(NSString *)suffix
 {
 	if (suffix)
-		[details setObject:[self addSpanWithValue:suffix class:@"honorific-suffix"] forKey:@"11"];
+		[details setObject:[self addSpanWithValue:suffix class:@"honorific-suffix"] forKey:@"suffix"];
 	return YES;
 }
 
@@ -358,7 +358,7 @@
 {
 	if (nickName) {
 		nickName = [NSString stringWithFormat:@"-leftquote-%@-rightquote-", nickName];
-		[details setObject:[self addDivWithValue:nickName class:@"nickname"] forKey:@"12"];
+		[details setObject:[self addDivWithValue:nickName class:@"nickname"] forKey:@"nickname"];
 	}
 	return YES;
 }
@@ -382,20 +382,27 @@
 {
 	// Extract details from array in the order you like for the HTML layout
 	lineTemp = @"<div class=\"vcard\">\n";
-	if ([details objectForKey:@"0"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"0"]];
-	if ([details objectForKey:@"10"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"10"]];
-	if ([details objectForKey:@"1"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"1"]];
-	if ([details objectForKey:@"11"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"11"]];
-	if ([details objectForKey:@"12"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"12"]];
-	if ([details objectForKey:@"3"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"3"]];
-	if ([details objectForKey:@"4"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"4"]];
-	if ([details objectForKey:@"6"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"6"]];
-	if ([details objectForKey:@"5"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"5"]];
-	if ([details objectForKey:@"8"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"8"]];
-	if ([details objectForKey:@"7"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"7"]];
-	if ([details objectForKey:@"2"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"2"]];
-	if ([details objectForKey:@"9"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"9"]];
-	if ([details objectForKey:@"0"]) lineTemp = [lineTemp stringByAppendingString:@"</div>"]; // Close the card div if first name given
+	if ([details objectForKey:@"ornamentLetter"]) lineTemp = [NSString stringWithFormat:@"%@<span class=\"ornament\">%@</span>\n<div class=\"card\">\n", lineTemp, [details objectForKey:@"ornamentLetter"]];
+	
+	lineTemp = [lineTemp stringByAppendingString:@"<div class=\"fn n\">\n"];
+	
+	if ([details objectForKey:@"firstName"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"firstName"]];
+	if ([details objectForKey:@"middleName"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"middleName"]];
+	if ([details objectForKey:@"lastName"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"lastName"]];
+	
+	lineTemp = [lineTemp stringByAppendingString:@"</div>\n"];
+	
+	if ([details objectForKey:@"suffix"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"suffix"]];
+	if ([details objectForKey:@"nickname"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"nickname"]];
+	if ([details objectForKey:@"org"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"org"]];
+	if ([details objectForKey:@"jobTitle"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"jobTitle"]];
+	if ([details objectForKey:@"mails"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"mails"]];
+	if ([details objectForKey:@"URLs"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"URLs"]];
+	if ([details objectForKey:@"phones"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"phones"]];
+	if ([details objectForKey:@"addresses"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"addresses"]];
+	if ([details objectForKey:@"bday"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"bday"]];
+	if ([details objectForKey:@"note"]) lineTemp = [lineTemp stringByAppendingString:[details objectForKey:@"note"]];
+	if ([details objectForKey:@"ornamentLetter"]) lineTemp = [lineTemp stringByAppendingString:@"</div>\n"]; // Close the card div if first name given
 	lineTemp = [lineTemp stringByAppendingString:@"</div>\n\n"];
 	lineTemp = [lineTemp stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"];
 	lineTemp = [lineTemp stringByReplacingOccurrencesOfString:@"-leftquote-" withString:@"&ldquo;"]; // Replace the placeholders with valid XHTML
