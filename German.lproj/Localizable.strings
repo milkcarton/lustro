@@ -1,0 +1,74 @@
+﻿/*
+ Copyright (c) 2008 Jelle Vandebeeck, Simon Schoeters
+ 
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+ 
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+ 
+ Created by Jan-Gerd Tenberge on 2008.10.01.
+*/
+
+"INCORRECT_USER_PASSWORD" = "Benutzername und/oder Passwort falsch.";
+"GOOGLE_LOCKED" = "Account blockiert";
+"GOOGLE_LOCKED_TEXT" = "Ihr Google Account wurde wegen zu vieler vergeblicher Loginversuche gesperrt. Füllen Sie bitte das Captcha-Formular aus und versuchen Sie es erneut.";
+"GOOGLE_DEL_DUPLICATE" = "%@ entfernt, da Google nicht mit doppelten Adressen umgehen kan.";
+"CONTACT_NO_DATA" = "Kontakt hat weder einen Namen noch einen Spitz- oder Firmennamen.";
+"NO_BACKUP_NO_DATA" = "Es wurde kein Backup erstellt da Sie noch keine Google-Kontakte haben.";
+"GOOGLE_FAILED_BCK" = "Backup von Google fehlgeschlagen.";
+"GOOGLE_PREVIOUS_CONTACT" = "Vorherige Google-Kontakte konnten nicht heruntergeladen werden.";
+"GOOGLE_REMOVE_FAILED" = "Es konnten nicht alle vorher existierenden Google-Kontake entfernt werden.";
+"GOOGLE_DUPL_MAIL" = "Doppelte E-Mail Adresse für %@.";
+"GOOGLE_CAPTCHA" = "Captcha erforderlich, ihr Account ist gesperrt.";
+"GOOGLE_WRONG" = "Irgendetwas ging schief mit %@ (%i).";
+"SUCCESS" = "%i Kontakte erfolgreich exportiert.";
+"NO_CONTACTS" = "Keine Kontakte exportiert.";
+"NO_CONTENT" = "Es ist kein Inhalt vorhanden, der in die Datei geschrieben werden könnte.";
+"TITLE" = "Speichern";
+"SAVE_TAB_FILE" = "Datei mit durch Tabulatoren getrennten Werten speichern";
+"SAVE_CSV_FILE" = "Datei mit durch Kommata getrennten Werten speichern";
+"FIRST_NAME" = "Vorname";
+"LAST_NAME" = "Nachname";
+"FIRST_PHON" = "Vorname phonetisch";
+"LAST_PHON" = "Nachname phonetisch";
+"BIRTH" = "Geburtstag";
+"ORG" = "Organisation";
+"DEP" = "Abteilung";
+"JOB" = "Jobtitel";
+"URL" = "URL %i";
+"CAL_URL" = "Kalender-URL %i";
+"EMAIL" = "E-Mail %i";
+"ADDRESS" = "Adresse %i";
+"PHONE" = "Telefon %i";
+"AIM" = "AIM-Adresse %i";
+"JABBER" = "Jabber-Adresse %i";
+"MSN" = "MSN-Adresse %i";
+"YAHOO" = "Yahoo-Adresse %i";
+"ICQ" = "ICQ-Nummer %i";
+"NOTE" = "Notiz";
+"MIDDLE_NAME" = "zweiter Vorname";
+"MIDDLE_PHON" = "zweiter Vorname phonetisch";
+"TIT" = "Titel";
+"SUFFIX" = "Namenszusatz";
+"NICK" = "Spitzname";
+"MAIDEN" = "Geburtsname";
+"OTHER_DATES" = "andere Daten %i";
+"RELATED" = "verwandte Namen %i";
+"CONTACTS" = "Kontakte";
+"DIR" = "~/Documents/";

@@ -126,6 +126,8 @@
 		F445B45F0E06E367003736ED /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		F445B4600E06E367003736ED /* NOTICE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NOTICE; sourceTree = "<group>"; };
 		F44B40A70DBF9D5E00623BBA /* GData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GData.framework; path = frameworks/GData.framework; sourceTree = SOURCE_ROOT; };
+		F46B700F0E97992B00D90196 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F46B702B0E979E6400D90196 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		F4A1E83E0E12E12F0015F673 /* English */ = {isa = PBXFileReference; lastKnownFileType = folder; name = English; path = "English.lproj/Lustro Help"; sourceTree = "<group>"; };
 		F4A1E8510E12E13D0015F673 /* Dutch */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Dutch; path = "Dutch.lproj/Lustro Help"; sourceTree = "<group>"; };
 		F4AE8B950DFC7011001EAC61 /* GoogleExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoogleExport.h; path = classes/GoogleExport.h; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 			children = (
 				60D5CF140E116E1900CFAF7A /* English */,
 				606FC77B0E117B8C00CC7DC3 /* Dutch */,
+				F46B702B0E979E6400D90196 /* German */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 			children = (
 				60D5CF580E11705600CFAF7A /* English */,
 				606FC7880E11814700CC7DC3 /* Dutch */,
+				F46B700F0E97992B00D90196 /* German */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
