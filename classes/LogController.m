@@ -79,7 +79,7 @@
         [fileManager createDirectoryAtPath:applicationSupportFolder attributes:nil];
     }
     url = [NSURL fileURLWithPath: [applicationSupportFolder stringByAppendingPathComponent: @"log.xml"]];
-    persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
+    persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![persistentStoreCoordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:url options:nil error:&error]) {
 		[[NSApplication sharedApplication] presentError:error];
     }    

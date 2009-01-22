@@ -48,6 +48,7 @@
 		F44B414E0DBF9D6900623BBA /* GData.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F44B40A70DBF9D5E00623BBA /* GData.framework */; };
 		F4A1E8500E12E12F0015F673 /* Lustro Help in Resources */ = {isa = PBXBuildFile; fileRef = F4A1E83D0E12E12F0015F673 /* Lustro Help */; };
 		F4AE8B970DFC7011001EAC61 /* GoogleExport.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AE8B960DFC7011001EAC61 /* GoogleExport.m */; };
+		F4B1AC2A0F18FA0700027E7D /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B1AC290F18FA0700027E7D /* PreferencesController.m */; };
 		F4E3D5450DFDA901007460F4 /* LogController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E3D5440DFDA901007460F4 /* LogController.m */; };
 		F4E3D54A0DFDA948007460F4 /* AuthenticateController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E3D5470DFDA948007460F4 /* AuthenticateController.m */; };
 		F4E3D54B0DFDA948007460F4 /* ExportController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E3D5490DFDA948007460F4 /* ExportController.m */; };
@@ -132,6 +133,8 @@
 		F4A1E8510E12E13D0015F673 /* Dutch */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Dutch; path = "Dutch.lproj/Lustro Help"; sourceTree = "<group>"; };
 		F4AE8B950DFC7011001EAC61 /* GoogleExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoogleExport.h; path = classes/GoogleExport.h; sourceTree = "<group>"; };
 		F4AE8B960DFC7011001EAC61 /* GoogleExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoogleExport.m; path = classes/GoogleExport.m; sourceTree = "<group>"; };
+		F4B1AC280F18FA0700027E7D /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesController.h; path = classes/PreferencesController.h; sourceTree = "<group>"; };
+		F4B1AC290F18FA0700027E7D /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesController.m; path = classes/PreferencesController.m; sourceTree = "<group>"; };
 		F4C8022C0E14539700B0E37E /* Dutch */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Dutch; path = Dutch.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F4E3D5430DFDA901007460F4 /* LogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogController.h; path = classes/LogController.h; sourceTree = "<group>"; };
 		F4E3D5440DFDA901007460F4 /* LogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogController.m; path = classes/LogController.m; sourceTree = "<group>"; };
@@ -274,6 +277,8 @@
 				F4E3D5440DFDA901007460F4 /* LogController.m */,
 				6083ED1B0E0D292C006EA007 /* WarningController.h */,
 				6083ED1C0E0D292C006EA007 /* WarningController.m */,
+				F4B1AC280F18FA0700027E7D /* PreferencesController.h */,
+				F4B1AC290F18FA0700027E7D /* PreferencesController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -429,6 +434,7 @@
 				E6CA9BD60E0314B9004756A2 /* CustomAuthButton.m in Sources */,
 				60A8D62A0E0576C1007C989E /* CustomMainWindow.m in Sources */,
 				6083ED1D0E0D292C006EA007 /* WarningController.m in Sources */,
+				F4B1AC2A0F18FA0700027E7D /* PreferencesController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

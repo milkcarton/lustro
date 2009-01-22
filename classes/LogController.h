@@ -32,7 +32,7 @@
 	NSPersistentStoreCoordinator *persistentStoreCoordinator;
 	NSManagedObjectContext *managedObjectContext;
 	BOOL hasContents;
-	
+
 	IBOutlet id panel;
 }
 

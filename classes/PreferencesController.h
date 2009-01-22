@@ -22,16 +22,22 @@
  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  OTHER DEALINGS IN THE SOFTWARE.
  
- Created by Jelle Vandebeeck on 2008.06.15.
+ Created by Simon Schoeters on 2008.06.09.
 */
 
-#import "CustomMainWindow.h"
+#import <Cocoa/Cocoa.h>
+#import "AddressBookExport.h"
 
-@implementation CustomMainWindow
+@interface PreferencesController : NSObject {
+	@private int exportGroupSelection;
+	@private ABAddressBook *addressBook;
+	@private NSMutableDictionary *selectedGroups;
 
-- (BOOL)windowShouldClose:(id)window {
-	[[NSApplication sharedApplication] hide:self];
-	return NO;
+	IBOutlet id groupList;
 }
+
+- (void)loadSelectedGroups;					// Read user preferences for the selected groups (they exist, else create new ones)
+- (IBAction)selectGroups:(id)sender;		// Enable or disable the group tableView in the interface based on the selected option
+- (IBAction)changeCellState:(id)sender;		// Change the state of the checkbox before the selected group
 
 @end

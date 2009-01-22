@@ -48,18 +48,32 @@
 - (int)export
 {	
 	BOOL ok = [self initialize]; 
-	NSArray *contacts = [addressBook people];
+	NSArray *contacts;
+	
+	// Get the export preference from the user defaults
+	// 0 = export all contacts, don't look at the groups
+	// 1 = read which groups needs to be exported from the user defaults
+	// export all contacts when the preference does not exist yet
+	int exportGroupSelection = [[NSUserDefaults standardUserDefaults] integerForKey:@"ExportGroupsSelection"];
+	if (exportGroupSelection == 1) {
+		contacts = [self selectedPeople];
+	} else {
+		contacts = [addressBook people];
+	}
+	
 	numberExported = 0;
 	
 	// When the initialize went ok AND there are contacts available then loop the list
 	if(ok && [contacts count] > 0) {
 		
-		// Sorting the array
+		// Sorting the array (takes too many resources)
+		/*
 		NSSortDescriptor *lastDescriptor = [[[NSSortDescriptor alloc] initWithKey:kABLastNameProperty ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
 		NSSortDescriptor *firstDescriptor = [[[NSSortDescriptor alloc] initWithKey:kABFirstNameProperty ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
 		NSSortDescriptor *orgDescriptor = [[[NSSortDescriptor alloc] initWithKey:kABOrganizationProperty ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
 		NSArray *descriptors = [NSArray arrayWithObjects:lastDescriptor, firstDescriptor, orgDescriptor, nil];
 		contacts = [contacts sortedArrayUsingDescriptors:descriptors];
+		 */
 		
 		kExportStatus status = kExportSuccess;
 		// Loop the contacts.
@@ -170,6 +184,25 @@
 	// Check if method is available in the delegate.
 	if ([delegate respondsToSelector:@selector(addErrorMessage:className:)])
         [delegate addErrorMessage:message className:[self className]];
+}
+
+- (NSArray *)selectedPeople
+{
+	NSMutableSet *contacts = [[NSMutableSet alloc] init]; // Use a NSMutableSet to prevent duplicate contacts when multiple groups are selected
+	NSDictionary *prefGroups = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"selectedGroups"];
+	if (prefGroups != nil) {
+		NSEnumerator *enumerator = [prefGroups keyEnumerator];
+		NSString *groupName;
+		while (groupName = [enumerator nextObject]) {
+			NSNumber *groupState = [prefGroups objectForKey:groupName];
+			if ([groupState intValue] == 1) {
+				ABSearchElement *search = [ABGroup searchElementForProperty:kABGroupNameProperty label:nil key:nil value:groupName comparison:kABEqualCaseInsensitive];
+				ABGroup *group = [[addressBook recordsMatchingSearchElement:search] objectAtIndex:0];
+				[contacts addObjectsFromArray:[group members]];
+			}
+		}		
+	}	
+	return (NSArray *)[[contacts copy] autorelease];;
 }
 
 @synthesize delegate;

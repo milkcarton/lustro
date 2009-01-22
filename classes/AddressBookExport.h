@@ -51,6 +51,7 @@ typedef enum {
 - (void)addSuccessMessage:(NSString *)message;					// Notifies the delegate that a success message was received.
 - (void)addWarningMessage:(NSString *)message;					// Notifies the delegate that a warning message was received.
 - (void)addErrorMessage:(NSString *)message;					// Notifies the delegate that an error message was received.
+- (NSArray *)selectedPeople;
 
 @property (retain) id delegate;
 @property (retain) ABAddressBook *addressBook;
