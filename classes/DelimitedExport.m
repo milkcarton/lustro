@@ -350,7 +350,12 @@
 
 - (BOOL)exportNote:(NSString *)note
 {
-	if (note) [self addText:note];
+	if (note) {
+		// Trim new lines from notes as they will look like new records in a CSV or TAB delimited file
+		NSArray *components = [note componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+		note = [components componentsJoinedByString:@" "];
+		[self addText:note];
+	}
 	else [self addText:@""];
 	return YES;
 }
